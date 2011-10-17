@@ -1,0 +1,35 @@
+﻿#content
+{
+}
+
+#titulo
+{
+    text-align:center;
+    font-size: small;
+    width: 50%;
+    margin: auto;    
+}
+
+#navcenter
+{       
+    padding: 20px 0 20px 0;
+    text-align:left;
+    width: 50%;
+    margin: auto;
+}
+         
+#navcontroles
+{
+    padding: 20px 0 20px 0;
+    text-align:left;
+    width: 50%;
+    margin: auto;
+}
+
+#navBotones
+{
+    padding: 20px 0 20px 0;
+    text-align:left;
+    width: 50%;
+    margin: auto;
+}

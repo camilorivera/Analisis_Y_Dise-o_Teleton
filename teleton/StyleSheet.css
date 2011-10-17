@@ -1,0 +1,38 @@
+﻿body 
+{
+    background: #FFFFFF url(images/img01.jpg) repeat-x left top;
+	text-align: justify;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 11px;
+	color: #757E82;
+}
+
+#footer-wrapper {
+	background: #F7F7F7 url(images/img03.jpg) repeat-x left top;
+	padding: 20px 0px;
+}
+
+#footer {
+	width: 868px;
+	margin: 0 auto;
+	color: #757E82;
+    height: 34px;
+ 
+    
+}
+
+#footer p {
+	margin: 0;
+	text-align: center;
+	font-size: 11px;
+}
+
+#footer a {
+	text-decoration: underline;
+	color: #757E82;
+}
+
+#footer a:hover {
+	text-decoration: none;
+	color: #F90542;
+}
