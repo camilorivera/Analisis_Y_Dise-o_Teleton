@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
 using System.Text.RegularExpressions;
-
+using System.Threading;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -36,7 +36,7 @@ public partial class Login : System.Web.UI.Page
         try
         {
             this.Validate();
-            
+
             if (this.IsValid)
             {
                 if (sec.login(UserName.Text, Password.Text, CenterList.Text))
@@ -46,19 +46,23 @@ public partial class Login : System.Web.UI.Page
 
                     Session["Centro_id"] = CenterList.SelectedItem.Text;
                     Session["Centro_idNum"] = sec.getCentroId(Session["Centro_id"].ToString()).ToString();
-                    
+
                     Session["Permisos_usuario"] = sec.getPermisosUsuario(UserName.Text);
 
                     Session["loggedin"] = true;
                     Session["nombre_usuario"] = UserName.Text;
-                    
-                    Response.Redirect("Default.aspx");                    
+
+                    Response.Redirect("Default.aspx");
                 }
                 else
-                {                    
-                    FailureText.Text = "Password o Usuario Incorrecto";                 
+                {
+                    FailureText.Text = "Password o Usuario Incorrecto";
                 }
             }
+        }
+        catch (ThreadAbortException _ex)
+        {
+
         }
         catch (Exception ex)
         {
