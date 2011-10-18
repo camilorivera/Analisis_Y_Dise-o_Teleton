@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/screen.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">        
+        <div id="content">
+            <div class="loginDisplay">
+                <p id="top"> Proyecto Teleton 2011 | 
+                <asp:Label ID="centro" runat="server" Text="Lcentro"></asp:Label>  
+                | Bienvenido 
+                    <asp:Label ID="usr" runat="server" Text="Label"></asp:Label>
+                    [<asp:LinkButton ID="labelLogout" runat="server" Text="Logout" onclick="labelLogout_Click" 
+                                 CausesValidation="False"></asp:LinkButton>]                     
+                </p>
+                <div id="logo">
+                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                Height="120px" ImageUrl="~/images/teletonLogoSolid3.png" 
+                                PostBackUrl="~/Default.aspx" Width="90px" />
+			        <a href="~/Default.aspx"></a>
+                </div>
+            </div>              
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <div id = "sitemenu">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"
+                        CssClass="pointermenu" StaticSubMenuIndent="2px">
+                    <Items>
+                        <asp:MenuItem Text="Expedientes" Value="Administrar Paciente">
+                            <asp:MenuItem Text="Crear Expediente" Value="New Item" 
+                                NavigateUrl="~/Crear_Paciente.aspx?sender=new"></asp:MenuItem>
+                            <asp:MenuItem Text="Crear Expediente Histórico" Value="New Item" 
+                                NavigateUrl="~/Crear_Paciente.aspx?sender=old"></asp:MenuItem>
+                            <asp:MenuItem Text="Consultar Expediente" Value="Consultar Expediente"
+                                NavigateUrl="~/Buscar_Expediente.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Roles" Value="Roles">
+                            <asp:MenuItem Text="Crear Roles" Value="New Item" 
+                                    NavigateUrl="~/Crear_Roles.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Editar Roles" Value="New Item" 
+                                    NavigateUrl="~/Editar_Roles.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Eliminar_Roles.aspx" Text="Eliminar Roles" 
+                                    Value="Eliminar Roles"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Permisos" Value="Permisos">
+                            <asp:MenuItem NavigateUrl="~/Crear_Permisos.aspx" Text="Crear Permisos" 
+                                    Value="Crear Permisos"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Eliminar_Permisos.aspx" Text="Eliminar Permisos" 
+                                    Value="Eliminar Permisos"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Usuarios" Value="Usuarios">
+                            <asp:MenuItem Text="Ingreso de Usuarios" Value="New Item" 
+                                    NavigateUrl="~/Crear_Usuarios.aspx"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/EditarUsuarios.aspx" Text="Editar Usuarios" 
+                                Value="Editar Usuarios"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Eliminar_Usuarios.aspx" Text="Eliminar Usuarios" 
+                                Value="Eliminar Usuarios"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Empleados" Value="Empleados">
+                            <asp:MenuItem NavigateUrl="~/Empleados.aspx" Text="Registro de Empleados" 
+                                    Value="Agregar Empleados"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Editar Empleados.aspx" Text="Editar Empleados" 
+                                    Value="Editar Empleados"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Eliminar Empleados.aspx" Text="Eliminar Empleados" 
+                                    Value="Eliminar Empleados"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Patologias" Value="Patologias">
+                            <asp:MenuItem Text="Mant. Patologias" Value="Mant. Patologias" 
+                                    NavigateUrl="~/Diagnosticos.aspx"></asp:MenuItem>
+                        </asp:MenuItem>                        
+                        <asp:MenuItem Text="Seg. Pacientes" Value="Seg. Pacientes">
+                            <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" 
+                                NavigateUrl="~/Seguimiento_Pacientes.aspx"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Citas" Value="Citas">
+                            <asp:MenuItem Text="Citas Médicas" Value="Citas Médicas">
+                                <asp:MenuItem NavigateUrl="~/CrearCitasMedicas.aspx" Text="Programar Cita" 
+                                    Value="Programar Cita"></asp:MenuItem>
+                                <asp:MenuItem Text="Calendario Citas" Value="Editar Cita" 
+                                    NavigateUrl="~/EditarCitasMedico.aspx"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Citas Terapia" Value="Citas Terapia">
+                                <asp:MenuItem NavigateUrl="~/CrearCitasTerapia.aspx" Text="Programar Cita" 
+                                    Value="Programar Cita"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/CalendarioCitas.aspx" Text="Calendario" 
+                                    Value="Calendario"></asp:MenuItem>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>		   
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div> 
+        <div id="footer">
+            <div id="footerContent">
+                <p id = "bottom">&copy; Copyright 2011 SWAT Development&minus; Derechos Reservados <a href="http://www.unitec.edu/" title="Unitec">Unitec</a></p>
+            </div>
+        </div>       
+    </form>    
+</body>
+</html>

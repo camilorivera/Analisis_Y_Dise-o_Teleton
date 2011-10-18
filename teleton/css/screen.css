@@ -1,0 +1,192 @@
+*{margin:0;padding:0}:focus,:active {outline:0}img{border: 0}
+body { font: .8em Arial, Tahoma, Verdana; background: #fff url(../images/bg.gif) repeat-x; color: #777; }
+a { text-decoration: none; color: #B20F0F; }
+h1 { font-size: 1.4em; font-weight: normal; }
+	h1 a {
+	color: #000;
+	font-size: 1.6em;
+}
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.2em; background: #B00A0A url(../images/redbg.gif) repeat-x left bottom; padding: 6px 7px; color: #fff; font-weight: normal; margin: 0 0 15px; float: left; }
+h4 { margin: 0 0 15px; color: #555; font-weight: normal; font-size: 1.6em; font-weight: normal; }
+
+	
+
+p { clear: both; line-height: 1.64em; margin: 0 0 15px; text-align:center; font-weight:bold; font:12em }
+
+.line { clear: both; border-bottom: 1px solid #ddd; margin: 0 0 45px; }
+.clear { clear: both; }
+/* Main */
+#main {
+	width: 950px;	
+	float: left;	
+	padding-top: 5px;			
+}
+#main h2 {
+	color: #f0e8e8;
+	border-bottom: 1px solid #29201c;
+	margin-top: 15px;
+}
+#main h2 a { color: #f0e8e8; }
+#main .block {
+	float: left;	
+	width: 265px;
+	margin-top: 10px;
+	padding-bottom: 15px;	
+	display: inline;	
+}
+#main .block img {	
+	margin: 0 0 20px 0;
+	padding: 10px;	
+	background-color: #150e0b;
+   border: 1px solid #261b15;
+	display: block;
+}
+#main .block .blk-top {
+	width: 100%;
+	margin-bottom: 10px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #29201c;	
+}
+#main .block .blk-top h4 {
+	margin: 0 5px;	
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;	
+	font-size: 1.4em;	
+	font-weight: normal;
+	line-height: 125%;
+}
+#main .block .blk-top h4 a {	
+	color: #6f892c;	
+}
+#main .block .blk-top p {
+	padding: 2px 0 3px 0;
+	margin: 0 3px;
+	font-size: 11px;
+	color: #b5b5b5;
+}
+#main .block .blk-top p a:link,
+#main .block .blk-top p a:visited {
+	color: #b5b5b5;		
+}
+#main .block .blk-top p .comment {
+	margin-left: 5px;
+	padding: 0 0 5px 20px;	
+	background: url(../images/comment.gif) no-repeat 0 1px;
+}
+#main .block .blk-top p .datetime {
+	padding: 0 0 5px 20px;
+	background: url(../images/clock.gif) no-repeat 0 0;	
+}
+
+#main .block .blk-content { width: 100%; }
+#main .block .blk-content p {	margin: 5px; }
+
+#main .odd { margin-left: 15px; }
+#main .even { margin-left: 40px; }
+#content { 
+	width: 970px; margin: 0 auto; 
+}
+#top
+{
+	color: #C0C0C0;
+	padding: 6px 20px 0;
+	font-size: .84em;
+	text-align: right;
+	background-image: url('../Imagenes/bg.gif');
+}
+#logo
+{
+	float: left;
+	padding: 100px 25px 15px;
+	margin: -46px 0 20px;
+	background-image: url('../Imagenes/redbg.gif');
+	background-repeat: repeat-x;
+}
+#logo h1 
+{ 
+	text-shadow: 1px 1px 1px #7E0E0E; 
+}
+#menu 
+{ 
+	float: right; margin: 63px 20px 0; 
+}
+#menu li 
+{ 
+	display: inline; font-size: 1.3em; 
+}
+#menu li a 
+{ 
+	float: left; color: #808080; padding: 0 0 5px; margin: 0 0 0 55px; 
+}
+#menu li a:hover, #menu li.current a, #menu li a:focus 
+{ 
+	color: #000; border-bottom: 1px solid #ddd; 
+}
+#pitch
+{
+	padding: 30px 350px 0 0;
+	border-bottom: 1px solid #ddd;
+	height: 210px;
+	margin: 0 0 35px;
+	background-image: url('../Imagenes/monitor.png');
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+#pitch h1 
+{ 
+	font-size: 2.6em; color: #000; margin: 0 0 20px; 
+}
+#pitch h2 
+{ 
+	line-height: 1.5em; 
+}
+/* sidemenu */
+.sidemenu ul {
+	margin: 10px 8px 8px 8px; padding: 0;
+	border-top: 1px solid #29201c; 
+	text-align: left;
+}
+.sidemenu ul li {
+	list-style: none;
+	margin: 0;	padding: 8px 5px 8px 19px;
+	border-bottom: 1px solid #29201c;
+	font-size: 11px;
+	line-height: 20px;	
+	text-transform: uppercase;	
+	background: url(../images/bullet.gif) no-repeat 0 14px;
+}
+.sidemenu ul li a:link, 
+.sidemenu ul li a:visited {
+	padding-left: 0;	
+	font-weight: bold;		
+	color: #F1E3D8;
+}
+.sidemenu ul li span {
+	display: block;	
+	margin-left: -16px;
+	color: #9a8377;	
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	text-transform: none;	
+}
+.sidemenu ul li a:hover { color: #fff;	border: none; }
+.sidemenu ul ul { margin: 0 0 0 5px; padding: 0; border: none; }
+.sidemenu ul ul li { border: none; }
+.left { 
+	float: left; width: 250px; 
+}	
+.right { 
+	float: right; width: 630px; margin: 0 0 20px; 
+}
+.right h3 { 
+	background: #808080; font-size: .84em; 
+}
+.third { 
+	float: left; width: 296px; margin: 0 40px 20px 0; 
+}
+.last { 
+	margin-right: 0; 
+}
+#footer { 
+	clear: both; font-size: .84em; border-top: 1px solid #ddd; padding: 20px 0 0; text-align:center;  
+}
+
