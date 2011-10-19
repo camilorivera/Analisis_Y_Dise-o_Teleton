@@ -100,6 +100,21 @@ public partial class Editar_Roles : System.Web.UI.Page
             }
             otrosPermisos_CBList.DataSource = otherPers;
             otrosPermisos_CBList.DataBind();
+
+            long c_id = rl.getCentroID(descripciones_DDList.SelectedItem.Text);
+            BL.Centro c = new BL.Centro();
+            string c_lugar = c.getLugar(c_id);
+            centros.SelectedValue = c_lugar;
+            
+            /*for (int i = 0; i < centros.Items.Count; i++)
+            {
+                if (centros.Items[i].Text == c_lugar)
+                {
+                    centros.Items[i].Selected = true;
+
+                    break;
+                }
+            }*/
         }
         catch (Exception ex)
         {
@@ -113,14 +128,14 @@ public partial class Editar_Roles : System.Web.UI.Page
         try
         {
             List<string> revokes = new List<string>();
-            bool flag = false;
+            //bool flag = false;
 
             foreach (ListItem it in permisos_CBList.Items)
             {
                 if (it.Selected == false)
                 {
                     revokes.Add(it.Text);
-                    flag = true;
+                    //flag = true;
                 }
             }
 
@@ -131,12 +146,12 @@ public partial class Editar_Roles : System.Web.UI.Page
                 if (it.Selected == true)
                 {
                     grants.Add(it.Text);
-                    flag = true;
+                    //flag = true;
                 }
             }
 
-            if (flag)
-            {
+            /*if (flag)
+            {*/
                 BL.Rol rl = new Rol();
                 long rolId = rl.getRolID(descripciones_DDList.SelectedItem.Text);
                 AdministradordeSistema admin = new AdministradordeSistema();
@@ -148,11 +163,11 @@ public partial class Editar_Roles : System.Web.UI.Page
 
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Rol Editado')", true);
                 setCheckBoxes();
-            }
+            /*}
             else
             {
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Rol No Editado')", true);
-            }
+            }*/
         }
         catch (Exception ex)
         {

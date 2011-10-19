@@ -164,5 +164,21 @@ namespace BL
                 throw new Exception(ex.ToString() + " --Rol.cs / getRolesUsuario()");
             }
         }
+
+        public long getCentroID(string descripcion)
+        {
+            try
+            {
+                var rolID = from r in entidad.roles
+                            where r.descripcion == descripcion
+                            select r.centro;
+
+                return rolID.First().Value;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString() + " --Rol.cs / getCentroID()");
+            }
+        }
     }
 }

@@ -34,5 +34,20 @@ namespace BL
                 throw new Exception(err.ToString() + "--centros.cs / GetNext(Int64)");
             }
         }
+
+        public string getLugar(long id)
+        {
+            try
+            {
+                var query = from c in entities.centros
+                            where id == c.id
+                            select c.lugar;
+                return query.First();
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.ToString() + "--centros.cs / GetLugar(long)");
+            }
+        }
     }
 }
