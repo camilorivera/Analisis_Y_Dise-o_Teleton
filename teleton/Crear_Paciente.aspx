@@ -86,7 +86,7 @@
         </div>
 
         <div id="navcenter">
-        <fieldset>
+        <fieldset ru>
                 <ul class = "list">
                     <li class="field">
                         <asp:Label ID="Label11" CssClass="label" runat="server" Text="Nº de Expediente:"></asp:Label>
