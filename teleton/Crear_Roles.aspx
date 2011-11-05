@@ -12,7 +12,7 @@
             <fieldset>
                 <ul class = "list">
                     <li class="field">
-                        <asp:Label ID="Label1" cssclass="label" runat="server" Text="Descripcion"></asp:Label>
+                        <asp:Label ID="Label1" cssclass="label" runat="server" Text="Nombre del rol:"></asp:Label>
                         <asp:TextBox ID="descripcion_TB" CssClass="tb_crearRol" runat="server" TabIndex="2"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                             ErrorMessage="Descripcion Requerida" ControlToValidate="descripcion_TB"></asp:RequiredFieldValidator> 
