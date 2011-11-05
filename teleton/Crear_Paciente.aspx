@@ -3,11 +3,82 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-    <link href="Styles/Teleton.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Teleton.css" rel="stylesheet" type="text/css" />    
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <script type="text/javascript">
+        function validateForm() {
+            var x = document.getElementById("MainContent_txtCedula");
+            var pattx = new RegExp("[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]");
+            var boolx = pattx.test(x.value);
+
+            var y = document.getElementById("MainContent_txtFechaNacimiento");
+            var patty = new RegExp("[1-9][0-9][0-9][0-9]-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])");
+            var booly = patty.test(y.value);
+
+            var z = document.getElementById("MainContent_txtFechaIngreso");
+            var boolz = patty.test(z.value);            
+
+            if (!boolx) {
+                alert("Numero de cedula invalido");
+            }
+
+            if (!booly) {
+                alert("Fecha de nacimiento invalida");
+            }
+
+            if (!boolz) {
+                alert("Fecha de ingreso invalida");
+            }
+
+            return boolx && booly && boolz;
+        }
+
+        function printInfo() {
+            var text1 = document.getElementById("MainContent_txtExp");
+            var text2 = document.getElementById("MainContent_txtCedula");
+            var text3 = document.getElementById("MainContent_txtNombres");
+            var text4 = document.getElementById("MainContent_txtPrimerApellido");
+            var text5 = document.getElementById("MainContent_txtSegundoApellido");
+            var text6 = document.getElementById("MainContent_txtDireccion");
+            var radio1 = document.getElementById("MainContent_rdSexo_0");
+            var radio2 = document.getElementById("MainContent_rdSexo_1");
+            var text7 = document.getElementById("MainContent_ddEstado");
+            var text7options = document.getElementById("MainContent_ddEstado").options;
+            var text8 = document.getElementById("MainContent_txtLugarNacimiento");
+            var text9 = document.getElementById("MainContent_txtFechaNacimiento");
+            var text10 = document.getElementById("MainContent_txtFechaIngreso");
+
+            var printWindow = window.open(document.URL, window.name, 'left=50000,top=50000,width=0,height=0');
+
+            printWindow.document.write("Nº de Expediente: " + text1.value + "<br />");
+            printWindow.document.write("Nº de Cédula: " + text2.value + "<br />");
+            printWindow.document.write("Nombres: " + text3.value + "<br />");
+            printWindow.document.write("Primer Apellido: " + text4.value + "<br />");
+            printWindow.document.write("Segundo Apellido: " + text5.value + "<br />");
+            printWindow.document.write("Dirección:" + text6.value + "<br />");
+            if (radio1.checked) {
+                printWindow.document.write("Sexo: Masculino" + "<br />");
+            }
+            if (radio2.checked) {
+                printWindow.document.write("Sexo: Femenino" + "<br />");
+            }
+            printWindow.document.write("Estado Civil: " + text7options[text7.selectedIndex].text + "<br />");
+            printWindow.document.write("Lugar de Nacimiento: " + text8.value + "<br />");
+            printWindow.document.write("Fecha de Nacimiento: " + text9.value + "<br />");
+            printWindow.document.write("Fecha de Ingreso: " + text10.value + "<br />");
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+
+            return false;
+        }
+    </script>
+
     <div id="content">
         <div id = "titulo">
             <h1>Registro de Pacientes</h1> 
@@ -25,7 +96,7 @@
                     </li>
                     <li class="field">
                         <asp:Label ID="Label2" CssClass="label" runat="server" Text="Nº de Cédula:"></asp:Label>
-                        <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso" MaxLength="15"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ErrorMessage="*Campo Requerido" ForeColor="Red" 
                                 ControlToValidate="txtCedula" ></asp:RequiredFieldValidator>
@@ -110,11 +181,12 @@
         
         <div id="navBotones">
             <asp:Button ID="btIngresar" CssClass="boton" runat="server" Text="Ingresar Paciente" 
-                        onclick="btIngresar_Click" />
+                        OnClientClick="return validateForm()"  onclick="btIngresar_Click" />
+                        
             <asp:Button ID="btnClean" CssClass="boton" runat="server" Text="Limpiar" 
                 CausesValidation="False" onclick="btnClean_Click"/>
-            <asp:Button ID="btnPrint" CssClass="boton" runat="server" Text="Imprimir" 
-                EnableTheming="True" onclick="btnPrint_Click"/>
+                <asp:Button ID="btnPrint" CssClass="boton" runat="server" Text="Imprimir" 
+                        OnClientClick="return printInfo()" />
         </div>        
     </div>
 </asp:Content>

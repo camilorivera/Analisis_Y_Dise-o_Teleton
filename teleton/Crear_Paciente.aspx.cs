@@ -83,6 +83,12 @@ public partial class Crear_Paciente : System.Web.UI.Page
                     int dd = int.Parse(txtFechaNacimiento.Text.Substring(8, 2));
                     DateTime fechaNac = new DateTime(yy, mm, dd);
 
+                    if (fechaNac >= DateTime.Today)
+                    {
+                        Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
+                        return;
+                    }
+
                     yy = int.Parse(txtFechaIngreso.Text.Substring(0, 4));
                     mm = int.Parse(txtFechaIngreso.Text.Substring(5, 2));
                     dd = int.Parse(txtFechaIngreso.Text.Substring(8, 2));
@@ -137,13 +143,8 @@ public partial class Crear_Paciente : System.Web.UI.Page
     {
         cleanPage();
     }
-
     protected void btnPrint_Click(object sender, EventArgs e)
     {
-        long exp = long.Parse(Session["expediente"].ToString());
-        int ca = (int)long.Parse(Session["Centro_idNum"].ToString());
-        String pageArgs = String.Format("HojaPaciente.aspx?Expediente={0}&CentroActual={1}", exp,ca);
-        LiteralControl lctl = new LiteralControl("<script type=\"text/javascript\"> function init(){" + String.Format("window.open('{0}', 'Información del Paciente', 'width=1000, height=600, scrollbars=yes');", pageArgs) + "} window.onload = init(); </script>");
-        Page.Header.Controls.Add(lctl);
+        Response.Write("<script>alert('Llegoooooooooooooo')</script>");
     }
 }
