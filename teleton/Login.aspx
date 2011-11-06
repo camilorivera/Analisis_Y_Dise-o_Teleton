@@ -48,10 +48,7 @@
                                  CssClass="dropDownL"></asp:DropDownList>
                             </div>
                             <div class="bottom">
-                                <div class="remember">
-                                    <asp:CheckBox ID="RememberMe" runat="server" CssClass="remember" />
-                                    <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="lab">Keep me logged in</asp:Label>
-                                </div>
+                                
                                 <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
                                     onclick="LoginButton_Click"/>
                                 <div class="clear"></div>
