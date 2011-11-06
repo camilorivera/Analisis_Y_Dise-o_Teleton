@@ -30,7 +30,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "teleton", "teleton\", "{DCA
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5882"
+		VWDPort = "3279"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectTeleton", "TestProjectTeleton\TestProjectTeleton.csproj", "{76BC6DB4-8B37-480A-AC55-549034E01262}"
@@ -69,8 +69,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{229F1FCC-FAE9-4AEA-90FC-C85CDE7D01BD} = {95E2C70C-8B1B-4F21-B77C-F0E8F987339F}
 	EndGlobalSection
 EndGlobal

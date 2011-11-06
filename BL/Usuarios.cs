@@ -66,6 +66,31 @@ namespace BL
             
         }
 
+        public List<string> RetrieveEmpleadosid() //Retorna IDs de empleado que esta no en tab usuario
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+
+
+                var users = from p in entities.empleados
+                            where 0 == (from z in entities.usuarios
+                                        where p.id == z.empleado
+                                        select z.empleado).Count()
+                            select p.nombres;
+
+
+                foreach (var u in users)
+                    usrs.Add(u);
+                //usrs.Add(u.username);
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString() + " --Usuario.cs / RetrieveEmpleadosid()");
+            }
+        }
+
         public List<String>RetrieveRolUser(string nombreempleado){
             try
             {

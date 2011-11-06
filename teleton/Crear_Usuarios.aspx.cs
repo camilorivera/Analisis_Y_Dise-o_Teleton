@@ -74,7 +74,7 @@ public partial class Crear_Usuarios : System.Web.UI.Page
     protected void CargarEmpleados(){
         try{
             cmb_empleados.Items.Clear();
-            cmb_empleados.DataSource = USER.RetrieveEmployees();
+            cmb_empleados.DataSource = USER.RetrieveEmpleadosid();
             cmb_empleados.DataBind();
         }
         catch (Exception err)
