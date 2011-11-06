@@ -64,10 +64,37 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         txtExpediente.Text = "";
     }
 
+    private void cambiarEnabled(bool estado)
+    {
+        //Habilitar Todos Los Campos
+        txtCedula.Enabled = estado;
+        txtNombres.Enabled = estado;
+        txtPrimerApellido.Enabled = estado;
+        txtSegundoApellido.Enabled = estado;
+        txtDireccion.Enabled = estado;
+        rdFemenino.Enabled = estado;
+        rdMasculino.Enabled = estado;
+        ddEstado.Enabled = estado;
+        txtLugarNacimiento.Enabled = estado;
+        txtFechaNacimiento.Enabled = estado;
+        btnEditar.Enabled = estado;
+        btnEliminar.Enabled = estado;
+        btnImprimir.Enabled = estado;
+        btnCleanPage.Enabled = estado;
+    }
+
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         try
         {
+            if (txtExpediente.Text.Trim() == "")
+            {
+                lblExpReq.Visible = true;
+                cleanPage();
+                cambiarEnabled(false);
+                return;
+            }
+
             BL.Paciente p = new BL.Paciente();
             BL.Security sec = new BL.Security();
             int CId = (int)sec.getCentroId(cboCentro.SelectedValue);
@@ -102,10 +129,17 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
                 txtFechaIngreso.Text = fecha;
                 Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
+                
+                // Habilitar los controles para que se pueda editar.
+                cambiarEnabled(true);
+                lblExpReq.Visible = false;
             }
             else
             {
                 Response.Write("<script>alert('El paciente que busca no existe')</script>");
+                // No lo encontro, no hay nada que editar
+                cambiarEnabled(false);
+                lblExpReq.Visible = false;
             }
         }
         catch (Exception err)

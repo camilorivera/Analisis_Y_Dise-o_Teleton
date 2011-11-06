@@ -17,9 +17,8 @@
                 <asp:ComboBox ID="cboCentro" runat="server" DropDownStyle="DropDownList"/>
                 <asp:Label ID="lblExpediente" runat="server" Text="Expediente:"/>
                 <asp:TextBox ID="txtExpediente" runat="server" />
-                <asp:RequiredFieldValidator id="reqFieldExp" runat="server"
-                    ErrorMessage="Expediente Requerido" ForeColor="Red"
-                    ControlToValidate="txtExpediente"></asp:RequiredFieldValidator>
+                <asp:Label ID="lblExpReq" runat="server" ForeColor="Red" 
+                    Text="*Expediente Requerido" Visible="False"></asp:Label>
             </fieldset>
         </div>
 
@@ -28,46 +27,53 @@
                 <ul class = "list">
                     <li class="field">
                         <asp:Label ID="Label2" CssClass="label" runat="server" Text="Nº de Cédula:"></asp:Label>
-                        <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ErrorMessage="*Campo Requerido" ForeColor="Red" 
                                 ControlToValidate="txtCedula" ></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label3" CssClass="label" runat="server" Text="Nombres:"></asp:Label>
-                        <asp:TextBox ID="txtNombres" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtNombres" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                 ErrorMessage="*Nombre Requerido" ForeColor="Red" 
                                 ControlToValidate="txtNombres"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label4" CssClass="label" runat="server" Text="Primer Apellido:"></asp:Label>
-                        <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                              ErrorMessage="*Apellido Requerido" ForeColor="Red" 
                              ControlToValidate="txtPrimerApellido"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label1" CssClass="label" runat="server" Text="Segundo Apellido:"></asp:Label>
-                        <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtSegundoApellido" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label5" CssClass="label" runat="server" Text="Dirección:"></asp:Label>
-                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                              ErrorMessage="*Direccion Requerida" ForeColor="Red" 
                              ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label6" CssClass="label" runat="server" Text="Sexo:"></asp:Label>
-                        <asp:radiobuttonlist id="rdSexo" runat="server" RepeatDirection="Horizontal">
+                        <asp:radiobuttonlist id="rdSexo" runat="server" RepeatDirection="Horizontal" 
+                            Enabled="False">
                           <asp:listitem id="rdMasculino" Selected="true" runat="server" value="Masculino" />
                           <asp:listitem id="rdFemenino" runat="server" value="Femenino" />
                         </asp:radiobuttonlist>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label7" CssClass="label" runat="server" Text="Estado Civil:"></asp:Label>
-                        <asp:DropDownList ID="ddEstado" runat="server" CssClass="tb_Permiso">
+                        <asp:DropDownList ID="ddEstado" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False">
                             <asp:ListItem Selected="True" Value="0">Soltero</asp:ListItem>
                             <asp:ListItem Value="1">Casado</asp:ListItem>
                             <asp:ListItem Value="2">Divorciado</asp:ListItem>
@@ -77,14 +83,15 @@
                     </li>
                     <li class="field">
                         <asp:Label ID="Label8" CssClass="label" runat="server" Text="Lugar de Nacimiento:"></asp:Label>
-                        <asp:TextBox ID="txtLugarNacimiento" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtLugarNacimiento" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                                 ErrorMessage="*Campo Requerido" ForeColor="Red" 
                                 ControlToValidate="txtLugarNacimiento"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
                         <asp:Label ID="Label9" CssClass="label" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
-                        <asp:TextBox ID="txtFechaNacimiento" runat="server" ></asp:TextBox>
+                        <asp:TextBox ID="txtFechaNacimiento" runat="server" Enabled="False" ></asp:TextBox>
                         <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento"/>
                         <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="yyyy-MM-dd" PopupButtonID="img_fecha_nacimiento">
                         </asp:CalendarExtender>
@@ -95,7 +102,7 @@
                     </li>
                     <li class="field">
                         <asp:Label ID="Label10" CssClass="label" runat="server" Text="Fecha de Ingreso:"></asp:Label>
-                        <asp:TextBox ID="txtFechaIngreso" runat="server" ></asp:TextBox>
+                        <asp:TextBox ID="txtFechaIngreso" runat="server" Enabled="False" ></asp:TextBox>
                         <img alt="Icon" src="images/calendar_icon.jpg" id="img1" width="24px" />
 
 
@@ -114,15 +121,15 @@
                 <asp:Button ID="btnBuscar" runat="server" CssClass="boton" Text="Buscar" 
                     onclick="btnBuscar_Click" CausesValidation="False" />
                 <asp:Button ID="btnEditar" runat="server" CssClass="boton" Text="Editar" 
-                    onclick="btnEditar_Click"/>
+                    onclick="btnEditar_Click" Enabled="False"/>
                 <asp:Button ID="btnEliminar" runat="server" CssClass="boton" Text="Eliminar" 
-                    onclick="btnEliminar_Click"/>
+                    onclick="btnEliminar_Click" Enabled="False"/>
                 <asp:ConfirmButtonExtender ID="cfmExtEliminar" runat="server" TargetControlID="btnEliminar"
                     ConfirmText="Desea Eliminar al paciente"></asp:ConfirmButtonExtender>
                 <asp:Button ID="btnImprimir" runat="server" CssClass="boton" Text="imprimir" 
-                    onclick="btnImprimir_Click" />
+                    onclick="btnImprimir_Click" Enabled="False" />
                 <asp:Button ID="btnCleanPage" runat="server" CssClass="boton" Text="limpiar" 
-                    onclick="btnCleanPage_Click" CausesValidation="False" />
+                    onclick="btnCleanPage_Click" CausesValidation="False" Enabled="False" />
         </div>
     </div>
 </asp:Content>
