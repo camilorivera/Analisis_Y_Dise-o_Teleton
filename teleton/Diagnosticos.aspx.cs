@@ -92,4 +92,29 @@ public partial class Diagnosticos : System.Web.UI.Page
             Response.Redirect("~/Error.aspx", true);
         }
     }
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        try
+        {
+            if (e.Row is GridViewRow)
+            {
+                if (e.Row != null)
+                {
+                    int _temp;
+                    if (int.TryParse(e.Row.Cells[2].Text, out _temp))
+                    {
+                        ImageButton _ib = e.Row.Cells[1].Controls[1] as ImageButton;
+                        if (!PAT.EliminarPatologia(Convert.ToInt32(e.Row.Cells[2].Text)))
+                        {
+                            _ib.Visible = false;
+                        }
+                    }
+                }
+            }
+        }
+        catch
+        {
+
+        }
+    }
 }

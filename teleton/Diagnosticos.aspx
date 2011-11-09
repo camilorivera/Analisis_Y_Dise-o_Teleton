@@ -27,7 +27,8 @@
                 onclick="Button1_Click" />
          <asp:GridView ID="GridView1" CssClass="Grid" runat="server" 
                 AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="EntityDataSource1" 
-                 AllowPaging="True" onpageindexchanging="GridView1_PageIndexChanging"> <pagerstyle backcolor="ControlLight"/>
+                 AllowPaging="True" onpageindexchanging="GridView1_PageIndexChanging" 
+                onrowdatabound="GridView1_RowDataBound"> <pagerstyle backcolor="ControlLight"/>
                 <Columns>                   
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>

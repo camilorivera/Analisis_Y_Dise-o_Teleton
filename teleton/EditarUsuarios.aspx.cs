@@ -77,6 +77,7 @@ public partial class EditarUsuarios : System.Web.UI.Page
     protected void InicializarPantalla() {
         CargarRolesdelSistema();
         CargarEmpleados();
+        CargarRolesUser();
     }
 
     protected void CargarRolesdelSistema()
@@ -158,6 +159,10 @@ public partial class EditarUsuarios : System.Web.UI.Page
                     USER.EditarUsuario(cmb_empleados.SelectedValue, RolUsuario);
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Usuario Editado')", true);
                     //InicializarPantalla();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "Alerta", "alert('Cada usuario debe tener un rol asociado.')", true);
                 }
             }
 

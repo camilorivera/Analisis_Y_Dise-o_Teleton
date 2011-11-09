@@ -52,5 +52,37 @@ namespace BL
 
         }
 
+        /// <summary>
+        /// Verifica si una patologia puede ser eliminada
+        /// </summary>
+        /// <param name="id">id de la patologia</param>
+        /// <returns>true -> puede ser eliminada\nfalse -> no puede ser eliminada</returns>
+        public bool EliminarPatologia(int _id)
+        {
+            try
+            {
+                var paciente = (from pac in entities.pacientes
+                                where pac.diagnostico == _id
+                                select pac.diagnostico);
+
+                if (paciente.ToArray().Length == 0)
+                {
+                    var evolucion = (from evo in entities.evoluciones
+                                     where evo.id_diagnostico == _id
+                                     select evo.id_diagnostico);
+                    if (evolucion.ToArray().Length == 0)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
