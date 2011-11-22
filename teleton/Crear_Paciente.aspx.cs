@@ -88,6 +88,19 @@ public partial class Crear_Paciente : System.Web.UI.Page
                         Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
                         return;
                     }
+                    if (!FileUpload_Foto.HasFile)
+                    {
+                        Response.Write("<script>alert('Cargue una foto')</script>");
+                        return;
+                    }
+                    else
+                    {
+                        if (!FileUpload_Foto.FileName.ToString().ToLower().EndsWith(".jpg"))
+                        {
+                            Response.Write("<script>alert('Imagen no esta en formato jpg')</script>");
+                            return;
+                        }
+                    }
 
                     yy = int.Parse(txtFechaIngreso.Text.Substring(0, 4));
                     mm = int.Parse(txtFechaIngreso.Text.Substring(5, 2));
@@ -103,7 +116,7 @@ public partial class Crear_Paciente : System.Web.UI.Page
                     pac.asignarDatos(ca, exped, txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                                               fechaNac, rdMasculino.Selected, fechaIng,
                                               txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text,
-                                              ddEstado.SelectedItem.Text);
+                                              ddEstado.SelectedItem.Text,FileUpload_Foto.FileBytes);
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {
                         pac.guardarPaciente();
@@ -145,6 +158,10 @@ public partial class Crear_Paciente : System.Web.UI.Page
     }
     protected void btnPrint_Click(object sender, EventArgs e)
     {
-        Response.Write("<script>alert('Llegoooooooooooooo')</script>");
+        long exp = long.Parse(Session["expediente"].ToString());
+        int ca = (int)long.Parse(Session["Centro_idNum"].ToString());
+        String pageArgs = String.Format("HojaPaciente.aspx?Expediente={0}&CentroActual={1}", exp, ca);
+        LiteralControl lctl = new LiteralControl("<script type=\"text/javascript\"> function init(){" + String.Format("window.open('{0}', 'Información del Paciente', 'width=1000, height=600, scrollbars=yes');", pageArgs) + "} window.onload = init(); </script>");
+        Page.Header.Controls.Add(lctl);
     }
 }

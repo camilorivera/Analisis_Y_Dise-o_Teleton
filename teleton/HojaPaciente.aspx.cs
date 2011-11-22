@@ -39,6 +39,10 @@ public partial class HojaPaciente : System.Web.UI.Page
                     long expedienteID = Convert.ToInt64(Request.QueryString["Expediente"]);
                     int ca = int.Parse(Request.QueryString["CentroActual"].ToString());
 
+                    Imagen.ImageUrl = "Handler.ashx?Expediente="+expedienteID+"&CentroActual="+ca;
+                    Imagen.Width=(Unit)150;
+                    Imagen.Height=(Unit)150;
+
                     BL.Paciente paciente = new BL.Paciente();
                     if (paciente.leerPaciente(ca, expedienteID))
                     {

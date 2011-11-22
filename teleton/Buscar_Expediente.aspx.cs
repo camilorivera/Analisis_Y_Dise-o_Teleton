@@ -160,8 +160,6 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             BL.Paciente pac = new BL.Paciente();
             if (pac.leerPaciente(CId, exp))
             {
-
-
                 int yy = int.Parse(txtFechaNacimiento.Text.Substring(0, 4));
                 int mm = int.Parse(txtFechaNacimiento.Text.Substring(5, 2));
                 int dd = int.Parse(txtFechaNacimiento.Text.Substring(8, 2));
@@ -175,7 +173,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                                           fechaNac, rdMasculino.Selected, fechaIng,
                                           txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text,
-                                          ddEstado.SelectedItem.Text);
+                                          ddEstado.SelectedItem.Text, pac.Foto);
 
                 if (pac.editarPaciente())
                 {
@@ -236,7 +234,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             if (pac.leerPaciente(CId, exp))
             {
                 String pageArgs = String.Format("HojaPaciente.aspx?Expediente={0}&CentroActual={1}", exp,CId);
-                LiteralControl lctl = new LiteralControl("<script type=\"text/javascript\"> function init(){" + String.Format("window.open('{0}', 'Información del Paciente', 'width=1000, height=600, scrollbars=yes');", pageArgs) + "} window.onload = init(); </script>");
+                LiteralControl lctl = new LiteralControl("<script type=\"text/javascript\"> function init(){" + String.Format("window.open('{0}', 'Información del Paciente', 'width=1000, height=600, scrollbars=yes, menubar=yes, toolbar=yes');", pageArgs) + "} window.onload = init(); </script>");
                 Page.Header.Controls.Add(lctl);
             }
         }

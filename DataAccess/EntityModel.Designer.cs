@@ -357,6 +357,134 @@ namespace DataAccess
             }
         }
         private ObjectSet<diagnostico> _diagnosticos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ayudas_tecnicas> ayudas_tecnicas
+        {
+            get
+            {
+                if ((_ayudas_tecnicas == null))
+                {
+                    _ayudas_tecnicas = base.CreateObjectSet<ayudas_tecnicas>("ayudas_tecnicas");
+                }
+                return _ayudas_tecnicas;
+            }
+        }
+        private ObjectSet<ayudas_tecnicas> _ayudas_tecnicas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<clasificacion_paciente> clasificacion_paciente
+        {
+            get
+            {
+                if ((_clasificacion_paciente == null))
+                {
+                    _clasificacion_paciente = base.CreateObjectSet<clasificacion_paciente>("clasificacion_paciente");
+                }
+                return _clasificacion_paciente;
+            }
+        }
+        private ObjectSet<clasificacion_paciente> _clasificacion_paciente;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<condicion> condicions
+        {
+            get
+            {
+                if ((_condicions == null))
+                {
+                    _condicions = base.CreateObjectSet<condicion>("condicions");
+                }
+                return _condicions;
+            }
+        }
+        private ObjectSet<condicion> _condicions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<dx> dxes
+        {
+            get
+            {
+                if ((_dxes == null))
+                {
+                    _dxes = base.CreateObjectSet<dx>("dxes");
+                }
+                return _dxes;
+            }
+        }
+        private ObjectSet<dx> _dxes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<procedencia> procedencias
+        {
+            get
+            {
+                if ((_procedencias == null))
+                {
+                    _procedencias = base.CreateObjectSet<procedencia>("procedencias");
+                }
+                return _procedencias;
+            }
+        }
+        private ObjectSet<procedencia> _procedencias;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<productividad> productividads
+        {
+            get
+            {
+                if ((_productividads == null))
+                {
+                    _productividads = base.CreateObjectSet<productividad>("productividads");
+                }
+                return _productividads;
+            }
+        }
+        private ObjectSet<productividad> _productividads;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<referencia> referencias
+        {
+            get
+            {
+                if ((_referencias == null))
+                {
+                    _referencias = base.CreateObjectSet<referencia>("referencias");
+                }
+                return _referencias;
+            }
+        }
+        private ObjectSet<referencia> _referencias;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<tipo_daño> tipo_daño
+        {
+            get
+            {
+                if ((_tipo_daño == null))
+                {
+                    _tipo_daño = base.CreateObjectSet<tipo_daño>("tipo_daño");
+                }
+                return _tipo_daño;
+            }
+        }
+        private ObjectSet<tipo_daño> _tipo_daño;
 
         #endregion
         #region AddTo Methods
@@ -495,6 +623,70 @@ namespace DataAccess
         public void AddTodiagnosticos(diagnostico diagnostico)
         {
             base.AddObject("diagnosticos", diagnostico);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ayudas_tecnicas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToayudas_tecnicas(ayudas_tecnicas ayudas_tecnicas)
+        {
+            base.AddObject("ayudas_tecnicas", ayudas_tecnicas);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the clasificacion_paciente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToclasificacion_paciente(clasificacion_paciente clasificacion_paciente)
+        {
+            base.AddObject("clasificacion_paciente", clasificacion_paciente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the condicions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocondicions(condicion condicion)
+        {
+            base.AddObject("condicions", condicion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the dxes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTodxes(dx dx)
+        {
+            base.AddObject("dxes", dx);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the procedencias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToprocedencias(procedencia procedencia)
+        {
+            base.AddObject("procedencias", procedencia);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the productividads EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToproductividads(productividad productividad)
+        {
+            base.AddObject("productividads", productividad);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the referencias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToreferencias(referencia referencia)
+        {
+            base.AddObject("referencias", referencia);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the tipo_daño EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTotipo_daño(tipo_daño tipo_daño)
+        {
+            base.AddObject("tipo_daño", tipo_daño);
         }
 
         #endregion
@@ -911,6 +1103,87 @@ namespace DataAccess
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="ayudas_tecnicas")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ayudas_tecnicas : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ayudas_tecnicas object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="ayuda">Initial value of the ayuda property.</param>
+        public static ayudas_tecnicas Createayudas_tecnicas(global::System.Int64 id, global::System.String ayuda)
+        {
+            ayudas_tecnicas ayudas_tecnicas = new ayudas_tecnicas();
+            ayudas_tecnicas.id = id;
+            ayudas_tecnicas.ayuda = ayuda;
+            return ayudas_tecnicas;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ayuda
+        {
+            get
+            {
+                return _ayuda;
+            }
+            set
+            {
+                OnayudaChanging(value);
+                ReportPropertyChanging("ayuda");
+                _ayuda = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ayuda");
+                OnayudaChanged();
+            }
+        }
+        private global::System.String _ayuda;
+        partial void OnayudaChanging(global::System.String value);
+        partial void OnayudaChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -1711,6 +1984,168 @@ namespace DataAccess
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="clasificacion_paciente")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class clasificacion_paciente : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new clasificacion_paciente object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="clasificacion">Initial value of the clasificacion property.</param>
+        public static clasificacion_paciente Createclasificacion_paciente(global::System.Int64 id, global::System.String clasificacion)
+        {
+            clasificacion_paciente clasificacion_paciente = new clasificacion_paciente();
+            clasificacion_paciente.id = id;
+            clasificacion_paciente.clasificacion = clasificacion;
+            return clasificacion_paciente;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String clasificacion
+        {
+            get
+            {
+                return _clasificacion;
+            }
+            set
+            {
+                OnclasificacionChanging(value);
+                ReportPropertyChanging("clasificacion");
+                _clasificacion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("clasificacion");
+                OnclasificacionChanged();
+            }
+        }
+        private global::System.String _clasificacion;
+        partial void OnclasificacionChanging(global::System.String value);
+        partial void OnclasificacionChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="condicion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class condicion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new condicion object.
+        /// </summary>
+        /// <param name="condicion1">Initial value of the condicion1 property.</param>
+        /// <param name="simbolo">Initial value of the simbolo property.</param>
+        public static condicion Createcondicion(global::System.String condicion1, global::System.String simbolo)
+        {
+            condicion condicion = new condicion();
+            condicion.condicion1 = condicion1;
+            condicion.simbolo = simbolo;
+            return condicion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String condicion1
+        {
+            get
+            {
+                return _condicion1;
+            }
+            set
+            {
+                Oncondicion1Changing(value);
+                ReportPropertyChanging("condicion1");
+                _condicion1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("condicion1");
+                Oncondicion1Changed();
+            }
+        }
+        private global::System.String _condicion1;
+        partial void Oncondicion1Changing(global::System.String value);
+        partial void Oncondicion1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String simbolo
+        {
+            get
+            {
+                return _simbolo;
+            }
+            set
+            {
+                if (_simbolo != value)
+                {
+                    OnsimboloChanging(value);
+                    ReportPropertyChanging("simbolo");
+                    _simbolo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("simbolo");
+                    OnsimboloChanged();
+                }
+            }
+        }
+        private global::System.String _simbolo;
+        partial void OnsimboloChanging(global::System.String value);
+        partial void OnsimboloChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="diagnostico")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1834,6 +2269,87 @@ namespace DataAccess
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="dx")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class dx : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new dx object.
+        /// </summary>
+        /// <param name="dx1">Initial value of the dx1 property.</param>
+        /// <param name="simbolo">Initial value of the simbolo property.</param>
+        public static dx Createdx(global::System.String dx1, global::System.String simbolo)
+        {
+            dx dx = new dx();
+            dx.dx1 = dx1;
+            dx.simbolo = simbolo;
+            return dx;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String dx1
+        {
+            get
+            {
+                return _dx1;
+            }
+            set
+            {
+                Ondx1Changing(value);
+                ReportPropertyChanging("dx1");
+                _dx1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("dx1");
+                Ondx1Changed();
+            }
+        }
+        private global::System.String _dx1;
+        partial void Ondx1Changing(global::System.String value);
+        partial void Ondx1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String simbolo
+        {
+            get
+            {
+                return _simbolo;
+            }
+            set
+            {
+                if (_simbolo != value)
+                {
+                    OnsimboloChanging(value);
+                    ReportPropertyChanging("simbolo");
+                    _simbolo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("simbolo");
+                    OnsimboloChanged();
+                }
+            }
+        }
+        private global::System.String _simbolo;
+        partial void OnsimboloChanging(global::System.String value);
+        partial void OnsimboloChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -2502,6 +3018,414 @@ namespace DataAccess
         private Nullable<global::System.Int64> _id_diagnostico;
         partial void Onid_diagnosticoChanging(Nullable<global::System.Int64> value);
         partial void Onid_diagnosticoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_procedencia
+        {
+            get
+            {
+                return _id_procedencia;
+            }
+            set
+            {
+                Onid_procedenciaChanging(value);
+                ReportPropertyChanging("id_procedencia");
+                _id_procedencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_procedencia");
+                Onid_procedenciaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_procedencia;
+        partial void Onid_procedenciaChanging(Nullable<global::System.Int32> value);
+        partial void Onid_procedenciaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_escolaridad
+        {
+            get
+            {
+                return _id_escolaridad;
+            }
+            set
+            {
+                Onid_escolaridadChanging(value);
+                ReportPropertyChanging("id_escolaridad");
+                _id_escolaridad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_escolaridad");
+                Onid_escolaridadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_escolaridad;
+        partial void Onid_escolaridadChanging(Nullable<global::System.Int32> value);
+        partial void Onid_escolaridadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_ocupacion
+        {
+            get
+            {
+                return _id_ocupacion;
+            }
+            set
+            {
+                Onid_ocupacionChanging(value);
+                ReportPropertyChanging("id_ocupacion");
+                _id_ocupacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_ocupacion");
+                Onid_ocupacionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_ocupacion;
+        partial void Onid_ocupacionChanging(Nullable<global::System.Int32> value);
+        partial void Onid_ocupacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_clasificacion_paciente
+        {
+            get
+            {
+                return _id_clasificacion_paciente;
+            }
+            set
+            {
+                Onid_clasificacion_pacienteChanging(value);
+                ReportPropertyChanging("id_clasificacion_paciente");
+                _id_clasificacion_paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_clasificacion_paciente");
+                Onid_clasificacion_pacienteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_clasificacion_paciente;
+        partial void Onid_clasificacion_pacienteChanging(Nullable<global::System.Int32> value);
+        partial void Onid_clasificacion_pacienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String id_condicion
+        {
+            get
+            {
+                return _id_condicion;
+            }
+            set
+            {
+                Onid_condicionChanging(value);
+                ReportPropertyChanging("id_condicion");
+                _id_condicion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("id_condicion");
+                Onid_condicionChanged();
+            }
+        }
+        private global::System.String _id_condicion;
+        partial void Onid_condicionChanging(global::System.String value);
+        partial void Onid_condicionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String eteologia
+        {
+            get
+            {
+                return _eteologia;
+            }
+            set
+            {
+                OneteologiaChanging(value);
+                ReportPropertyChanging("eteologia");
+                _eteologia = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("eteologia");
+                OneteologiaChanged();
+            }
+        }
+        private global::System.String _eteologia;
+        partial void OneteologiaChanging(global::System.String value);
+        partial void OneteologiaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_tipo_daño
+        {
+            get
+            {
+                return _id_tipo_daño;
+            }
+            set
+            {
+                Onid_tipo_dañoChanging(value);
+                ReportPropertyChanging("id_tipo_daño");
+                _id_tipo_daño = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_tipo_daño");
+                Onid_tipo_dañoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_tipo_daño;
+        partial void Onid_tipo_dañoChanging(Nullable<global::System.Int32> value);
+        partial void Onid_tipo_dañoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String funcion_estructura
+        {
+            get
+            {
+                return _funcion_estructura;
+            }
+            set
+            {
+                Onfuncion_estructuraChanging(value);
+                ReportPropertyChanging("funcion_estructura");
+                _funcion_estructura = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("funcion_estructura");
+                Onfuncion_estructuraChanged();
+            }
+        }
+        private global::System.String _funcion_estructura;
+        partial void Onfuncion_estructuraChanging(global::System.String value);
+        partial void Onfuncion_estructuraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> años_tiempo_discapacidad
+        {
+            get
+            {
+                return _años_tiempo_discapacidad;
+            }
+            set
+            {
+                Onaños_tiempo_discapacidadChanging(value);
+                ReportPropertyChanging("años_tiempo_discapacidad");
+                _años_tiempo_discapacidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("años_tiempo_discapacidad");
+                Onaños_tiempo_discapacidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _años_tiempo_discapacidad;
+        partial void Onaños_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        partial void Onaños_tiempo_discapacidadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> meses_tiempo_discapacidad
+        {
+            get
+            {
+                return _meses_tiempo_discapacidad;
+            }
+            set
+            {
+                Onmeses_tiempo_discapacidadChanging(value);
+                ReportPropertyChanging("meses_tiempo_discapacidad");
+                _meses_tiempo_discapacidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("meses_tiempo_discapacidad");
+                Onmeses_tiempo_discapacidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _meses_tiempo_discapacidad;
+        partial void Onmeses_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        partial void Onmeses_tiempo_discapacidadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dias_tiempo_discapacidad
+        {
+            get
+            {
+                return _dias_tiempo_discapacidad;
+            }
+            set
+            {
+                Ondias_tiempo_discapacidadChanging(value);
+                ReportPropertyChanging("dias_tiempo_discapacidad");
+                _dias_tiempo_discapacidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dias_tiempo_discapacidad");
+                Ondias_tiempo_discapacidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dias_tiempo_discapacidad;
+        partial void Ondias_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        partial void Ondias_tiempo_discapacidadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> años_TSTDL
+        {
+            get
+            {
+                return _años_TSTDL;
+            }
+            set
+            {
+                Onaños_TSTDLChanging(value);
+                ReportPropertyChanging("años_TSTDL");
+                _años_TSTDL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("años_TSTDL");
+                Onaños_TSTDLChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _años_TSTDL;
+        partial void Onaños_TSTDLChanging(Nullable<global::System.Int32> value);
+        partial void Onaños_TSTDLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> meses_TSTDL
+        {
+            get
+            {
+                return _meses_TSTDL;
+            }
+            set
+            {
+                Onmeses_TSTDLChanging(value);
+                ReportPropertyChanging("meses_TSTDL");
+                _meses_TSTDL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("meses_TSTDL");
+                Onmeses_TSTDLChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _meses_TSTDL;
+        partial void Onmeses_TSTDLChanging(Nullable<global::System.Int32> value);
+        partial void Onmeses_TSTDLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> dias_TSTDL
+        {
+            get
+            {
+                return _dias_TSTDL;
+            }
+            set
+            {
+                Ondias_TSTDLChanging(value);
+                ReportPropertyChanging("dias_TSTDL");
+                _dias_TSTDL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("dias_TSTDL");
+                Ondias_TSTDLChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _dias_TSTDL;
+        partial void Ondias_TSTDLChanging(Nullable<global::System.Int32> value);
+        partial void Ondias_TSTDLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_ayudas_tecnicas
+        {
+            get
+            {
+                return _id_ayudas_tecnicas;
+            }
+            set
+            {
+                Onid_ayudas_tecnicasChanging(value);
+                ReportPropertyChanging("id_ayudas_tecnicas");
+                _id_ayudas_tecnicas = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_ayudas_tecnicas");
+                Onid_ayudas_tecnicasChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_ayudas_tecnicas;
+        partial void Onid_ayudas_tecnicasChanging(Nullable<global::System.Int32> value);
+        partial void Onid_ayudas_tecnicasChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_estado_alta
+        {
+            get
+            {
+                return _id_estado_alta;
+            }
+            set
+            {
+                Onid_estado_altaChanging(value);
+                ReportPropertyChanging("id_estado_alta");
+                _id_estado_alta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_estado_alta");
+                Onid_estado_altaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_estado_alta;
+        partial void Onid_estado_altaChanging(Nullable<global::System.Int32> value);
+        partial void Onid_estado_altaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> id_productividad
+        {
+            get
+            {
+                return _id_productividad;
+            }
+            set
+            {
+                Onid_productividadChanging(value);
+                ReportPropertyChanging("id_productividad");
+                _id_productividad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id_productividad");
+                Onid_productividadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _id_productividad;
+        partial void Onid_productividadChanging(Nullable<global::System.Int32> value);
+        partial void Onid_productividadChanged();
 
         #endregion
     
@@ -3136,6 +4060,30 @@ namespace DataAccess
         private Nullable<global::System.Int64> _diagnostico;
         partial void OndiagnosticoChanging(Nullable<global::System.Int64> value);
         partial void OndiagnosticoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] foto
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_foto);
+            }
+            set
+            {
+                OnfotoChanging(value);
+                ReportPropertyChanging("foto");
+                _foto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("foto");
+                OnfotoChanged();
+            }
+        }
+        private global::System.Byte[] _foto;
+        partial void OnfotoChanging(global::System.Byte[] value);
+        partial void OnfotoChanged();
 
         #endregion
     
@@ -3417,6 +4365,249 @@ namespace DataAccess
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="procedencia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class procedencia : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new procedencia object.
+        /// </summary>
+        /// <param name="procedencia1">Initial value of the procedencia1 property.</param>
+        /// <param name="simbolo">Initial value of the simbolo property.</param>
+        public static procedencia Createprocedencia(global::System.String procedencia1, global::System.String simbolo)
+        {
+            procedencia procedencia = new procedencia();
+            procedencia.procedencia1 = procedencia1;
+            procedencia.simbolo = simbolo;
+            return procedencia;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String procedencia1
+        {
+            get
+            {
+                return _procedencia1;
+            }
+            set
+            {
+                Onprocedencia1Changing(value);
+                ReportPropertyChanging("procedencia1");
+                _procedencia1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("procedencia1");
+                Onprocedencia1Changed();
+            }
+        }
+        private global::System.String _procedencia1;
+        partial void Onprocedencia1Changing(global::System.String value);
+        partial void Onprocedencia1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String simbolo
+        {
+            get
+            {
+                return _simbolo;
+            }
+            set
+            {
+                if (_simbolo != value)
+                {
+                    OnsimboloChanging(value);
+                    ReportPropertyChanging("simbolo");
+                    _simbolo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("simbolo");
+                    OnsimboloChanged();
+                }
+            }
+        }
+        private global::System.String _simbolo;
+        partial void OnsimboloChanging(global::System.String value);
+        partial void OnsimboloChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="productividad")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class productividad : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new productividad object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="productividad1">Initial value of the productividad1 property.</param>
+        public static productividad Createproductividad(global::System.Int64 id, global::System.String productividad1)
+        {
+            productividad productividad = new productividad();
+            productividad.id = id;
+            productividad.productividad1 = productividad1;
+            return productividad;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String productividad1
+        {
+            get
+            {
+                return _productividad1;
+            }
+            set
+            {
+                Onproductividad1Changing(value);
+                ReportPropertyChanging("productividad1");
+                _productividad1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("productividad1");
+                Onproductividad1Changed();
+            }
+        }
+        private global::System.String _productividad1;
+        partial void Onproductividad1Changing(global::System.String value);
+        partial void Onproductividad1Changed();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="referencia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class referencia : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new referencia object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="descripcion">Initial value of the descripcion property.</param>
+        public static referencia Createreferencia(global::System.Int64 id, global::System.String descripcion)
+        {
+            referencia referencia = new referencia();
+            referencia.id = id;
+            referencia.descripcion = descripcion;
+            return referencia;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="role")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -3602,6 +4793,87 @@ namespace DataAccess
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="tipo_daño")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class tipo_daño : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new tipo_daño object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="tipo">Initial value of the tipo property.</param>
+        public static tipo_daño Createtipo_daño(global::System.Int64 id, global::System.String tipo)
+        {
+            tipo_daño tipo_daño = new tipo_daño();
+            tipo_daño.id = id;
+            tipo_daño.tipo = tipo;
+            return tipo_daño;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String tipo
+        {
+            get
+            {
+                return _tipo;
+            }
+            set
+            {
+                OntipoChanging(value);
+                ReportPropertyChanging("tipo");
+                _tipo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("tipo");
+                OntipoChanged();
+            }
+        }
+        private global::System.String _tipo;
+        partial void OntipoChanging(global::System.String value);
+        partial void OntipoChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

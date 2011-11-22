@@ -175,7 +175,12 @@
                             ErrorMessage="*Fecha de Ingreso Requerida" ForeColor="Red" 
                             ControlToValidate="txtFechaIngreso"></asp:RequiredFieldValidator>
                     </li>
-                </ul>                
+                    <li class="field">
+                        <asp:Label ID="Label12" CssClass="label" runat="server" 
+                            Text="Foto:"></asp:Label>
+                        <asp:FileUpload ID="FileUpload_Foto" runat="server" />
+                    </li>
+                </ul>
             </fieldset>                    
         </div>
         
@@ -186,7 +191,7 @@
             <asp:Button ID="btnClean" CssClass="boton" runat="server" Text="Limpiar" 
                 CausesValidation="False" onclick="btnClean_Click"/>
                 <asp:Button ID="btnPrint" CssClass="boton" runat="server" Text="Imprimir" 
-                        OnClientClick="return printInfo()" />
+                onclick="btnPrint_Click" />
         </div>        
     </div>
 </asp:Content>

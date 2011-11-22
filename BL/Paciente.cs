@@ -25,6 +25,7 @@ namespace BL
         private string _estado;
         private int _centroActual;
         private long _expediente;
+        private byte[] _foto;
 
         #endregion
 
@@ -99,6 +100,12 @@ namespace BL
         {
             get {return _expediente;}
         }
+
+        public byte[] Foto
+        {
+            get { return _foto; }
+            set { _foto = value; }
+        }
         #endregion
 
         #region Constructores
@@ -120,7 +127,7 @@ namespace BL
 
         public void asignarDatos(int centroActual, long expediente, string nombres, string primerApellido, string segundoApellido,
                                     DateTime fechaNac, bool sexo, DateTime fechaIngreso, string cedula,
-                                    string direccion, string lugarNac, string estado)
+                                    string direccion, string lugarNac, string estado, byte[] foto)
         {
             CentroActual = centroActual;
             _expediente = expediente;
@@ -134,6 +141,7 @@ namespace BL
             Direccion = direccion;
             LugarNac = lugarNac;
             Estado = estado;
+            Foto = foto;
         }
 
         private bool isTheInfoComplete()
@@ -180,6 +188,7 @@ namespace BL
                 _direccion = pac.direccion;
                 _lugarNac = pac.lugar_nac;
                 _estado = pac.estado_civil;
+                _foto = pac.foto;
                 return true;
             }
             return false;
@@ -254,6 +263,7 @@ namespace BL
 
                     pac.tipo_doc_alterno = "N/A";
                     pac.numero_doc_alt = "N/A";
+                    pac.foto = Foto;
 
                     entities.pacientes.AddObject(pac); //se guarda en la memoria
                     entities.SaveChanges(); //se guarda en la DB

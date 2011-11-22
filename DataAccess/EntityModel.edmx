@@ -8,11 +8,15 @@
         <EntityContainer Name="teletonModelStoreContainer">
           <EntitySet Name="actividades_enfermeria" EntityType="teletonModel.Store.actividades_enfermeria" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="atenciones_enfermeria" EntityType="teletonModel.Store.atenciones_enfermeria" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="ayudas_tecnicas" EntityType="teletonModel.Store.ayudas_tecnicas" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="cargos" EntityType="teletonModel.Store.cargos" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="centros" EntityType="teletonModel.Store.centros" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="citas_doctor" EntityType="teletonModel.Store.citas_doctor" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="citas_terapia" EntityType="teletonModel.Store.citas_terapia" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="clasificacion_paciente" EntityType="teletonModel.Store.clasificacion_paciente" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="condicion" EntityType="teletonModel.Store.condicion" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="diagnosticos" EntityType="teletonModel.Store.diagnosticos" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="dx" EntityType="teletonModel.Store.dx" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="empleados" EntityType="teletonModel.Store.empleados" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="escolaridad" EntityType="teletonModel.Store.escolaridad" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="estado_alta" EntityType="teletonModel.Store.estado_alta" store:Type="Tables" Schema="mysql_14667_teletonback" />
@@ -22,7 +26,11 @@
           <EntitySet Name="pacientes" EntityType="teletonModel.Store.pacientes" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="permisos" EntityType="teletonModel.Store.permisos" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="permisos_x_roles" EntityType="teletonModel.Store.permisos_x_roles" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="procedencia" EntityType="teletonModel.Store.procedencia" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="productividad" EntityType="teletonModel.Store.productividad" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="referencia" EntityType="teletonModel.Store.referencia" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="roles" EntityType="teletonModel.Store.roles" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="tipo_daño" EntityType="teletonModel.Store.tipo_daño" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="usuarios" EntityType="teletonModel.Store.usuarios" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="usuarios_x_rol" EntityType="teletonModel.Store.usuarios_x_rol" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <AssociationSet Name="actividades_fk" Association="teletonModel.Store.actividades_fk">
@@ -106,26 +114,33 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="actividad" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="actividad" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="atenciones_enfermeria">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="actividad" Type="uint" Nullable="false" />
+          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="enfermera" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="expediente" Type="uint" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="prefijo" Type="usmallint" Nullable="false" />
+          <Property Name="actividad" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ayudas_tecnicas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="ayuda" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="cargos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="cargo" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cargo" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="centros">
           <Key>
@@ -141,54 +156,75 @@
             <PropertyRef Name="fecha_hora" />
           </Key>
           <Property Name="doctor_username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="expediente" Type="uint" Nullable="false" />
           <Property Name="fecha_hora" Type="datetime" Nullable="false" />
-          <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="15" />
         </EntityType>
         <EntityType Name="citas_terapia">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="atendido" Type="bool" Nullable="false" />
+          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="expediente" Type="uint" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="hora_final" Type="time" Nullable="false" />
           <Property Name="hora_inicio" Type="time" Nullable="false" />
-          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="prefijo" Type="usmallint" Nullable="false" />
-          <Property Name="user" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="hora_final" Type="time" Nullable="false" />
+          <Property Name="atendido" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clasificacion_paciente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="clasificacion" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="condicion">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Name="condicion" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="simbolo" Type="char" Nullable="false" MaxLength="1" />
         </EntityType>
         <EntityType Name="diagnosticos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="diagnostico" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="dx">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Name="dx" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="simbolo" Type="char" Nullable="false" MaxLength="1" />
         </EntityType>
         <EntityType Name="empleados">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="25" />
           <Property Name="primer_apellido" Type="varchar" Nullable="false" MaxLength="15" />
-          <Property Name="puesto" Type="uint" Nullable="false" />
           <Property Name="segundo_apellido" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="puesto" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="escolaridad">
           <Key>
             <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
           <Property Name="Grado" Type="varchar" MaxLength="40" />
-          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="estado_alta">
           <Key>
             <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
           <Property Name="estado" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="estado_civil">
           <Key>
@@ -200,13 +236,30 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="evaluador" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="expediente" Type="uint" Nullable="false" />
-          <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="id" Type="ubigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="id_diagnostico" Type="uint" />
-          <Property Name="notas" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="prefijo" Type="usmallint" Nullable="false" />
+          <Property Name="expediente" Type="uint" Nullable="false" />
+          <Property Name="id_diagnostico" Type="uint" />
+          <Property Name="evaluador" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="notas" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="id_procedencia" Type="int" />
+          <Property Name="id_escolaridad" Type="int" />
+          <Property Name="id_ocupacion" Type="int" />
+          <Property Name="id_clasificacion_paciente" Type="int" />
+          <Property Name="id_condicion" Type="char" MaxLength="1" />
+          <Property Name="eteologia" Type="longtext" />
+          <Property Name="id_tipo_daño" Type="int" />
+          <Property Name="funcion_estructura" Type="varchar" MaxLength="10" />
+          <Property Name="años_tiempo_discapacidad" Type="int" />
+          <Property Name="meses_tiempo_discapacidad" Type="int" />
+          <Property Name="dias_tiempo_discapacidad" Type="int" />
+          <Property Name="años_TSTDL" Type="int" />
+          <Property Name="meses_TSTDL" Type="int" />
+          <Property Name="dias_TSTDL" Type="int" />
+          <Property Name="id_ayudas_tecnicas" Type="int" />
+          <Property Name="id_estado_alta" Type="int" />
+          <Property Name="id_productividad" Type="int" />
         </EntityType>
         <EntityType Name="ocupaciones">
           <Key>
@@ -220,29 +273,30 @@
             <PropertyRef Name="expediente" />
             <PropertyRef Name="prefijo" />
           </Key>
-          <Property Name="cedula" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="centro_actual" Type="usmallint" Nullable="false" />
-          <Property Name="diagnostico" Type="uint" />
-          <Property Name="direccion" Type="varchar" MaxLength="255" />
-          <Property Name="estado_civil" Type="varchar" MaxLength="15" />
           <Property Name="expediente" Type="uint" Nullable="false" />
-          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
-          <Property Name="fecha_nac" Type="date" Nullable="false" />
-          <Property Name="lugar_nac" Type="varchar" MaxLength="45" />
-          <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="25" />
-          <Property Name="numero_doc_alt" Type="varchar" MaxLength="45" />
           <Property Name="prefijo" Type="usmallint" Nullable="false" />
+          <Property Name="centro_actual" Type="usmallint" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
           <Property Name="primer_apellido" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="segundo_apellido" Type="varchar" Nullable="false" MaxLength="15" />
-          <Property Name="sexo" Type="bool" Nullable="false" />
+          <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="cedula" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="tipo_doc_alterno" Type="varchar" MaxLength="25" />
+          <Property Name="numero_doc_alt" Type="varchar" MaxLength="45" />
+          <Property Name="estado_civil" Type="varchar" MaxLength="15" />
+          <Property Name="sexo" Type="bool" Nullable="false" />
+          <Property Name="fecha_nac" Type="date" Nullable="false" />
+          <Property Name="lugar_nac" Type="varchar" MaxLength="45" />
+          <Property Name="direccion" Type="varchar" MaxLength="255" />
+          <Property Name="diagnostico" Type="uint" />
+          <Property Name="foto" Type="longblob" />
         </EntityType>
         <EntityType Name="permisos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="95" />
           <Property Name="id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="95" />
         </EntityType>
         <EntityType Name="permisos_x_roles">
           <Key>
@@ -252,29 +306,57 @@
           <Property Name="permiso_id" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="rol_id" Type="uint" Nullable="false" />
         </EntityType>
+        <EntityType Name="procedencia">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Name="procedencia" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="simbolo" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="productividad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="productividad" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="referencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
         <EntityType Name="roles">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="centro" Type="uint" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="centro" Type="uint" />
+        </EntityType>
+        <EntityType Name="tipo_daño">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="tipo" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="username" />
           </Key>
-          <Property Name="empleado" Type="uint" Nullable="false" />
-          <Property Name="password" Type="char" Nullable="false" MaxLength="40" />
           <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="password" Type="char" Nullable="false" MaxLength="40" />
+          <Property Name="empleado" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="usuarios_x_rol">
           <Key>
-            <PropertyRef Name="id_rol" />
             <PropertyRef Name="username" />
+            <PropertyRef Name="id_rol" />
           </Key>
-          <Property Name="id_rol" Type="uint" Nullable="false" />
           <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="id_rol" Type="uint" Nullable="false" />
         </EntityType>
         <Association Name="actividades_fk">
           <End Role="actividades_enfermeria" Type="teletonModel.Store.actividades_enfermeria" Multiplicity="1" />
@@ -614,6 +696,14 @@
             <End Role="diagnostico" EntitySet="diagnosticos" />
             <End Role="evolucione" EntitySet="evoluciones" />
           </AssociationSet>
+          <EntitySet Name="ayudas_tecnicas" EntityType="teletonModel.ayudas_tecnicas" />
+          <EntitySet Name="clasificacion_paciente" EntityType="teletonModel.clasificacion_paciente" />
+          <EntitySet Name="condicions" EntityType="teletonModel.condicion" />
+          <EntitySet Name="dxes" EntityType="teletonModel.dx" />
+          <EntitySet Name="procedencias" EntityType="teletonModel.procedencia" />
+          <EntitySet Name="productividads" EntityType="teletonModel.productividad" />
+          <EntitySet Name="referencias" EntityType="teletonModel.referencia" />
+          <EntitySet Name="tipo_daño" EntityType="teletonModel.tipo_daño" />
         </EntityContainer>
         <EntityType Name="actividades_enfermeria">
           <Key>
@@ -729,6 +819,23 @@
           <NavigationProperty Name="paciente" Relationship="teletonModel.pacientes_fk1" FromRole="evoluciones" ToRole="pacientes" />
           <Property Type="Int64" Name="id_diagnostico" />
           <NavigationProperty Name="diagnostico" Relationship="teletonModel.diagnosticos_fk" FromRole="evolucione" ToRole="diagnostico" />
+          <Property Type="Int32" Name="id_procedencia" />
+          <Property Type="Int32" Name="id_escolaridad" />
+          <Property Type="Int32" Name="id_ocupacion" />
+          <Property Type="Int32" Name="id_clasificacion_paciente" />
+          <Property Type="String" Name="id_condicion" />
+          <Property Type="String" Name="eteologia" />
+          <Property Type="Int32" Name="id_tipo_daño" />
+          <Property Type="String" Name="funcion_estructura" />
+          <Property Type="Int32" Name="años_tiempo_discapacidad" />
+          <Property Type="Int32" Name="meses_tiempo_discapacidad" />
+          <Property Type="Int32" Name="dias_tiempo_discapacidad" />
+          <Property Type="Int32" Name="años_TSTDL" />
+          <Property Type="Int32" Name="meses_TSTDL" />
+          <Property Type="Int32" Name="dias_TSTDL" />
+          <Property Type="Int32" Name="id_ayudas_tecnicas" />
+          <Property Type="Int32" Name="id_estado_alta" />
+          <Property Type="Int32" Name="id_productividad" />
         </EntityType>
         <EntityType Name="ocupacione">
           <Key>
@@ -764,6 +871,7 @@
           <NavigationProperty Name="evoluciones" Relationship="teletonModel.pacientes_fk1" FromRole="pacientes" ToRole="evoluciones" />
           <Property Type="Int64" Name="diagnostico" />
           <NavigationProperty Name="diagnostico1" Relationship="teletonModel.diagnostico_FK" FromRole="paciente" ToRole="diagnostico" />
+          <Property Type="Binary" Name="foto" />
         </EntityType>
         <EntityType Name="permiso">
           <Key>
@@ -1003,6 +1111,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ayudas_tecnicas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="ayuda" Nullable="false" />
+        </EntityType>
+        <EntityType Name="clasificacion_paciente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="clasificacion" Nullable="false" />
+        </EntityType>
+        <EntityType Name="condicion">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Type="String" Name="condicion1" Nullable="false" />
+          <Property Type="String" Name="simbolo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dx">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Type="String" Name="dx1" Nullable="false" />
+          <Property Type="String" Name="simbolo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="procedencia">
+          <Key>
+            <PropertyRef Name="simbolo" />
+          </Key>
+          <Property Type="String" Name="procedencia1" Nullable="false" />
+          <Property Type="String" Name="simbolo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productividad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="productividad1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="referencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_daño">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="tipo" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1066,7 +1230,24 @@
             <ScalarProperty Name="estado" ColumnName="estado" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="evoluciones"><EntityTypeMapping TypeName="teletonModel.evolucione"><MappingFragment StoreEntitySet="evoluciones">
-            <ScalarProperty Name="id_diagnostico" ColumnName="id_diagnostico" />
+            <ScalarProperty Name="id_productividad" ColumnName="id_productividad" />
+                <ScalarProperty Name="id_estado_alta" ColumnName="id_estado_alta" />
+                <ScalarProperty Name="id_ayudas_tecnicas" ColumnName="id_ayudas_tecnicas" />
+                <ScalarProperty Name="dias_TSTDL" ColumnName="dias_TSTDL" />
+                <ScalarProperty Name="meses_TSTDL" ColumnName="meses_TSTDL" />
+                <ScalarProperty Name="años_TSTDL" ColumnName="años_TSTDL" />
+                <ScalarProperty Name="dias_tiempo_discapacidad" ColumnName="dias_tiempo_discapacidad" />
+                <ScalarProperty Name="meses_tiempo_discapacidad" ColumnName="meses_tiempo_discapacidad" />
+                <ScalarProperty Name="años_tiempo_discapacidad" ColumnName="años_tiempo_discapacidad" />
+                <ScalarProperty Name="funcion_estructura" ColumnName="funcion_estructura" />
+                <ScalarProperty Name="id_tipo_daño" ColumnName="id_tipo_daño" />
+                <ScalarProperty Name="eteologia" ColumnName="eteologia" />
+                <ScalarProperty Name="id_condicion" ColumnName="id_condicion" />
+                <ScalarProperty Name="id_clasificacion_paciente" ColumnName="id_clasificacion_paciente" />
+                <ScalarProperty Name="id_ocupacion" ColumnName="id_ocupacion" />
+                <ScalarProperty Name="id_escolaridad" ColumnName="id_escolaridad" />
+                <ScalarProperty Name="id_procedencia" ColumnName="id_procedencia" />
+                <ScalarProperty Name="id_diagnostico" ColumnName="id_diagnostico" />
                 <ScalarProperty Name="evaluador" ColumnName="evaluador" />
             <ScalarProperty Name="expediente" ColumnName="expediente" />
             <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -1079,7 +1260,8 @@
             <ScalarProperty Name="ocupacion" ColumnName="ocupacion" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="pacientes"><EntityTypeMapping TypeName="teletonModel.paciente"><MappingFragment StoreEntitySet="pacientes">
-            <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+            <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
             <ScalarProperty Name="centro_actual" ColumnName="centro_actual" />
             <ScalarProperty Name="direccion" ColumnName="direccion" />
@@ -1134,6 +1316,70 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ayudas_tecnicas">
+            <EntityTypeMapping TypeName="teletonModel.ayudas_tecnicas">
+              <MappingFragment StoreEntitySet="ayudas_tecnicas">
+                <ScalarProperty Name="ayuda" ColumnName="ayuda" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clasificacion_paciente">
+            <EntityTypeMapping TypeName="teletonModel.clasificacion_paciente">
+              <MappingFragment StoreEntitySet="clasificacion_paciente">
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="condicions">
+            <EntityTypeMapping TypeName="teletonModel.condicion">
+              <MappingFragment StoreEntitySet="condicion">
+                <ScalarProperty Name="simbolo" ColumnName="simbolo" />
+                <ScalarProperty Name="condicion1" ColumnName="condicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dxes">
+            <EntityTypeMapping TypeName="teletonModel.dx">
+              <MappingFragment StoreEntitySet="dx">
+                <ScalarProperty Name="simbolo" ColumnName="simbolo" />
+                <ScalarProperty Name="dx1" ColumnName="dx" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="procedencias">
+            <EntityTypeMapping TypeName="teletonModel.procedencia">
+              <MappingFragment StoreEntitySet="procedencia">
+                <ScalarProperty Name="simbolo" ColumnName="simbolo" />
+                <ScalarProperty Name="procedencia1" ColumnName="procedencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productividads">
+            <EntityTypeMapping TypeName="teletonModel.productividad">
+              <MappingFragment StoreEntitySet="productividad">
+                <ScalarProperty Name="productividad1" ColumnName="productividad" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="referencias">
+            <EntityTypeMapping TypeName="teletonModel.referencia">
+              <MappingFragment StoreEntitySet="referencia">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_daño">
+            <EntityTypeMapping TypeName="teletonModel.tipo_daño">
+              <MappingFragment StoreEntitySet="tipo_daño">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1179,14 +1425,18 @@
           <ConnectorPoint PointX="9.28125" PointY="6.5" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.atenciones_enfermeria_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="13.539448424333369" />
-          <ConnectorPoint PointX="9.28125" PointY="13.539448424333369" />
-          <ConnectorPoint PointX="9.28125" PointY="8.91404296875" />
+          <ConnectorPoint PointX="6.75" PointY="10.53125" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="10.53125" />
+          <ConnectorPoint PointX="7.270833333333333" PointY="10.53125" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="10.53125" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="10.53125" />
+          <ConnectorPoint PointX="9.28125" PointY="10.53125" />
+          <ConnectorPoint PointX="9.28125" PointY="9.2494921875" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.atenciones_enfermeria_fk1" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="7.849488800401728" />
-          <ConnectorPoint PointX="7.104166666666667" PointY="7.8494888004017271" />
-          <ConnectorPoint PointX="7.270833333333333" PointY="7.849488800401728" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="7.8494888004017271" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="7.849488800401728" />
           <ConnectorPoint PointX="7.5" PointY="7.849488800401728" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.cargo_fk" ManuallyRouted="false">
@@ -1195,19 +1445,21 @@
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.citas_doctor_fk" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="8.857503507211538" />
-          <ConnectorPoint PointX="7.1285744349011217" PointY="9.236077942112658" />
-          <ConnectorPoint PointX="7.2464255650988791" PointY="9.3539290723104163" />
+          <ConnectorPoint PointX="7.0660744349011217" PointY="9.173577942112658" />
+          <ConnectorPoint PointX="7.1839255650988791" PointY="9.2914290723104163" />
           <ConnectorPoint PointX="7.28125" PointY="9.388753507211538" />
           <ConnectorPoint PointX="7.28125" PointY="9.2103483072916674" />
-          <ConnectorPoint PointX="9.1979166666666661" PointY="9.2103483072916674" />
-          <ConnectorPoint PointX="9.3645833333333339" PointY="9.2103483072916674" />
           <ConnectorPoint PointX="10.125" PointY="9.2103483072916674" />
           <ConnectorPoint PointX="10.5" PointY="8.8353483072916674" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.paciente_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="14.326255846281262" />
-          <ConnectorPoint PointX="11.2812525" PointY="14.326255846281262" />
-          <ConnectorPoint PointX="11.2812525" PointY="8.8353483072916674" />
+          <ConnectorPoint PointX="6.75" PointY="10.515625" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="10.515625" />
+          <ConnectorPoint PointX="7.270833333333333" PointY="10.515625" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="10.515625" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="10.515625" />
+          <ConnectorPoint PointX="11.96875" PointY="10.515625" />
+          <ConnectorPoint PointX="11.96875" PointY="9.1148893229166639" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.citas_terapia_fk" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="10.501152846153847" />
@@ -1220,30 +1472,30 @@
           <ConnectorPoint PointX="7.0660744349011209" PointY="6.2462322574065716" />
           <ConnectorPoint PointX="7.1839255650988791" PointY="6.1283811272088142" />
           <ConnectorPoint PointX="7.1875" PointY="6.1248066923076934" />
-          <ConnectorPoint PointX="7.1875" PointY="4.6125972148437508" />
-          <ConnectorPoint PointX="7.5" PointY="4.6125972148437508" />
+          <ConnectorPoint PointX="7.1875" PointY="3.8297128209635414" />
+          <ConnectorPoint PointX="7.5" PointY="3.8297128209635414" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.empleado_fk" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="7.9324446614583337" />
           <ConnectorPoint PointX="5.25" PointY="7.9324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.pacientes_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="12.881805826822916" />
-          <ConnectorPoint PointX="5.25" PointY="12.881805826822916" />
+          <ConnectorPoint PointX="4.5" PointY="12.951691080729166" />
+          <ConnectorPoint PointX="5.25" PointY="12.951691080729166" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.evaluador_fk" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="9.1871834951923113" />
           <ConnectorPoint PointX="7.0660744349011217" PointY="9.5032579300934312" />
           <ConnectorPoint PointX="7.1839255650988791" PointY="9.62110906029119" />
           <ConnectorPoint PointX="7.1875" PointY="9.6246834951923113" />
-          <ConnectorPoint PointX="7.1875" PointY="12.477213984243601" />
-          <ConnectorPoint PointX="7.5" PointY="12.477213984243601" />
+          <ConnectorPoint PointX="7.1875" PointY="14.174883435864185" />
+          <ConnectorPoint PointX="7.5" PointY="14.174883435864185" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.pacientes_fk1" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="11.4886069921218" />
-          <ConnectorPoint PointX="7.104166666666667" PointY="11.4886069921218" />
-          <ConnectorPoint PointX="7.270833333333333" PointY="11.4886069921218" />
-          <ConnectorPoint PointX="7.5" PointY="11.4886069921218" />
+          <ConnectorPoint PointX="6.75" PointY="12.337441717932093" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="12.337441717932093" />
+          <ConnectorPoint PointX="7.270833333333333" PointY="12.337441717932093" />
+          <ConnectorPoint PointX="7.5" PointY="12.337441717932093" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.permisos_x_roles" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="4.8389794921875" />
@@ -1272,6 +1524,14 @@
           <ConnectorPoint PointX="8.25" PointY="10.15625" />
           <ConnectorPoint PointX="8.25" PointY="10.625" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="teletonModel.ayudas_tecnicas" Width="1.5" PointX="10.375" PointY="3.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="teletonModel.clasificacion_paciente" Width="1.5" PointX="10.375" PointY="10.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="teletonModel.condicion" Width="1.5" PointX="12.375" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="teletonModel.dx" Width="1.5" PointX="12.375" PointY="3.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="teletonModel.procedencia" Width="1.5" PointX="12.375" PointY="10.75" Height="1.4033821614583282" />
+        <EntityTypeShape EntityType="teletonModel.productividad" Width="1.5" PointX="13.375" PointY="6.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="teletonModel.referencia" Width="1.5" PointX="10.375" PointY="13.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="teletonModel.tipo_daño" Width="1.5" PointX="12.375" PointY="13.75" Height="1.4033821614583246" />
       </Diagram>
     </Diagrams>
   </Designer>

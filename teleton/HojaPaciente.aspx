@@ -16,13 +16,19 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="table_Subtitle">
-                    
+                        <td colspan="2" class="table_Subtitle">                    
                             <h2>Datos Personales</h2>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr class="rowodd">
+                        <td class="table_Paciente_Desc" >
+                            <asp:Image ID="Imagen" runat="server" />
+                        </td>
+                        <td class="tb_crearRol">    
+                            &nbsp;</td>
+                    </tr>
                     <tr class="rowodd">
                         <td class="table_Paciente_Desc" >Nº de Expediente:</td>
                         <td class="tb_crearRol">    
