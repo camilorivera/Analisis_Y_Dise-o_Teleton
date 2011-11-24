@@ -24,10 +24,10 @@
                 <tbody>
                     <tr class="rowodd">
                         <td class="table_Paciente_Desc" >
+                            &nbsp;</td>
+                        <td class="tb_crearRol">    
                             <asp:Image ID="Imagen" runat="server" />
                         </td>
-                        <td class="tb_crearRol">    
-                            &nbsp;</td>
                     </tr>
                     <tr class="rowodd">
                         <td class="table_Paciente_Desc" >Nº de Expediente:</td>

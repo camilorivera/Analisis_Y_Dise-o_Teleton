@@ -121,13 +121,17 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 anio = p.FechaNac.Year.ToString();
                 fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
                 txtFechaNacimiento.Text = fecha;
-
-
+                
                 dia = p.FechaIngreso.Day.ToString();
                 mes = p.FechaIngreso.Month.ToString();
                 anio = p.FechaIngreso.Year.ToString();
                 fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
                 txtFechaIngreso.Text = fecha;
+
+                Imagen.ImageUrl = "Handler.ashx?Expediente=" + exp + "&CentroActual=" + CId;
+                Imagen.Width = (Unit)150;
+                Imagen.Height = (Unit)150;
+
                 Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
                 
                 // Habilitar los controles para que se pueda editar.

@@ -26,6 +26,11 @@
             <fieldset>
                 <ul class = "list">
                     <li class="field">
+                        <asp:Image ID="Imagen" runat="server" />
+                    </li>
+                    <li class="field">
+                    </li>
+                    <li class="field">
                         <asp:Label ID="Label2" CssClass="label" runat="server" Text="Nº de Cédula:"></asp:Label>
                         <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso" 
                             Enabled="False"></asp:TextBox>
