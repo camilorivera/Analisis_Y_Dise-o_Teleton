@@ -61,6 +61,22 @@ public partial class HojaPaciente : System.Web.UI.Page
                                        (fIng.Month.ToString().Length == 1 ? "0" : "") + fIng.Month.ToString() + "-" +
                                        (fIng.Day.ToString().Length == 1 ? "0" : "") + fIng.Day.ToString();
                         estado.Text = paciente.Estado;
+                        telefono.Text = paciente.telefono;
+                        celular.Text = paciente.movil;
+                        escolaridad.Text = paciente.getEscolaridad(paciente.escolaridad);
+                        profesion.Text = paciente.getProfesion(paciente.profesion);
+                        lugarTrabajo.Text = paciente.lugarTrabajo;
+                        nombreMadre.Text = paciente.nombreMadre;
+                        padre.Text = paciente.nombrePadre;
+                        estructuraFamiliar.Text = paciente.estructuraFamiliar;
+                        condicionHogar.Text = paciente.condicionHogar;
+                        expectativaRehabilitarse.Text = paciente.expectativa;
+                        ingresoFamiliar.Text = paciente.ingresos.ToString();
+                        recibidoAntes.Text = paciente.rehabilitacion ? "Si" : "No";
+                        candidatoTransporte.Text = paciente.candidatoTransporte ? "Si" : "No";
+                        comoEnteroTeleton.Text = paciente.acercaDe;
+                        documentacion.Text = paciente.docsAlternos;
+                        observaciones.Text = paciente.observaciones;
                     }
 
                 }

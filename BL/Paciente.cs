@@ -281,8 +281,21 @@ namespace BL
 
         private bool isTheInfoComplete()
         {
-
             return FechaIngreso != null && PrimerApellido.Length > 0 && SegundoApellido.Length > 0 && Nombres.Length > 0 && Cedula.Length > 0 && FechaNac != null;
+        }
+
+        public string getEscolaridad(long escolaridad)
+        {
+            DataAccess.escolaridad esc = entities.escolaridads.FirstOrDefault(
+                        P => P.id == escolaridad);
+            return esc.Grado;
+        }
+
+        public string getProfesion(long profesion)
+        {
+            DataAccess.ocupacione ocp = entities.ocupaciones.FirstOrDefault(
+                        P => P.id == profesion);
+            return ocp.ocupacion;
         }
 
         public bool exist()
