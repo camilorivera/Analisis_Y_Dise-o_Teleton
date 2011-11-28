@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/*Agregados por Eliazar*/
+using BL;
+using System.Data;
+
 public partial class Buscar_Expediente : System.Web.UI.Page
 {
 
@@ -81,6 +85,24 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         btnEliminar.Enabled = estado;
         btnImprimir.Enabled = estado;
         btnCleanPage.Enabled = estado;
+
+        /*Modificado por Eliazar*/
+        txtTelefono.Enabled = estado;
+        txtCelular.Enabled = estado;
+        ddlEscolaridad.Enabled = estado;
+        ddlProfesion.Enabled = estado;
+        txtLugarTrabajo.Enabled = estado;
+        txtMadre.Enabled = estado;
+        txtPadre.Enabled = estado;
+        txtEstructuraFamiliar.Enabled = estado;
+        txtCondicionHogar.Enabled = estado;
+        txtExpectativa.Enabled = estado;
+        txtIngreso.Enabled = estado;
+        rblRehabilitacion.Enabled = estado;
+        rblCandidato.Enabled = estado;
+        txtReferencia.Enabled = estado;
+        txtDocumentos.Enabled = estado;
+        txtObservaciones.Enabled = estado;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -132,6 +154,35 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 Imagen.Width = (Unit)150;
                 Imagen.Height = (Unit)150;
 
+                /*Modificado por Eliazar*/
+                txtTelefono.Text = p.telefono;
+                txtCelular.Text = p.movil;
+
+                cargarDropDownEscolaridad(p.escolaridad);
+                cargarDropDownOcupaciones(p.profesion);
+
+                txtLugarTrabajo.Text = p.lugarTrabajo;
+                txtMadre.Text = p.nombreMadre;
+                txtPadre.Text = p.nombrePadre;
+                txtEstructuraFamiliar.Text = p.estructuraFamiliar;
+                txtCondicionHogar.Text = p.condicionHogar;
+                txtExpectativa.Text = p.expectativa;
+                txtIngreso.Text = Convert.ToString(p.ingresos);
+
+                if (p.rehabilitacion)
+                    rblRehabilitacion.Items[0].Selected = true;
+                else
+                    rblRehabilitacion.Items[1].Selected = true;
+
+                if (p.candidatoTransporte)
+                    rblCandidato.Items[0].Selected = true;
+                else
+                    rblCandidato.Items[1].Selected = true;
+
+                txtReferencia.Text = p.acercaDe;
+                txtDocumentos.Text = p.docsAlternos;
+                txtObservaciones.Text = p.observaciones;
+
                 Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
                 
                 // Habilitar los controles para que se pueda editar.
@@ -154,6 +205,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
 
     }
+
     protected void btnEditar_Click(object sender, EventArgs e)
     {
         try
@@ -161,6 +213,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             BL.Security sec = new BL.Security();
             int CId = (int)sec.getCentroId(cboCentro.SelectedValue);
             long exp = long.Parse(txtExpediente.Text);
+
             BL.Paciente pac = new BL.Paciente();
             if (pac.leerPaciente(CId, exp))
             {
@@ -174,10 +227,14 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 dd = int.Parse(txtFechaIngreso.Text.Substring(8, 2));
                 DateTime fechaIng = new DateTime(yy, mm, dd);
 
+                bool rehabilitacion = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
+                bool transporte = rblCandidato.SelectedValue.Equals("Sí") ? true : false;
+
                 pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
-                                          fechaNac, rdMasculino.Selected, fechaIng,
-                                          txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text,
-                                          ddEstado.SelectedItem.Text, pac.Foto);
+                    fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
+                    txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
+                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
+                    rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
 
                 if (pac.editarPaciente())
                 {
@@ -196,6 +253,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         }
 
     }
+
     protected void btnEliminar_Click(object sender, EventArgs e)
     {
         try
@@ -223,10 +281,12 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             Response.Redirect("~/Error.aspx", true);
         }
     }
+
     protected void btnCleanPage_Click(object sender, EventArgs e)
     {
         cleanPage();
     }
+
     protected void btnImprimir_Click(object sender, EventArgs e)
     {
         try
@@ -246,6 +306,45 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         {
             Session["Error_Msg"] = err.Message;
             Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    /*Modificado por Eliazar Melendez*/
+    private void cargarDropDownEscolaridad(long id)
+    {
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarEscolaridad();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["GRADO"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            if (Convert.ToInt64(fila["ID"].ToString()) == id)
+                item.Selected = true;
+            
+            ddlEscolaridad.Items.Add(item);
+        }
+    }
+
+    private void cargarDropDownOcupaciones(long id)
+    {
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarOcupaciones();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["OCUPACION"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            if (Convert.ToInt64(fila["ID"].ToString()) == id)
+                item.Selected = true;
+
+            ddlProfesion.Items.Add(item);
         }
     }
 }

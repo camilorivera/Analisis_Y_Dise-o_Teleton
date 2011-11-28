@@ -86,7 +86,8 @@
         </div>
 
         <div id="navcenter">
-        <fieldset ru>
+        <fieldset>
+            <legend>Datos Generales</legend>
                 <ul class = "list">
                     <li class="field">
                         <asp:Label ID="Label11" CssClass="label" runat="server" Text="Nº de Expediente:"></asp:Label>
@@ -121,7 +122,8 @@
                     </li>
                     <li class="field">
                         <asp:Label ID="Label5" CssClass="label" runat="server" Text="Dirección:"></asp:Label>
-                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                        <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso" 
+                            TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                              ErrorMessage="*Direccion Requerida" ForeColor="Red" 
                              ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
@@ -153,7 +155,7 @@
                     <li class="field">
                         <asp:Label ID="Label9" CssClass="label" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
                         <asp:TextBox ID="txtFechaNacimiento" runat="server" ></asp:TextBox>
-                        <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento"/>
+                        <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento" width="24px"/>
                         <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="yyyy-MM-dd" PopupButtonID="img_fecha_nacimiento">
                         </asp:CalendarExtender>
 
@@ -175,13 +177,182 @@
                             ErrorMessage="*Fecha de Ingreso Requerida" ForeColor="Red" 
                             ControlToValidate="txtFechaIngreso"></asp:RequiredFieldValidator>
                     </li>
+
                     <li class="field">
                         <asp:Label ID="Label12" CssClass="label" runat="server" 
                             Text="Foto:"></asp:Label>
                         <asp:FileUpload ID="FileUpload_Foto" runat="server" />
                     </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label13" CssClass="label">Telefono:</asp:Label>
+                        <asp:TextBox ID="txtTelefono" runat="server" MaxLength="8" 
+                            ToolTip="Telefono sin guion"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" 
+                            ErrorMessage="*Vacio no permitido" ForeColor="Red"
+                            ControlToValidate="txtTelefono">
+                        </asp:RequiredFieldValidator>
+
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*Formato no valido"
+                            ForeColor="Red" ControlToValidate="txtTelefono" Type="Integer" Operator="DataTypeCheck">
+                        </asp:CompareValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label14" CssClass="label">Celular:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtCelular" MaxLength="8" 
+                            ToolTip="Celular sin guion"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
+                            ErrorMessage="*Vacio no permitido" ForeColor="Red"
+                            ControlToValidate="txtCelular">
+                        </asp:RequiredFieldValidator>
+                        
+                        <asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="*Formato no valido"
+                            ForeColor="Red" ControlToValidate="txtCelular" Type="Integer" Operator="DataTypeCheck">
+                        </asp:CompareValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label30" CssClass="label">Escolaridad:</asp:Label>
+                        <asp:DropDownList runat="server" ID="ddlEscolaridad" CssClass="tb_Permiso">
+                        </asp:DropDownList>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label15" CssClass="label">Profesión:</asp:Label>
+                        <asp:DropDownList ID="ddlProfesion" runat="server" CssClass="tb_Permiso">
+                        </asp:DropDownList>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label16" CssClass="label">Lugar De Trabajo:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtLugarTrabajo" CssClass="tb_Permiso">
+                        </asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtLugarTrabajo"></asp:RequiredFieldValidator>
+
+                    </li>
                 </ul>
             </fieldset>                    
+        </div>
+
+        <div class="navcenter">
+            <fieldset>
+                <legend>Datos Familiares</legend>
+
+                <ul class = "list">
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label17" CssClass="label">Nombre Madre:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtMadre" CssClass="tb_Permiso" MaxLength="45"></asp:TextBox>
+                        
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtMadre"></asp:RequiredFieldValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label18" CssClass="label">Padre:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtPadre" CssClass="tb_Permiso" MaxLength="45"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtPadre"></asp:RequiredFieldValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label19" CssClass="label">Estructura Familiar:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtEstructuraFamiliar" CssClass="tb_Permiso" 
+                            MaxLength="45"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtEstructuraFamiliar"></asp:RequiredFieldValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label20" CssClass="label">Condición del hogar:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtCondicionHogar" CssClass="tb_Permiso" 
+                            MaxLength="20"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtCondicionHogar"></asp:RequiredFieldValidator>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label22" CssClass="label">Expectativa rehabilitante:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtExpectativa" CssClass="tb_Permiso" MaxLength="20"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" 
+                                ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ControlToValidate="txtExpectativa"></asp:RequiredFieldValidator>
+                    </li>
+                    
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label21" CssClass="label">Ingreso Familiar L.:</asp:Label>
+                        <asp:TextBox runat="server" ID="txtIngreso" MaxLength="8"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" 
+                            ErrorMessage="*Campo Requerido" ForeColor="Red"
+                            ControlToValidate="txtTelefono">
+                        </asp:RequiredFieldValidator>
+
+                        <asp:CompareValidator ID="CompareValidator3" runat="server" ErrorMessage="*Valores no validos."
+                            ForeColor="Red" ControlToValidate="txtIngreso" Type="Double" Operator="DataTypeCheck">
+                        </asp:CompareValidator>
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+
+        <div class="navcenter">
+            <fieldset>
+                <legend>Datos Medicos</legend>
+                <ul class="list">
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label24">¿Ha recibido rehabilitación antes?</asp:Label>
+                        <br />
+                        <asp:RadioButtonList runat="server" ID="rblRehabilitacion" RepeatDirection="Horizontal" CssClass="tb_Permiso">
+                            <asp:listitem Selected="true" value="Sí"/>
+                            <asp:listitem value="No"/>
+                        </asp:RadioButtonList>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label25">Candidato a Transporte:</asp:Label>
+                        <br />
+                        <asp:RadioButtonList runat="server" ID="rblCandidato" RepeatDirection="Horizontal" CssClass="tb_Permiso">
+                            <asp:ListItem Selected="true" value="Sí" />
+                            <asp:listitem value="No" />
+                        </asp:RadioButtonList>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label23">¿Cómo se entero de Fundación Teletón?</asp:Label>
+                        <br />
+                        <asp:TextBox runat="server" ID="txtReferencia" CssClass="tb_Permiso" TextMode="MultiLine">
+                        </asp:TextBox>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label26">Documentos que trae el paciente:</asp:Label>
+                        <br />
+                        <asp:TextBox runat="server" ID="txtDocumentos" CssClass="tb_Permiso" TextMode="MultiLine">
+                        </asp:TextBox>
+                    </li>
+
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label27">Observaciones:</asp:Label>
+                        <br />
+                        <asp:TextBox runat="server" ID="txtObservaciones" CssClass="tb_Permiso" TextMode="MultiLine">
+                        </asp:TextBox>
+                    </li>
+                </ul>
+            </fieldset>
         </div>
         
         <div id="navBotones">
