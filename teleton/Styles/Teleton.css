@@ -59,6 +59,10 @@
     top: 500px;
 }
 
+.cajas
+{
+    padding: 10px 0 10px 0;
+}
 .boton
 {
 	border: thin solid #000000; 

@@ -25,7 +25,7 @@
                 ForeColor="Red"></asp:RequiredFieldValidator>
      <asp:Button ID="Button1" CssClass= "boton" runat="server" Text="Guardar" 
                 onclick="Button1_Click" />
-         <asp:GridView ID="GridView1" CssClass="Grid" runat="server" 
+            <asp:GridView ID="GridView1" CssClass="Grid" runat="server" 
                 AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="EntityDataSource1" 
                  AllowPaging="True" onpageindexchanging="GridView1_PageIndexChanging" 
                 onrowdatabound="GridView1_RowDataBound"> <pagerstyle backcolor="ControlLight"/>
