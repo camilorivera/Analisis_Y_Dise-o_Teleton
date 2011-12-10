@@ -38,6 +38,8 @@
                                 NavigateUrl="~/Crear_Paciente.aspx?sender=old"></asp:MenuItem>
                             <asp:MenuItem Text="Consultar Expediente" Value="Consultar Expediente"
                                 NavigateUrl="~/Buscar_Expediente.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Buscar por Nombres" Value="Buscar por Nombres"
+                                NavigateUrl="~/Buscar_Nombres.aspx"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem Text="Roles" Value="Roles">
                             <asp:MenuItem Text="Crear Roles" Value="New Item" 

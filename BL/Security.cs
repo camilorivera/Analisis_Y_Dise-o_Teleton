@@ -266,6 +266,17 @@ namespace BL
             return CId;
 
         }
+        public string getCentrolugar(int centro) //devuelve nombre del centro
+        {
+            var QCId = from c in entidad.centros
+                       where c.id == centro
+                       select c.lugar;
+            string CId="";
+            foreach (string l in QCId)
+                CId = l;
+            return CId;
+
+        }
 
         public long getidEmp()
         {
