@@ -21,20 +21,34 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("teletonModel", "actividades_fk", "actividades_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.actividades_enfermeria), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "atenciones_enfermeria_fk", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "atenciones_enfermeria_fk1", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_ayudas_tecnicas", "ayudas_tecnicas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.ayudas_tecnicas), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "cargo_fk", "cargos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.cargo), "empleados", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.empleado), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "roles_fk1", "centros", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.centro), "roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.role), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "citas_doctor_fk", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "citas_doctor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.citas_doctor), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "paciente_fk", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "citas_doctor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.citas_doctor), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "citas_terapia_fk", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "citas_terapia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.citas_terapia), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "usuario_fk", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "citas_terapia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.citas_terapia), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_clasificacion", "clasificacion_paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.clasificacion_paciente), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_condicion", "condicion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.condicion), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "diagnosticos_fk", "diagnosticos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.diagnostico), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "diagnostico_FK", "diagnosticos", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.diagnostico), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "empleado_fk", "empleados", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.empleado), "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.usuario), true)]
-[assembly: EdmRelationshipAttribute("teletonModel", "pacientes_fk", "estado_civil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.estado_civil), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "escoralidad_fk", "escolaridad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.escolaridad), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_escolaridad", "escolaridad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.escolaridad), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_estado_alta", "estado_alta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.estado_alta), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "pacientes_fk", "estado_civil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.estado_civil), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "evaluador_fk", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_ocupaciones", "ocupaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.ocupacione), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_procedencia", "procedencia", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.procedencia), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_productividad", "productividad", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.productividad), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_tipo_daño", "tipo_daño", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.tipo_daño), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "pacientes_fk1", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_n_expediente", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "historial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historial), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_username", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "historial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historial), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "profesion_fk", "ocupaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.ocupacione), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "procedencia_fk", "procedencia", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.procedencia), "procedencia_descripcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.procedencia_descripcion), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "permisos_x_roles", "permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.permiso), "roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.role))]
 [assembly: EdmRelationshipAttribute("teletonModel", "usuarios_x_rol", "roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.role), "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.usuario))]
-[assembly: EdmRelationshipAttribute("teletonModel", "diagnostico_FK", "diagnostico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.diagnostico), "paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
-[assembly: EdmRelationshipAttribute("teletonModel", "roles_fk1", "centro", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.centro), "role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.role), true)]
-[assembly: EdmRelationshipAttribute("teletonModel", "diagnosticos_fk", "diagnostico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataAccess.diagnostico), "evolucione", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
 
 #endregion
 
@@ -121,6 +135,22 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<ayudas_tecnicas> ayudas_tecnicas
+        {
+            get
+            {
+                if ((_ayudas_tecnicas == null))
+                {
+                    _ayudas_tecnicas = base.CreateObjectSet<ayudas_tecnicas>("ayudas_tecnicas");
+                }
+                return _ayudas_tecnicas;
+            }
+        }
+        private ObjectSet<ayudas_tecnicas> _ayudas_tecnicas;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<cargo> cargos
         {
             get
@@ -181,6 +211,70 @@ namespace DataAccess
             }
         }
         private ObjectSet<citas_terapia> _citas_terapia;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<clasificacion_paciente> clasificacion_paciente
+        {
+            get
+            {
+                if ((_clasificacion_paciente == null))
+                {
+                    _clasificacion_paciente = base.CreateObjectSet<clasificacion_paciente>("clasificacion_paciente");
+                }
+                return _clasificacion_paciente;
+            }
+        }
+        private ObjectSet<clasificacion_paciente> _clasificacion_paciente;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<condicion> condicions
+        {
+            get
+            {
+                if ((_condicions == null))
+                {
+                    _condicions = base.CreateObjectSet<condicion>("condicions");
+                }
+                return _condicions;
+            }
+        }
+        private ObjectSet<condicion> _condicions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<diagnostico> diagnosticos
+        {
+            get
+            {
+                if ((_diagnosticos == null))
+                {
+                    _diagnosticos = base.CreateObjectSet<diagnostico>("diagnosticos");
+                }
+                return _diagnosticos;
+            }
+        }
+        private ObjectSet<diagnostico> _diagnosticos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<dx> dxes
+        {
+            get
+            {
+                if ((_dxes == null))
+                {
+                    _dxes = base.CreateObjectSet<dx>("dxes");
+                }
+                return _dxes;
+            }
+        }
+        private ObjectSet<dx> _dxes;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -265,6 +359,22 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<historial> historials
+        {
+            get
+            {
+                if ((_historials == null))
+                {
+                    _historials = base.CreateObjectSet<historial>("historials");
+                }
+                return _historials;
+            }
+        }
+        private ObjectSet<historial> _historials;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ocupacione> ocupaciones
         {
             get
@@ -313,118 +423,6 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<role> roles
-        {
-            get
-            {
-                if ((_roles == null))
-                {
-                    _roles = base.CreateObjectSet<role>("roles");
-                }
-                return _roles;
-            }
-        }
-        private ObjectSet<role> _roles;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<usuario> usuarios
-        {
-            get
-            {
-                if ((_usuarios == null))
-                {
-                    _usuarios = base.CreateObjectSet<usuario>("usuarios");
-                }
-                return _usuarios;
-            }
-        }
-        private ObjectSet<usuario> _usuarios;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<diagnostico> diagnosticos
-        {
-            get
-            {
-                if ((_diagnosticos == null))
-                {
-                    _diagnosticos = base.CreateObjectSet<diagnostico>("diagnosticos");
-                }
-                return _diagnosticos;
-            }
-        }
-        private ObjectSet<diagnostico> _diagnosticos;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ayudas_tecnicas> ayudas_tecnicas
-        {
-            get
-            {
-                if ((_ayudas_tecnicas == null))
-                {
-                    _ayudas_tecnicas = base.CreateObjectSet<ayudas_tecnicas>("ayudas_tecnicas");
-                }
-                return _ayudas_tecnicas;
-            }
-        }
-        private ObjectSet<ayudas_tecnicas> _ayudas_tecnicas;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<clasificacion_paciente> clasificacion_paciente
-        {
-            get
-            {
-                if ((_clasificacion_paciente == null))
-                {
-                    _clasificacion_paciente = base.CreateObjectSet<clasificacion_paciente>("clasificacion_paciente");
-                }
-                return _clasificacion_paciente;
-            }
-        }
-        private ObjectSet<clasificacion_paciente> _clasificacion_paciente;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<condicion> condicions
-        {
-            get
-            {
-                if ((_condicions == null))
-                {
-                    _condicions = base.CreateObjectSet<condicion>("condicions");
-                }
-                return _condicions;
-            }
-        }
-        private ObjectSet<condicion> _condicions;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<dx> dxes
-        {
-            get
-            {
-                if ((_dxes == null))
-                {
-                    _dxes = base.CreateObjectSet<dx>("dxes");
-                }
-                return _dxes;
-            }
-        }
-        private ObjectSet<dx> _dxes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<procedencia> procedencias
         {
             get
@@ -437,6 +435,22 @@ namespace DataAccess
             }
         }
         private ObjectSet<procedencia> _procedencias;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<procedencia_descripcion> procedencia_descripcion
+        {
+            get
+            {
+                if ((_procedencia_descripcion == null))
+                {
+                    _procedencia_descripcion = base.CreateObjectSet<procedencia_descripcion>("procedencia_descripcion");
+                }
+                return _procedencia_descripcion;
+            }
+        }
+        private ObjectSet<procedencia_descripcion> _procedencia_descripcion;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -473,6 +487,22 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<role> roles
+        {
+            get
+            {
+                if ((_roles == null))
+                {
+                    _roles = base.CreateObjectSet<role>("roles");
+                }
+                return _roles;
+            }
+        }
+        private ObjectSet<role> _roles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<tipo_daño> tipo_daño
         {
             get
@@ -485,6 +515,22 @@ namespace DataAccess
             }
         }
         private ObjectSet<tipo_daño> _tipo_daño;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<usuario> usuarios
+        {
+            get
+            {
+                if ((_usuarios == null))
+                {
+                    _usuarios = base.CreateObjectSet<usuario>("usuarios");
+                }
+                return _usuarios;
+            }
+        }
+        private ObjectSet<usuario> _usuarios;
 
         #endregion
         #region AddTo Methods
@@ -503,6 +549,14 @@ namespace DataAccess
         public void AddToatenciones_enfermeria(atenciones_enfermeria atenciones_enfermeria)
         {
             base.AddObject("atenciones_enfermeria", atenciones_enfermeria);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ayudas_tecnicas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToayudas_tecnicas(ayudas_tecnicas ayudas_tecnicas)
+        {
+            base.AddObject("ayudas_tecnicas", ayudas_tecnicas);
         }
     
         /// <summary>
@@ -535,6 +589,38 @@ namespace DataAccess
         public void AddTocitas_terapia(citas_terapia citas_terapia)
         {
             base.AddObject("citas_terapia", citas_terapia);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the clasificacion_paciente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToclasificacion_paciente(clasificacion_paciente clasificacion_paciente)
+        {
+            base.AddObject("clasificacion_paciente", clasificacion_paciente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the condicions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTocondicions(condicion condicion)
+        {
+            base.AddObject("condicions", condicion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the diagnosticos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTodiagnosticos(diagnostico diagnostico)
+        {
+            base.AddObject("diagnosticos", diagnostico);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the dxes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTodxes(dx dx)
+        {
+            base.AddObject("dxes", dx);
         }
     
         /// <summary>
@@ -578,6 +664,14 @@ namespace DataAccess
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the historials EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTohistorials(historial historial)
+        {
+            base.AddObject("historials", historial);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the ocupaciones EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToocupaciones(ocupacione ocupacione)
@@ -602,67 +696,19 @@ namespace DataAccess
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToroles(role role)
-        {
-            base.AddObject("roles", role);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTousuarios(usuario usuario)
-        {
-            base.AddObject("usuarios", usuario);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the diagnosticos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTodiagnosticos(diagnostico diagnostico)
-        {
-            base.AddObject("diagnosticos", diagnostico);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ayudas_tecnicas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToayudas_tecnicas(ayudas_tecnicas ayudas_tecnicas)
-        {
-            base.AddObject("ayudas_tecnicas", ayudas_tecnicas);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the clasificacion_paciente EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToclasificacion_paciente(clasificacion_paciente clasificacion_paciente)
-        {
-            base.AddObject("clasificacion_paciente", clasificacion_paciente);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the condicions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTocondicions(condicion condicion)
-        {
-            base.AddObject("condicions", condicion);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the dxes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTodxes(dx dx)
-        {
-            base.AddObject("dxes", dx);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the procedencias EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToprocedencias(procedencia procedencia)
         {
             base.AddObject("procedencias", procedencia);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the procedencia_descripcion EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToprocedencia_descripcion(procedencia_descripcion procedencia_descripcion)
+        {
+            base.AddObject("procedencia_descripcion", procedencia_descripcion);
         }
     
         /// <summary>
@@ -682,11 +728,27 @@ namespace DataAccess
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToroles(role role)
+        {
+            base.AddObject("roles", role);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the tipo_daño EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTotipo_daño(tipo_daño tipo_daño)
         {
             base.AddObject("tipo_daño", tipo_daño);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTousuarios(usuario usuario)
+        {
+            base.AddObject("usuarios", usuario);
         }
 
         #endregion
@@ -710,42 +772,18 @@ namespace DataAccess
         /// <summary>
         /// Create a new actividades_enfermeria object.
         /// </summary>
-        /// <param name="actividad">Initial value of the actividad property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        public static actividades_enfermeria Createactividades_enfermeria(global::System.String actividad, global::System.Int64 id)
+        /// <param name="actividad">Initial value of the actividad property.</param>
+        public static actividades_enfermeria Createactividades_enfermeria(global::System.Int64 id, global::System.String actividad)
         {
             actividades_enfermeria actividades_enfermeria = new actividades_enfermeria();
-            actividades_enfermeria.actividad = actividad;
             actividades_enfermeria.id = id;
+            actividades_enfermeria.actividad = actividad;
             return actividades_enfermeria;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String actividad
-        {
-            get
-            {
-                return _actividad;
-            }
-            set
-            {
-                OnactividadChanging(value);
-                ReportPropertyChanging("actividad");
-                _actividad = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("actividad");
-                OnactividadChanged();
-            }
-        }
-        private global::System.String _actividad;
-        partial void OnactividadChanging(global::System.String value);
-        partial void OnactividadChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -773,6 +811,30 @@ namespace DataAccess
         private global::System.Int64 _id;
         partial void OnidChanging(global::System.Int64 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String actividad
+        {
+            get
+            {
+                return _actividad;
+            }
+            set
+            {
+                OnactividadChanging(value);
+                ReportPropertyChanging("actividad");
+                _actividad = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("actividad");
+                OnactividadChanged();
+            }
+        }
+        private global::System.String _actividad;
+        partial void OnactividadChanging(global::System.String value);
+        partial void OnactividadChanged();
 
         #endregion
     
@@ -816,21 +878,21 @@ namespace DataAccess
         /// <summary>
         /// Create a new atenciones_enfermeria object.
         /// </summary>
-        /// <param name="actividad">Initial value of the actividad property.</param>
+        /// <param name="id">Initial value of the id property.</param>
         /// <param name="enfermera">Initial value of the enfermera property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
         /// <param name="expediente">Initial value of the expediente property.</param>
         /// <param name="fecha">Initial value of the fecha property.</param>
-        /// <param name="id">Initial value of the id property.</param>
-        /// <param name="prefijo">Initial value of the prefijo property.</param>
-        public static atenciones_enfermeria Createatenciones_enfermeria(global::System.Int64 actividad, global::System.String enfermera, global::System.Int64 expediente, global::System.DateTime fecha, global::System.Int64 id, global::System.Int32 prefijo)
+        /// <param name="actividad">Initial value of the actividad property.</param>
+        public static atenciones_enfermeria Createatenciones_enfermeria(global::System.Int64 id, global::System.String enfermera, global::System.Int32 prefijo, global::System.Int64 expediente, global::System.DateTime fecha, global::System.Int64 actividad)
         {
             atenciones_enfermeria atenciones_enfermeria = new atenciones_enfermeria();
-            atenciones_enfermeria.actividad = actividad;
+            atenciones_enfermeria.id = id;
             atenciones_enfermeria.enfermera = enfermera;
+            atenciones_enfermeria.prefijo = prefijo;
             atenciones_enfermeria.expediente = expediente;
             atenciones_enfermeria.fecha = fecha;
-            atenciones_enfermeria.id = id;
-            atenciones_enfermeria.prefijo = prefijo;
+            atenciones_enfermeria.actividad = actividad;
             return atenciones_enfermeria;
         }
 
@@ -840,26 +902,29 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 actividad
+        public global::System.Int64 id
         {
             get
             {
-                return _actividad;
+                return _id;
             }
             set
             {
-                OnactividadChanging(value);
-                ReportPropertyChanging("actividad");
-                _actividad = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("actividad");
-                OnactividadChanged();
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
             }
         }
-        private global::System.Int64 _actividad;
-        partial void OnactividadChanging(global::System.Int64 value);
-        partial void OnactividadChanged();
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -884,6 +949,30 @@ namespace DataAccess
         private global::System.String _enfermera;
         partial void OnenfermeraChanging(global::System.String value);
         partial void OnenfermeraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -936,53 +1025,26 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                if (_id != value)
-                {
-                    OnidChanging(value);
-                    ReportPropertyChanging("id");
-                    _id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id");
-                    OnidChanged();
-                }
-            }
-        }
-        private global::System.Int64 _id;
-        partial void OnidChanging(global::System.Int64 value);
-        partial void OnidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 prefijo
+        public global::System.Int64 actividad
         {
             get
             {
-                return _prefijo;
+                return _actividad;
             }
             set
             {
-                OnprefijoChanging(value);
-                ReportPropertyChanging("prefijo");
-                _prefijo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("prefijo");
-                OnprefijoChanged();
+                OnactividadChanging(value);
+                ReportPropertyChanging("actividad");
+                _actividad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("actividad");
+                OnactividadChanged();
             }
         }
-        private global::System.Int32 _prefijo;
-        partial void OnprefijoChanging(global::System.Int32 value);
-        partial void OnprefijoChanged();
+        private global::System.Int64 _actividad;
+        partial void OnactividadChanging(global::System.Int64 value);
+        partial void OnactividadChanged();
 
         #endregion
     
@@ -1184,6 +1246,31 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_ayudas_tecnicas", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_ayudas_tecnicas", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_ayudas_tecnicas", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -1199,42 +1286,18 @@ namespace DataAccess
         /// <summary>
         /// Create a new cargo object.
         /// </summary>
-        /// <param name="cargo1">Initial value of the cargo1 property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        public static cargo Createcargo(global::System.String cargo1, global::System.Int64 id)
+        /// <param name="cargo1">Initial value of the cargo1 property.</param>
+        public static cargo Createcargo(global::System.Int64 id, global::System.String cargo1)
         {
             cargo cargo = new cargo();
-            cargo.cargo1 = cargo1;
             cargo.id = id;
+            cargo.cargo1 = cargo1;
             return cargo;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String cargo1
-        {
-            get
-            {
-                return _cargo1;
-            }
-            set
-            {
-                Oncargo1Changing(value);
-                ReportPropertyChanging("cargo1");
-                _cargo1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("cargo1");
-                Oncargo1Changed();
-            }
-        }
-        private global::System.String _cargo1;
-        partial void Oncargo1Changing(global::System.String value);
-        partial void Oncargo1Changed();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1262,6 +1325,30 @@ namespace DataAccess
         private global::System.Int64 _id;
         partial void OnidChanging(global::System.Int64 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String cargo1
+        {
+            get
+            {
+                return _cargo1;
+            }
+            set
+            {
+                Oncargo1Changing(value);
+                ReportPropertyChanging("cargo1");
+                _cargo1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("cargo1");
+                Oncargo1Changed();
+            }
+        }
+        private global::System.String _cargo1;
+        partial void Oncargo1Changing(global::System.String value);
+        partial void Oncargo1Changed();
 
         #endregion
     
@@ -1405,18 +1492,18 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "roles_fk1", "role")]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "roles_fk1", "roles")]
         public EntityCollection<role> roles
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<role>("teletonModel.roles_fk1", "role");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<role>("teletonModel.roles_fk1", "roles");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<role>("teletonModel.roles_fk1", "role", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<role>("teletonModel.roles_fk1", "roles", value);
                 }
             }
         }
@@ -1438,17 +1525,17 @@ namespace DataAccess
         /// Create a new citas_doctor object.
         /// </summary>
         /// <param name="doctor_username">Initial value of the doctor_username property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
         /// <param name="expediente">Initial value of the expediente property.</param>
         /// <param name="fecha_hora">Initial value of the fecha_hora property.</param>
-        /// <param name="prefijo">Initial value of the prefijo property.</param>
         /// <param name="tipo">Initial value of the tipo property.</param>
-        public static citas_doctor Createcitas_doctor(global::System.String doctor_username, global::System.Int64 expediente, global::System.DateTime fecha_hora, global::System.Int32 prefijo, global::System.String tipo)
+        public static citas_doctor Createcitas_doctor(global::System.String doctor_username, global::System.Int32 prefijo, global::System.Int64 expediente, global::System.DateTime fecha_hora, global::System.String tipo)
         {
             citas_doctor citas_doctor = new citas_doctor();
             citas_doctor.doctor_username = doctor_username;
+            citas_doctor.prefijo = prefijo;
             citas_doctor.expediente = expediente;
             citas_doctor.fecha_hora = fecha_hora;
-            citas_doctor.prefijo = prefijo;
             citas_doctor.tipo = tipo;
             return citas_doctor;
         }
@@ -1482,6 +1569,30 @@ namespace DataAccess
         private global::System.String _doctor_username;
         partial void Ondoctor_usernameChanging(global::System.String value);
         partial void Ondoctor_usernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1533,30 +1644,6 @@ namespace DataAccess
         private global::System.DateTime _fecha_hora;
         partial void Onfecha_horaChanging(global::System.DateTime value);
         partial void Onfecha_horaChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 prefijo
-        {
-            get
-            {
-                return _prefijo;
-            }
-            set
-            {
-                OnprefijoChanging(value);
-                ReportPropertyChanging("prefijo");
-                _prefijo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("prefijo");
-                OnprefijoChanged();
-            }
-        }
-        private global::System.Int32 _prefijo;
-        partial void OnprefijoChanging(global::System.Int32 value);
-        partial void OnprefijoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1678,25 +1765,25 @@ namespace DataAccess
         /// <summary>
         /// Create a new citas_terapia object.
         /// </summary>
-        /// <param name="atendido">Initial value of the atendido property.</param>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="user">Initial value of the user property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
         /// <param name="expediente">Initial value of the expediente property.</param>
         /// <param name="fecha">Initial value of the fecha property.</param>
-        /// <param name="hora_final">Initial value of the hora_final property.</param>
         /// <param name="hora_inicio">Initial value of the hora_inicio property.</param>
-        /// <param name="id">Initial value of the id property.</param>
-        /// <param name="prefijo">Initial value of the prefijo property.</param>
-        /// <param name="user">Initial value of the user property.</param>
-        public static citas_terapia Createcitas_terapia(global::System.Boolean atendido, global::System.Int64 expediente, global::System.DateTime fecha, global::System.TimeSpan hora_final, global::System.TimeSpan hora_inicio, global::System.Int64 id, global::System.Int32 prefijo, global::System.String user)
+        /// <param name="hora_final">Initial value of the hora_final property.</param>
+        /// <param name="atendido">Initial value of the atendido property.</param>
+        public static citas_terapia Createcitas_terapia(global::System.Int64 id, global::System.String user, global::System.Int32 prefijo, global::System.Int64 expediente, global::System.DateTime fecha, global::System.TimeSpan hora_inicio, global::System.TimeSpan hora_final, global::System.Boolean atendido)
         {
             citas_terapia citas_terapia = new citas_terapia();
-            citas_terapia.atendido = atendido;
+            citas_terapia.id = id;
+            citas_terapia.user = user;
+            citas_terapia.prefijo = prefijo;
             citas_terapia.expediente = expediente;
             citas_terapia.fecha = fecha;
-            citas_terapia.hora_final = hora_final;
             citas_terapia.hora_inicio = hora_inicio;
-            citas_terapia.id = id;
-            citas_terapia.prefijo = prefijo;
-            citas_terapia.user = user;
+            citas_terapia.hora_final = hora_final;
+            citas_terapia.atendido = atendido;
             return citas_terapia;
         }
 
@@ -1706,26 +1793,77 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean atendido
+        public global::System.Int64 id
         {
             get
             {
-                return _atendido;
+                return _id;
             }
             set
             {
-                OnatendidoChanging(value);
-                ReportPropertyChanging("atendido");
-                _atendido = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("atendido");
-                OnatendidoChanged();
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
             }
         }
-        private global::System.Boolean _atendido;
-        partial void OnatendidoChanging(global::System.Boolean value);
-        partial void OnatendidoChanged();
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String user
+        {
+            get
+            {
+                return _user;
+            }
+            set
+            {
+                OnuserChanging(value);
+                ReportPropertyChanging("user");
+                _user = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("user");
+                OnuserChanged();
+            }
+        }
+        private global::System.String _user;
+        partial void OnuserChanging(global::System.String value);
+        partial void OnuserChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1780,6 +1918,30 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.TimeSpan hora_inicio
+        {
+            get
+            {
+                return _hora_inicio;
+            }
+            set
+            {
+                Onhora_inicioChanging(value);
+                ReportPropertyChanging("hora_inicio");
+                _hora_inicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("hora_inicio");
+                Onhora_inicioChanged();
+            }
+        }
+        private global::System.TimeSpan _hora_inicio;
+        partial void Onhora_inicioChanging(global::System.TimeSpan value);
+        partial void Onhora_inicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.TimeSpan hora_final
         {
             get
@@ -1804,99 +1966,24 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.TimeSpan hora_inicio
+        public global::System.Boolean atendido
         {
             get
             {
-                return _hora_inicio;
+                return _atendido;
             }
             set
             {
-                Onhora_inicioChanging(value);
-                ReportPropertyChanging("hora_inicio");
-                _hora_inicio = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("hora_inicio");
-                Onhora_inicioChanged();
+                OnatendidoChanging(value);
+                ReportPropertyChanging("atendido");
+                _atendido = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("atendido");
+                OnatendidoChanged();
             }
         }
-        private global::System.TimeSpan _hora_inicio;
-        partial void Onhora_inicioChanging(global::System.TimeSpan value);
-        partial void Onhora_inicioChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 id
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                if (_id != value)
-                {
-                    OnidChanging(value);
-                    ReportPropertyChanging("id");
-                    _id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id");
-                    OnidChanged();
-                }
-            }
-        }
-        private global::System.Int64 _id;
-        partial void OnidChanging(global::System.Int64 value);
-        partial void OnidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 prefijo
-        {
-            get
-            {
-                return _prefijo;
-            }
-            set
-            {
-                OnprefijoChanging(value);
-                ReportPropertyChanging("prefijo");
-                _prefijo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("prefijo");
-                OnprefijoChanged();
-            }
-        }
-        private global::System.Int32 _prefijo;
-        partial void OnprefijoChanging(global::System.Int32 value);
-        partial void OnprefijoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String user
-        {
-            get
-            {
-                return _user;
-            }
-            set
-            {
-                OnuserChanging(value);
-                ReportPropertyChanging("user");
-                _user = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("user");
-                OnuserChanged();
-            }
-        }
-        private global::System.String _user;
-        partial void OnuserChanging(global::System.String value);
-        partial void OnuserChanged();
+        private global::System.Boolean _atendido;
+        partial void OnatendidoChanging(global::System.Boolean value);
+        partial void OnatendidoChanged();
 
         #endregion
     
@@ -2060,6 +2147,31 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_clasificacion", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_clasificacion", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_clasificacion", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -2141,6 +2253,31 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_condicion", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_condicion", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_condicion", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -2156,42 +2293,18 @@ namespace DataAccess
         /// <summary>
         /// Create a new diagnostico object.
         /// </summary>
-        /// <param name="diagnostico1">Initial value of the diagnostico1 property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        public static diagnostico Creatediagnostico(global::System.String diagnostico1, global::System.Int64 id)
+        /// <param name="diagnostico1">Initial value of the diagnostico1 property.</param>
+        public static diagnostico Creatediagnostico(global::System.Int64 id, global::System.String diagnostico1)
         {
             diagnostico diagnostico = new diagnostico();
-            diagnostico.diagnostico1 = diagnostico1;
             diagnostico.id = id;
+            diagnostico.diagnostico1 = diagnostico1;
             return diagnostico;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String diagnostico1
-        {
-            get
-            {
-                return _diagnostico1;
-            }
-            set
-            {
-                Ondiagnostico1Changing(value);
-                ReportPropertyChanging("diagnostico1");
-                _diagnostico1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("diagnostico1");
-                Ondiagnostico1Changed();
-            }
-        }
-        private global::System.String _diagnostico1;
-        partial void Ondiagnostico1Changing(global::System.String value);
-        partial void Ondiagnostico1Changed();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2219,6 +2332,30 @@ namespace DataAccess
         private global::System.Int64 _id;
         partial void OnidChanging(global::System.Int64 value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String diagnostico1
+        {
+            get
+            {
+                return _diagnostico1;
+            }
+            set
+            {
+                Ondiagnostico1Changing(value);
+                ReportPropertyChanging("diagnostico1");
+                _diagnostico1 = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("diagnostico1");
+                Ondiagnostico1Changed();
+            }
+        }
+        private global::System.String _diagnostico1;
+        partial void Ondiagnostico1Changing(global::System.String value);
+        partial void Ondiagnostico1Changed();
 
         #endregion
     
@@ -2230,18 +2367,18 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnostico_FK", "paciente")]
-        public EntityCollection<paciente> pacientes
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnosticos_fk", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<paciente>("teletonModel.diagnostico_FK", "paciente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.diagnosticos_fk", "evoluciones");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<paciente>("teletonModel.diagnostico_FK", "paciente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.diagnosticos_fk", "evoluciones", value);
                 }
             }
         }
@@ -2252,18 +2389,18 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnosticos_fk", "evolucione")]
-        public EntityCollection<evolucione> evoluciones
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnostico_FK", "pacientes")]
+        public EntityCollection<paciente> pacientes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.diagnosticos_fk", "evolucione");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<paciente>("teletonModel.diagnostico_FK", "pacientes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.diagnosticos_fk", "evolucione", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<paciente>("teletonModel.diagnostico_FK", "pacientes", value);
                 }
             }
         }
@@ -2366,18 +2503,18 @@ namespace DataAccess
         /// Create a new empleado object.
         /// </summary>
         /// <param name="id">Initial value of the id property.</param>
-        /// <param name="nombres">Initial value of the nombres property.</param>
         /// <param name="primer_apellido">Initial value of the primer_apellido property.</param>
-        /// <param name="puesto">Initial value of the puesto property.</param>
         /// <param name="segundo_apellido">Initial value of the segundo_apellido property.</param>
-        public static empleado Createempleado(global::System.Int64 id, global::System.String nombres, global::System.String primer_apellido, global::System.Int64 puesto, global::System.String segundo_apellido)
+        /// <param name="nombres">Initial value of the nombres property.</param>
+        /// <param name="puesto">Initial value of the puesto property.</param>
+        public static empleado Createempleado(global::System.Int64 id, global::System.String primer_apellido, global::System.String segundo_apellido, global::System.String nombres, global::System.Int64 puesto)
         {
             empleado empleado = new empleado();
             empleado.id = id;
-            empleado.nombres = nombres;
             empleado.primer_apellido = primer_apellido;
-            empleado.puesto = puesto;
             empleado.segundo_apellido = segundo_apellido;
+            empleado.nombres = nombres;
+            empleado.puesto = puesto;
             return empleado;
         }
 
@@ -2416,30 +2553,6 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String nombres
-        {
-            get
-            {
-                return _nombres;
-            }
-            set
-            {
-                OnnombresChanging(value);
-                ReportPropertyChanging("nombres");
-                _nombres = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("nombres");
-                OnnombresChanged();
-            }
-        }
-        private global::System.String _nombres;
-        partial void OnnombresChanging(global::System.String value);
-        partial void OnnombresChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String primer_apellido
         {
             get
@@ -2464,30 +2577,6 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 puesto
-        {
-            get
-            {
-                return _puesto;
-            }
-            set
-            {
-                OnpuestoChanging(value);
-                ReportPropertyChanging("puesto");
-                _puesto = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("puesto");
-                OnpuestoChanged();
-            }
-        }
-        private global::System.Int64 _puesto;
-        partial void OnpuestoChanging(global::System.Int64 value);
-        partial void OnpuestoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String segundo_apellido
         {
             get
@@ -2506,6 +2595,54 @@ namespace DataAccess
         private global::System.String _segundo_apellido;
         partial void Onsegundo_apellidoChanging(global::System.String value);
         partial void Onsegundo_apellidoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombres
+        {
+            get
+            {
+                return _nombres;
+            }
+            set
+            {
+                OnnombresChanging(value);
+                ReportPropertyChanging("nombres");
+                _nombres = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombres");
+                OnnombresChanged();
+            }
+        }
+        private global::System.String _nombres;
+        partial void OnnombresChanging(global::System.String value);
+        partial void OnnombresChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 puesto
+        {
+            get
+            {
+                return _puesto;
+            }
+            set
+            {
+                OnpuestoChanging(value);
+                ReportPropertyChanging("puesto");
+                _puesto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("puesto");
+                OnpuestoChanged();
+            }
+        }
+        private global::System.Int64 _puesto;
+        partial void OnpuestoChanging(global::System.Int64 value);
+        partial void OnpuestoChanged();
 
         #endregion
     
@@ -2601,6 +2738,33 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Grado
@@ -2621,6 +2785,83 @@ namespace DataAccess
         private global::System.String _Grado;
         partial void OnGradoChanging(global::System.String value);
         partial void OnGradoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "escoralidad_fk", "pacientes")]
+        public EntityCollection<paciente> pacientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<paciente>("teletonModel.escoralidad_fk", "pacientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<paciente>("teletonModel.escoralidad_fk", "pacientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_escolaridad", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_escolaridad", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_escolaridad", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="estado_alta")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class estado_alta : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new estado_alta object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="estado">Initial value of the estado property.</param>
+        public static estado_alta Createestado_alta(global::System.Int64 id, global::System.String estado)
+        {
+            estado_alta estado_alta = new estado_alta();
+            estado_alta.id = id;
+            estado_alta.estado = estado;
+            return estado_alta;
+        }
+
+        #endregion
+        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2648,36 +2889,6 @@ namespace DataAccess
         private global::System.Int64 _id;
         partial void OnidChanging(global::System.Int64 value);
         partial void OnidChanged();
-
-        #endregion
-    
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="estado_alta")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class estado_alta : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new estado_alta object.
-        /// </summary>
-        /// <param name="estado">Initial value of the estado property.</param>
-        /// <param name="id">Initial value of the id property.</param>
-        public static estado_alta Createestado_alta(global::System.String estado, global::System.Int64 id)
-        {
-            estado_alta estado_alta = new estado_alta();
-            estado_alta.estado = estado;
-            estado_alta.id = id;
-            return estado_alta;
-        }
-
-        #endregion
-        #region Primitive Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2702,36 +2913,34 @@ namespace DataAccess
         private global::System.String _estado;
         partial void OnestadoChanging(global::System.String value);
         partial void OnestadoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        public global::System.Int64 id
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_estado_alta", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
         {
             get
             {
-                return _id;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_estado_alta", "evoluciones");
             }
             set
             {
-                if (_id != value)
+                if ((value != null))
                 {
-                    OnidChanging(value);
-                    ReportPropertyChanging("id");
-                    _id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("id");
-                    OnidChanged();
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_estado_alta", "evoluciones", value);
                 }
             }
         }
-        private global::System.Int64 _id;
-        partial void OnidChanging(global::System.Int64 value);
-        partial void OnidChanged();
 
         #endregion
-    
     }
     
     /// <summary>
@@ -2827,98 +3036,44 @@ namespace DataAccess
         /// <summary>
         /// Create a new evolucione object.
         /// </summary>
-        /// <param name="evaluador">Initial value of the evaluador property.</param>
-        /// <param name="expediente">Initial value of the expediente property.</param>
-        /// <param name="fecha">Initial value of the fecha property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        /// <param name="notas">Initial value of the notas property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
         /// <param name="prefijo">Initial value of the prefijo property.</param>
-        public static evolucione Createevolucione(global::System.String evaluador, global::System.Int64 expediente, global::System.DateTime fecha, global::System.Decimal id, global::System.String notas, global::System.Int32 prefijo)
+        /// <param name="expediente">Initial value of the expediente property.</param>
+        /// <param name="evaluador">Initial value of the evaluador property.</param>
+        /// <param name="notas">Initial value of the notas property.</param>
+        /// <param name="id_procedencia">Initial value of the id_procedencia property.</param>
+        /// <param name="id_escolaridad">Initial value of the id_escolaridad property.</param>
+        /// <param name="id_ocupacion">Initial value of the id_ocupacion property.</param>
+        /// <param name="id_clasificacion_paciente">Initial value of the id_clasificacion_paciente property.</param>
+        /// <param name="id_condicion">Initial value of the id_condicion property.</param>
+        /// <param name="id_tipo_daño">Initial value of the id_tipo_daño property.</param>
+        /// <param name="id_ayudas_tecnicas">Initial value of the id_ayudas_tecnicas property.</param>
+        /// <param name="id_estado_alta">Initial value of the id_estado_alta property.</param>
+        /// <param name="id_productividad">Initial value of the id_productividad property.</param>
+        public static evolucione Createevolucione(global::System.Decimal id, global::System.DateTime fecha, global::System.Int32 prefijo, global::System.Int64 expediente, global::System.String evaluador, global::System.String notas, global::System.String id_procedencia, global::System.Int64 id_escolaridad, global::System.Int64 id_ocupacion, global::System.Int64 id_clasificacion_paciente, global::System.String id_condicion, global::System.Int64 id_tipo_daño, global::System.Int64 id_ayudas_tecnicas, global::System.Int64 id_estado_alta, global::System.Int64 id_productividad)
         {
             evolucione evolucione = new evolucione();
-            evolucione.evaluador = evaluador;
-            evolucione.expediente = expediente;
-            evolucione.fecha = fecha;
             evolucione.id = id;
-            evolucione.notas = notas;
+            evolucione.fecha = fecha;
             evolucione.prefijo = prefijo;
+            evolucione.expediente = expediente;
+            evolucione.evaluador = evaluador;
+            evolucione.notas = notas;
+            evolucione.id_procedencia = id_procedencia;
+            evolucione.id_escolaridad = id_escolaridad;
+            evolucione.id_ocupacion = id_ocupacion;
+            evolucione.id_clasificacion_paciente = id_clasificacion_paciente;
+            evolucione.id_condicion = id_condicion;
+            evolucione.id_tipo_daño = id_tipo_daño;
+            evolucione.id_ayudas_tecnicas = id_ayudas_tecnicas;
+            evolucione.id_estado_alta = id_estado_alta;
+            evolucione.id_productividad = id_productividad;
             return evolucione;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String evaluador
-        {
-            get
-            {
-                return _evaluador;
-            }
-            set
-            {
-                OnevaluadorChanging(value);
-                ReportPropertyChanging("evaluador");
-                _evaluador = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("evaluador");
-                OnevaluadorChanged();
-            }
-        }
-        private global::System.String _evaluador;
-        partial void OnevaluadorChanging(global::System.String value);
-        partial void OnevaluadorChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int64 expediente
-        {
-            get
-            {
-                return _expediente;
-            }
-            set
-            {
-                OnexpedienteChanging(value);
-                ReportPropertyChanging("expediente");
-                _expediente = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("expediente");
-                OnexpedienteChanged();
-            }
-        }
-        private global::System.Int64 _expediente;
-        partial void OnexpedienteChanging(global::System.Int64 value);
-        partial void OnexpedienteChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime fecha
-        {
-            get
-            {
-                return _fecha;
-            }
-            set
-            {
-                OnfechaChanging(value);
-                ReportPropertyChanging("fecha");
-                _fecha = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("fecha");
-                OnfechaChanged();
-            }
-        }
-        private global::System.DateTime _fecha;
-        partial void OnfechaChanging(global::System.DateTime value);
-        partial void OnfechaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2952,24 +3107,24 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String notas
+        public global::System.DateTime fecha
         {
             get
             {
-                return _notas;
+                return _fecha;
             }
             set
             {
-                OnnotasChanging(value);
-                ReportPropertyChanging("notas");
-                _notas = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("notas");
-                OnnotasChanged();
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
             }
         }
-        private global::System.String _notas;
-        partial void OnnotasChanging(global::System.String value);
-        partial void OnnotasChanged();
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2998,6 +3153,30 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 expediente
+        {
+            get
+            {
+                return _expediente;
+            }
+            set
+            {
+                OnexpedienteChanging(value);
+                ReportPropertyChanging("expediente");
+                _expediente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("expediente");
+                OnexpedienteChanged();
+            }
+        }
+        private global::System.Int64 _expediente;
+        partial void OnexpedienteChanging(global::System.Int64 value);
+        partial void OnexpedienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> id_diagnostico
@@ -3022,9 +3201,57 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_procedencia
+        public global::System.String evaluador
+        {
+            get
+            {
+                return _evaluador;
+            }
+            set
+            {
+                OnevaluadorChanging(value);
+                ReportPropertyChanging("evaluador");
+                _evaluador = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("evaluador");
+                OnevaluadorChanged();
+            }
+        }
+        private global::System.String _evaluador;
+        partial void OnevaluadorChanging(global::System.String value);
+        partial void OnevaluadorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String notas
+        {
+            get
+            {
+                return _notas;
+            }
+            set
+            {
+                OnnotasChanging(value);
+                ReportPropertyChanging("notas");
+                _notas = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("notas");
+                OnnotasChanged();
+            }
+        }
+        private global::System.String _notas;
+        partial void OnnotasChanging(global::System.String value);
+        partial void OnnotasChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id_procedencia
         {
             get
             {
@@ -3034,21 +3261,21 @@ namespace DataAccess
             {
                 Onid_procedenciaChanging(value);
                 ReportPropertyChanging("id_procedencia");
-                _id_procedencia = StructuralObject.SetValidValue(value);
+                _id_procedencia = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("id_procedencia");
                 Onid_procedenciaChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_procedencia;
-        partial void Onid_procedenciaChanging(Nullable<global::System.Int32> value);
+        private global::System.String _id_procedencia;
+        partial void Onid_procedenciaChanging(global::System.String value);
         partial void Onid_procedenciaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_escolaridad
+        public global::System.Int64 id_escolaridad
         {
             get
             {
@@ -3063,16 +3290,16 @@ namespace DataAccess
                 Onid_escolaridadChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_escolaridad;
-        partial void Onid_escolaridadChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_escolaridad;
+        partial void Onid_escolaridadChanging(global::System.Int64 value);
         partial void Onid_escolaridadChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_ocupacion
+        public global::System.Int64 id_ocupacion
         {
             get
             {
@@ -3087,16 +3314,16 @@ namespace DataAccess
                 Onid_ocupacionChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_ocupacion;
-        partial void Onid_ocupacionChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_ocupacion;
+        partial void Onid_ocupacionChanging(global::System.Int64 value);
         partial void Onid_ocupacionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_clasificacion_paciente
+        public global::System.Int64 id_clasificacion_paciente
         {
             get
             {
@@ -3111,14 +3338,14 @@ namespace DataAccess
                 Onid_clasificacion_pacienteChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_clasificacion_paciente;
-        partial void Onid_clasificacion_pacienteChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_clasificacion_paciente;
+        partial void Onid_clasificacion_pacienteChanging(global::System.Int64 value);
         partial void Onid_clasificacion_pacienteChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String id_condicion
         {
@@ -3130,7 +3357,7 @@ namespace DataAccess
             {
                 Onid_condicionChanging(value);
                 ReportPropertyChanging("id_condicion");
-                _id_condicion = StructuralObject.SetValidValue(value, true);
+                _id_condicion = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("id_condicion");
                 Onid_condicionChanged();
             }
@@ -3166,9 +3393,9 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_tipo_daño
+        public global::System.Int64 id_tipo_daño
         {
             get
             {
@@ -3183,8 +3410,8 @@ namespace DataAccess
                 Onid_tipo_dañoChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_tipo_daño;
-        partial void Onid_tipo_dañoChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_tipo_daño;
+        partial void Onid_tipo_dañoChanging(global::System.Int64 value);
         partial void Onid_tipo_dañoChanged();
     
         /// <summary>
@@ -3216,7 +3443,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> años_tiempo_discapacidad
+        public Nullable<global::System.Int64> años_tiempo_discapacidad
         {
             get
             {
@@ -3231,8 +3458,8 @@ namespace DataAccess
                 Onaños_tiempo_discapacidadChanged();
             }
         }
-        private Nullable<global::System.Int32> _años_tiempo_discapacidad;
-        partial void Onaños_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _años_tiempo_discapacidad;
+        partial void Onaños_tiempo_discapacidadChanging(Nullable<global::System.Int64> value);
         partial void Onaños_tiempo_discapacidadChanged();
     
         /// <summary>
@@ -3240,7 +3467,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> meses_tiempo_discapacidad
+        public Nullable<global::System.Int64> meses_tiempo_discapacidad
         {
             get
             {
@@ -3255,8 +3482,8 @@ namespace DataAccess
                 Onmeses_tiempo_discapacidadChanged();
             }
         }
-        private Nullable<global::System.Int32> _meses_tiempo_discapacidad;
-        partial void Onmeses_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _meses_tiempo_discapacidad;
+        partial void Onmeses_tiempo_discapacidadChanging(Nullable<global::System.Int64> value);
         partial void Onmeses_tiempo_discapacidadChanged();
     
         /// <summary>
@@ -3264,7 +3491,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> dias_tiempo_discapacidad
+        public Nullable<global::System.Int64> dias_tiempo_discapacidad
         {
             get
             {
@@ -3279,8 +3506,8 @@ namespace DataAccess
                 Ondias_tiempo_discapacidadChanged();
             }
         }
-        private Nullable<global::System.Int32> _dias_tiempo_discapacidad;
-        partial void Ondias_tiempo_discapacidadChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _dias_tiempo_discapacidad;
+        partial void Ondias_tiempo_discapacidadChanging(Nullable<global::System.Int64> value);
         partial void Ondias_tiempo_discapacidadChanged();
     
         /// <summary>
@@ -3288,7 +3515,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> años_TSTDL
+        public Nullable<global::System.Int64> años_TSTDL
         {
             get
             {
@@ -3303,8 +3530,8 @@ namespace DataAccess
                 Onaños_TSTDLChanged();
             }
         }
-        private Nullable<global::System.Int32> _años_TSTDL;
-        partial void Onaños_TSTDLChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _años_TSTDL;
+        partial void Onaños_TSTDLChanging(Nullable<global::System.Int64> value);
         partial void Onaños_TSTDLChanged();
     
         /// <summary>
@@ -3312,7 +3539,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> meses_TSTDL
+        public Nullable<global::System.Int64> meses_TSTDL
         {
             get
             {
@@ -3327,8 +3554,8 @@ namespace DataAccess
                 Onmeses_TSTDLChanged();
             }
         }
-        private Nullable<global::System.Int32> _meses_TSTDL;
-        partial void Onmeses_TSTDLChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _meses_TSTDL;
+        partial void Onmeses_TSTDLChanging(Nullable<global::System.Int64> value);
         partial void Onmeses_TSTDLChanged();
     
         /// <summary>
@@ -3336,7 +3563,7 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> dias_TSTDL
+        public Nullable<global::System.Int64> dias_TSTDL
         {
             get
             {
@@ -3351,16 +3578,16 @@ namespace DataAccess
                 Ondias_TSTDLChanged();
             }
         }
-        private Nullable<global::System.Int32> _dias_TSTDL;
-        partial void Ondias_TSTDLChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Int64> _dias_TSTDL;
+        partial void Ondias_TSTDLChanging(Nullable<global::System.Int64> value);
         partial void Ondias_TSTDLChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_ayudas_tecnicas
+        public global::System.Int64 id_ayudas_tecnicas
         {
             get
             {
@@ -3375,16 +3602,16 @@ namespace DataAccess
                 Onid_ayudas_tecnicasChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_ayudas_tecnicas;
-        partial void Onid_ayudas_tecnicasChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_ayudas_tecnicas;
+        partial void Onid_ayudas_tecnicasChanging(global::System.Int64 value);
         partial void Onid_ayudas_tecnicasChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_estado_alta
+        public global::System.Int64 id_estado_alta
         {
             get
             {
@@ -3399,16 +3626,16 @@ namespace DataAccess
                 Onid_estado_altaChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_estado_alta;
-        partial void Onid_estado_altaChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_estado_alta;
+        partial void Onid_estado_altaChanging(global::System.Int64 value);
         partial void Onid_estado_altaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> id_productividad
+        public global::System.Int64 id_productividad
         {
             get
             {
@@ -3423,13 +3650,241 @@ namespace DataAccess
                 Onid_productividadChanged();
             }
         }
-        private Nullable<global::System.Int32> _id_productividad;
-        partial void Onid_productividadChanging(Nullable<global::System.Int32> value);
+        private global::System.Int64 _id_productividad;
+        partial void Onid_productividadChanging(global::System.Int64 value);
         partial void Onid_productividadChanged();
 
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_ayudas_tecnicas", "ayudas_tecnicas")]
+        public ayudas_tecnicas ayudas_tecnicas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ayudas_tecnicas>("teletonModel.fk_ayudas_tecnicas", "ayudas_tecnicas").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ayudas_tecnicas>("teletonModel.fk_ayudas_tecnicas", "ayudas_tecnicas").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ayudas_tecnicas> ayudas_tecnicasReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ayudas_tecnicas>("teletonModel.fk_ayudas_tecnicas", "ayudas_tecnicas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ayudas_tecnicas>("teletonModel.fk_ayudas_tecnicas", "ayudas_tecnicas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_clasificacion", "clasificacion_paciente")]
+        public clasificacion_paciente clasificacion_paciente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clasificacion_paciente>("teletonModel.fk_clasificacion", "clasificacion_paciente").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clasificacion_paciente>("teletonModel.fk_clasificacion", "clasificacion_paciente").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<clasificacion_paciente> clasificacion_pacienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<clasificacion_paciente>("teletonModel.fk_clasificacion", "clasificacion_paciente");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<clasificacion_paciente>("teletonModel.fk_clasificacion", "clasificacion_paciente", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_condicion", "condicion")]
+        public condicion condicion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<condicion>("teletonModel.fk_condicion", "condicion").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<condicion>("teletonModel.fk_condicion", "condicion").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<condicion> condicionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<condicion>("teletonModel.fk_condicion", "condicion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<condicion>("teletonModel.fk_condicion", "condicion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnosticos_fk", "diagnosticos")]
+        public diagnostico diagnostico
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnosticos").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnosticos").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<diagnostico> diagnosticoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnosticos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnosticos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_escolaridad", "escolaridad")]
+        public escolaridad escolaridad
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.fk_escolaridad", "escolaridad").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.fk_escolaridad", "escolaridad").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<escolaridad> escolaridadReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.fk_escolaridad", "escolaridad");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<escolaridad>("teletonModel.fk_escolaridad", "escolaridad", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_estado_alta", "estado_alta")]
+        public estado_alta estado_alta
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<estado_alta>("teletonModel.fk_estado_alta", "estado_alta").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<estado_alta>("teletonModel.fk_estado_alta", "estado_alta").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<estado_alta> estado_altaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<estado_alta>("teletonModel.fk_estado_alta", "estado_alta");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<estado_alta>("teletonModel.fk_estado_alta", "estado_alta", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3475,6 +3930,158 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_ocupaciones", "ocupaciones")]
+        public ocupacione ocupacione
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.fk_ocupaciones", "ocupaciones").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.fk_ocupaciones", "ocupaciones").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ocupacione> ocupacioneReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.fk_ocupaciones", "ocupaciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ocupacione>("teletonModel.fk_ocupaciones", "ocupaciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_procedencia", "procedencia")]
+        public procedencia procedencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.fk_procedencia", "procedencia").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.fk_procedencia", "procedencia").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<procedencia> procedenciaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.fk_procedencia", "procedencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<procedencia>("teletonModel.fk_procedencia", "procedencia", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_productividad", "productividad")]
+        public productividad productividad
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<productividad>("teletonModel.fk_productividad", "productividad").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<productividad>("teletonModel.fk_productividad", "productividad").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<productividad> productividadReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<productividad>("teletonModel.fk_productividad", "productividad");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<productividad>("teletonModel.fk_productividad", "productividad", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_tipo_daño", "tipo_daño")]
+        public tipo_daño tipo_daño
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tipo_daño>("teletonModel.fk_tipo_daño", "tipo_daño").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tipo_daño>("teletonModel.fk_tipo_daño", "tipo_daño").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<tipo_daño> tipo_dañoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<tipo_daño>("teletonModel.fk_tipo_daño", "tipo_daño");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tipo_daño>("teletonModel.fk_tipo_daño", "tipo_daño", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("teletonModel", "pacientes_fk1", "pacientes")]
         public paciente paciente
         {
@@ -3506,6 +4113,192 @@ namespace DataAccess
                 }
             }
         }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="historial")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class historial : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new historial object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="n_expediente">Initial value of the n_expediente property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
+        /// <param name="username">Initial value of the username property.</param>
+        public static historial Createhistorial(global::System.Int32 id, global::System.Int64 n_expediente, global::System.Int32 prefijo, global::System.DateTime fecha, global::System.String username)
+        {
+            historial historial = new historial();
+            historial.id = id;
+            historial.n_expediente = n_expediente;
+            historial.prefijo = prefijo;
+            historial.fecha = fecha;
+            historial.username = username;
+            return historial;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 n_expediente
+        {
+            get
+            {
+                return _n_expediente;
+            }
+            set
+            {
+                Onn_expedienteChanging(value);
+                ReportPropertyChanging("n_expediente");
+                _n_expediente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("n_expediente");
+                Onn_expedienteChanged();
+            }
+        }
+        private global::System.Int64 _n_expediente;
+        partial void Onn_expedienteChanging(global::System.Int64 value);
+        partial void Onn_expedienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String texto
+        {
+            get
+            {
+                return _texto;
+            }
+            set
+            {
+                OntextoChanging(value);
+                ReportPropertyChanging("texto");
+                _texto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("texto");
+                OntextoChanged();
+            }
+        }
+        private global::System.String _texto;
+        partial void OntextoChanging(global::System.String value);
+        partial void OntextoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3513,16 +4306,16 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnosticos_fk", "diagnostico")]
-        public diagnostico diagnostico
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente", "pacientes")]
+        public paciente paciente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnostico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente", "pacientes").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnostico").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente", "pacientes").Value = value;
             }
         }
         /// <summary>
@@ -3530,17 +4323,55 @@ namespace DataAccess
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<diagnostico> diagnosticoReference
+        public EntityReference<paciente> pacienteReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnostico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente", "pacientes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<diagnostico>("teletonModel.diagnosticos_fk", "diagnostico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<paciente>("teletonModel.fk_n_expediente", "pacientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username", "usuarios")]
+        public usuario usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuario> usuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("teletonModel.fk_username", "usuarios", value);
                 }
             }
         }
@@ -3627,6 +4458,53 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_ocupaciones", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_ocupaciones", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_ocupaciones", "evoluciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "profesion_fk", "pacientes")]
+        public EntityCollection<paciente> pacientes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<paciente>("teletonModel.profesion_fk", "pacientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<paciente>("teletonModel.profesion_fk", "pacientes", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3642,130 +4520,40 @@ namespace DataAccess
         /// <summary>
         /// Create a new paciente object.
         /// </summary>
-        /// <param name="cedula">Initial value of the cedula property.</param>
-        /// <param name="centro_actual">Initial value of the centro_actual property.</param>
         /// <param name="expediente">Initial value of the expediente property.</param>
-        /// <param name="fecha_ingreso">Initial value of the fecha_ingreso property.</param>
-        /// <param name="fecha_nac">Initial value of the fecha_nac property.</param>
-        /// <param name="nombres">Initial value of the nombres property.</param>
         /// <param name="prefijo">Initial value of the prefijo property.</param>
+        /// <param name="centro_actual">Initial value of the centro_actual property.</param>
+        /// <param name="fecha_ingreso">Initial value of the fecha_ingreso property.</param>
         /// <param name="primer_apellido">Initial value of the primer_apellido property.</param>
         /// <param name="segundo_apellido">Initial value of the segundo_apellido property.</param>
+        /// <param name="nombres">Initial value of the nombres property.</param>
+        /// <param name="cedula">Initial value of the cedula property.</param>
+        /// <param name="estado_civil">Initial value of the estado_civil property.</param>
         /// <param name="sexo">Initial value of the sexo property.</param>
-        public static paciente Createpaciente(global::System.String cedula, global::System.Int32 centro_actual, global::System.Int64 expediente, global::System.DateTime fecha_ingreso, global::System.DateTime fecha_nac, global::System.String nombres, global::System.Int32 prefijo, global::System.String primer_apellido, global::System.String segundo_apellido, global::System.Boolean sexo)
+        /// <param name="fecha_nac">Initial value of the fecha_nac property.</param>
+        /// <param name="escolaridad">Initial value of the escolaridad property.</param>
+        /// <param name="profesion">Initial value of the profesion property.</param>
+        public static paciente Createpaciente(global::System.Int64 expediente, global::System.Int32 prefijo, global::System.Int32 centro_actual, global::System.DateTime fecha_ingreso, global::System.String primer_apellido, global::System.String segundo_apellido, global::System.String nombres, global::System.String cedula, global::System.String estado_civil, global::System.Boolean sexo, global::System.DateTime fecha_nac, global::System.Int64 escolaridad, global::System.Int64 profesion)
         {
             paciente paciente = new paciente();
-            paciente.cedula = cedula;
-            paciente.centro_actual = centro_actual;
             paciente.expediente = expediente;
-            paciente.fecha_ingreso = fecha_ingreso;
-            paciente.fecha_nac = fecha_nac;
-            paciente.nombres = nombres;
             paciente.prefijo = prefijo;
+            paciente.centro_actual = centro_actual;
+            paciente.fecha_ingreso = fecha_ingreso;
             paciente.primer_apellido = primer_apellido;
             paciente.segundo_apellido = segundo_apellido;
+            paciente.nombres = nombres;
+            paciente.cedula = cedula;
+            paciente.estado_civil = estado_civil;
             paciente.sexo = sexo;
+            paciente.fecha_nac = fecha_nac;
+            paciente.escolaridad = escolaridad;
+            paciente.profesion = profesion;
             return paciente;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String cedula
-        {
-            get
-            {
-                return _cedula;
-            }
-            set
-            {
-                OncedulaChanging(value);
-                ReportPropertyChanging("cedula");
-                _cedula = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("cedula");
-                OncedulaChanged();
-            }
-        }
-        private global::System.String _cedula;
-        partial void OncedulaChanging(global::System.String value);
-        partial void OncedulaChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 centro_actual
-        {
-            get
-            {
-                return _centro_actual;
-            }
-            set
-            {
-                Oncentro_actualChanging(value);
-                ReportPropertyChanging("centro_actual");
-                _centro_actual = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("centro_actual");
-                Oncentro_actualChanged();
-            }
-        }
-        private global::System.Int32 _centro_actual;
-        partial void Oncentro_actualChanging(global::System.Int32 value);
-        partial void Oncentro_actualChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String direccion
-        {
-            get
-            {
-                return _direccion;
-            }
-            set
-            {
-                OndireccionChanging(value);
-                ReportPropertyChanging("direccion");
-                _direccion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("direccion");
-                OndireccionChanged();
-            }
-        }
-        private global::System.String _direccion;
-        partial void OndireccionChanging(global::System.String value);
-        partial void OndireccionChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String estado_civil
-        {
-            get
-            {
-                return _estado_civil;
-            }
-            set
-            {
-                Onestado_civilChanging(value);
-                ReportPropertyChanging("estado_civil");
-                _estado_civil = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("estado_civil");
-                Onestado_civilChanged();
-            }
-        }
-        private global::System.String _estado_civil;
-        partial void Onestado_civilChanging(global::System.String value);
-        partial void Onestado_civilChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3797,126 +4585,6 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime fecha_ingreso
-        {
-            get
-            {
-                return _fecha_ingreso;
-            }
-            set
-            {
-                Onfecha_ingresoChanging(value);
-                ReportPropertyChanging("fecha_ingreso");
-                _fecha_ingreso = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("fecha_ingreso");
-                Onfecha_ingresoChanged();
-            }
-        }
-        private global::System.DateTime _fecha_ingreso;
-        partial void Onfecha_ingresoChanging(global::System.DateTime value);
-        partial void Onfecha_ingresoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime fecha_nac
-        {
-            get
-            {
-                return _fecha_nac;
-            }
-            set
-            {
-                Onfecha_nacChanging(value);
-                ReportPropertyChanging("fecha_nac");
-                _fecha_nac = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("fecha_nac");
-                Onfecha_nacChanged();
-            }
-        }
-        private global::System.DateTime _fecha_nac;
-        partial void Onfecha_nacChanging(global::System.DateTime value);
-        partial void Onfecha_nacChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String lugar_nac
-        {
-            get
-            {
-                return _lugar_nac;
-            }
-            set
-            {
-                Onlugar_nacChanging(value);
-                ReportPropertyChanging("lugar_nac");
-                _lugar_nac = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("lugar_nac");
-                Onlugar_nacChanged();
-            }
-        }
-        private global::System.String _lugar_nac;
-        partial void Onlugar_nacChanging(global::System.String value);
-        partial void Onlugar_nacChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String nombres
-        {
-            get
-            {
-                return _nombres;
-            }
-            set
-            {
-                OnnombresChanging(value);
-                ReportPropertyChanging("nombres");
-                _nombres = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("nombres");
-                OnnombresChanged();
-            }
-        }
-        private global::System.String _nombres;
-        partial void OnnombresChanging(global::System.String value);
-        partial void OnnombresChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String numero_doc_alt
-        {
-            get
-            {
-                return _numero_doc_alt;
-            }
-            set
-            {
-                Onnumero_doc_altChanging(value);
-                ReportPropertyChanging("numero_doc_alt");
-                _numero_doc_alt = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("numero_doc_alt");
-                Onnumero_doc_altChanged();
-            }
-        }
-        private global::System.String _numero_doc_alt;
-        partial void Onnumero_doc_altChanging(global::System.String value);
-        partial void Onnumero_doc_altChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 prefijo
@@ -3940,6 +4608,54 @@ namespace DataAccess
         private global::System.Int32 _prefijo;
         partial void OnprefijoChanging(global::System.Int32 value);
         partial void OnprefijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 centro_actual
+        {
+            get
+            {
+                return _centro_actual;
+            }
+            set
+            {
+                Oncentro_actualChanging(value);
+                ReportPropertyChanging("centro_actual");
+                _centro_actual = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("centro_actual");
+                Oncentro_actualChanged();
+            }
+        }
+        private global::System.Int32 _centro_actual;
+        partial void Oncentro_actualChanging(global::System.Int32 value);
+        partial void Oncentro_actualChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha_ingreso
+        {
+            get
+            {
+                return _fecha_ingreso;
+            }
+            set
+            {
+                Onfecha_ingresoChanging(value);
+                ReportPropertyChanging("fecha_ingreso");
+                _fecha_ingreso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha_ingreso");
+                Onfecha_ingresoChanged();
+            }
+        }
+        private global::System.DateTime _fecha_ingreso;
+        partial void Onfecha_ingresoChanging(global::System.DateTime value);
+        partial void Onfecha_ingresoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3994,24 +4710,48 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean sexo
+        public global::System.String nombres
         {
             get
             {
-                return _sexo;
+                return _nombres;
             }
             set
             {
-                OnsexoChanging(value);
-                ReportPropertyChanging("sexo");
-                _sexo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("sexo");
-                OnsexoChanged();
+                OnnombresChanging(value);
+                ReportPropertyChanging("nombres");
+                _nombres = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nombres");
+                OnnombresChanged();
             }
         }
-        private global::System.Boolean _sexo;
-        partial void OnsexoChanging(global::System.Boolean value);
-        partial void OnsexoChanged();
+        private global::System.String _nombres;
+        partial void OnnombresChanging(global::System.String value);
+        partial void OnnombresChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String cedula
+        {
+            get
+            {
+                return _cedula;
+            }
+            set
+            {
+                OncedulaChanging(value);
+                ReportPropertyChanging("cedula");
+                _cedula = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("cedula");
+                OncedulaChanged();
+            }
+        }
+        private global::System.String _cedula;
+        partial void OncedulaChanging(global::System.String value);
+        partial void OncedulaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4036,6 +4776,150 @@ namespace DataAccess
         private global::System.String _tipo_doc_alterno;
         partial void Ontipo_doc_alternoChanging(global::System.String value);
         partial void Ontipo_doc_alternoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String numero_doc_alt
+        {
+            get
+            {
+                return _numero_doc_alt;
+            }
+            set
+            {
+                Onnumero_doc_altChanging(value);
+                ReportPropertyChanging("numero_doc_alt");
+                _numero_doc_alt = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("numero_doc_alt");
+                Onnumero_doc_altChanged();
+            }
+        }
+        private global::System.String _numero_doc_alt;
+        partial void Onnumero_doc_altChanging(global::System.String value);
+        partial void Onnumero_doc_altChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String estado_civil
+        {
+            get
+            {
+                return _estado_civil;
+            }
+            set
+            {
+                Onestado_civilChanging(value);
+                ReportPropertyChanging("estado_civil");
+                _estado_civil = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("estado_civil");
+                Onestado_civilChanged();
+            }
+        }
+        private global::System.String _estado_civil;
+        partial void Onestado_civilChanging(global::System.String value);
+        partial void Onestado_civilChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean sexo
+        {
+            get
+            {
+                return _sexo;
+            }
+            set
+            {
+                OnsexoChanging(value);
+                ReportPropertyChanging("sexo");
+                _sexo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("sexo");
+                OnsexoChanged();
+            }
+        }
+        private global::System.Boolean _sexo;
+        partial void OnsexoChanging(global::System.Boolean value);
+        partial void OnsexoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha_nac
+        {
+            get
+            {
+                return _fecha_nac;
+            }
+            set
+            {
+                Onfecha_nacChanging(value);
+                ReportPropertyChanging("fecha_nac");
+                _fecha_nac = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha_nac");
+                Onfecha_nacChanged();
+            }
+        }
+        private global::System.DateTime _fecha_nac;
+        partial void Onfecha_nacChanging(global::System.DateTime value);
+        partial void Onfecha_nacChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lugar_nac
+        {
+            get
+            {
+                return _lugar_nac;
+            }
+            set
+            {
+                Onlugar_nacChanging(value);
+                ReportPropertyChanging("lugar_nac");
+                _lugar_nac = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lugar_nac");
+                Onlugar_nacChanged();
+            }
+        }
+        private global::System.String _lugar_nac;
+        partial void Onlugar_nacChanging(global::System.String value);
+        partial void Onlugar_nacChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String direccion
+        {
+            get
+            {
+                return _direccion;
+            }
+            set
+            {
+                OndireccionChanging(value);
+                ReportPropertyChanging("direccion");
+                _direccion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("direccion");
+                OndireccionChanged();
+            }
+        }
+        private global::System.String _direccion;
+        partial void OndireccionChanging(global::System.String value);
+        partial void OndireccionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4084,6 +4968,390 @@ namespace DataAccess
         private global::System.Byte[] _foto;
         partial void OnfotoChanging(global::System.Byte[] value);
         partial void OnfotoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String telefono_fijo
+        {
+            get
+            {
+                return _telefono_fijo;
+            }
+            set
+            {
+                Ontelefono_fijoChanging(value);
+                ReportPropertyChanging("telefono_fijo");
+                _telefono_fijo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("telefono_fijo");
+                Ontelefono_fijoChanged();
+            }
+        }
+        private global::System.String _telefono_fijo;
+        partial void Ontelefono_fijoChanging(global::System.String value);
+        partial void Ontelefono_fijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String telefono_movil
+        {
+            get
+            {
+                return _telefono_movil;
+            }
+            set
+            {
+                Ontelefono_movilChanging(value);
+                ReportPropertyChanging("telefono_movil");
+                _telefono_movil = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("telefono_movil");
+                Ontelefono_movilChanged();
+            }
+        }
+        private global::System.String _telefono_movil;
+        partial void Ontelefono_movilChanging(global::System.String value);
+        partial void Ontelefono_movilChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre_padre
+        {
+            get
+            {
+                return _nombre_padre;
+            }
+            set
+            {
+                Onnombre_padreChanging(value);
+                ReportPropertyChanging("nombre_padre");
+                _nombre_padre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre_padre");
+                Onnombre_padreChanged();
+            }
+        }
+        private global::System.String _nombre_padre;
+        partial void Onnombre_padreChanging(global::System.String value);
+        partial void Onnombre_padreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre_madre
+        {
+            get
+            {
+                return _nombre_madre;
+            }
+            set
+            {
+                Onnombre_madreChanging(value);
+                ReportPropertyChanging("nombre_madre");
+                _nombre_madre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre_madre");
+                Onnombre_madreChanged();
+            }
+        }
+        private global::System.String _nombre_madre;
+        partial void Onnombre_madreChanging(global::System.String value);
+        partial void Onnombre_madreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estructura_familiar
+        {
+            get
+            {
+                return _estructura_familiar;
+            }
+            set
+            {
+                Onestructura_familiarChanging(value);
+                ReportPropertyChanging("estructura_familiar");
+                _estructura_familiar = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estructura_familiar");
+                Onestructura_familiarChanged();
+            }
+        }
+        private global::System.String _estructura_familiar;
+        partial void Onestructura_familiarChanging(global::System.String value);
+        partial void Onestructura_familiarChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String condicion_hogar
+        {
+            get
+            {
+                return _condicion_hogar;
+            }
+            set
+            {
+                Oncondicion_hogarChanging(value);
+                ReportPropertyChanging("condicion_hogar");
+                _condicion_hogar = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("condicion_hogar");
+                Oncondicion_hogarChanged();
+            }
+        }
+        private global::System.String _condicion_hogar;
+        partial void Oncondicion_hogarChanging(global::System.String value);
+        partial void Oncondicion_hogarChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> ingreso_familiar
+        {
+            get
+            {
+                return _ingreso_familiar;
+            }
+            set
+            {
+                Oningreso_familiarChanging(value);
+                ReportPropertyChanging("ingreso_familiar");
+                _ingreso_familiar = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ingreso_familiar");
+                Oningreso_familiarChanged();
+            }
+        }
+        private Nullable<global::System.Double> _ingreso_familiar;
+        partial void Oningreso_familiarChanging(Nullable<global::System.Double> value);
+        partial void Oningreso_familiarChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> expectativa
+        {
+            get
+            {
+                return _expectativa;
+            }
+            set
+            {
+                OnexpectativaChanging(value);
+                ReportPropertyChanging("expectativa");
+                _expectativa = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("expectativa");
+                OnexpectativaChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _expectativa;
+        partial void OnexpectativaChanging(Nullable<global::System.Boolean> value);
+        partial void OnexpectativaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String documentacion
+        {
+            get
+            {
+                return _documentacion;
+            }
+            set
+            {
+                OndocumentacionChanging(value);
+                ReportPropertyChanging("documentacion");
+                _documentacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("documentacion");
+                OndocumentacionChanged();
+            }
+        }
+        private global::System.String _documentacion;
+        partial void OndocumentacionChanging(global::System.String value);
+        partial void OndocumentacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String observaciones
+        {
+            get
+            {
+                return _observaciones;
+            }
+            set
+            {
+                OnobservacionesChanging(value);
+                ReportPropertyChanging("observaciones");
+                _observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("observaciones");
+                OnobservacionesChanged();
+            }
+        }
+        private global::System.String _observaciones;
+        partial void OnobservacionesChanging(global::System.String value);
+        partial void OnobservacionesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 escolaridad
+        {
+            get
+            {
+                return _escolaridad;
+            }
+            set
+            {
+                OnescolaridadChanging(value);
+                ReportPropertyChanging("escolaridad");
+                _escolaridad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("escolaridad");
+                OnescolaridadChanged();
+            }
+        }
+        private global::System.Int64 _escolaridad;
+        partial void OnescolaridadChanging(global::System.Int64 value);
+        partial void OnescolaridadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 profesion
+        {
+            get
+            {
+                return _profesion;
+            }
+            set
+            {
+                OnprofesionChanging(value);
+                ReportPropertyChanging("profesion");
+                _profesion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("profesion");
+                OnprofesionChanged();
+            }
+        }
+        private global::System.Int64 _profesion;
+        partial void OnprofesionChanging(global::System.Int64 value);
+        partial void OnprofesionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String lugar_trabajo
+        {
+            get
+            {
+                return _lugar_trabajo;
+            }
+            set
+            {
+                Onlugar_trabajoChanging(value);
+                ReportPropertyChanging("lugar_trabajo");
+                _lugar_trabajo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("lugar_trabajo");
+                Onlugar_trabajoChanged();
+            }
+        }
+        private global::System.String _lugar_trabajo;
+        partial void Onlugar_trabajoChanging(global::System.String value);
+        partial void Onlugar_trabajoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> candidato_transporte
+        {
+            get
+            {
+                return _candidato_transporte;
+            }
+            set
+            {
+                Oncandidato_transporteChanging(value);
+                ReportPropertyChanging("candidato_transporte");
+                _candidato_transporte = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("candidato_transporte");
+                Oncandidato_transporteChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _candidato_transporte;
+        partial void Oncandidato_transporteChanging(Nullable<global::System.Boolean> value);
+        partial void Oncandidato_transporteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String recibio_rehabilitacion_antes
+        {
+            get
+            {
+                return _recibio_rehabilitacion_antes;
+            }
+            set
+            {
+                Onrecibio_rehabilitacion_antesChanging(value);
+                ReportPropertyChanging("recibio_rehabilitacion_antes");
+                _recibio_rehabilitacion_antes = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("recibio_rehabilitacion_antes");
+                Onrecibio_rehabilitacion_antesChanged();
+            }
+        }
+        private global::System.String _recibio_rehabilitacion_antes;
+        partial void Onrecibio_rehabilitacion_antesChanging(global::System.String value);
+        partial void Onrecibio_rehabilitacion_antesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String se_entero_teleton
+        {
+            get
+            {
+                return _se_entero_teleton;
+            }
+            set
+            {
+                Onse_entero_teletonChanging(value);
+                ReportPropertyChanging("se_entero_teleton");
+                _se_entero_teleton = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("se_entero_teleton");
+                Onse_entero_teletonChanged();
+            }
+        }
+        private global::System.String _se_entero_teleton;
+        partial void Onse_entero_teletonChanging(global::System.String value);
+        partial void Onse_entero_teletonChanged();
 
         #endregion
     
@@ -4161,6 +5429,82 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnostico_FK", "diagnosticos")]
+        public diagnostico diagnostico1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnosticos").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnosticos").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<diagnostico> diagnostico1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnosticos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnosticos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "escoralidad_fk", "escolaridad")]
+        public escolaridad escolaridad1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.escoralidad_fk", "escolaridad").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.escoralidad_fk", "escolaridad").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<escolaridad> escolaridad1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<escolaridad>("teletonModel.escoralidad_fk", "escolaridad");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<escolaridad>("teletonModel.escoralidad_fk", "escolaridad", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("teletonModel", "pacientes_fk", "estado_civil")]
         public estado_civil estado_civil1
         {
@@ -4221,16 +5565,38 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "diagnostico_FK", "diagnostico")]
-        public diagnostico diagnostico1
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente", "historial")]
+        public EntityCollection<historial> historials
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnostico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historial>("teletonModel.fk_n_expediente", "historial");
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnostico").Value = value;
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historial>("teletonModel.fk_n_expediente", "historial", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "profesion_fk", "ocupaciones")]
+        public ocupacione ocupacione
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.profesion_fk", "ocupaciones").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.profesion_fk", "ocupaciones").Value = value;
             }
         }
         /// <summary>
@@ -4238,17 +5604,17 @@ namespace DataAccess
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<diagnostico> diagnostico1Reference
+        public EntityReference<ocupacione> ocupacioneReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnostico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ocupacione>("teletonModel.profesion_fk", "ocupaciones");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<diagnostico>("teletonModel.diagnostico_FK", "diagnostico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ocupacione>("teletonModel.profesion_fk", "ocupaciones", value);
                 }
             }
         }
@@ -4269,42 +5635,18 @@ namespace DataAccess
         /// <summary>
         /// Create a new permiso object.
         /// </summary>
-        /// <param name="descripcion">Initial value of the descripcion property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        public static permiso Createpermiso(global::System.String descripcion, global::System.String id)
+        /// <param name="descripcion">Initial value of the descripcion property.</param>
+        public static permiso Createpermiso(global::System.String id, global::System.String descripcion)
         {
             permiso permiso = new permiso();
-            permiso.descripcion = descripcion;
             permiso.id = id;
+            permiso.descripcion = descripcion;
             return permiso;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String descripcion
-        {
-            get
-            {
-                return _descripcion;
-            }
-            set
-            {
-                OndescripcionChanging(value);
-                ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("descripcion");
-                OndescripcionChanged();
-            }
-        }
-        private global::System.String _descripcion;
-        partial void OndescripcionChanging(global::System.String value);
-        partial void OndescripcionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4332,6 +5674,30 @@ namespace DataAccess
         private global::System.String _id;
         partial void OnidChanging(global::System.String value);
         partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
 
         #endregion
     
@@ -4441,6 +5807,199 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_procedencia", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_procedencia", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_procedencia", "evoluciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "procedencia_fk", "procedencia_descripcion")]
+        public EntityCollection<procedencia_descripcion> procedencia_descripcion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<procedencia_descripcion>("teletonModel.procedencia_fk", "procedencia_descripcion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<procedencia_descripcion>("teletonModel.procedencia_fk", "procedencia_descripcion", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="procedencia_descripcion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class procedencia_descripcion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new procedencia_descripcion object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="id_procedencia">Initial value of the id_procedencia property.</param>
+        public static procedencia_descripcion Createprocedencia_descripcion(global::System.Int32 id, global::System.String id_procedencia)
+        {
+            procedencia_descripcion procedencia_descripcion = new procedencia_descripcion();
+            procedencia_descripcion.id = id;
+            procedencia_descripcion.id_procedencia = id_procedencia;
+            return procedencia_descripcion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String id_procedencia
+        {
+            get
+            {
+                return _id_procedencia;
+            }
+            set
+            {
+                Onid_procedenciaChanging(value);
+                ReportPropertyChanging("id_procedencia");
+                _id_procedencia = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("id_procedencia");
+                Onid_procedenciaChanged();
+            }
+        }
+        private global::System.String _id_procedencia;
+        partial void Onid_procedenciaChanging(global::System.String value);
+        partial void Onid_procedenciaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "procedencia_fk", "procedencia")]
+        public procedencia procedencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.procedencia_fk", "procedencia").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.procedencia_fk", "procedencia").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<procedencia> procedenciaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<procedencia>("teletonModel.procedencia_fk", "procedencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<procedencia>("teletonModel.procedencia_fk", "procedencia", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -4522,6 +6081,31 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_productividad", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_productividad", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_productividad", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -4618,42 +6202,18 @@ namespace DataAccess
         /// <summary>
         /// Create a new role object.
         /// </summary>
-        /// <param name="descripcion">Initial value of the descripcion property.</param>
         /// <param name="id">Initial value of the id property.</param>
-        public static role Createrole(global::System.String descripcion, global::System.Int64 id)
+        /// <param name="descripcion">Initial value of the descripcion property.</param>
+        public static role Createrole(global::System.Int64 id, global::System.String descripcion)
         {
             role role = new role();
-            role.descripcion = descripcion;
             role.id = id;
+            role.descripcion = descripcion;
             return role;
         }
 
         #endregion
         #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String descripcion
-        {
-            get
-            {
-                return _descripcion;
-            }
-            set
-            {
-                OndescripcionChanging(value);
-                ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("descripcion");
-                OndescripcionChanged();
-            }
-        }
-        private global::System.String _descripcion;
-        partial void OndescripcionChanging(global::System.String value);
-        partial void OndescripcionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4685,6 +6245,30 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int64> centro
@@ -4709,6 +6293,44 @@ namespace DataAccess
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "roles_fk1", "centros")]
+        public centro centro1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centros").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centros").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<centro> centro1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centros");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<centro>("teletonModel.roles_fk1", "centros", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4750,44 +6372,6 @@ namespace DataAccess
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<usuario>("teletonModel.usuarios_x_rol", "usuarios", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "roles_fk1", "centro")]
-        public centro centro1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centro").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centro").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<centro> centro1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<centro>("teletonModel.roles_fk1", "centro");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<centro>("teletonModel.roles_fk1", "centro", value);
                 }
             }
         }
@@ -4874,6 +6458,31 @@ namespace DataAccess
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_tipo_daño", "evoluciones")]
+        public EntityCollection<evolucione> evoluciones
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<evolucione>("teletonModel.fk_tipo_daño", "evoluciones");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.fk_tipo_daño", "evoluciones", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -4889,15 +6498,15 @@ namespace DataAccess
         /// <summary>
         /// Create a new usuario object.
         /// </summary>
-        /// <param name="empleado">Initial value of the empleado property.</param>
-        /// <param name="password">Initial value of the password property.</param>
         /// <param name="username">Initial value of the username property.</param>
-        public static usuario Createusuario(global::System.Int64 empleado, global::System.String password, global::System.String username)
+        /// <param name="password">Initial value of the password property.</param>
+        /// <param name="empleado">Initial value of the empleado property.</param>
+        public static usuario Createusuario(global::System.String username, global::System.String password, global::System.Int64 empleado)
         {
             usuario usuario = new usuario();
-            usuario.empleado = empleado;
-            usuario.password = password;
             usuario.username = username;
+            usuario.password = password;
+            usuario.empleado = empleado;
             return usuario;
         }
 
@@ -4907,26 +6516,29 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 empleado
+        public global::System.String username
         {
             get
             {
-                return _empleado;
+                return _username;
             }
             set
             {
-                OnempleadoChanging(value);
-                ReportPropertyChanging("empleado");
-                _empleado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("empleado");
-                OnempleadoChanged();
+                if (_username != value)
+                {
+                    OnusernameChanging(value);
+                    ReportPropertyChanging("username");
+                    _username = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("username");
+                    OnusernameChanged();
+                }
             }
         }
-        private global::System.Int64 _empleado;
-        partial void OnempleadoChanging(global::System.Int64 value);
-        partial void OnempleadoChanged();
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4955,29 +6567,26 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String username
+        public global::System.Int64 empleado
         {
             get
             {
-                return _username;
+                return _empleado;
             }
             set
             {
-                if (_username != value)
-                {
-                    OnusernameChanging(value);
-                    ReportPropertyChanging("username");
-                    _username = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("username");
-                    OnusernameChanged();
-                }
+                OnempleadoChanging(value);
+                ReportPropertyChanging("empleado");
+                _empleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("empleado");
+                OnempleadoChanged();
             }
         }
-        private global::System.String _username;
-        partial void OnusernameChanging(global::System.String value);
-        partial void OnusernameChanged();
+        private global::System.Int64 _empleado;
+        partial void OnempleadoChanging(global::System.Int64 value);
+        partial void OnempleadoChanged();
 
         #endregion
     
@@ -5105,6 +6714,28 @@ namespace DataAccess
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<evolucione>("teletonModel.evaluador_fk", "evoluciones", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username", "historial")]
+        public EntityCollection<historial> historials
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historial>("teletonModel.fk_username", "historial");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historial>("teletonModel.fk_username", "historial", value);
                 }
             }
         }
