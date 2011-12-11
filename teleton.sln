@@ -31,7 +31,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "teleton", "teleton\", "{DCA
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 <<<<<<< HEAD
+<<<<<<< HEAD
 		VWDPort = "2781"
+=======
+		VWDPort = "37082"
+>>>>>>> e6f75af678a997c94846bc1c228e846f1a80196a
 =======
 		VWDPort = "37082"
 >>>>>>> e6f75af678a997c94846bc1c228e846f1a80196a
