@@ -38,21 +38,7 @@ namespace BL
             return fecha;
         }
 
-        public Int32 GetPatologiasId(string nom_pat)
-        {
-
-            int id = 0;
-
-            var query = from diag in entities.diagnosticos
-                        where nom_pat == diag.diagnostico1
-                        select diag.id;
-
-            id = Convert.ToInt32(query.FirstOrDefault());
-
-
-
-            return id;
-        }
+        #region Retrieve_GetID
 
         public List<String> RetrievePatologias() //Retorna Una Lista de Patologias
         {
@@ -63,6 +49,179 @@ namespace BL
 
             return Diag;
         }
+
+        public Int32 GetPatologiasId(string nom_pat)
+        {
+            int id = 0;
+            var query = from diag in entities.diagnosticos
+                        where nom_pat == diag.diagnostico1
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+
+            return id;
+        }
+
+        public List<String> RetrieveClasificacionDelPaciente() 
+        {
+            var query = from p in entities.clasificacion_paciente select p;
+            List<String> cp = new List<string>();
+            foreach (clasificacion_paciente nom in query)
+                cp.Add(nom.clasificacion);
+
+            return cp;
+        }
+
+        public Int32 GetClasificacionId(string clasif)
+        {
+            int id = 0;
+            var query = from diag in entities.clasificacion_paciente
+                        where clasif == diag.clasificacion
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+
+            return id;
+        }
+
+
+        public List<String> RetrieveGrado()
+        {
+            var query = from p in entities.escolaridads select p;
+            List<String> grd = new List<string>();
+            foreach (escolaridad nom in query)
+                grd.Add(nom.Grado);
+
+            return grd;
+        }
+
+        public Int32 GetGradoId(string grado)
+        {
+            int id = 0;
+            var query = from diag in entities.escolaridads
+                        where grado == diag.Grado
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+            return id;
+        }
+
+        public List<String> RetrieveOcupaciones()
+        {
+            var query = from p in entities.ocupaciones select p;
+            List<String> ocu = new List<string>();
+            foreach (ocupacione nom in query)
+                ocu.Add(nom.ocupacion);
+
+            return ocu;
+        }
+
+        public Int32 GetOcupacionId(string ocu)
+        {
+            int id = 0;
+            var query = from diag in entities.ocupaciones
+                        where ocu == diag.ocupacion
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+            return id;
+        }
+
+        public List<String> RetrieveCondiciones()
+        {
+            var query = from p in entities.condicions select p;
+            List<String> con = new List<string>();
+            foreach (condicion nom in query)
+                con.Add(nom.condicion1);
+
+            return con;
+        }
+
+        public string GetCondicionId(string con)
+        {
+            string id = "";
+            var query = from diag in entities.condicions
+                        where con == diag.condicion1
+                        select diag.simbolo;
+
+            id = query.FirstOrDefault();
+            return id;
+        }
+
+        public string GetProcedenciaId(string proc)
+        {
+            string id = "";
+            var query = from diag in entities.procedencias
+                        where proc == diag.procedencia1
+                        select diag.simbolo;
+
+            id = query.FirstOrDefault();
+            return id;
+        }
+
+        public List<String> RetrieveReferencias()
+        {
+            var query = from p in entities.referencias select p;
+            List<String> refe = new List<string>();
+            foreach (referencia nom in query)
+                refe.Add(nom.descripcion);
+
+            return refe;
+        }
+
+        public Int32 GetReferenciaId(string refe)
+        {
+            int id = 0;
+            var query = from diag in entities.referencias
+                        where refe == diag.descripcion
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+            return id;
+        }
+
+        public List<String> RetrieveTipoDanio()
+        {
+            var query = from p in entities.tipo_daño select p;
+            List<String> td = new List<string>();
+            foreach (tipo_daño nom in query)
+                td.Add(nom.tipo);
+
+            return td;
+        }
+
+        public Int32 GetTipoDanioId(string tipo)
+        {
+            int id = 0;
+            var query = from diag in entities.tipo_daño
+                        where tipo == diag.tipo
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+            return id;
+        }
+
+        public List<String> RetrieveAyudasTecnicas()
+        {
+            var query = from p in entities.ayudas_tecnicas select p;
+            List<String> ayte = new List<string>();
+            foreach (ayudas_tecnicas nom in query)
+                ayte.Add(nom.ayuda);
+
+            return ayte;
+        }
+
+        public Int32 GetAyudaTecnicaId(string ayudaTec)
+        {
+            int id = 0;
+            var query = from diag in entities.ayudas_tecnicas
+                        where ayudaTec == diag.ayuda
+                        select diag.id;
+
+            id = Convert.ToInt32(query.FirstOrDefault());
+            return id;
+        }
+        #endregion
 
         public IQueryable RetrievePacientesDiario(int centroid) //Retorna un dataset de evoluciones
         {
@@ -212,15 +371,25 @@ namespace BL
                          select p.cedula).First();
 
             return query.ToString();
-
         }
 
-        public void GuardarSeguimientoPacientes(int id, int prefix, int numexp, string doctor, string patologia, string observacion)
+        public void GuardarSeguimientoPacientes(int id, int prefix, int numexp, string doctor, string patologia, string observacion,
+                                                string clasifi,string grado,string ocupacion,string condicion,string referencia,
+                                                string tipoDanio, string ayTec,string funEstructura,string Eteolo,string procedencia,
+                                                int TDAnios,int TDMeses,int TDDias, int TSAnios,int TSMeses,int TSDias)
         {
 
             try
             {
                 int idpatologia = GetPatologiasId(patologia);
+                int idClass = GetClasificacionId(clasifi);
+                int idGrado = GetGradoId(grado);
+                int idOcupacion = GetOcupacionId(ocupacion);
+                string idCondicion = GetCondicionId(condicion);
+                string idProcedencia = GetProcedenciaId(procedencia);
+                int idTipoDanio = GetTipoDanioId(tipoDanio);
+                int idAyudaTecnica = GetAyudaTecnicaId(ayTec);
+
                 DateTime date = DateTime.Parse(fecha);
                 DataAccess.evolucione evo = new DataAccess.evolucione();
 
@@ -231,10 +400,31 @@ namespace BL
                 evo.id_diagnostico = idpatologia;
                 evo.evaluador = doctor;
                 evo.notas = observacion;
+                evo.id_clasificacion_paciente = idClass;
+                evo.id_escolaridad = idGrado;
+                evo.id_ocupacion = idOcupacion;
+                evo.id_tipo_daño = idTipoDanio;
+                evo.id_ayudas_tecnicas = idAyudaTecnica;
+                evo.funcion_estructura = funEstructura;
+                evo.eteologia = Eteolo;
+
+                // QUE ONDAS CON ESTO
+                evo.id_condicion = idCondicion;
+                // FALTA PROCEDENCIA
+                evo.id_procedencia = idProcedencia;
+                
+                evo.años_tiempo_discapacidad = (long)TDAnios;
+                evo.meses_tiempo_discapacidad = (long)TDMeses;
+                evo.dias_tiempo_discapacidad = (long)TDDias;
+
+                evo.dias_TSTDL = (long)TSDias;
+                evo.meses_TSTDL = (long)TSMeses;
+                evo.años_TSTDL = (long)TSAnios;
+                
+
 
                 entities.evoluciones.AddObject(evo);
                 entities.SaveChanges();
-
             }
             catch (Exception err)
             {

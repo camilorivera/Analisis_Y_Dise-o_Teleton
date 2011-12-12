@@ -21,7 +21,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
     {
         //Lista de permisos que el usuario logueado tiene
         List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
-
+        BL.Security sec = new BL.Security();
         bool encontroPermiso = false; 
 
         foreach (String strPermiso in listaPermisos)
@@ -42,10 +42,19 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         }
         if (!this.IsPostBack)
         {
-            BL.Security sec = new BL.Security();
+           
             cboCentro.DataSource = sec.getCentrosPermitidos(Session["nombre_usuario"].ToString());
             cboCentro.DataBind();
             cleanPage();
+        }
+
+        if (Session["ppaciente"] != null && (string)Session["ppaciente"] != string.Empty && Session["centro"] != null && (string)Session["centro"] != string.Empty)
+        {
+            string x=sec.getCentrolugar(Int32.Parse(Session["centro"].ToString()));
+            txtExpediente.Text = Session["ppaciente"].ToString();
+            cboCentro.Text = x;
+            Session.Remove("ppaciente");
+            Session.Remove("centro");
         }
     }
 
@@ -211,7 +220,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         try
         {
             BL.Security sec = new BL.Security();
-            int CId = (int)sec.getCentroId(cboCentro.SelectedValue);
+            int CId = (int)sec.getCentroId(cboCentro.SelectedValue);  
             long exp = long.Parse(txtExpediente.Text);
 
             BL.Paciente pac = new BL.Paciente();

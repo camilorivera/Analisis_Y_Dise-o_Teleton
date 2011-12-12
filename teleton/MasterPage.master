@@ -8,6 +8,7 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+<<<<<<< HEAD
 <body onkeydown="return (event.keyCode!=13)">
     <form id="Form1" runat="server">
     <div id="content">
@@ -46,6 +47,40 @@
                     </asp:MenuItem>
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">
                         <asp:MenuItem Text="Historial Médico" Value="Historial Médico" NavigateUrl="~/HistoPaciente.aspx">
+=======
+<body  onkeydown = "return (event.keyCode!=13)">
+    <form id="Form1" runat="server">        
+        <div id="content">
+            <div class="loginDisplay">
+                <p id="top"> Proyecto Teleton 2011 | 
+                <asp:Label ID="centro" runat="server" Text="Lcentro"></asp:Label>  
+                | Bienvenido 
+                    <asp:Label ID="usr" runat="server" Text="Label"></asp:Label>
+                    [<asp:LinkButton ID="labelLogout" runat="server" Text="Logout" onclick="labelLogout_Click" 
+                                 CausesValidation="False"></asp:LinkButton>]                     
+                </p>
+                <div id="logo">
+                    <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
+                                Height="120px" ImageUrl="~/images/teletonLogoSolid3.png" 
+                                PostBackUrl="~/Default.aspx" Width="90px" />
+			        <a href="~/Default.aspx"></a>
+                </div>
+            </div>              
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <div id = "sitemenu">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"
+                        CssClass="pointermenu" StaticSubMenuIndent="2px">
+                    <Items>
+                        <asp:MenuItem Text="Expedientes" Value="Administrar Paciente">
+                            <asp:MenuItem Text="Crear Expediente" Value="New Item" 
+                                NavigateUrl="~/Crear_Paciente.aspx?sender=new"></asp:MenuItem>
+                            <asp:MenuItem Text="Crear Expediente Histórico" Value="New Item" 
+                                NavigateUrl="~/Crear_Paciente.aspx?sender=old"></asp:MenuItem>
+                            <asp:MenuItem Text="Consultar Expediente" Value="Consultar Expediente"
+                                NavigateUrl="~/Buscar_Expediente.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Buscar por Nombres" Value="Buscar por Nombres"
+                                NavigateUrl="~/Buscar_Nombres.aspx"></asp:MenuItem>
+>>>>>>> 0fcc462d427e8b910bc9c35cd4d85129d371e3cd
                         </asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Administrar" Value="Administrar">

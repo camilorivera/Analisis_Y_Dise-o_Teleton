@@ -443,6 +443,29 @@ namespace BL
             return false;
         }
 
+        public List<string> Busqueda_pacientes(string nombre) //Retorna nombres de los pacientes
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+
+                
+                var users = from p in entities.pacientes
+                            where p.nombres.Contains(nombre)
+                            select new {p.expediente,p.centro_actual,p.nombres,p.primer_apellido,p.segundo_apellido};
+
+
+                foreach (var u in users)
+                    usrs.Add(u.expediente+ " " + u.centro_actual + " " +u.nombres+" "+u.primer_apellido+" "+u.segundo_apellido);
+  
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
         public bool editarPaciente()
         {
             try
