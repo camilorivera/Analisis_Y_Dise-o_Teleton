@@ -8,7 +8,6 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<<<<<<< HEAD
 <body onkeydown="return (event.keyCode!=13)">
     <form id="Form1" runat="server">
     <div id="content">
