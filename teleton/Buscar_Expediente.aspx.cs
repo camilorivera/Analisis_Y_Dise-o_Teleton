@@ -112,6 +112,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         txtReferencia.Enabled = estado;
         txtDocumentos.Enabled = estado;
         txtObservaciones.Enabled = estado;
+        txtDiagnostico.Enabled = estado;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -128,6 +129,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
             BL.Paciente p = new BL.Paciente();
             BL.Security sec = new BL.Security();
+            BL.SeguimientoPacientes segp = new BL.SeguimientoPacientes();
             int CId = (int)sec.getCentroId(cboCentro.SelectedValue);
             long exp = long.Parse(txtExpediente.Text);
             if (p.leerPaciente(CId, exp))
@@ -191,11 +193,22 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 txtReferencia.Text = p.acercaDe;
                 txtDocumentos.Text = p.docsAlternos;
                 txtObservaciones.Text = p.observaciones;
+                
+                cambiarEnabled(true);
+
+                String temp = segp.getDiagnostico(exp);
+                if (temp == null)
+                {
+                    txtDiagnostico.Enabled = false;
+                }
+                else
+                {
+                    txtDiagnostico.Text = temp;
+                }
 
                 Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
                 
                 // Habilitar los controles para que se pueda editar.
-                cambiarEnabled(true);
                 lblExpReq.Visible = false;
             }
             else

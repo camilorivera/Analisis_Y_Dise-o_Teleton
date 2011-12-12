@@ -122,12 +122,7 @@ public partial class Crear_Paciente : System.Web.UI.Page
                         Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
                         return;
                     }
-                    if (!FileUpload_Foto.HasFile)
-                    {
-                        Response.Write("<script>alert('Cargue una foto')</script>");
-                        return;
-                    }
-                    else
+                    if (FileUpload_Foto.HasFile)
                     {
                         if (!FileUpload_Foto.FileName.ToString().ToLower().EndsWith(".jpg"))
                         {

@@ -189,6 +189,12 @@
                             <asp:Label ID="observaciones" runat="server"></asp:Label>   
                         </td>
                     </tr>
+                    <tr class="rowodd">
+                        <td class="table_Paciente_Desc" >Diagnostico:</td>
+                        <td class="tb_crearRol"> 
+                            <asp:Label ID="diagnostico" runat="server"></asp:Label>   
+                        </td>
+                    </tr>
                 </tbody>
                 <tfoot>
                 </tfoot>

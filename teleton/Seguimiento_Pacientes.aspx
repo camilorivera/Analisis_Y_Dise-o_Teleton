@@ -38,14 +38,20 @@
                                 <asp:Label ID="LblNumExp" CssClass="labelD" runat="server" Text="Nº de Expediente:"></asp:Label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                 <asp:TextBox ID="txtnumexp" runat="server" CssClass="txtbx_labelD" 
-                                    Height="20px" Width="200px"></asp:TextBox>                               
+                                    Height="20px" Width="150px"></asp:TextBox>                               
                                 <asp:FilteredTextBoxExtender ID="txtnumexp_FilteredTextBoxExtender" 
                                     runat="server" Enabled="True" FilterType="Numbers" TargetControlID="txtnumexp">
                                 </asp:FilteredTextBoxExtender>
                                 <asp:ImageButton ID="busqueda" CssClass="botonbusquedarapida" ImageUrl="~/images/Search.png" 
                                         runat="server" CausesValidation="False" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LblPat3" CssClass="labelD" runat="server" 
+                                    Text="Clasificacion de Paciente"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_ClasificacionPaciente" CssClass="cmbpatologias" 
+                                    runat="server" Height="20px" Width="150px">
+                                </asp:DropDownList>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </li>
                             <li class = "field">                       
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -55,8 +61,13 @@
                                 <asp:Label ID="Label8" CssClass="labelD" runat="server" Text="Nombre Paciente: "></asp:Label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:TextBox ID="txtnombrepac" runat="server" 
-                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="200px"></asp:TextBox>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="150px"></asp:TextBox>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Label ID="LblPat4" CssClass="labelD" runat="server" Text="Condicion:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_Condicion" CssClass="cmbpatologias" runat="server" 
+                                    Height="20px" Width="150px">
+                                </asp:DropDownList>
+                                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             </li>
                             <li class = "field">                       
                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -65,25 +76,43 @@
                                 <asp:Label ID="Label9" CssClass="labelD" runat="server" Text="Numero de Identidad: "></asp:Label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:TextBox ID="txtnumced" runat="server" 
-                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="200px"></asp:TextBox>
+                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="150px"></asp:TextBox>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LblPat5" CssClass="labelD" runat="server" Text="Referencias:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_Referencia" CssClass="cmbpatologias" runat="server" 
+                                    Height="20px" Width="150px">
+                                </asp:DropDownList>
                             </li>
                             <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp; </li>
                             <li class = "field">
                                 <asp:Label ID="lbobser" CssClass="labelD" runat="server" Text="Observacion:"></asp:Label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:TextBox ID="txtobser" runat="server" CssClass="txtbx_labelD" Height="20px" 
-                                    Width="200px"></asp:TextBox>
+                                    Width="150px"></asp:TextBox>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LblPat" CssClass="labelD" runat="server" Text="Diagnostico:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_patologias" CssClass="cmbpatologias" runat="server" 
+                                    Height="20px" Width="150px">
+                                </asp:DropDownList>
                             </li>
                             <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
                             <li class = "field">
                                 <asp:Label ID="LblPat0" CssClass="labelD" runat="server" Text="Sexo:"></asp:Label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="cmb_Sexo" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
+                                    Height="20px" Width="150px">
                                     <asp:ListItem>Masculino</asp:ListItem>
                                     <asp:ListItem>Femenino</asp:ListItem>
                                 </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="Label13" CssClass="labelD" runat="server" Text="Tipo de Daño: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_TipoDaño" CssClass="cmbpatologias" runat="server" 
+                                    Height="20px" Width="150px">
+                                </asp:DropDownList>
+                            </li>
                             <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                             </li>
@@ -91,20 +120,30 @@
                                 <asp:Label ID="LblPat2" CssClass="labelD" runat="server" Text="Procedencia"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="cmb_Procedencia" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
+                                    Height="20px" Width="150px">
                                     <asp:ListItem>Rural</asp:ListItem>
                                     <asp:ListItem>Urbano</asp:ListItem>
                                 </asp:DropDownList>
-                                &nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Label ID="LblPat6" CssClass="labelD" runat="server" 
+                                    Text="Funcion y Estructura:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:TextBox ID="txtFuncionEstructura" runat="server" 
+                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="150px"></asp:TextBox>
+                            </li>
                             <li class = "field">&nbsp;</li>
                             <li class = "field">
                                 <asp:Label ID="Label11" CssClass="labelD" runat="server" 
                                     Text="Grado de Instruccion"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:DropDownList ID="cmb_GradoDeInstruccion" CssClass="cmbpatologias" 
-                                    runat="server" Height="20px" Width="200px">
+                                    runat="server" Height="20px" Width="150px">
                                 </asp:DropDownList>
-                                &nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="LblPat15" CssClass="labelD" runat="server" Text="Ayudas Tecnicas Indicadas:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:DropDownList ID="cmb_AyudaTecnicaIndicada" CssClass="cmbpatologias" 
+                                    runat="server" Height="20px" Width="150px">
+                                </asp:DropDownList>
                                 </li>
                             <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </li>
@@ -113,72 +152,12 @@
                                     Text="Ocupacion Actual:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                                 <asp:DropDownList ID="cmb_OcupacionActual" 
-                                    runat="server" Height="20px" Width="200px">
+                                    runat="server" Height="20px" Width="150px">
                                 </asp:DropDownList>
                             </li>
-                            <li class = "field">&nbsp;&nbsp; </li>
                             <li class = "field">
-                                <asp:Label ID="LblPat3" CssClass="labelD" runat="server" 
-                                    Text="Clasificacion de Paciente"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_ClasificacionPaciente" CssClass="cmbpatologias" 
-                                    runat="server" Height="20px" Width="200px">
-                                </asp:DropDownList>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="LblPat4" CssClass="labelD" runat="server" Text="Condicion:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_Condicion" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
-                                </asp:DropDownList>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="LblPat5" CssClass="labelD" runat="server" Text="Referencias:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_Referencia" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
-                                </asp:DropDownList>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="LblPat" CssClass="labelD" runat="server" Text="Diagnostico:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_patologias" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
-                                </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="Label13" CssClass="labelD" runat="server" Text="Tipo de Daño: "></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_TipoDaño" CssClass="cmbpatologias" runat="server" 
-                                    Height="20px" Width="200px">
-                                </asp:DropDownList>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="LblPat6" CssClass="labelD" runat="server" 
-                                    Text="Funcion y Estructura:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:TextBox ID="txtFuncionEstructura" runat="server" 
-                                    CssClass="txtbx_labelD" oninit="TextBox8_Init" Height="20px" Width="200px"></asp:TextBox>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field">
-                                <asp:Label ID="LblPat15" CssClass="labelD" runat="server" Text="Ayudas Tecnicas Indicadas:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:DropDownList ID="cmb_AyudaTecnicaIndicada" CssClass="cmbpatologias" 
-                                    runat="server" Height="20px" Width="200px">
-                                </asp:DropDownList>
-                            </li>
-                            <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                            <li class = "field"></li>
+                                </li>
                             <li class = "field">
                                 <asp:Label ID="LblPat7" CssClass="labelD" runat="server" 
                                     Text="Tiempo de Discapacidad:"></asp:Label>
@@ -244,11 +223,8 @@
                                 </asp:ConfirmButtonExtender>
                             </li>
                         </ul>
-                    </fieldset>
+                    </fieldset>                    
                     <fieldset id="RegistroDiario">
-                    </fieldset>
-                    <fieldset id="RegistroDiario">
-                        <legend>Listado de Pacientesistado de Pacientes
                         <legend>Listado de Pacientes</legend>
                         <asp:Label ID="lbldateinit" CssClass="labelD" runat="server" 
              Text="Fecha Inicial:"></asp:Label>
@@ -312,10 +288,10 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Nombre" SortExpression="nombres">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("nombres")%>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("NOMBRE")%>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombres")%>'></asp:Label>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("NOMBRE")%>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="90px" />
                                     </asp:TemplateField>
@@ -340,10 +316,10 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Evaluador" SortExpression="evaluador">
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("evaluador") %>'></asp:TextBox>
+                                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("nombres") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("evaluador") %>'></asp:Label>
+                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("nombres") %>'></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle HorizontalAlign="Center" />
                                         <ItemStyle HorizontalAlign="Center" Width="90px" />

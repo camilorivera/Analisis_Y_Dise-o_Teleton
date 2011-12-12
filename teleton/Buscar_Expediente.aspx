@@ -273,7 +273,7 @@
                 <legend>Datos Medicos</legend>
                 <ul class="list">
                     <li class="field">
-                        <asp:Label runat="server" ID="Label24">¿Ha recibido rehabilitación antes?</asp:Label>
+                        <asp:Label runat="server" ID="Label24" ForeColor="Black">¿Ha recibido rehabilitación antes?</asp:Label>
                         <br />
                         <asp:RadioButtonList runat="server" ID="rblRehabilitacion" 
                             RepeatDirection="Horizontal" CssClass="tb_Permiso" EnableTheming="True" 
@@ -284,7 +284,7 @@
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label25">Candidato a Transporte:</asp:Label>
+                        <asp:Label runat="server" ID="Label25" ForeColor="Black">Candidato a Transporte:</asp:Label>
                         <br />
                         <asp:RadioButtonList runat="server" ID="rblCandidato" 
                             RepeatDirection="Horizontal" CssClass="tb_Permiso" EnableTheming="True" 
@@ -295,24 +295,31 @@
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label23">¿Cómo se entero de Fundación Teletón?</asp:Label>
+                        <asp:Label runat="server" ID="Label23" ForeColor="Black">¿Cómo se entero de Fundación Teletón?</asp:Label>
                         <br />
                         <asp:TextBox runat="server" ID="txtReferencia" CssClass="tb_Permiso" 
                             TextMode="MultiLine" EnableTheming="True" Enabled="False"></asp:TextBox>
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label26">Documentos que trae el paciente:</asp:Label>
+                        <asp:Label runat="server" ID="Label26" ForeColor="Black">Documentos que trae el paciente:</asp:Label>
                         <br />
                         <asp:TextBox runat="server" ID="txtDocumentos" CssClass="tb_Permiso" 
                             TextMode="MultiLine" EnableTheming="True" Enabled="False"></asp:TextBox>
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label27">Observaciones:</asp:Label>
+                        <asp:Label runat="server" ID="Label27" ForeColor="Black">Observaciones:</asp:Label>
                         <br />
                         <asp:TextBox runat="server" ID="txtObservaciones" CssClass="tb_Permiso" 
                             TextMode="MultiLine" EnableTheming="True" Enabled="False"></asp:TextBox>
+                    </li>
+                    <li class="field">
+                        <asp:Label runat="server" ID="Label31" ForeColor="Black">Diagnostico:</asp:Label>
+                    </li>
+                    <li class="field">
+                        <asp:TextBox ID="txtDiagnostico" runat="server" CssClass="tb_Permiso" 
+                            Enabled="False"></asp:TextBox>
                     </li>
                 </ul>
             </fieldset>

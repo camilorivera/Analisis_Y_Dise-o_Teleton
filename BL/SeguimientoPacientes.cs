@@ -40,6 +40,15 @@ namespace BL
 
         #region Retrieve_GetID
 
+        public string getDiagnostico(long exp) 
+        {
+            var query = from p in entities.evoluciones
+                        where exp == p.expediente && p.condicion.simbolo == "N"
+                        select p.diagnostico.diagnostico1;
+
+            return query.FirstOrDefault();    
+        }
+
         public List<String> RetrievePatologias() //Retorna Una Lista de Patologias
         {
             var query = from p in entities.diagnosticos select p;
@@ -232,8 +241,12 @@ namespace BL
                         on p.expediente equals e.expediente
                         join a in entities.diagnosticos
                         on p.id_diagnostico equals a.id
+                        join m in entities.usuarios
+                        on p.evaluador equals m.username
+                        join j in entities.empleados
+                        on m.empleado equals j.id
                         where p.fecha == d && p.prefijo==centroid
-                        select new { p.fecha, p.expediente, a.diagnostico1 , p.evaluador, p.notas, e.nombres, e.primer_apellido };
+                        select new { p.fecha, p.expediente, a.diagnostico1 , j.nombres , p.notas, NOMBRE = e.nombres , e.primer_apellido };
 
             return query;
         }

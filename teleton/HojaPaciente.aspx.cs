@@ -44,6 +44,7 @@ public partial class HojaPaciente : System.Web.UI.Page
                     Imagen.Height=(Unit)150;
 
                     BL.Paciente paciente = new BL.Paciente();
+                    BL.SeguimientoPacientes segp = new BL.SeguimientoPacientes();
                     if (paciente.leerPaciente(ca, expedienteID))
                     {
                         expediente.Text = paciente.Expediente.ToString();
@@ -77,6 +78,15 @@ public partial class HojaPaciente : System.Web.UI.Page
                         comoEnteroTeleton.Text = paciente.acercaDe;
                         documentacion.Text = paciente.docsAlternos;
                         observaciones.Text = paciente.observaciones;
+                        String temp = segp.getDiagnostico(expedienteID);
+                        if (temp == null)
+                        {
+                            diagnostico.Text = "No disponible";
+                        }
+                        else
+                        {
+                            diagnostico.Text = temp;
+                        }
                     }
 
                 }
