@@ -45,7 +45,22 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             if (!this.IsPostBack)
             {
                 InicializarSeguimientoPacientes();
-
+                cambiarEnabled(false);
+                // EN PRUEBA!!
+                /*for(int i=1; i<=10;i++){
+                    cmb_TSAnios.Items.Add( new ListItem(i.ToString()));
+                    cmb_TDAnios.Items.Add(new ListItem(i.ToString()));
+                }
+                for (int i = 1; i < 12; i++) 
+                {
+                    cmb_TDMeses.Items.Add(new ListItem(i.ToString()));
+                    cmb_TSMeses.Items.Add(new ListItem(i.ToString()));
+                }
+                for (int i = 1; i <= 30; i++)
+                {
+                    cmb_TDDias.Items.Add(new ListItem(i.ToString()));
+                    cmb_TSDias.Items.Add(new ListItem(i.ToString()));
+                }*/
             }
             else
             {
@@ -68,19 +83,22 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         try
         {
-            if (ctrlName == txtnumexp.UniqueID && args == "OnBlur")
-            {
-                if (txtnumexp.Text == "") return;
-                if (segPacientes.VerificarPacientes(txtnumexp.Text))
+            
+                if (ctrlName == txtnumexp.UniqueID && args == "OnBlur")
                 {
-                    txtnombrepac.Text = segPacientes.NombrePaciente(txtnumexp.Text);
-                    txtnumced.Text = segPacientes.NumIdentidad(txtnumexp.Text);
-                }
-                else
-                {
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Num de Expediente no ha sido Registrado')", true);
-                    txtnumced.Text = txtnombrepac.Text = txtnumexp.Text = "";
-                }
+                    if (txtnumexp.Text == "") return;
+                    if (segPacientes.VerificarPacientes(txtnumexp.Text))
+                    {
+                        txtnombrepac.Text = segPacientes.NombrePaciente(txtnumexp.Text);
+                        txtnumced.Text = segPacientes.NumIdentidad(txtnumexp.Text);
+                        cambiarEnabled(true);
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Num de Expediente no ha sido Registrado')", true);
+                        txtnumced.Text = txtnombrepac.Text = txtnumexp.Text = "";
+                    }
+              
             }
             else
             {
@@ -93,7 +111,6 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         {
             Session["Error_Msg"] = er.Message;
             Response.Redirect("~/Error.aspx", true);
-            
         }
 }
 
@@ -103,6 +120,14 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         {
             LBLDATE.Text = segPacientes.GetFecha();
             CargarPatologias();
+            CargarClasificacionPaciente();
+            CargarOcupaciones();
+            CargarGrado();
+            CargarCondiciones();
+            CargarReferencias();
+            CargarTipoDaño();
+            CargarAyudasTecnicas();
+
             txtdateinit.Text = segPacientes.GetFecha();
             txtdatefini.Text = segPacientes.GetFecha();
             GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario(centroid);
@@ -151,6 +176,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         }
     }
 
+    #region CargarCombos
     public void CargarPatologias()
     {
         try
@@ -166,9 +192,140 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         }
     }
 
+    public void CargarClasificacionPaciente() 
+    {
+        try
+        {
+            cmb_ClasificacionPaciente.Items.Clear();
+            cmb_ClasificacionPaciente.DataSource = segPacientes.RetrieveClasificacionDelPaciente();
+            cmb_ClasificacionPaciente.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx",true);
+        }
+    }
+
+    public void CargarGrado()
+    {
+        try
+        {
+            cmb_GradoDeInstruccion.Items.Clear();
+            cmb_GradoDeInstruccion.DataSource = segPacientes.RetrieveGrado();
+            cmb_GradoDeInstruccion.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    public void CargarOcupaciones()
+    {
+        try
+        {
+            cmb_OcupacionActual.Items.Clear();
+            cmb_OcupacionActual.DataSource = segPacientes.RetrieveOcupaciones();
+            cmb_OcupacionActual.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    public void CargarCondiciones()
+    {
+        try
+        {
+            cmb_Condicion.Items.Clear();
+            cmb_Condicion.DataSource = segPacientes.RetrieveCondiciones();
+            cmb_Condicion.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    public void CargarReferencias()
+    {
+        try
+        {
+            cmb_Referencia.Items.Clear();
+            cmb_Referencia.DataSource = segPacientes.RetrieveReferencias();
+            cmb_Referencia.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    public void CargarTipoDaño()
+    {
+        try
+        {
+            cmb_TipoDaño.Items.Clear();
+            cmb_TipoDaño.DataSource = segPacientes.RetrieveTipoDanio();
+            cmb_TipoDaño.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    public void CargarAyudasTecnicas()
+    {
+        try
+        {
+            cmb_AyudaTecnicaIndicada.Items.Clear();
+            cmb_AyudaTecnicaIndicada.DataSource = segPacientes.RetrieveAyudasTecnicas();
+            cmb_AyudaTecnicaIndicada.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+    #endregion
+
+    private void cambiarEnabled(Boolean b) 
+    {
+        cmb_GradoDeInstruccion.Enabled = b;
+        cmb_OcupacionActual.Enabled = b;
+        cmb_ClasificacionPaciente.Enabled = b;
+        cmb_Condicion.Enabled = b;
+        cmb_patologias.Enabled = b;
+        cmb_Referencia.Enabled = b;
+        cmb_TipoDaño.Enabled = b;
+        
+        txt_TDAnios.Enabled = b;
+        txt_TDMeses.Enabled = b;
+        txt_TDDias.Enabled = b;
+        txt_TSAnios.Enabled = b;
+        txt_TSMeses.Enabled = b;
+        txt_TSDias.Enabled = b;
+
+        cmb_Sexo.Enabled = b;
+        txtobser.Enabled = b;
+
+        cmb_AyudaTecnicaIndicada.Enabled = b;
+        txtEteologia.Enabled = b;
+        cmb_Procedencia.Enabled = b;
+        txtFuncionEstructura.Enabled = b;
+    }
+
     protected void Refrescar_Click1(object sender, ImageClickEventArgs e)
     {
-
         try
         {
             DateTime fechainit = DateTime.Parse(txtdateinit.Text);
@@ -211,19 +368,37 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                         {
                             string fecha1 = txtdateinit.Text;
                             string fecha2 = txtdatefini.Text;
+                            string laFecha = segPacientes.GetFecha();
+                            // Arreglar
+                            if(laFecha.StartsWith("0"))
+                            {
+                                laFecha = laFecha.Substring(1,laFecha.Length-1);
+                            }
 
-                            if (fecha1 != segPacientes.GetFecha() || fecha2 != segPacientes.GetFecha())
+                            if (fecha1 != laFecha || fecha2 != laFecha)
                             {
 
                                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('No Puede Guardar Pacientes en una Fecha Diferente a " + segPacientes.GetFecha() + "')", true);
                             }
                             else
                             {
-                                segPacientes.GuardarSeguimientoPacientes(0, centroid, exped, empleado, cmb_patologias.Text, txtobser.Text);
-                                Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Paciente Guardado Exitosamente')", true);
-                                txtnumexp.Text = "";
-                                txtobser.Text = "";
-                                LoadGrid();
+                                if (txtobser.Text == "" || txtFuncionEstructura.Text == "" || txt_TDAnios.Text == "" || txt_TDMeses.Text == "" || txt_TDDias.Text == "" ||
+                                    txt_TSAnios.Text == "" || txt_TSMeses.Text == "" || txt_TSDias.Text == "" || txtEteologia.Text=="")
+                                {
+                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Algunos Datos no fueron completados, favor revisar')", true);
+                                }
+                                else
+                                {
+                                    segPacientes.GuardarSeguimientoPacientes(0, centroid, exped, empleado, cmb_patologias.Text, txtobser.Text, cmb_ClasificacionPaciente.Text,
+                                                                             cmb_GradoDeInstruccion.Text, cmb_OcupacionActual.Text, cmb_Condicion.Text, cmb_Referencia.Text,
+                                                                             cmb_TipoDaño.Text, cmb_AyudaTecnicaIndicada.Text, txtFuncionEstructura.Text, txtEteologia.Text, cmb_Procedencia.Text,
+                                                                             Convert.ToInt32(txt_TDAnios.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TSAnios.Text),
+                                                                             Convert.ToInt32(txt_TSMeses.Text), Convert.ToInt32(txt_TSDias.Text));
+                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Paciente Guardado Exitosamente')", true);
+                                    txtnumexp.Text = "";
+                                    txtobser.Text = "";
+                                    LoadGrid();
+                                }
                             }
                         }
                         else
