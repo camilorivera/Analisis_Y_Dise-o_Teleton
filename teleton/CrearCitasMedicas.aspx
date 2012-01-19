@@ -18,7 +18,8 @@
                 <ul class = "list">
                     <li class="field">
                             <asp:Label ID="Label1" CssClass="labelD" runat="server" Text="Nombre de Doctor: "></asp:Label>
-                            <asp:DropDownList ID="cmbEmpleados" CssClass="cmb_Empleado" runat="server">
+                            <asp:DropDownList ID="cmbEmpleados" CssClass="cmb_Empleado" runat="server" 
+                                onselectedindexchanged="cmbEmpleados_SelectedIndexChanged">
                             </asp:DropDownList>
                      </li>
           
@@ -77,6 +78,7 @@
 
                  </ul>
               </fieldset>
+                <asp:Label ID="lb_Mensaje" runat="server" Visible="False" ForeColor="#990000"></asp:Label>
          </div>
 
     <div id="navBotones">

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+using System.Threading;
 
 namespace BL
 {
@@ -17,7 +19,8 @@ namespace BL
                 
                 DataAccess.citas_doctor  nuevaCita = new DataAccess.citas_doctor();
                 nuevaCita.doctor_username = nombre;
-                nuevaCita.fecha_hora = fecha;
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
+                nuevaCita.fecha_hora = Convert.ToDateTime(fecha.ToString("yyyy-MM-dd HH:MM:ss"));
                 nuevaCita.prefijo = prefijo;
                 nuevaCita.expediente = expediente;
                 nuevaCita.tipo = tipo;
@@ -62,8 +65,7 @@ namespace BL
             try
             {
                 Usuarios user = new Usuarios();
-
-                String userName = user.RetrieveUserName(nombreDoctor);
+                string userName = user.RetrieveUserName(nombreDoctor);
                 var query = from citas in entities.citas_doctor
                             where citas.fecha_hora == fecha && citas.doctor_username == userName
                             select citas;
@@ -135,6 +137,23 @@ namespace BL
             {
                 throw ex;
             }
+        }
+
+        public List<string> ObtenerUsuarios()
+        {
+            var query = (from empl in entities.empleados
+                        join user in entities.usuarios on empl.id equals user.empleado
+                        where empl.puesto==16
+                        select  new
+                        {
+                            empl.nombres,empl.primer_apellido,empl.segundo_apellido
+                        }).Distinct();
+            List<string> _ls = new List<string>();
+            foreach(var single in query)
+            {
+                _ls.Add(single.nombres + " " + single.primer_apellido + " " + single.segundo_apellido);
+            }
+            return _ls;
         }
 
         public IQueryable ObtenerCitasTerapia(DateTime fecha, String nombreUsuario, int prefijo, long expediente)

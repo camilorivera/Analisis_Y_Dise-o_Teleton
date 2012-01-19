@@ -641,6 +641,24 @@ namespace BL
 
             return resultset;
         }
+
+        public int verificarPrefijo(int expediente,int prefijo)
+        {
+            var query = from pac in entities.pacientes
+                        where pac.expediente==expediente
+                        select new {pac.prefijo};
+            if (query.ToList().Count == 0)
+                return -1;
+            else
+            {
+                foreach (var us in query)
+                {
+                    if (us.prefijo == prefijo)
+                        return 1;
+                }
+            }
+                return 0;
+        }
         
     }
 }

@@ -45,12 +45,13 @@ namespace BL
             return Roles;
         }
 
-        public string RetrieveUserName(string nombreempleado) {
-            try {
+        public string RetrieveUserName(string nombreempleado) 
+        {
+            try 
+            {
                 var query = from e in entities.empleados
-                            where e.nombres == nombreempleado
-                            select e.id;
-
+                                where e.nombres == nombreempleado
+                                select e.id;
                 long id = query.First();
 
                 var query1 = from u in entities.usuarios
@@ -59,12 +60,14 @@ namespace BL
 
                 return query1.First().ToString();
 
-            }catch(Exception err){
+            }
+            catch(Exception err)
+            {
                 throw new Exception(err.ToString());
-            
             }
             
         }
+
 
         public List<string> RetrieveEmpleadosid() //Retorna IDs de empleado que esta no en tab usuario
         {

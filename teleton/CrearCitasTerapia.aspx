@@ -4,6 +4,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="Styles/Teleton.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            width: 60px;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -21,18 +27,27 @@
                             <asp:DropDownList ID="cmbEmpleados" CssClass="cmb_Empleado" runat="server">
                             </asp:DropDownList>
                      </li>
-          
-
+                     <li>
+                     <br />
+                     </li>
+                     
                      <li class="field">
                          <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="N. Expediente: "></asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtNumExpediente" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
+                         &nbsp;
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                              ControlToValidate="txtNumExpediente" ErrorMessage="Campo Requerido" 
                              ForeColor="Red"></asp:RequiredFieldValidator>
                      </li>
+                     <li>
+                        <br />
+                     </li>
 
                       <li class="field">
                         <asp:Label ID="Label3" CssClass="labelD" runat="server" Text="Fecha de Cita: "></asp:Label>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         
                         <asp:TextBox ID="txtfecha" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                           <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
@@ -45,7 +60,9 @@
                           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                               ControlToValidate="txtfecha" ErrorMessage="Campo Requerido" 
                               ForeColor="Red"></asp:RequiredFieldValidator>
-                          
+                     </li>
+                     <li>
+                        <br />
                      </li>
                     <li class="field">
                         <table>
@@ -59,8 +76,8 @@
                                         DisplaySeconds="False">
                                     </MKB:TimeSelector>
                                 </td>
-                                <td>
-                                    <asp:Label ID="Label5" CssClass="labelD" runat="server" Text="Hasta"></asp:Label>
+                                <td class="style1">
+                                    &nbsp;<asp:Label ID="Label5" CssClass="labelD" runat="server" Text="Hasta :"></asp:Label> 
                                 </td>
                                 <td>
                                 <MKB:TimeSelector ID="timeSelectorHoraTermina" CssClass="txtbx_labelH" 
@@ -72,9 +89,14 @@
                             </tr>
                         </table>
                     </li>
+                    <li>
+                        <br />
+                    </li>
                     <li class="field">
                         <asp:Label ID="lblHora" runat="server" ForeColor="Red" 
                             Text="*Debe Ingresar una hora inicio menor que la hora final." Visible="False"></asp:Label>
+                            <br />
+                        <asp:Label ID="lb_Mensaje" runat="server" ForeColor="Red"></asp:Label>
                     </li>
 
                  </ul>

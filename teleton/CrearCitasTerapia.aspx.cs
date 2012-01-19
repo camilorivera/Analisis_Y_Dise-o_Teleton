@@ -72,6 +72,8 @@ public partial class CrearCitasTerapia : System.Web.UI.Page
 
         timeSelectorHoraTermina.Hour = DateTime.Now.Hour;
         timeSelectorHoraTermina.Minute = DateTime.Now.Minute;
+        lb_Mensaje.Text = "";
+        lb_Mensaje.Visible = false;
     }
 
     protected void btIngresar_Click(object sender, EventArgs e)
@@ -89,18 +91,28 @@ public partial class CrearCitasTerapia : System.Web.UI.Page
 
         try
         {
-            BL.Citas cita = new BL.Citas();
-
-            if (cita.existeCitaTerapiaProgramada(fechaCita.Date,horaCitaInicio,horaCitaFinaliza,cmbEmpleados.Text) )
+            BL.Paciente _paciente = new BL.Paciente();
+            int _int = _paciente.verificarPrefijo(Convert.ToInt32(txtNumExpediente.Text), prefijo);
+            if (_int == 0)
             {
-                Response.Write("<script>alert('El terapeuta ya tiene una cita en esta hora y fecha')</script>");
+                lb_Mensaje.Text = "El expediente pertenece centro distinto... NO se Guardo.";
+                lb_Mensaje.Visible = true;
             }
             else
             {
-                cita.NuevaCitaTerapia(fechaCita.Date,cmbEmpleados.Text,intIdCentro,long.Parse(txtNumExpediente.Text),horaCitaInicio,horaCitaFinaliza);
-                Response.Write("<script>alert('Se ha agregado la cita!')</script>");
+                BL.Citas cita = new BL.Citas();
+
+                if (cita.existeCitaTerapiaProgramada(fechaCita.Date, horaCitaInicio, horaCitaFinaliza, cmbEmpleados.Text))
+                {
+                    Response.Write("<script>alert('El terapeuta ya tiene una cita en esta hora y fecha')</script>");
+                }
+                else
+                {
+                    cita.NuevaCitaTerapia(fechaCita.Date, cmbEmpleados.Text, intIdCentro, long.Parse(txtNumExpediente.Text), horaCitaInicio, horaCitaFinaliza);
+                    Response.Write("<script>alert('Se ha agregado la cita!')</script>");
+                }
+                LimpiarControles();
             }
-            LimpiarControles();
 
         }
         catch (Exception ex)
