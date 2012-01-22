@@ -93,7 +93,6 @@ namespace BL
             return id;
         }
 
-
         public List<String> RetrieveGrado()
         {
             var query = from p in entities.escolaridads select p;
@@ -318,6 +317,49 @@ namespace BL
                         where p.fecha.Year >= fechainit.Year && p.fecha.Month >= fechainit.Month && p.fecha.Day >= fechainit.Day &&
                               p.fecha.Year <= fechafin.Year && p.fecha.Month <= fechafin.Month && p.fecha.Day <= fechafin.Day && p.prefijo==centroid
                         select new { p.fecha, p.expediente, a.diagnostico1, p.evaluador, p.notas, e.nombres, e.primer_apellido };
+
+            return query;
+
+        }
+
+        public IQueryable BusquedaporRangoFecha2(DateTime fechainit, DateTime fechafin, int centroid)
+        {
+
+            var query = from p in entities.evoluciones
+                        
+                        join e in entities.clasificacion_paciente
+                        on p.id_clasificacion_paciente equals e.id
+                        
+                        join b in entities.pacientes
+                        on p.expediente equals b.expediente
+
+                        join r in entities.condicions
+                        on p.id_condicion equals r.simbolo
+
+                        join a in entities.diagnosticos
+                        on p.id_diagnostico equals a.id
+
+                        join d in entities.tipo_daño
+                        on p.id_tipo_daño equals d.id
+
+                        join t in entities.procedencias
+                        on p.id_procedencia equals t.simbolo
+
+                        join es in entities.escolaridads
+                        on p.id_escolaridad equals es.id
+
+                        join ay in entities.ayudas_tecnicas
+                        on p.id_ayudas_tecnicas equals ay.id
+
+                        join oc in entities.ocupaciones
+                        on p.id_ocupacion equals oc.id
+
+                        where ((p.fecha.CompareTo(fechainit) == 0) || (p.fecha.CompareTo(fechainit) > 0)) &&
+                                ((p.fecha.CompareTo(fechafin) == 0) || (p.fecha.CompareTo(fechafin) < 0)) && (p.prefijo == centroid)
+                        
+                        select new { p.fecha, p.expediente, e.clasificacion, b.nombres, r.condicion1, b.cedula, p.notas, a.diagnostico1, d.tipo,
+                                     t.procedencia1, p.funcion_estructura, es.Grado, ay.ayuda, oc.ocupacion, p.años_tiempo_discapacidad, p.meses_tiempo_discapacidad,
+                                     p.dias_tiempo_discapacidad, p.años_TSTDL, p.meses_TSTDL, p.dias_TSTDL, p.eteologia};
 
             return query;
 

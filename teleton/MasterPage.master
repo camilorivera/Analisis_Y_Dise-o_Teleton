@@ -43,8 +43,8 @@
                         </asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Seg. Pacientes" Value="Seg. Pacientes">
-                        <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" NavigateUrl="~/Seguimiento_Pacientes.aspx">
-                        </asp:MenuItem>
+                        <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" NavigateUrl="~/Seguimiento_Pacientes.aspx" />
+                        <asp:MenuItem Text="Exportar Seguimieto" NavigateUrl="~/Exportar_Seguimiento.aspx" />
                     </asp:MenuItem>
                     <asp:MenuItem></asp:MenuItem>
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">

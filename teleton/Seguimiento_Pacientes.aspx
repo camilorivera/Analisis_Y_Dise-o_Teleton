@@ -337,9 +337,6 @@
                                 </Columns>
                             </asp:GridView>
                             </asp:Panel>
-                              <asp:Button ID="btnexport" CssClass="boton"  runat="server" 
-                                Text="Exportar a Excel" CausesValidation="False" 
-                                onclick="btnexport_Click" Visible="False" />
                             
                         </div>
                     </fieldset>
