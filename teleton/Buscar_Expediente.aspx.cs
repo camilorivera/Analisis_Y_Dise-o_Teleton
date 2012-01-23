@@ -50,7 +50,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
         if (Session["ppaciente"] != null && (string)Session["ppaciente"] != string.Empty && Session["centro"] != null && (string)Session["centro"] != string.Empty)
         {
-            string x=sec.getCentrolugar(Int32.Parse(Session["centro"].ToString()));
+            string x=Session["centro"].ToString();
             txtExpediente.Text = Session["ppaciente"].ToString();
             cboCentro.Text = x;
             Session.Remove("ppaciente");
@@ -244,6 +244,12 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 int dd = int.Parse(txtFechaNacimiento.Text.Substring(8, 2));
                 DateTime fechaNac = new DateTime(yy, mm, dd);
 
+                if (fechaNac >= DateTime.Today)
+                {
+                    Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
+                    return;
+                }
+                
                 yy = int.Parse(txtFechaIngreso.Text.Substring(0, 4));
                 mm = int.Parse(txtFechaIngreso.Text.Substring(5, 2));
                 dd = int.Parse(txtFechaIngreso.Text.Substring(8, 2));
@@ -252,11 +258,31 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 bool rehabilitacion = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
                 bool transporte = rblCandidato.SelectedValue.Equals("Sí") ? true : false;
 
-                pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
+                if (FileUpload_Foto.HasFile)
+                {
+                    if (!FileUpload_Foto.FileName.ToString().ToLower().EndsWith(".jpg"))
+                    {
+                        Response.Write("<script>alert('Imagen no esta en formato jpg')</script>");
+                        return;
+                    }
+                    else
+                    {
+                        pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
+                        fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
+                        txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
+                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
+                        rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
+                    }
+                }
+                else
+                {
+                    pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                     fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                     txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
                     txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
                     rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
+
+                }
 
                 if (pac.editarPaciente())
                 {

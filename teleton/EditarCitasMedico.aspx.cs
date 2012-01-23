@@ -33,16 +33,19 @@ public partial class EditarCitasMedico : System.Web.UI.Page
 
     private void AtarComboDoctores()
     {
-        BL.Empleados emp = new BL.Empleados();
-        List<String> lstNombresDoctores = emp.obtenerNombresDoctores();
-        cmbdoctor.DataSource = lstNombresDoctores;
+        BL.Citas citas = new BL.Citas();
+        cmbdoctor.DataSource = citas.ObtenerUsuarios();
         cmbdoctor.DataBind();
+        /*BL.Empleados emp = new BL.Empleados();
+        List<String> lstNombresDoctores = emp.obtenerNombresTerapeutas();
+        cmbdoctor.DataSource = lstNombresDoctores;
+        cmbdoctor.DataBind();*/
     }
 
     protected void Refrescar_Click(object sender, ImageClickEventArgs e)
     {
         BL.Usuarios user = new BL.Usuarios();
-        string username = user.RetrieveUserName(cmbdoctor.Text);
+        string username = user.RetrieveUserName(cmbdoctor.Text.Substring(0,cmbdoctor.Text.IndexOf(' ')));
         DateTime fechai = DateTime.Parse(txtdateinit.Text);
         DateTime fechaf = fechai.AddDays(1);
         GridViewCitas.DataSource = app.getCitasMedicas(username, fechai, fechaf);

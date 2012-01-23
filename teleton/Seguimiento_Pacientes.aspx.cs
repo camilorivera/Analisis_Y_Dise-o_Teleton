@@ -11,12 +11,14 @@ using BL;
 
 public partial class Seguimiento_Pacientes : System.Web.UI.Page
 {
-    private BL.SeguimientoPacientes segPacientes = new BL.SeguimientoPacientes();
+    private BL.SeguimientoPacientes segPacientes;
     int centroid;
     protected void Page_Load(object sender, EventArgs e)
     {
         //Lista de permisos que el usuario logueado tiene
         List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+
+        segPacientes = new BL.SeguimientoPacientes();
 
         bool encontroPermiso = false;
         centroid = (int)long.Parse(Session["Centro_idNum"].ToString());
@@ -449,34 +451,5 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             Response.Redirect("~/Error.aspx", true);
         }
 
-    }
-
-    
-    protected void btnexport_Click(object sender, EventArgs e)
-    {
-        StringBuilder sb = new StringBuilder();
-        StringWriter sw = new StringWriter(sb);
-        HtmlTextWriter htw = new HtmlTextWriter(sw);
-
-        Page page = new Page();
-        HtmlForm form = new HtmlForm();
-
-        GridViewSegPac.EnableViewState = false;
-
-        page.EnableEventValidation = false;
-        page.DesignerInitialize();
-        page.Controls.Add(form);
-        form.Controls.Add(GridViewSegPac);
-
-        page.RenderControl(htw);
-
-        Response.Clear();
-        Response.Buffer = true;
-        Response.ContentType = "text/HTML";
-        Response.AddHeader("Content-Disposition", "attachment;filename=DataSeguimientodePacientes.xls");
-        Response.Charset = "UTF-8";
-        Response.ContentEncoding = Encoding.Default;
-        Response.Write(sb.ToString());
-        Response.End();
     }
 }

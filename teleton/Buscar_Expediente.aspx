@@ -136,6 +136,11 @@
                             ErrorMessage="*Fecha de Ingreso Requerida" ForeColor="Red" 
                             ControlToValidate="txtFechaIngreso"></asp:RequiredFieldValidator>
                     </li>
+                    <li class="field">
+                        <asp:Label ID="Label12" CssClass="label" runat="server" 
+                            Text="Foto:"></asp:Label>
+                        <asp:FileUpload ID="FileUpload_Foto" runat="server" />
+                    </li>
 
                     <li class="field">
                         <asp:Label runat="server" ID="Label13" CssClass="label">Telefono:</asp:Label>

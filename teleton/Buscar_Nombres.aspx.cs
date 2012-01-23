@@ -18,7 +18,7 @@ public partial class Buscar_Nombres : System.Web.UI.Page
         try
         {
         lista.Items.Clear();
-        lista.DataSource = p.Busqueda_pacientes(txt_nombre.Text);;
+        lista.DataSource = p.Busqueda_pacientes(txt_nombre.Text);
         lista.DataBind();
         }
         catch (Exception err)
@@ -30,10 +30,9 @@ public partial class Buscar_Nombres : System.Web.UI.Page
     protected void btnAceptar_Click(object sender, EventArgs e)
     {
         try
-        {
-            
+        {            
             Session["ppaciente"] = partes[0];
-            Session["centro"] = partes[1];
+            Session["centro"] = partes[2];
             Response.Redirect("Buscar_Expediente.aspx");
         }
         catch (Exception err)

@@ -8,7 +8,6 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<<<<<<< HEAD
 <body onkeydown="return (event.keyCode!=13)">
     <form id="Form1" runat="server">
     <div id="content">
@@ -31,7 +30,7 @@
         </asp:ScriptManager>
         <div id="sitemenu">
             <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" CssClass="pointermenu"
-                StaticSubMenuIndent="2px" IncludeStyleBlock="true">
+                StaticSubMenuIndent="2px" IncludeStyleBlock="true" >
                 <Items>
                     <asp:MenuItem Text="Expedientes" Value="Administrar Paciente">
                         <asp:MenuItem Text="Crear Expediente" Value="New Item" NavigateUrl="~/Crear_Paciente.aspx?sender=new">
@@ -44,8 +43,8 @@
                         </asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Seg. Pacientes" Value="Seg. Pacientes">
-                        <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" NavigateUrl="~/Seguimiento_Pacientes.aspx">
-                        </asp:MenuItem>
+                        <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" NavigateUrl="~/Seguimiento_Pacientes.aspx" />
+                        <asp:MenuItem Text="Exportar Seguimieto" NavigateUrl="~/Exportar_Seguimiento.aspx" />
                     </asp:MenuItem>
                     <asp:MenuItem></asp:MenuItem>
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">

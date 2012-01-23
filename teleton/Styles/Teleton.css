@@ -322,12 +322,12 @@ fieldset
     margin: 2%;
 }
 .Grid, th
-{
-    
+{   
   margin: auto;
   background-color:white;
   color:black;
-  border:1px solid gray;    
+  border:1px solid gray;
+  text-align:center;
 }
 th
 {
@@ -410,4 +410,38 @@ text-align:center;
 {
      width: 117px;
      margin-left:100%
+}
+
+.requerido
+{
+    border-left-color: Red;
+    border-left-style: solid;
+    border-left-width: 3px;
+}
+
+.fieldIzquierdo
+{
+    float: left;
+    width: 45%;
+    padding: 3px 10px 3px 10px;
+}
+
+.fieldDerecho
+{
+    float: right;
+    width: 45%;
+    padding: 3px 10px 3px 10px;
+}
+
+.failureNotification
+{
+    padding-left: 3px;
+    color: Red;
+}
+
+.panel
+{
+    width: 820px;
+    height:200px;
+    padding:10px 30px 10px 30px;
 }

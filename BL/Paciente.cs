@@ -454,9 +454,10 @@ namespace BL
                             where p.nombres.Contains(nombre)
                             select new {p.expediente,p.centro_actual,p.nombres,p.primer_apellido,p.segundo_apellido};
 
+                Centro c = new Centro();
 
                 foreach (var u in users)
-                    usrs.Add(u.expediente+ " " + u.centro_actual + " " +u.nombres+" "+u.primer_apellido+" "+u.segundo_apellido);
+                    usrs.Add(u.expediente+ " / " + c.getLugar(u.centro_actual) + " - " +u.nombres+" "+u.primer_apellido+" "+u.segundo_apellido);
   
                 return usrs;
             }
@@ -640,6 +641,24 @@ namespace BL
             }
 
             return resultset;
+        }
+
+        public int verificarPrefijo(int expediente,int prefijo)
+        {
+            var query = from pac in entities.pacientes
+                        where pac.expediente==expediente
+                        select new {pac.prefijo};
+            if (query.ToList().Count == 0)
+                return -1;
+            else
+            {
+                foreach (var us in query)
+                {
+                    if (us.prefijo == prefijo)
+                        return 1;
+                }
+            }
+                return 0;
         }
         
     }
