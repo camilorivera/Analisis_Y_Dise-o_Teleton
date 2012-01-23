@@ -19,7 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "teleton", "teleton\", "{DCA
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "12471"
+		VWDPort = "13877"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectTeleton", "TestProjectTeleton\TestProjectTeleton.csproj", "{76BC6DB4-8B37-480A-AC55-549034E01262}"

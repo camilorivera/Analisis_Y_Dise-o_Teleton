@@ -360,6 +360,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
     /*Modificado por Eliazar Melendez*/
     private void cargarDropDownEscolaridad(long id)
     {
+        ddlEscolaridad.Items.Clear();
+
         Paciente objeto = new Paciente();
 
         DataTable datos = objeto.cargarEscolaridad();
@@ -379,6 +381,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
     private void cargarDropDownOcupaciones(long id)
     {
+        ddlProfesion.Items.Clear();
+
         Paciente objeto = new Paciente();
 
         DataTable datos = objeto.cargarOcupaciones();
