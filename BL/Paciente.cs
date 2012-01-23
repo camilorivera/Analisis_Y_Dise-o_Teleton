@@ -485,6 +485,7 @@ namespace BL
                 pac.primer_apellido = PrimerApellido;
                 pac.segundo_apellido = SegundoApellido;
                 pac.sexo = Sexo;
+                pac.foto = Foto;
 
                 /*Modificado por Eliazar*/
                 pac.telefono_fijo = telefono;
