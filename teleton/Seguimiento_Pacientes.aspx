@@ -228,10 +228,11 @@
                         <legend>Listado de Pacientes</legend>
                         <asp:Label ID="lbldateinit" CssClass="labelD" runat="server" 
              Text="Fecha Inicial:"></asp:Label>
-                        <asp:TextBox ID="txtdateinit" runat="server" CssClass="txtbx_labelD"></asp:TextBox>
+                        <asp:TextBox ID="txtdateinit" runat="server" CssClass="txtbx_labelD" 
+                            onprerender="txtdateinit_PreRender"></asp:TextBox>
                         <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
-                            TargetControlID="txtdateinit" Format="m/dd/yyyy" 
-             PopupButtonID="imgdateinit">
+                            TargetControlID="txtdateinit" Format="dd/MM/yyyy" 
+             PopupButtonID="imgdateinit"  ClearTime="true">
                         </asp:CalendarExtender>
                         <img alt="Icon" src="images/calendar_icon.jpg" class="calendar" 
              id="imgdateinit" />
@@ -241,7 +242,7 @@
              CssClass="txtbx_labelD"></asp:TextBox>
                         <asp:CalendarExtender ID="CalendarExtender1" runat="server" 
                                         TargetControlID="txtdatefini" 
-             Format="m/dd/yyyy" PopupButtonID="imgdatefini">
+             Format="dd/MM/yyyy" PopupButtonID="imgdatefini">
                         </asp:CalendarExtender>
                         <img alt="Icon" src="images/calendar_icon.jpg" 
              class="calendar" id="imgdatefini" />

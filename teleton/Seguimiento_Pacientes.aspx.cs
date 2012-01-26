@@ -120,7 +120,8 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         try
         {
-            LBLDATE.Text = segPacientes.GetFecha();
+            DateTime _dt = Convert.ToDateTime(segPacientes.GetFecha());
+            LBLDATE.Text = _dt.ToString("dd/MM/yyyy");
             CargarPatologias();
             CargarClasificacionPaciente();
             CargarOcupaciones();
@@ -130,8 +131,8 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             CargarTipoDaño();
             CargarAyudasTecnicas();
 
-            txtdateinit.Text = segPacientes.GetFecha();
-            txtdatefini.Text = segPacientes.GetFecha();
+            txtdateinit.Text = _dt.ToString("dd/MM/yyyy");
+            txtdatefini.Text = _dt.ToString("dd/MM/yyyy");
             GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario(centroid);
             GridViewSegPac.DataBind();
 
@@ -451,5 +452,13 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             Response.Redirect("~/Error.aspx", true);
         }
 
+    }
+    protected void FechaIngresoExtender_Init(object sender, EventArgs e)
+    {
+        
+    }
+    protected void txtdateinit_PreRender(object sender, EventArgs e)
+    {
+        
     }
 }

@@ -30,9 +30,10 @@
             </fieldset>
         </div>
         <div class="cajas"> 
-            <fieldset>          
-                <ul>
-                    <li>
+            <fieldset> 
+                
+                <ul class="list">
+                    <li class="field">
                         <asp:Label ID="lb_Paciente" runat="server" Font-Bold="True" ForeColor="Red"  ></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="lb_Expe" runat="server" Text="" Font-Bold="true" ForeColor="Red"></asp:Label>
