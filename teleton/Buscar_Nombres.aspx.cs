@@ -27,32 +27,18 @@ public partial class Buscar_Nombres : System.Web.UI.Page
             Response.Redirect("~/Error.aspx", true);
         }
     }
-    protected void btnAceptar_Click(object sender, EventArgs e)
+
+ 
+    protected void lista_Load(object sender, EventArgs e)
     {
-        try
-        {            
+        if (Request["__EVENTARGUMENT"] != null && Request["__EVENTARGUMENT"] == "click")
+        {
+            string cadenaorig = lista.SelectedValue.ToString();
+            partes = cadenaorig.Split(' ');
             Session["ppaciente"] = partes[0];
             Session["centro"] = partes[2];
             Response.Redirect("Buscar_Expediente.aspx");
         }
-        catch (Exception err)
-        {
-            Response.Write("<script>alert('Por Favor, Seleccione un Nombre de la Lista!')</script>");
-        }
-    }
-    protected void lista_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        try
-        {
-        string cadenaorig = lista.SelectedValue.ToString();
-        partes = cadenaorig.Split(' ');
-
-        }
-        catch (Exception err)
-        {
-            Session["Error_Msg"] = err.Message;
-            Response.Redirect("~/Error.aspx", true);
-        }
-        
+        lista.Attributes.Add("ondblclick", ClientScript.GetPostBackEventReference(lista, "click"));
     }
 }

@@ -278,6 +278,18 @@ namespace BL
 
         }
 
+        public string getCentrolugarNom(string centro) //devuelve nombre del centro recibe string
+        {
+            var QCId = from c in entidad.centros
+                       where c.lugar.Contains(centro)
+                       select c.lugar;
+            string CId = "";
+            foreach (string l in QCId)
+                CId = l;
+            return CId;
+
+        }
+
         public long getidEmp()
         {
             try

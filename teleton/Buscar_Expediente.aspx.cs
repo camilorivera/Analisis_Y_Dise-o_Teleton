@@ -52,9 +52,11 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         {
             string x=Session["centro"].ToString();
             txtExpediente.Text = Session["ppaciente"].ToString();
-            cboCentro.Text = x;
+            cboCentro.Text = sec.getCentrolugarNom(x);
             Session.Remove("ppaciente");
             Session.Remove("centro");
+
+            buscar();
         }
     }
 
@@ -117,6 +119,11 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
+        buscar();
+    }
+
+    private void buscar()
+    {
         try
         {
             if (txtExpediente.Text.Trim() == "")
@@ -154,7 +161,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 anio = p.FechaNac.Year.ToString();
                 fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
                 txtFechaNacimiento.Text = fecha;
-                
+
                 dia = p.FechaIngreso.Day.ToString();
                 mes = p.FechaIngreso.Month.ToString();
                 anio = p.FechaIngreso.Year.ToString();
@@ -193,7 +200,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 txtReferencia.Text = p.acercaDe;
                 txtDocumentos.Text = p.docsAlternos;
                 txtObservaciones.Text = p.observaciones;
-                
+
                 cambiarEnabled(true);
 
                 String temp = segp.getDiagnostico(exp);
@@ -206,8 +213,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                     txtDiagnostico.Text = temp;
                 }
 
-                Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
-                
+               // Response.Write("<script>alert('El paciente Se ha encontrado exitosamente')</script>");
+
                 // Habilitar los controles para que se pueda editar.
                 lblExpReq.Visible = false;
             }
@@ -224,7 +231,6 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             Session["Error_Msg"] = err.Message;
             Response.Redirect("~/Error.aspx", true);
         }
-
 
     }
 
