@@ -277,7 +277,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                         fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
                         txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
                         txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
-                        rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
+                        rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
                     }
                 }
                 else
@@ -286,7 +286,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                     fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                     txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
                     txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
-                    rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
+                    rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
 
                 }
 
