@@ -5094,54 +5094,6 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String condicion_hogar
-        {
-            get
-            {
-                return _condicion_hogar;
-            }
-            set
-            {
-                Oncondicion_hogarChanging(value);
-                ReportPropertyChanging("condicion_hogar");
-                _condicion_hogar = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("condicion_hogar");
-                Oncondicion_hogarChanged();
-            }
-        }
-        private global::System.String _condicion_hogar;
-        partial void Oncondicion_hogarChanging(global::System.String value);
-        partial void Oncondicion_hogarChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Double> ingreso_familiar
-        {
-            get
-            {
-                return _ingreso_familiar;
-            }
-            set
-            {
-                Oningreso_familiarChanging(value);
-                ReportPropertyChanging("ingreso_familiar");
-                _ingreso_familiar = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ingreso_familiar");
-                Oningreso_familiarChanged();
-            }
-        }
-        private Nullable<global::System.Double> _ingreso_familiar;
-        partial void Oningreso_familiarChanging(Nullable<global::System.Double> value);
-        partial void Oningreso_familiarChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Boolean> expectativa
         {
             get
@@ -5160,30 +5112,6 @@ namespace DataAccess
         private Nullable<global::System.Boolean> _expectativa;
         partial void OnexpectativaChanging(Nullable<global::System.Boolean> value);
         partial void OnexpectativaChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String documentacion
-        {
-            get
-            {
-                return _documentacion;
-            }
-            set
-            {
-                OndocumentacionChanging(value);
-                ReportPropertyChanging("documentacion");
-                _documentacion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("documentacion");
-                OndocumentacionChanged();
-            }
-        }
-        private global::System.String _documentacion;
-        partial void OndocumentacionChanging(global::System.String value);
-        partial void OndocumentacionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5286,72 +5214,24 @@ namespace DataAccess
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> candidato_transporte
+        public global::System.String nombre_conyugue
         {
             get
             {
-                return _candidato_transporte;
+                return _nombre_conyugue;
             }
             set
             {
-                Oncandidato_transporteChanging(value);
-                ReportPropertyChanging("candidato_transporte");
-                _candidato_transporte = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("candidato_transporte");
-                Oncandidato_transporteChanged();
+                Onnombre_conyugueChanging(value);
+                ReportPropertyChanging("nombre_conyugue");
+                _nombre_conyugue = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre_conyugue");
+                Onnombre_conyugueChanged();
             }
         }
-        private Nullable<global::System.Boolean> _candidato_transporte;
-        partial void Oncandidato_transporteChanging(Nullable<global::System.Boolean> value);
-        partial void Oncandidato_transporteChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String recibio_rehabilitacion_antes
-        {
-            get
-            {
-                return _recibio_rehabilitacion_antes;
-            }
-            set
-            {
-                Onrecibio_rehabilitacion_antesChanging(value);
-                ReportPropertyChanging("recibio_rehabilitacion_antes");
-                _recibio_rehabilitacion_antes = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("recibio_rehabilitacion_antes");
-                Onrecibio_rehabilitacion_antesChanged();
-            }
-        }
-        private global::System.String _recibio_rehabilitacion_antes;
-        partial void Onrecibio_rehabilitacion_antesChanging(global::System.String value);
-        partial void Onrecibio_rehabilitacion_antesChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String se_entero_teleton
-        {
-            get
-            {
-                return _se_entero_teleton;
-            }
-            set
-            {
-                Onse_entero_teletonChanging(value);
-                ReportPropertyChanging("se_entero_teleton");
-                _se_entero_teleton = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("se_entero_teleton");
-                Onse_entero_teletonChanged();
-            }
-        }
-        private global::System.String _se_entero_teleton;
-        partial void Onse_entero_teletonChanging(global::System.String value);
-        partial void Onse_entero_teletonChanged();
+        private global::System.String _nombre_conyugue;
+        partial void Onnombre_conyugueChanging(global::System.String value);
+        partial void Onnombre_conyugueChanged();
 
         #endregion
     

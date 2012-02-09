@@ -70,13 +70,8 @@ public partial class HojaPaciente : System.Web.UI.Page
                         nombreMadre.Text = paciente.nombreMadre;
                         padre.Text = paciente.nombrePadre;
                         estructuraFamiliar.Text = paciente.estructuraFamiliar;
-                        condicionHogar.Text = paciente.condicionHogar;
-                        expectativaRehabilitarse.Text = paciente.expectativa;
-                        ingresoFamiliar.Text = paciente.ingresos.ToString();
+                        conyugue.Text = paciente.nombreConyugue;
                         recibidoAntes.Text = paciente.rehabilitacion ? "Si" : "No";
-                        candidatoTransporte.Text = paciente.candidatoTransporte ? "Si" : "No";
-                        comoEnteroTeleton.Text = paciente.acercaDe;
-                        documentacion.Text = paciente.docsAlternos;
                         observaciones.Text = paciente.observaciones;
                         String temp = segp.getDiagnostico(expedienteID);
                         if (temp == null)

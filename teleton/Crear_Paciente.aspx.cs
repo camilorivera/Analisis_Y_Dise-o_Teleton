@@ -153,7 +153,7 @@ public partial class Crear_Paciente : System.Web.UI.Page
                         txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue),
                         txtLugarTrabajo.Text, txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text,
                         txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text), rehabilitacionAnterior, candidatoTrans,
-                        txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text);
+                        txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
 
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {

@@ -2,6 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="Styles/Reporte.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            font-size: xx-large;
+        }
+        .style2
+        {
+            font-size: x-large;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     
@@ -9,24 +19,25 @@
 
         <div id="navcenter">
             <table class="table_Paciente">
-                <thead>
-                    <tr> 
-                        <td colspan="2" class="table_Title">
-                        <h1>Información General</h1> 
-                        </td>
-                    </tr>
+                <thead>                    
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>   
+                            <asp:Image ID="Imagen" runat="server" />
+                        </td>
+                    <td>
+                    <table>
+                    <thead>
+                    <tr> 
+                        <td colspan="2" class="table_Title">
+                        <h1 class="style1"><strong class="style2">Información General</strong></h1> 
+                        </td>
+                    </tr>
+                    </thead>
                     <tr class="rowodd">
                         <td colspan="2" class="table_Subtitle">                    
                             <h2>Datos Generales</h2>
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >
-                            &nbsp;</td>
-                        <td class="tb_crearRol">    
-                            <asp:Image ID="Imagen" runat="server" />
                         </td>
                     </tr>
                     <tr class="rowodd">
@@ -125,33 +136,21 @@
                         </td>
                     </tr>
                     <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Padre:</td>
+                        <td class="table_Paciente_Desc" >Nombre Padre:</td>
                         <td class="tb_crearRol"> 
                             <asp:Label ID="padre" runat="server"></asp:Label>   
+                        </td>
+                    </tr>
+                    <tr class="rowodd">
+                        <td class="table_Paciente_Desc" >Nombre Conyugue:</td>
+                        <td class="tb_crearRol"> 
+                            <asp:Label ID="conyugue" runat="server"></asp:Label>   
                         </td>
                     </tr>
                     <tr class="rowodd">
                         <td class="table_Paciente_Desc" >Estructura Familiar:</td>
                         <td class="tb_crearRol"> 
                             <asp:Label ID="estructuraFamiliar" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Condicion del Hogar:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="condicionHogar" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Expectativa Rehabilitarse:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="expectativaRehabilitarse" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Ingreso Familiar:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="ingresoFamiliar" runat="server"></asp:Label>   
                         </td>
                     </tr>
                     <tr class="rowodd">
@@ -166,24 +165,6 @@
                         </td>
                     </tr>
                     <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Candidato a Transporte:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="candidatoTransporte" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >¿Como se entero de Fundacion Teleton?:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="comoEnteroTeleton" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
-                        <td class="table_Paciente_Desc" >Documentos que trae el paciente:</td>
-                        <td class="tb_crearRol"> 
-                            <asp:Label ID="documentacion" runat="server"></asp:Label>   
-                        </td>
-                    </tr>
-                    <tr class="rowodd">
                         <td class="table_Paciente_Desc" >Observaciones:</td>
                         <td class="tb_crearRol"> 
                             <asp:Label ID="observaciones" runat="server"></asp:Label>   
@@ -194,6 +175,9 @@
                         <td class="tb_crearRol"> 
                             <asp:Label ID="diagnostico" runat="server"></asp:Label>   
                         </td>
+                    </tr>
+                    </table>
+                    </td>
                     </tr>
                 </tbody>
                 <tfoot>

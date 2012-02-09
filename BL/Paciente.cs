@@ -35,6 +35,7 @@ namespace BL
         private string _lugarTrabajo;
         private string _nombreMadre;
         private string _nombrePadre;
+        private string _nombreConyugue;
         private string _estructuraFamiliar;
         private string _condicionHogar;
         private string _expectativa;
@@ -168,6 +169,12 @@ namespace BL
             get { return _nombrePadre; }
         }
 
+        public string nombreConyugue
+        {
+            set { _nombreConyugue = value; }
+            get { return _nombreConyugue; }
+        }
+
         public string estructuraFamiliar
         {
             set { _estructuraFamiliar = value; }
@@ -244,7 +251,7 @@ namespace BL
             DateTime fechaNac, bool sexo, DateTime fechaIngreso, string cedula, string direccion, string lugarNac, string estado,
             byte[] foto, /*Modificado por Eliazar ->*/string telefonoCasa, string celular, long idEscolaridad, long idProfesion, string dondeTrabajo, string madre,
             string padre, string estructuraFam, string condiHogar, string expectativas, double ingreso, bool recibioReha,
-            bool candidatoTrans, string acerca, string docAlter, string observ)
+            bool candidatoTrans, string acerca, string docAlter, string observ, string conyugue)
         {
             CentroActual = centroActual;
             _expediente = expediente;
@@ -268,6 +275,7 @@ namespace BL
             lugarTrabajo = dondeTrabajo;
             nombreMadre = madre;
             nombrePadre = padre;
+            nombreConyugue = conyugue;
             estructuraFamiliar = estructuraFam;
             condicionHogar = condiHogar;
             expectativa = expectativas;
@@ -428,14 +436,9 @@ namespace BL
                 _lugarTrabajo = pac.lugar_trabajo;
                 _nombreMadre = pac.nombre_madre;
                 _nombrePadre = pac.nombre_padre;
+                _nombreConyugue = "";//pac.nombre_conyugue;
                 _estructuraFamiliar = pac.estructura_familiar;
-                _condicionHogar = pac.condicion_hogar;
-                _expectativa = pac.recibio_rehabilitacion_antes;
-                _ingresos = Convert.ToDouble(pac.ingreso_familiar);
                 _recibioRehabilitacion = Convert.ToBoolean(pac.expectativa);
-                _candidatoTransporte = Convert.ToBoolean(pac.candidato_transporte);
-                _comoSeEntero = pac.se_entero_teleton;
-                _docAlternos = pac.documentacion;
                 _observaciones = pac.observaciones;
                 
                 return true;
@@ -496,13 +499,7 @@ namespace BL
                 pac.nombre_madre = nombreMadre;
                 pac.nombre_padre = nombrePadre;
                 pac.estructura_familiar = estructuraFamiliar;
-                pac.condicion_hogar = condicionHogar;
-                pac.recibio_rehabilitacion_antes = expectativa;
-                pac.ingreso_familiar = ingresos;
                 pac.expectativa = rehabilitacion;
-                pac.candidato_transporte = candidatoTransporte;
-                pac.se_entero_teleton = acercaDe;
-                pac.documentacion = docsAlternos;
                 pac.observaciones = observaciones;
 
                 entities.SaveChanges();
@@ -567,13 +564,7 @@ namespace BL
                     pac.nombre_madre = nombreMadre;
                     pac.nombre_padre = nombrePadre;
                     pac.estructura_familiar = estructuraFamiliar;
-                    pac.condicion_hogar = condicionHogar;
-                    pac.recibio_rehabilitacion_antes = expectativa;
-                    pac.ingreso_familiar = ingresos;
                     pac.expectativa = rehabilitacion;
-                    pac.candidato_transporte = candidatoTransporte;
-                    pac.se_entero_teleton = acercaDe;
-                    pac.documentacion = docsAlternos;
                     pac.observaciones = observaciones;
 
                     entities.pacientes.AddObject(pac); //se guarda en la memoria

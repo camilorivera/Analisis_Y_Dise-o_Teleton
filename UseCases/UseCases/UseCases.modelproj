@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9f53caea-9b34-4772-b0bb-bde87f80d70b}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>UseCases</Name>
+    <RootNamespace>UseCases</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Examen1.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen1.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen1.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_ConteoParticipaciones.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_ConteoParticipaciones.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_ConteoParticipaciones.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_DetenerParticipacion.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_DetenerParticipacion.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_DetenerParticipacion.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_OtorgarParticipacion.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_OtorgarParticipacion.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_OtorgarParticipacion.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_Participar.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_Participar.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_Participar.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_VerInformacionBasicaDelEstudiante.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_VerInformacionBasicaDelEstudiante.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_VerInformacionBasicaDelEstudiante.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Examen2_VerMapaDeEstudiantes.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Examen2_VerMapaDeEstudiantes.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Examen2_VerMapaDeEstudiantes.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\UseCases.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

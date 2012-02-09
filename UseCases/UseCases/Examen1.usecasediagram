@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="90914f5f-ff7f-4acb-bf9a-07df03f69e02" name="Examen1" linkedPackageId="4b0fd8bc-2652-4c0e-ab47-65707e95aae8" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <useCase Id="48e2bdd2-ab26-446a-bbc0-0f83a2e18c1c" name="Participar" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2d966392-1ff6-4456-a926-4ca37518df47" />
+        <additions>
+          <include Id="24add130-4a8c-4dbb-9f44-131e8399c92e">
+            <useCaseMoniker Id="87247513-3528-4eba-ad1f-38a4ec1dffdf" LastKnownName="Levantar la mano" />
+            <elementDefinition Id="6dec8d4c-c887-48f1-94e6-890a9b18a9de" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="87247513-3528-4eba-ad1f-38a4ec1dffdf" name="Levantar la mano" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="200e927b-ff00-46d2-bb68-3641b092a8ed" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9a44b11d-f388-4c23-ae8a-0d0a6439fcfc" name="Otorgar participacion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fd8bfdeb-cfc0-49d0-a406-e9a06cf0d515" />
+        <additions>
+          <include Id="f4afcf2e-cdfc-4de8-9264-c7ac29bc026b">
+            <useCaseMoniker Id="d5666051-6197-4228-8103-19e684e124f9" LastKnownName="Escuchar participacion del estudiante" />
+            <elementDefinition Id="9e6aad2e-7889-43b2-869b-47800c00b84f" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="15ff9961-5f3d-4d36-a228-621803c6ca79" name="Maestro" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f7063363-e340-480e-b1a9-38ed3bef9929" />
+        <suppliersInternal>
+          <dependency Id="854fcc93-5d79-46ff-9390-81e8738bb5ce">
+            <useCaseMoniker Id="9a44b11d-f388-4c23-ae8a-0d0a6439fcfc" LastKnownName="Otorgar participacion" />
+            <elementDefinition Id="95874a9d-c9aa-4dde-b69e-3c5816eb7793" />
+          </dependency>
+          <dependency Id="9f5b3f28-9943-470d-867b-0154acf06b15">
+            <useCaseMoniker Id="fa5744a8-f30b-4892-9fb0-34601af1629b" LastKnownName="Cold y warm calls" />
+            <elementDefinition Id="ee27000a-732c-4a57-a037-d1448ceac3df" />
+          </dependency>
+          <dependency Id="31025a61-60da-425c-b3a4-040069124566">
+            <useCaseMoniker Id="f2b6a81e-ef1a-42dd-af7d-e3381b7dd90a" LastKnownName="Escribir en pizarras" />
+            <elementDefinition Id="69e24d33-fef8-4792-95aa-ad65b72244d6" />
+          </dependency>
+          <dependency Id="64df3ed3-eb93-44aa-9717-ad4223ed3aa1">
+            <useCaseMoniker Id="d5666051-6197-4228-8103-19e684e124f9" LastKnownName="Escuchar participacion del estudiante" />
+            <elementDefinition Id="55ab5e64-1686-4810-b770-2c2f36401891" />
+          </dependency>
+          <dependency Id="acb4d752-9f57-4524-bd7d-21fd19fac668">
+            <useCaseMoniker Id="8a90fd7b-c345-475c-83bf-c7f5a58e55e7" LastKnownName="Crear clase" />
+            <elementDefinition Id="bb687e2c-eb46-4efd-a286-b0328532c45b" />
+          </dependency>
+          <dependency Id="869688f7-7166-47d4-b924-4fc8f4cb3521">
+            <useCaseMoniker Id="992544bd-c1ed-4d21-9e00-212f1d9078d8" LastKnownName="Ver informacion basica del estudiante" />
+            <elementDefinition Id="3f0fd007-9714-4de2-9f1f-663b8c8fbc45" />
+          </dependency>
+          <dependency Id="9d89d92c-5518-48a9-9dfe-c14edac3bdcf">
+            <useCaseMoniker Id="1a7924f7-1a6b-477d-a61b-9f8ebf4462f2" LastKnownName="Otorgar calificacion en base a las participaciones" />
+            <elementDefinition Id="f82dff59-5c95-4c1b-9a0d-9f085f0fa4e7" />
+          </dependency>
+          <dependency Id="8a733457-4bdf-4c05-94e8-3f6f3a2d6024">
+            <useCaseMoniker Id="d239960d-4b09-4268-b627-a7d6a889b825" LastKnownName="Trabajar en excel, word o ppt" />
+            <elementDefinition Id="5162e7f1-4034-4811-a3ee-367bf4f87040" />
+          </dependency>
+          <dependency Id="30455f39-b8e8-4646-97dd-b2a165929202">
+            <useCaseMoniker Id="860e8237-0a25-4ed5-806a-bf6095addcc4" LastKnownName="Control sobre las pizarras" />
+            <elementDefinition Id="9bb5ee3c-0654-4864-b87c-67e84bd7c35c" />
+          </dependency>
+          <dependency Id="8fb40ee9-0fc1-485b-b955-53854b928b12">
+            <useCaseMoniker Id="77e1b129-caa7-40a6-8b4c-1d4541496c38" LastKnownName="Formar grupos para debate" />
+            <elementDefinition Id="d050ca7a-9e67-4741-9b38-d538426c0db9" />
+          </dependency>
+          <dependency Id="90a9ff72-4cf4-4098-bebf-173620e277c4">
+            <useCaseMoniker Id="898ed76e-b999-4f99-84f3-1198e6430073" LastKnownName="Ver mapa de estudiantes" />
+            <elementDefinition Id="edbc562c-3af9-4071-872e-cbcac484159b" />
+          </dependency>
+          <dependency Id="fae7f1e0-d6c4-425b-bf16-cb1053bcb491">
+            <useCaseMoniker Id="70fa08e2-7f6c-4c64-b75e-8f8385c87cf6" LastKnownName="Crear encuesta" />
+            <elementDefinition Id="a810994c-2b26-4c2b-ac2c-8a7001fa3614" />
+          </dependency>
+          <dependency Id="02fe5936-e5ed-49f2-b16c-4ab1766b8629">
+            <useCaseMoniker Id="f67a96c5-4db8-4d52-a332-6bffe85c2f01" LastKnownName="Detener participacion" />
+            <elementDefinition Id="0bb44e79-1615-4c49-97d3-06fdc5a641e5" />
+          </dependency>
+          <dependency Id="b036e4dc-d143-43b2-97b9-5d2ef00bebc6">
+            <useCaseMoniker Id="63348d03-37d1-4b13-9aec-382a502228f0" LastKnownName="Finalizar clase" />
+            <elementDefinition Id="dcc9909d-22bb-4aab-b56a-c4d8b3e3d349" />
+          </dependency>
+          <dependency Id="34104d87-8c40-4d68-9ab9-21969e702216">
+            <useCaseMoniker Id="3db07ada-f165-43c2-b7b3-104a4779b1ff" LastKnownName="Registrarse" />
+            <elementDefinition Id="c6aec400-b80f-4ba4-bb43-c137ab69c4a5" />
+          </dependency>
+          <dependency Id="13c24b4c-cc09-4475-a63b-d7ff8a6f565f">
+            <useCaseMoniker Id="df427dd1-1970-48f9-ba6c-945f831cff1d" LastKnownName="Login" />
+            <elementDefinition Id="04282ab1-e904-4eb4-ae7d-a74cfee8c5bc" />
+          </dependency>
+          <dependency Id="7dfd1027-71e8-4947-bfa7-247fd687bfe8">
+            <useCaseMoniker Id="b6f13d1a-b8d6-401e-800a-95e1d4a3d186" LastKnownName="Listar clases" />
+            <elementDefinition Id="06e51523-e830-4809-bda6-ca4b2c60f8be" />
+          </dependency>
+        </suppliersInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fa5744a8-f30b-4892-9fb0-34601af1629b" name="Cold y warm calls" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="89060a89-93d2-4d1e-9247-54bc3b7ccfb1" />
+        <extendedCases>
+          <extend Id="2f754d8b-36e4-4794-9201-67bd69cca964">
+            <useCaseMoniker Id="9a44b11d-f388-4c23-ae8a-0d0a6439fcfc" LastKnownName="Otorgar participacion" />
+            <elementDefinition Id="74aea84f-1bc4-47ae-bf2c-c852ba7a4021" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f2b6a81e-ef1a-42dd-af7d-e3381b7dd90a" name="Escribir en pizarras" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="700478c0-cf99-4d8a-9d1e-9904e2c6eddb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0ccf9f25-fcf1-4be2-9741-a163a2b79708" name="Conteo de participaciones" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="58ad1bdb-fe20-4f1a-85a5-10aae7a1eb1c" />
+        <extendedCases>
+          <extend Id="9d4e5f46-15ae-4938-afc7-3db7b5ad64f3">
+            <useCaseMoniker Id="87247513-3528-4eba-ad1f-38a4ec1dffdf" LastKnownName="Levantar la mano" />
+            <elementDefinition Id="50a897a0-7b5d-4178-8469-aa63ee3b0540" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d5666051-6197-4228-8103-19e684e124f9" name="Escuchar participacion del estudiante" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="88751ccc-a0fe-414e-82d1-ddb715af476e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="06a2e958-e78b-4403-aa4f-70c99405c901" name="Estudiante" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2b4b284d-3f12-4c78-a911-59303d6b9388" />
+        <suppliersInternal>
+          <dependency Id="5bafcbfa-429e-4997-8399-5da5c6bb982a">
+            <useCaseMoniker Id="d5666051-6197-4228-8103-19e684e124f9" LastKnownName="Escuchar participacion del estudiante" />
+            <elementDefinition Id="1e3fcc1a-6970-481c-b80d-5d2ffb88ab6a" />
+          </dependency>
+          <dependency Id="6f64d84e-475b-412a-81ae-1c2c37a8ba8f">
+            <useCaseMoniker Id="3db07ada-f165-43c2-b7b3-104a4779b1ff" LastKnownName="Registrarse" />
+            <elementDefinition Id="028eadda-16fa-4321-a501-1ca3b43ef7a2" />
+          </dependency>
+          <dependency Id="aaf4a12b-2862-4888-885a-1a75f1a28570">
+            <useCaseMoniker Id="faf60340-6ed7-4978-9854-403586879477" LastKnownName="Asistir a una clase" />
+            <elementDefinition Id="ddbcb1db-7523-4df4-bf17-62ebe3642e04" />
+          </dependency>
+          <dependency Id="20cfa13b-2693-4d46-909f-c8e92a7c6fa1">
+            <useCaseMoniker Id="6bffba48-b6a9-43c7-a5e3-0538d8fcf91b" LastKnownName="Formar parte de un grupo" />
+            <elementDefinition Id="25a1503a-b187-45fb-b160-41516c4b6cd0" />
+          </dependency>
+          <dependency Id="fc8a2057-8528-4da7-a574-56b8ddf3a02a">
+            <useCaseMoniker Id="898ed76e-b999-4f99-84f3-1198e6430073" LastKnownName="Ver mapa de estudiantes" />
+            <elementDefinition Id="8719b901-2bf6-49cf-ad31-32b8b91a016e" />
+          </dependency>
+          <dependency Id="8f767f93-ca69-45d1-a23a-b4db53379b35">
+            <useCaseMoniker Id="a1dcd03c-457a-4ee7-989d-25d412457419" LastKnownName="Escoger y ver pizarra" />
+            <elementDefinition Id="399de165-89dc-4efa-8f2f-d901795c41e8" />
+          </dependency>
+          <dependency Id="e545aa65-1d25-4690-ad2b-9aec6ec98919">
+            <useCaseMoniker Id="bcf36655-5009-49b0-8a8e-d27492cde458" LastKnownName="Escuchar al maestro" />
+            <elementDefinition Id="208a70cc-bd0f-4cb6-98cb-f1b9e2fbe36b" />
+          </dependency>
+          <dependency Id="84f8c7cc-eb7f-4cf0-b411-f5c9a5cf29f4">
+            <useCaseMoniker Id="bdbdbf11-f836-4fcc-937e-8306d25891af" LastKnownName="Responder encuesta" />
+            <elementDefinition Id="e7d499f6-0edc-4597-92f0-91118842d45b" />
+          </dependency>
+          <dependency Id="53558f89-0658-4deb-8f38-99df7f25d326">
+            <useCaseMoniker Id="2c70ecc0-0aee-4a1e-8969-1537be254462" LastKnownName="Ver trabajo del maestro en excel, word o ppt" />
+            <elementDefinition Id="c1f630bf-946a-4373-80d7-d08bfad1ae73" />
+          </dependency>
+          <dependency Id="6bbd3502-a49b-444e-8a32-71dae82f5bb1">
+            <useCaseMoniker Id="48e2bdd2-ab26-446a-bbc0-0f83a2e18c1c" LastKnownName="Participar" />
+            <elementDefinition Id="3f4e4e54-2722-4a2f-9415-958fa8b24862" />
+          </dependency>
+          <dependency Id="f96d03e7-3cca-46f9-8bd5-994c20857054">
+            <useCaseMoniker Id="a5a241ce-48ce-4a59-a9ef-b5412fc88e67" LastKnownName="Salirse de la clase" />
+            <elementDefinition Id="92b59df1-2b90-4a1c-81a6-df8bdd1e840a" />
+          </dependency>
+          <dependency Id="a104b6fc-0b23-4182-8f2c-736371aef1f4">
+            <useCaseMoniker Id="df427dd1-1970-48f9-ba6c-945f831cff1d" LastKnownName="Login" />
+            <elementDefinition Id="8f1b501d-d6ef-4edd-aa0c-695eda9c3140" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="f6902f48-4823-4b1d-ab9b-b9e6c07fa676" isSubstitutable="false">
+            <actorMoniker Id="15ff9961-5f3d-4d36-a228-621803c6ca79" LastKnownName="Maestro" />
+            <elementDefinition Id="331ddc87-3dfe-4f11-abe9-b7ae767e96eb" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8a90fd7b-c345-475c-83bf-c7f5a58e55e7" name="Crear clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9dfbc5c1-1c02-4125-b645-14de36ab08df" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3db07ada-f165-43c2-b7b3-104a4779b1ff" name="Registrarse" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8143e974-ca67-45f3-af4c-bc7aee522f3b" />
+        <additions>
+          <include Id="cbf0b8e8-a42c-44dd-9cfb-00dcfe8d8690">
+            <useCaseMoniker Id="01d2fc70-29ff-4b86-9a5d-f29c70be4d55" LastKnownName="Dar informacion basica" />
+            <elementDefinition Id="cd3d1ac7-0b92-46fc-89f3-cb01f617a75e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="faf60340-6ed7-4978-9854-403586879477" name="Asistir a una clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5371714d-34d9-4260-b6e0-15f7df90ec71" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="992544bd-c1ed-4d21-9e00-212f1d9078d8" name="Ver informacion basica del estudiante" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cdeb7e0d-1679-44ce-ac0e-df73b500932e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2134b646-d464-4ab3-8179-d1e82eea0914" name="Esperar que se otorgue participación" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6cae3970-450a-484e-85f4-094ca0ff1756" />
+        <extendedCases>
+          <extend Id="61728b6a-0f5b-4305-928b-24edff5e52da">
+            <useCaseMoniker Id="48e2bdd2-ab26-446a-bbc0-0f83a2e18c1c" LastKnownName="Participar" />
+            <elementDefinition Id="b18657d4-d772-4aa8-bbf5-bf39cb8ad7b6" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1a7924f7-1a6b-477d-a61b-9f8ebf4462f2" name="Otorgar calificacion en base a las participaciones" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="84c9ea71-aa4d-4ac4-a2dd-b00775eef8b0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d239960d-4b09-4268-b627-a7d6a889b825" name="Trabajar en excel, word o ppt" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="be52006f-4865-4ff8-870a-57da45248cba" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2c70ecc0-0aee-4a1e-8969-1537be254462" name="Ver trabajo del maestro en excel, word o ppt" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cdc280de-6fcf-4491-97b8-6909c4874853" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="e81807b7-bfce-4175-8dee-71f3fb942a3c" name="Sistema" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8f30f7e2-da05-4f8e-b47d-8135883fae66" />
+        <suppliersInternal>
+          <dependency Id="55de05e8-8558-4f25-8134-cb27dcaae76a">
+            <useCaseMoniker Id="60a82e0a-7298-45ca-b33d-125f5e092735" LastKnownName="Guardar paquete de la clase" />
+            <elementDefinition Id="34a0bb46-ba2a-4cd9-8188-70db0d2c247f" />
+          </dependency>
+          <dependency Id="8e4354ea-68ba-4021-bfd7-fd0551b6bd97">
+            <useCaseMoniker Id="57bb9b3a-de2d-4ba5-84ba-311dbbc92a8e" LastKnownName="Sugerir calificacion del alumno" />
+            <elementDefinition Id="f39f5519-161d-4a32-950b-bc8d64b7a693" />
+          </dependency>
+          <dependency Id="565675d0-7799-48a2-afe7-5cdecaa8eccb">
+            <useCaseMoniker Id="0ccf9f25-fcf1-4be2-9741-a163a2b79708" LastKnownName="Conteo de participaciones" />
+            <elementDefinition Id="31f16f9c-d2c0-450a-ae95-b9eb6df8fde0" />
+          </dependency>
+        </suppliersInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="60a82e0a-7298-45ca-b33d-125f5e092735" name="Guardar paquete de la clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="37705683-ce57-479c-b9ce-f705af630726" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="860e8237-0a25-4ed5-806a-bf6095addcc4" name="Control sobre las pizarras" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4d8049ad-fafc-4fed-b4a6-86e3d6f880d4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="57bb9b3a-de2d-4ba5-84ba-311dbbc92a8e" name="Sugerir calificacion del alumno" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cf9dc318-8c10-4428-a5b4-5662c7fe2c6a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="77e1b129-caa7-40a6-8b4c-1d4541496c38" name="Formar grupos para debate" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7b9ac70c-5d6d-476e-aaa5-e79e0ba8b575" />
+        <additions>
+          <include Id="b6c9ee14-2517-4232-9e24-d5390593978a">
+            <useCaseMoniker Id="797c827d-638b-4e76-bf21-f8adc704f7eb" LastKnownName="Elegir coordinador de cada grupo" />
+            <elementDefinition Id="e3eceb04-b9dc-4a42-a328-f30e905dfc96" />
+          </include>
+          <include Id="b6b80769-75bc-4179-83d5-13b5c8311d93">
+            <useCaseMoniker Id="d93408c7-c3da-4987-928d-e8a3e1479f24" LastKnownName="Determinar tiempo de trabajo" />
+            <elementDefinition Id="27050db1-5155-4faf-8c7c-4d817183bfb1" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6bffba48-b6a9-43c7-a5e3-0538d8fcf91b" name="Formar parte de un grupo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="602914ef-d5ad-4cd4-8cc9-20cae383d1ea" />
+        <additions>
+          <include Id="7e61b9be-95c9-470c-ae8a-c76a33f8f40b">
+            <useCaseMoniker Id="42f7e625-12e4-4916-a58b-8198e82e2d17" LastKnownName="Presentar pizarra" />
+            <elementDefinition Id="f07abba3-5690-4a71-a560-8911b13bd782" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="898ed76e-b999-4f99-84f3-1198e6430073" name="Ver mapa de estudiantes" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1a7ca856-8da4-43d8-aa2e-9b1c9ce9c091" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a1dcd03c-457a-4ee7-989d-25d412457419" name="Escoger y ver pizarra" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f55f69d4-8c1a-4399-ae93-21bb7fa9dd57" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bcf36655-5009-49b0-8a8e-d27492cde458" name="Escuchar al maestro" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c1917b3c-f3eb-42e4-93e5-29dabd8a8e7c" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="797c827d-638b-4e76-bf21-f8adc704f7eb" name="Elegir coordinador de cada grupo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7ed7cbb8-2da7-4384-b865-3a3e974212a6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bdbdbf11-f836-4fcc-937e-8306d25891af" name="Responder encuesta" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c264c9dd-8f8d-4716-b32a-f93e1b02f581" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="70fa08e2-7f6c-4c64-b75e-8f8385c87cf6" name="Crear encuesta" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1459fef8-fff6-4739-ac28-77d454f717b9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d93408c7-c3da-4987-928d-e8a3e1479f24" name="Determinar tiempo de trabajo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="82203bb6-4175-48b6-900f-073d3c1e2d33" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f67a96c5-4db8-4d52-a332-6bffe85c2f01" name="Detener participacion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="afe8f06e-8dc1-4c00-8932-3a65e8fb2134" />
+        <extendedCases>
+          <extend Id="9d0c0410-85c5-4ff7-98c0-5c763f26e175">
+            <useCaseMoniker Id="9a44b11d-f388-4c23-ae8a-0d0a6439fcfc" LastKnownName="Otorgar participacion" />
+            <elementDefinition Id="c0863b1b-6750-47c5-b3a6-6d75c5f43dd5" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="63348d03-37d1-4b13-9aec-382a502228f0" name="Finalizar clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="916382ad-5540-4238-a585-96cedb778905" />
+        <additions>
+          <include Id="30032065-289a-4d86-a9c6-062fea251546">
+            <useCaseMoniker Id="131620b5-8749-4833-90f3-9562aec555df" LastKnownName="No dejar entrar gente" />
+            <elementDefinition Id="ba1f941e-5961-4230-85b5-d7495312836e" />
+          </include>
+          <include Id="5bf4f89f-99e0-48bd-9c74-382701bcdfe5">
+            <useCaseMoniker Id="1a7924f7-1a6b-477d-a61b-9f8ebf4462f2" LastKnownName="Otorgar calificacion en base a las participaciones" />
+            <elementDefinition Id="666509ba-fb3e-416c-a64d-b748799fc849" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="131620b5-8749-4833-90f3-9562aec555df" name="No dejar entrar gente" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d7d389ca-bfb7-463a-97b0-1b8efc0e16c7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a5a241ce-48ce-4a59-a9ef-b5412fc88e67" name="Salirse de la clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3cfc5aeb-abe2-4ff3-a6b2-6aa19a7458b9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="45ba4d15-1032-4e23-a218-1d0a44d109c6" name="Administrador" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0cc28eb4-7d2f-4333-86f0-9dfbab775166" />
+        <suppliersInternal>
+          <dependency Id="e488449f-3287-43c5-b7d8-764ab7f5f868">
+            <useCaseMoniker Id="5779de03-20be-4495-bf57-b3a29c2f06aa" LastKnownName="Bloquear gente" />
+            <elementDefinition Id="9f9d0d7e-2c89-4f8d-a9e8-c2626941c061" />
+          </dependency>
+        </suppliersInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5779de03-20be-4495-bf57-b3a29c2f06aa" name="Bloquear gente" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d53286c2-fd9d-4892-99d8-e184a0eda8b0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="01d2fc70-29ff-4b86-9a5d-f29c70be4d55" name="Dar informacion basica" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6e1e0188-4a67-4ac2-ac8e-939301ed1837" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="df427dd1-1970-48f9-ba6c-945f831cff1d" name="Login" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0b89efff-01d3-4d94-bfd6-643b5e4add78" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="42f7e625-12e4-4916-a58b-8198e82e2d17" name="Presentar pizarra" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7f80b9a1-05c8-4c9b-9035-34cf9dc9c271" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="5aa3e552-ce60-4532-b5fa-0361218ea80b" name="Maestro" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9480cf46-b03d-4d50-a5cb-acd83e217ee8" />
+        <suppliersInternal>
+          <dependency Id="89c72800-9038-4387-8858-4912d17c5d9d">
+            <useCaseMoniker Id="2dc538d8-6c88-4566-ac66-344f8b5e01b8" LastKnownName="Exportar evaluaciones de clase" />
+            <elementDefinition Id="ec0c1fed-893e-42f1-b0b0-928eb83aa2ed" />
+          </dependency>
+        </suppliersInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2dc538d8-6c88-4566-ac66-344f8b5e01b8" name="Exportar evaluaciones de clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fe14ba52-0f63-4a5f-a054-0f5b36bd2ecd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b6f13d1a-b8d6-401e-800a-95e1d4a3d186" name="Listar clases" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="38cfacbe-8eb6-4c5a-8238-83a5b4c036fc" />
+        <additions>
+          <include Id="2f884304-adc0-4551-9578-5f9073d686e5">
+            <useCaseMoniker Id="a5332aef-bb72-4e6f-9b82-d60c07e096b0" LastKnownName="Ver clase" />
+            <elementDefinition Id="ea09b30c-2bd5-4a98-8673-279e71f6e31c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a5332aef-bb72-4e6f-9b82-d60c07e096b0" name="Ver clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4d980af8-7f72-447b-82d8-50cbf1b21882" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="63a52d7b-d8e5-4991-abfc-67f7aa807035" name="Exportar evaluaciones de clase" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2f14084d-aef1-4280-ae30-b6960b01bfbc" />
+        <extendedCases>
+          <extend Id="70e85649-fecf-45e5-827c-4c0818769af0">
+            <useCaseMoniker Id="a5332aef-bb72-4e6f-9b82-d60c07e096b0" LastKnownName="Ver clase" />
+            <elementDefinition Id="36ad6ccd-98b5-41f7-afb1-eec2d8709672" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4b0fd8bc-2652-4c0e-ab47-65707e95aae8" name="UseCases">
+    <elementDefinition Id="ced02e69-9e33-4e77-bc1c-fe715d52950d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0e4fdca3-59a4-438e-b33c-cc2795eca2d7">
+        <profileInstance Id="67341f0a-2149-4788-8ff8-5d80a8bcf4ff" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f9ab79d6-cbf5-4b61-a637-e4dc65a178c8">
+        <profileInstance Id="0b48cd21-8290-4068-971a-643366f86f4b" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
