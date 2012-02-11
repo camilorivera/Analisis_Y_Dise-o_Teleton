@@ -12,7 +12,7 @@
             <fieldset>
                 <ul class = "list">
                     <li class="field">
-                         <asp:Label ID="Label1" CssClass="label" runat="server" Text="Escoga Usuario:"></asp:Label>
+                         <asp:Label ID="Label1" CssClass="label" runat="server" Text="Elija Usuario:"></asp:Label>
                          <asp:DropDownList ID="cmb_usuarios" CssClass="cmb_Empleado" runat="server"></asp:DropDownList>
                     </li>
           
@@ -40,7 +40,8 @@
                         <asp:Label ID="Label4" cssclass="label" runat="server" Text="Puesto:"></asp:Label>
                         <asp:DropDownList ID="cmb_puesto" CssClass="cmb_Empleado" runat="server"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red"
-                                        ErrorMessage="**Debe Escoger un Puesto " ControlToValidate="cmb_puesto"></asp:RequiredFieldValidator>
+                                        ErrorMessage="**Debe elegir un Puesto " 
+                            ControlToValidate="cmb_puesto"></asp:RequiredFieldValidator>
                     </li>                          
                 </ul>
             </fieldset>

@@ -8,7 +8,7 @@
         Lo siento, usted no posee privilegios suficientes para accesar a este recurso, para obtener acceso contacte al administrador de sistema
     </div>
     <div>
-        Si su explorador no lo redirecciona automáticamente haga click <a href="Default.aspx">aquí.</a>
+        Si su explorador no lo redirecciona automáticamente, haga click <a href="Default.aspx">aquí.</a>
     </div>
 </asp:Content>
 

@@ -11,8 +11,7 @@
         <div id = "navcontroles">
             <div id = "about">
             <div class = "parrafo">
-                Curso de Analisis y Diseño de Sistemas que inicia en el periodo 1 del 2011 con Analisis y Diseño de Sistemas I
-                y luego en el periodo 2 se sigue con Analisis y Diseño de Sistemas II y concluyendo con Ingenieria de Software en el periodo 4 del este año (2011).
+                Curso de Análisis y Diseño de Sistemas que inicia en el periodo 1 del 2011 con Análisis y Diseño de Sistemas I, luego en el periodo 2 se sigue con Analisis y Diseño de Sistemas II y concluyendo con Ingenieria de Software en el periodo 4 del este año (2011).
             </div>
             <div class = "parrafo">
                 Este año estaremos desarrollando un sistema para Teleton, como parte del proceso de Vinculación y Aporte a la sociedad por parte de UNITEC.

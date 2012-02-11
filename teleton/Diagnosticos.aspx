@@ -8,20 +8,20 @@
    
 <div id = "content">
     <div id="titulo">
-        <h1>Mantenimiento de Patologias</h1>
+        <h1>Mantenimiento de Patologías</h1>
     </div> 
     <div id = "navcenter">
         <fieldset>
                   
 
-            <asp:Label ID="Label2" CssClass="labelD" runat="server" Text=" Patologia: "></asp:Label>
+            <asp:Label ID="Label2" CssClass="labelD" runat="server" Text=" Patología: "></asp:Label>
             <asp:TextBox ID="diagnostico_txt" CssClass="txtbx_Diagnostico" runat="server">
                 </asp:TextBox>
 
            
 
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                ControlToValidate="diagnostico_txt" ErrorMessage="**Ingrese la patologia" 
+                ControlToValidate="diagnostico_txt" ErrorMessage="**Ingrese la patología" 
                 ForeColor="Red"></asp:RequiredFieldValidator>
      <asp:Button ID="Button1" CssClass= "boton" runat="server" Text="Guardar" 
                 onclick="Button1_Click" />

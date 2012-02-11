@@ -18,14 +18,14 @@
                 <ul class = "list">
                     <li class="field">
                             <asp:Label ID="Label1" CssClass="labelD" runat="server" 
-                                Text="Nombre de Terapeuta "></asp:Label>
+                                Text="Nombre de Terapeuta:"></asp:Label>
                             <asp:DropDownList ID="cmbEmpleados" CssClass="cmb_Empleado" runat="server">
                             </asp:DropDownList>
                      </li>
           
 
                      <li class="field">
-                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="N.Expediente: "></asp:Label>
+                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="Nº Expediente: "></asp:Label>
                          <asp:TextBox ID="txtNumExpediente" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                      </li>
 

@@ -12,25 +12,26 @@
             <fieldset>
                 <ul class = "list">
                     <li class="field">
-                        <asp:Label ID="Label2" CssClass="label" runat="server" Text="Nombre de Permiso"></asp:Label>
+                        <asp:Label ID="Label2" CssClass="label" runat="server" 
+                            Text="Nombre de Permiso:"></asp:Label>
                         <asp:TextBox ID="nombrePermiso_TB" runat="server" TabIndex="1" 
                             CssClass="tb_Permiso2"></asp:TextBox>
                      
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                                ErrorMessage="Nombre Requerido" ControlToValidate="nombrePermiso_TB"></asp:RequiredFieldValidator>
+                                ErrorMessage="Nombre Requerido " ControlToValidate="nombrePermiso_TB"></asp:RequiredFieldValidator>
                     </li>
 
                        <li="field">
                      <asp:CustomValidator ID="CustomValidator1" runat="server" 
-                            ErrorMessage="Tamano debe ser menor a 10 letras" 
+                            ErrorMessage="Tamaño debe ser menor a 10 letras" 
                             onservervalidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                     </li>  
                                      
                     <li class="field">
-                        <asp:Label ID="Label3" CssClass="label" runat="server" Text="Descripcion"></asp:Label>
+                        <asp:Label ID="Label3" CssClass="label" runat="server" Text="Descripción:"></asp:Label>
                         <asp:TextBox ID="descripcion_TB" runat="server" TabIndex="2" CssClass="tb_Permiso"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                            ErrorMessage="Descripcion Requerida" ControlToValidate="descripcion_TB"></asp:RequiredFieldValidator>
+                            ErrorMessage="Descripción Requerida" ControlToValidate="descripcion_TB"></asp:RequiredFieldValidator>
                     </li>
                     
                                

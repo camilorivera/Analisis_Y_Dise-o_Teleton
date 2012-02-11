@@ -15,10 +15,10 @@
                         <asp:Label ID="Label1" cssclass="label" runat="server" Text="Nombre del rol:"></asp:Label>
                         <asp:TextBox ID="descripcion_TB" CssClass="tb_crearRol" runat="server" TabIndex="2"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                            ErrorMessage="Descripcion Requerida" ControlToValidate="descripcion_TB"></asp:RequiredFieldValidator> 
+                            ErrorMessage="Descripción Requerida" ControlToValidate="descripcion_TB"></asp:RequiredFieldValidator> 
                     </li>
                     <li class = "field">
-                        <asp:Label ID="Label3" cssclass="label" runat="server" Text="Centro"></asp:Label>
+                        <asp:Label ID="Label3" cssclass="label" runat="server" Text="Centro:"></asp:Label>
                         <asp:DropDownList ID="centros" CssClass="tb_crearRol" runat="server"></asp:DropDownList>       
                     </li>
                 </ul>

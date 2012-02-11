@@ -125,7 +125,7 @@
                         <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso" 
                             TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
-                             ErrorMessage="*Direccion Requerida" ForeColor="Red" 
+                             ErrorMessage="*Dirección Requerida" ForeColor="Red" 
                              ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
@@ -185,7 +185,7 @@
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label13" CssClass="label">Telefono:</asp:Label>
+                        <asp:Label runat="server" ID="Label13" CssClass="label">Teléfono:</asp:Label>
                         <asp:TextBox ID="txtTelefono" runat="server" MaxLength="8" 
                             ToolTip="Telefono sin guion"></asp:TextBox>
 

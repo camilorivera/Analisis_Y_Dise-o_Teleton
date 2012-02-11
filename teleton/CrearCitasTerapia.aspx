@@ -32,8 +32,8 @@
                      </li>
                      
                      <li class="field">
-                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="N. Expediente: "></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="Nº Expediente: "></asp:Label>
                         <asp:TextBox ID="txtNumExpediente" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                          &nbsp;
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
@@ -44,23 +44,19 @@
                         <br />
                      </li>
 
-                      <li class="field">
-                        <asp:Label ID="Label3" CssClass="labelD" runat="server" Text="Fecha de Cita: "></asp:Label>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        
-                        <asp:TextBox ID="txtfecha" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
+                      <li class="field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <asp:Label ID="Label3" CssClass="labelD" runat="server" Text="Fecha de Cita: "></asp:Label>
+&nbsp;<asp:TextBox ID="txtfecha" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                           <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
                             TargetControlID="txtfecha" Format="yyyy-MM-dd" 
                              PopupButtonID="imgdateinit">
-                        </asp:CalendarExtender>
-                        <img alt="Icon" src="images/calendar_icon.jpg" class="calendar" 
+                          </asp:CalendarExtender>
+                          <img alt="Icon" src="images/calendar_icon.jpg" class="calendar" 
                          id="imgdateinit" />
-                          
                           <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                               ControlToValidate="txtfecha" ErrorMessage="Campo Requerido" 
                               ForeColor="Red"></asp:RequiredFieldValidator>
-                     </li>
+                    </li>
                      <li>
                         <br />
                      </li>
@@ -68,7 +64,9 @@
                         <table>
                             <tr>
                                 <td>
-                                    <asp:Label ID="Label4" CssClass="labelD" runat="server" Text="Empieza"></asp:Label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Label ID="Label4" CssClass="labelD" runat="server" Text="Empieza:"></asp:Label>
+                                &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
                                 <MKB:TimeSelector ID="timeSelectorHoraEmpieza" CssClass="txtbx_labelH" 

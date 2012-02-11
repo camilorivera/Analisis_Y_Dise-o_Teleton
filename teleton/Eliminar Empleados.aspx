@@ -12,7 +12,7 @@
         <fieldset>
             <ul class = "list">
                 <li class="field">
-                    <asp:Label ID="Label1" cssclass="label" runat="server" Text="Escoja Empleado"></asp:Label>
+                    <asp:Label ID="Label1" cssclass="label" runat="server" Text="Escoja Empleado:"></asp:Label>
                     <asp:DropDownList ID="cmb_empleados" CssClass="cmb_Empleado" runat="server">
                         </asp:DropDownList>
                 </li>

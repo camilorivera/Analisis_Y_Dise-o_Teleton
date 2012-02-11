@@ -13,28 +13,28 @@
                 <fieldset>
                     <ul class = "list">
                         <li class="field">
-                            <asp:Label ID="Label2" CssClass="label" runat="server" Text="Empleado"></asp:Label>
+                            <asp:Label ID="Label2" CssClass="label" runat="server" Text="Empleado:"></asp:Label>
                             <asp:DropDownList ID="cmb_empleados" runat="server" 
                                     TabIndex="1" CssClass="dropdownlist"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="cmb_empleados" 
                                     ErrorMessage="**Debe Escoger Un Empleado" ForeColor="Red"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
-                            <asp:Label ID="Label1" runat="server" CssClass="label" Text="UserName"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" CssClass="label" Text="UserName:"></asp:Label>
                             <asp:TextBox ID="txt_username" runat="server" TabIndex="1" 
                                     CssClass="txtbx_Empleado"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="**Ingrese Username" 
                                   ControlToValidate="txt_username" ForeColor="Red"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
-                            <asp:Label ID="Label4" runat="server" CssClass="label" Text="Contraseña"></asp:Label>
+                            <asp:Label ID="Label4" runat="server" CssClass="label" Text="Contraseña:"></asp:Label>
                             <asp:TextBox ID="txt_password" runat="server" Enable="false" TabIndex="1" 
                                 CssClass="txtbx_Empleado" TextMode="Password" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="**Ingrese Contraseña" 
                                 ControlToValidate="txt_password" ForeColor="Red"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
-                            <asp:Label ID="Label5" runat="server" CssClass="label" Text="Contraseña"></asp:Label>
+                            <asp:Label ID="Label5" runat="server" CssClass="label" Text="Contraseña:"></asp:Label>
                             <asp:TextBox ID="txt_password0" runat="server" Enable="false" TabIndex="1" 
                                 CssClass="txtbx_Empleado" TextMode="Password" ></asp:TextBox>
                             <asp:CompareValidator ID="CompareValidator1" runat="server" 
@@ -44,7 +44,7 @@
                         <li class="field">
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                                 ControlToValidate="txt_password" 
-                                ErrorMessage="La contraseña debe ser mayor a 6 digitos y contener letras y numero (a-z y 0-9)" 
+                                ErrorMessage="La contraseña debe ser mayor a 6 digitos, contener letras y número (a-z y 0-9)" 
                                 ForeColor="#FF3300" ValidationExpression="^[a-z,A-Z,0-9]{6}[a-z,A-Z,0-9]*"></asp:RegularExpressionValidator>
                         </li>
                     </ul>

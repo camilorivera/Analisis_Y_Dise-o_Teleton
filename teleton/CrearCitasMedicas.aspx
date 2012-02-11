@@ -25,7 +25,8 @@
           
 
                      <li class="field">
-                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="N.Expediente: "></asp:Label>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <asp:Label ID="Label2" CssClass="labelD" runat="server" Text="Nº Expediente: "></asp:Label>
                         <asp:TextBox ID="txtNumExpediente" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                              ControlToValidate="txtNumExpediente" ErrorMessage="Campo Requerido" 
@@ -33,6 +34,7 @@
                      </li>
 
                       <li class="field">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="Label3" CssClass="labelD" runat="server" Text="Fecha de Cita: "></asp:Label>
                         
                         <asp:TextBox ID="txtfecha" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
@@ -53,6 +55,7 @@
                          <table>
                              <tr>
                                  <td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <asp:Label ID="Label4" CssClass="labelD" runat="server" Text="Hora de Cita: "></asp:Label>
                                  </td>
                                  <td>
@@ -65,6 +68,7 @@
                          </table>
                      </li>
                     <li class="field">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="Label5" CssClass="labelD" runat="server" Text="Tipo Cita: "></asp:Label>
                         <asp:TextBox ID="txtTipo" CssClass="txtbx_labelD" runat="server"></asp:TextBox>
                           

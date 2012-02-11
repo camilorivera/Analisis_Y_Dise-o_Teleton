@@ -17,10 +17,11 @@
                             <ul class = "list">
                                <li class = "field">                 
                                  <asp:Label ID="LblNumExp" CssClass="labelD" runat="server" Text="Nombre Doctor:"></asp:Label>
-                                   <asp:DropDownList ID="cmbdoctor" CssClass="cmbpatologias" runat="server"></asp:DropDownList>
+                                   <asp:DropDownList ID="cmbdoctor"  runat="server" 
+                                       Height="17px" Width="125px"></asp:DropDownList>
                                </li>
                                <li class = "field">
-                                <asp:Label ID="lbldateinit" CssClass="labelD" runat="server" Text="Fecha Inicial:"></asp:Label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lbldateinit" CssClass="labelD" runat="server" Text="Fecha Inicial:"></asp:Label>
                                 <asp:TextBox ID="txtdateinit" runat="server" CssClass="txtbx_labelD"></asp:TextBox>
                                     <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
                                           TargetControlID="txtdateinit" Format="yyyy-MM-dd" 
@@ -39,7 +40,7 @@
    <asp:Panel ID="Panel1" CssClass="panelRolesSeg" runat="server" ScrollBars="Auto">
        <asp:GridView ID="GridViewCitas" emptydatatext="----No Hay Citas Registradas el Dia de Hoy.----" CssClass="Grid" runat="server" AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" AllowPaging ="True" PageSize="50">
            <Columns>
-               <asp:TemplateField HeaderText="Num Expediente">
+               <asp:TemplateField HeaderText="Nº Expediente">
                    <EditItemTemplate>
                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("expediente") %>'></asp:TextBox>
                    </EditItemTemplate>

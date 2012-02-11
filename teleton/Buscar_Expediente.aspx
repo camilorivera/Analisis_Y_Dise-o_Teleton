@@ -9,7 +9,7 @@
 <asp:Content ID="content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="content">
         <div id="titulo">
-            <h1>Busqueda de pacientes</h1>
+            <h1>Búsqueda de pacientes</h1>
         </div>
         <div id="navcenter">
             <fieldset>
@@ -32,7 +32,7 @@
                     onclick="btnEliminar_Click" Enabled="False"/>
                 <asp:ConfirmButtonExtender ID="cfmExtEliminar" runat="server" TargetControlID="btnEliminar"
                     ConfirmText="Desea Eliminar al paciente"></asp:ConfirmButtonExtender>
-                <asp:Button ID="btnImprimir" runat="server" CssClass="boton" Text="imprimir" 
+                <asp:Button ID="btnImprimir" runat="server" CssClass="boton" Text="Imprimir" 
                     onclick="btnImprimir_Click" Enabled="False" />
                 <asp:Button ID="btnCleanPage" runat="server" CssClass="boton" Text="limpiar" 
                     onclick="btnCleanPage_Click" CausesValidation="False" Enabled="False" />
@@ -81,7 +81,7 @@
                         <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso" 
                             Enabled="False" TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
-                             ErrorMessage="*Direccion Requerida" ForeColor="Red" 
+                             ErrorMessage="*Dirección Requerida" ForeColor="Red" 
                              ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
                     </li>
                     <li class="field">
@@ -143,7 +143,7 @@
                     </li>
 
                     <li class="field">
-                        <asp:Label runat="server" ID="Label13" CssClass="label">Telefono:</asp:Label>
+                        <asp:Label runat="server" ID="Label13" CssClass="label">Teléfono:</asp:Label>
                         <asp:TextBox ID="txtTelefono" runat="server" MaxLength="8" 
                             ToolTip="Telefono sin guion" Enabled="False"></asp:TextBox>
 

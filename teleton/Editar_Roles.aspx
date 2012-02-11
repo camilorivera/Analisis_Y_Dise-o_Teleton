@@ -18,7 +18,7 @@
                                 </asp:DropDownList>
                     </li>
                     <li class = "field">
-                        <asp:Label ID="Label4" cssclass="label" runat="server" Text="Centro"></asp:Label>
+                        <asp:Label ID="Label4" cssclass="label" runat="server" Text="Centro:"></asp:Label>
                         <asp:DropDownList ID="centros" CssClass="tb_crearRol" runat="server"></asp:DropDownList>
                     </li>
                 </ul>

@@ -461,4 +461,8 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         
     }
+    protected void GridViewSegPac_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

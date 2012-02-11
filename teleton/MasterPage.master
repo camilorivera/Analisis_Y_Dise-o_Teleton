@@ -44,7 +44,7 @@
                     </asp:MenuItem>
                     <asp:MenuItem Text="Seg. Pacientes" Value="Seg. Pacientes">
                         <asp:MenuItem Text="Seg. Pacientes" Value="Seg.Pacientes" NavigateUrl="~/Seguimiento_Pacientes.aspx" />
-                        <asp:MenuItem Text="Exportar Seguimieto" NavigateUrl="~/Exportar_Seguimiento.aspx" />
+                        <asp:MenuItem Text="Exportar Seguimiento" NavigateUrl="~/Exportar_Seguimiento.aspx" />
                     </asp:MenuItem>
                     <asp:MenuItem></asp:MenuItem>
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">
@@ -82,10 +82,6 @@
                             <asp:MenuItem NavigateUrl="~/Eliminar Empleados.aspx" Text="Eliminar Empleados" Value="Eliminar Empleados">
                             </asp:MenuItem>
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Patologias" Value="Patologias">
-                            <asp:MenuItem Text="Mant. Patologias" Value="Mant. Patologias" NavigateUrl="~/Diagnosticos.aspx">
-                            </asp:MenuItem>
-                        </asp:MenuItem>
                         <asp:MenuItem Text="Citas" Value="Citas">
                             <asp:MenuItem Text="Citas Médicas" Value="Citas Médicas">
                                 <asp:MenuItem NavigateUrl="~/CrearCitasMedicas.aspx" Text="Programar Cita" Value="Programar Cita">
@@ -101,7 +97,12 @@
                             </asp:MenuItem>
                         </asp:MenuItem>
                     </asp:MenuItem>
-                    <asp:MenuItem Text="Mantenimiento" Value="Mantenimiento"></asp:MenuItem>
+                    <asp:MenuItem Text="Mantenimiento" Value="Mantenimiento">
+                        <asp:MenuItem Text="Patologías" Value="Patologias">
+                            <asp:MenuItem Text="Mant. Patologías" Value="Mant. Patologias" NavigateUrl="~/Diagnosticos.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                    </asp:MenuItem>
                 </Items>
             </asp:Menu>
         </div>
