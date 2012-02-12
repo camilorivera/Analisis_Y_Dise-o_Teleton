@@ -19,6 +19,8 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("teletonModel", "actividades_fk", "actividades_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.actividades_enfermeria), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_n_expediente_altas", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "altas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.alta), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_username_altas", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "altas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.alta), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "atenciones_enfermeria_fk", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "atenciones_enfermeria_fk1", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "atenciones_enfermeria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.atenciones_enfermeria), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "fk_ayudas_tecnicas", "ayudas_tecnicas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.ayudas_tecnicas), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
@@ -115,6 +117,22 @@ namespace DataAccess
             }
         }
         private ObjectSet<actividades_enfermeria> _actividades_enfermeria;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<alta> altas
+        {
+            get
+            {
+                if ((_altas == null))
+                {
+                    _altas = base.CreateObjectSet<alta>("altas");
+                }
+                return _altas;
+            }
+        }
+        private ObjectSet<alta> _altas;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -544,6 +562,14 @@ namespace DataAccess
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the altas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToaltas(alta alta)
+        {
+            base.AddObject("altas", alta);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the atenciones_enfermeria EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToatenciones_enfermeria(atenciones_enfermeria atenciones_enfermeria)
@@ -858,6 +884,268 @@ namespace DataAccess
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<atenciones_enfermeria>("teletonModel.actividades_fk", "atenciones_enfermeria", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="alta")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class alta : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new alta object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="n_expediente">Initial value of the n_expediente property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
+        /// <param name="username">Initial value of the username property.</param>
+        public static alta Createalta(global::System.Int32 id, global::System.Int64 n_expediente, global::System.Int32 prefijo, global::System.DateTime fecha, global::System.String username)
+        {
+            alta alta = new alta();
+            alta.id = id;
+            alta.n_expediente = n_expediente;
+            alta.prefijo = prefijo;
+            alta.fecha = fecha;
+            alta.username = username;
+            return alta;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 n_expediente
+        {
+            get
+            {
+                return _n_expediente;
+            }
+            set
+            {
+                Onn_expedienteChanging(value);
+                ReportPropertyChanging("n_expediente");
+                _n_expediente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("n_expediente");
+                Onn_expedienteChanged();
+            }
+        }
+        private global::System.Int64 _n_expediente;
+        partial void Onn_expedienteChanging(global::System.Int64 value);
+        partial void Onn_expedienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String texto
+        {
+            get
+            {
+                return _texto;
+            }
+            set
+            {
+                OntextoChanging(value);
+                ReportPropertyChanging("texto");
+                _texto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("texto");
+                OntextoChanged();
+            }
+        }
+        private global::System.String _texto;
+        partial void OntextoChanging(global::System.String value);
+        partial void OntextoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_altas", "pacientes")]
+        public paciente paciente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_altas", "pacientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_altas", "pacientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<paciente> pacienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_altas", "pacientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<paciente>("teletonModel.fk_n_expediente_altas", "pacientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_altas", "usuarios")]
+        public usuario usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_altas", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_altas", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuario> usuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_altas", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("teletonModel.fk_username_altas", "usuarios", value);
                 }
             }
         }
@@ -5243,6 +5531,28 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_altas", "altas")]
+        public EntityCollection<alta> altas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<alta>("teletonModel.fk_n_expediente_altas", "altas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<alta>("teletonModel.fk_n_expediente_altas", "altas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("teletonModel", "atenciones_enfermeria_fk", "atenciones_enfermeria")]
         public EntityCollection<atenciones_enfermeria> atenciones_enfermeria
         {
@@ -6471,6 +6781,28 @@ namespace DataAccess
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_altas", "altas")]
+        public EntityCollection<alta> altas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<alta>("teletonModel.fk_username_altas", "altas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<alta>("teletonModel.fk_username_altas", "altas", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.

@@ -7,6 +7,7 @@
       <Schema Namespace="teletonModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="teletonModelStoreContainer">
           <EntitySet Name="actividades_enfermeria" EntityType="teletonModel.Store.actividades_enfermeria" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="altas" EntityType="teletonModel.Store.altas" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="atenciones_enfermeria" EntityType="teletonModel.Store.atenciones_enfermeria" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="ayudas_tecnicas" EntityType="teletonModel.Store.ayudas_tecnicas" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="cargos" EntityType="teletonModel.Store.cargos" store:Type="Tables" Schema="mysql_14667_teletonback" />
@@ -103,6 +104,10 @@
             <End Role="pacientes" EntitySet="pacientes" />
             <End Role="historial" EntitySet="historial" />
           </AssociationSet>
+          <AssociationSet Name="fk_n_expediente_altas" Association="teletonModel.Store.fk_n_expediente_altas">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="altas" EntitySet="altas" />
+          </AssociationSet>
           <AssociationSet Name="fk_ocupaciones" Association="teletonModel.Store.fk_ocupaciones">
             <End Role="ocupaciones" EntitySet="ocupaciones" />
             <End Role="evoluciones" EntitySet="evoluciones" />
@@ -122,6 +127,10 @@
           <AssociationSet Name="fk_username" Association="teletonModel.Store.fk_username">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="historial" EntitySet="historial" />
+          </AssociationSet>
+          <AssociationSet Name="fk_username_altas" Association="teletonModel.Store.fk_username_altas">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="altas" EntitySet="altas" />
           </AssociationSet>
           <AssociationSet Name="pacientes_fk" Association="teletonModel.Store.pacientes_fk">
             <End Role="estado_civil" EntitySet="estado_civil" />
@@ -174,6 +183,17 @@
           </Key>
           <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="actividad" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="altas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="n_expediente" Type="uint" Nullable="false" />
+          <Property Name="prefijo" Type="usmallint" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="texto" Type="longtext" />
         </EntityType>
         <EntityType Name="atenciones_enfermeria">
           <Key>
@@ -660,6 +680,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_n_expediente_altas">
+          <End Role="pacientes" Type="teletonModel.Store.pacientes" Multiplicity="1" />
+          <End Role="altas" Type="teletonModel.Store.altas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="expediente" />
+              <PropertyRef Name="prefijo" />
+            </Principal>
+            <Dependent Role="altas">
+              <PropertyRef Name="n_expediente" />
+              <PropertyRef Name="prefijo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ocupaciones">
           <End Role="ocupaciones" Type="teletonModel.Store.ocupaciones" Multiplicity="1" />
           <End Role="evoluciones" Type="teletonModel.Store.evoluciones" Multiplicity="*" />
@@ -716,6 +750,18 @@
               <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="historial">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_username_altas">
+          <End Role="usuarios" Type="teletonModel.Store.usuarios" Multiplicity="1" />
+          <End Role="altas" Type="teletonModel.Store.altas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="altas">
               <PropertyRef Name="username" />
             </Dependent>
           </ReferentialConstraint>
@@ -871,6 +917,7 @@
       <Schema Namespace="teletonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="teletonEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="actividades_enfermeria" EntityType="teletonModel.actividades_enfermeria" />
+          <EntitySet Name="altas" EntityType="teletonModel.alta" />
           <EntitySet Name="atenciones_enfermeria" EntityType="teletonModel.atenciones_enfermeria" />
           <EntitySet Name="ayudas_tecnicas" EntityType="teletonModel.ayudas_tecnicas" />
           <EntitySet Name="cargos" EntityType="teletonModel.cargo" />
@@ -900,6 +947,14 @@
           <AssociationSet Name="actividades_fk" Association="teletonModel.actividades_fk">
             <End Role="actividades_enfermeria" EntitySet="actividades_enfermeria" />
             <End Role="atenciones_enfermeria" EntitySet="atenciones_enfermeria" />
+          </AssociationSet>
+          <AssociationSet Name="fk_n_expediente_altas" Association="teletonModel.fk_n_expediente_altas">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="altas" EntitySet="altas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_username_altas" Association="teletonModel.fk_username_altas">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="altas" EntitySet="altas" />
           </AssociationSet>
           <AssociationSet Name="atenciones_enfermeria_fk" Association="teletonModel.atenciones_enfermeria_fk">
             <End Role="pacientes" EntitySet="pacientes" />
@@ -1029,6 +1084,19 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="actividad" Type="String" Nullable="false" />
           <NavigationProperty Name="atenciones_enfermeria" Relationship="teletonModel.actividades_fk" FromRole="actividades_enfermeria" ToRole="atenciones_enfermeria" />
+        </EntityType>
+        <EntityType Name="alta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_expediente" Type="Int64" Nullable="false" />
+          <Property Name="prefijo" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" />
+          <Property Name="texto" Type="String" />
+          <NavigationProperty Name="paciente" Relationship="teletonModel.fk_n_expediente_altas" FromRole="altas" ToRole="pacientes" />
+          <NavigationProperty Name="usuario" Relationship="teletonModel.fk_username_altas" FromRole="altas" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="atenciones_enfermeria">
           <Key>
@@ -1261,6 +1329,7 @@
           <Property Name="profesion" Type="Int64" Nullable="false" />
           <Property Name="lugar_trabajo" Type="String" />
           <Property Name="nombre_conyugue" Type="String" />
+          <NavigationProperty Name="altas" Relationship="teletonModel.fk_n_expediente_altas" FromRole="pacientes" ToRole="altas" />
           <NavigationProperty Name="atenciones_enfermeria" Relationship="teletonModel.atenciones_enfermeria_fk" FromRole="pacientes" ToRole="atenciones_enfermeria" />
           <NavigationProperty Name="citas_doctor" Relationship="teletonModel.paciente_fk" FromRole="pacientes" ToRole="citas_doctor" />
           <NavigationProperty Name="citas_terapia" Relationship="teletonModel.citas_terapia_fk" FromRole="pacientes" ToRole="citas_terapia" />
@@ -1338,6 +1407,7 @@
           <Property Name="username" Type="String" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" />
           <Property Name="empleado" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="altas" Relationship="teletonModel.fk_username_altas" FromRole="usuarios" ToRole="altas" />
           <NavigationProperty Name="atenciones_enfermeria" Relationship="teletonModel.atenciones_enfermeria_fk1" FromRole="usuarios" ToRole="atenciones_enfermeria" />
           <NavigationProperty Name="citas_doctor" Relationship="teletonModel.citas_doctor_fk" FromRole="usuarios" ToRole="citas_doctor" />
           <NavigationProperty Name="citas_terapia" Relationship="teletonModel.usuario_fk" FromRole="usuarios" ToRole="citas_terapia" />
@@ -1355,6 +1425,32 @@
             </Principal>
             <Dependent Role="atenciones_enfermeria">
               <PropertyRef Name="actividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_n_expediente_altas">
+          <End Role="pacientes" Type="teletonModel.paciente" Multiplicity="1" />
+          <End Role="altas" Type="teletonModel.alta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="expediente" />
+              <PropertyRef Name="prefijo" />
+            </Principal>
+            <Dependent Role="altas">
+              <PropertyRef Name="n_expediente" />
+              <PropertyRef Name="prefijo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_username_altas">
+          <End Role="usuarios" Type="teletonModel.usuario" Multiplicity="1" />
+          <End Role="altas" Type="teletonModel.alta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="altas">
+              <PropertyRef Name="username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1726,6 +1822,14 @@
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="actividad" ColumnName="actividad" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="altas"><EntityTypeMapping TypeName="teletonModel.alta"><MappingFragment StoreEntitySet="altas">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="n_expediente" ColumnName="n_expediente" />
+            <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="username" ColumnName="username" />
+            <ScalarProperty Name="texto" ColumnName="texto" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="atenciones_enfermeria"><EntityTypeMapping TypeName="teletonModel.atenciones_enfermeria"><MappingFragment StoreEntitySet="atenciones_enfermeria">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="enfermera" ColumnName="enfermera" />
@@ -1938,257 +2042,279 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="EntityModel">
-        <EntityTypeShape EntityType="teletonModel.actividades_enfermeria" Width="1.5" PointX="6" PointY="5.875" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.atenciones_enfermeria" Width="1.5" PointX="8.25" PointY="11.25" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.ayudas_tecnicas" Width="1.5" PointX="0.75" PointY="15" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.cargo" Width="1.5" PointX="1.5" PointY="46.125" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.centro" Width="1.5" PointX="1.5" PointY="52.875" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.citas_doctor" Width="1.5" PointX="11.25" PointY="11.5" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.citas_terapia" Width="1.5" PointX="8.25" PointY="7.25" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.clasificacion_paciente" Width="1.5" PointX="0.75" PointY="17.375" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.condicion" Width="1.5" PointX="0.75" PointY="19.75" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.diagnostico" Width="1.5" PointX="0.75" PointY="11.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.dx" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583353" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.empleado" Width="1.5" PointX="1.5" PointY="42.75" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.escolaridad" Width="1.5" PointX="0.75" PointY="22.125" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.estado_alta" Width="1.5" PointX="0.75" PointY="24.625" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.estado_civil" Width="1.5" PointX="3.75" PointY="6" Height="1.4033821614583388" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.evolucione" Width="1.5" PointX="3" PointY="8.75" Height="7.9416308593750031" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.historial" Width="1.5" PointX="8.25" PointY="15.375" Height="2.5571907552083388" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.ocupacione" Width="1.5" PointX="0.75" PointY="27" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.paciente" Width="1.5" PointX="6" PointY="8.625" Height="8.1339322916666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.permiso" Width="1.5" PointX="1.5" PointY="55.375" Height="1.5956835937500102" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.procedencia" Width="1.5" PointX="0.75" PointY="29.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.procedencia_descripcion" Width="1.5" PointX="3" PointY="29.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.productividad" Width="1.5" PointX="0.75" PointY="32" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.actividades_enfermeria" Width="1.5" PointX="9" PointY="6.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.alta" Width="1.5" PointX="8.25" PointY="13.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.atenciones_enfermeria" Width="1.5" PointX="11.25" PointY="13.125" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.ayudas_tecnicas" Width="1.5" PointX="0.75" PointY="16.875" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.cargo" Width="1.5" PointX="1.5" PointY="47.875" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.centro" Width="1.5" PointX="1.5" PointY="54.625" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.citas_doctor" Width="1.5" PointX="8.25" PointY="9.375" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.citas_terapia" Width="1.5" PointX="8.25" PointY="17" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.clasificacion_paciente" Width="1.5" PointX="0.75" PointY="19.25" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.condicion" Width="1.5" PointX="0.75" PointY="21.5" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.diagnostico" Width="1.5" PointX="0.75" PointY="13.625" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.dx" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.empleado" Width="1.5" PointX="1.5" PointY="44.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.escolaridad" Width="1.5" PointX="0.75" PointY="23.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.estado_alta" Width="1.5" PointX="0.75" PointY="26.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.estado_civil" Width="1.5" PointX="3.75" PointY="7.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.evolucione" Width="1.5" PointX="3" PointY="10.5" Height="7.9416308593750014" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.historial" Width="1.5" PointX="11.25" PointY="9.25" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.ocupacione" Width="1.5" PointX="0.75" PointY="28.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.paciente" Width="1.5" PointX="6" PointY="10.375" Height="8.3262337239583282" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.permiso" Width="1.5" PointX="1.5" PointY="57.125" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.procedencia" Width="1.5" PointX="0.75" PointY="31.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.procedencia_descripcion" Width="1.5" PointX="3" PointY="31.25" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.productividad" Width="1.5" PointX="0.75" PointY="33.875" Height="1.595683593749996" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.referencia" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583246" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.role" Width="1.5" PointX="1.5" PointY="49.75" Height="2.1725878906250102" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.tipo_daño" Width="1.5" PointX="0.75" PointY="34.375" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.usuario" Width="1.5" PointX="0.75" PointY="38.875" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.role" Width="1.5" PointX="1.5" PointY="51.625" Height="2.1725878906250102" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.tipo_daño" Width="1.5" PointX="0.75" PointY="36.125" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.usuario" Width="1.5" PointX="0.75" PointY="40.625" Height="3.1340950520833388" IsExpanded="true" />
         <AssociationConnector Association="teletonModel.actividades_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="7.47068359375" />
-          <ConnectorPoint PointX="7.875" PointY="7.84568359375" />
-          <ConnectorPoint PointX="7.875" PointY="12.62474609375" />
-          <ConnectorPoint PointX="7.916666666666667" PointY="12.62474609375" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="12.62474609375" />
-          <ConnectorPoint PointX="8.25" PointY="12.62474609375" />
+          <ConnectorPoint PointX="10.15625" PointY="8.34568359375" />
+          <ConnectorPoint PointX="10.15625" PointY="13.15625" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="13.15625" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="13.15625" />
+          <ConnectorPoint PointX="11.25" PointY="13.15625" />
+        </AssociationConnector>
+        <AssociationConnector Association="teletonModel.fk_n_expediente_altas" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="14.528595377604166" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="14.528595377604166" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="14.528595377604166" />
+          <ConnectorPoint PointX="8.25" PointY="14.528595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="teletonModel.fk_username_altas" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.2338461538461547" PointY="40.625" />
+          <ConnectorPoint PointX="2.5775961538461516" PointY="40.28125" />
+          <ConnectorPoint PointX="7.875" PointY="40.28125" />
+          <ConnectorPoint PointX="7.875" PointY="16.182190755208332" />
+          <ConnectorPoint PointX="7.9410744349011209" PointY="16.11611632030721" />
+          <ConnectorPoint PointX="8.0589255650988783" PointY="15.998265190109454" />
+          <ConnectorPoint PointX="8.25" PointY="15.807190755208332" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.atenciones_enfermeria_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="11.874873046874999" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="11.874873046874997" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="11.874873046874999" />
-          <ConnectorPoint PointX="8.25" PointY="11.874873046874999" />
+          <ConnectorPoint PointX="7.5" PointY="16.40599659375" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="16.40599659375" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="16.40599659375" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="16.40599659375" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="16.40599659375" />
+          <ConnectorPoint PointX="11.510414166666665" PointY="16.40599659375" />
+          <ConnectorPoint PointX="11.677080833333333" PointY="16.40599659375" />
+          <ConnectorPoint PointX="12" PointY="16.40599659375" />
+          <ConnectorPoint PointX="12" PointY="15.8744921875" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.atenciones_enfermeria_fk1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.2500000000000013" PointY="38.875" />
-          <ConnectorPoint PointX="2.59375" PointY="38.53125" />
-          <ConnectorPoint PointX="7.875" PointY="38.53125" />
-          <ConnectorPoint PointX="7.875" PointY="14.3744921875" />
-          <ConnectorPoint PointX="7.9410744349011209" PointY="14.308417752598878" />
-          <ConnectorPoint PointX="8.0589255650988783" PointY="14.190566622401121" />
-          <ConnectorPoint PointX="8.25" PointY="13.9994921875" />
+          <ConnectorPoint PointX="2.25" PointY="42.223300026041663" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="42.223300026041663" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="42.223300026041663" />
+          <ConnectorPoint PointX="11.5937475" PointY="42.223300026041663" />
+          <ConnectorPoint PointX="11.5937475" PointY="15.8744921875" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_ayudas_tecnicas" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="15.797841796875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="15.797841796874998" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="15.797841796875" />
-          <ConnectorPoint PointX="3" PointY="15.797841796875" />
+          <ConnectorPoint PointX="2.25" PointY="17.6583154296875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="17.6583154296875" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="17.6583154296875" />
+          <ConnectorPoint PointX="3" PointY="17.6583154296875" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.cargo_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="46.125" />
-          <ConnectorPoint PointX="2.25" PointY="45.114889322916667" />
+          <ConnectorPoint PointX="2.25" PointY="47.875" />
+          <ConnectorPoint PointX="2.25" PointY="46.864889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.roles_fk1" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="52.875" />
-          <ConnectorPoint PointX="2.25" PointY="51.92258789062501" />
+          <ConnectorPoint PointX="2.25" PointY="54.625" />
+          <ConnectorPoint PointX="2.25" PointY="53.79758789062501" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.citas_doctor_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="40.377149309895827" />
-          <ConnectorPoint PointX="8.9166666666666661" PointY="40.377149309895827" />
-          <ConnectorPoint PointX="9.0833333333333339" PointY="40.377149309895827" />
-          <ConnectorPoint PointX="12" PointY="40.377149309895827" />
-          <ConnectorPoint PointX="12" PointY="13.864889322916667" />
+          <ConnectorPoint PointX="2.25" PointY="40.637691307692307" />
+          <ConnectorPoint PointX="2.3876913076923074" PointY="40.5" />
+          <ConnectorPoint PointX="8" PointY="40.5" />
+          <ConnectorPoint PointX="8" PointY="11.989889322916667" />
+          <ConnectorPoint PointX="8.25" PointY="11.739889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.paciente_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="14.68724609375" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="14.687246093749998" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="14.68724609375" />
-          <ConnectorPoint PointX="11.5937475" PointY="14.68724609375" />
-          <ConnectorPoint PointX="11.5937475" PointY="13.864889322916667" />
+          <ConnectorPoint PointX="7.5" PointY="11.026192161458333" />
+          <ConnectorPoint PointX="8.25" PointY="11.026192161458333" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.citas_terapia_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="9.4083968098958337" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="9.4083968098958337" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="9.4083968098958337" />
-          <ConnectorPoint PointX="8.25" PointY="9.4083968098958337" />
+          <ConnectorPoint PointX="7.5" PointY="17.850616861979162" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="17.850616861979162" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="17.850616861979162" />
+          <ConnectorPoint PointX="8.25" PointY="17.850616861979162" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.usuario_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="38.911922076923076" />
-          <ConnectorPoint PointX="2.4119220769230765" PointY="38.75" />
-          <ConnectorPoint PointX="8" PointY="38.75" />
-          <ConnectorPoint PointX="8" PointY="10.441793619791667" />
-          <ConnectorPoint PointX="8.25" PointY="10.191793619791667" />
+          <ConnectorPoint PointX="2.25" PointY="43.022450039062491" />
+          <ConnectorPoint PointX="9" PointY="43.022450039062491" />
+          <ConnectorPoint PointX="9" PointY="19.941793619791667" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_clasificacion" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.0572879166666667" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.2239545833333336" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.2604141666666666" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.4270808333333336" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.4635404166666666" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.6302070833333335" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.75" PointY="18.172841796874998" />
-          <ConnectorPoint PointX="3.75" PointY="16.691630859375003" />
+          <ConnectorPoint PointX="2.25" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.2604141666666666" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.4270808333333336" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.4635404166666666" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.6302070833333335" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="20.047841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="18.441630859375003" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_condicion" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="3.0572879166666667" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="3.2239545833333336" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="3.3437475" PointY="20.547841796874998" />
-          <ConnectorPoint PointX="3.3437475" PointY="16.691630859375003" />
+          <ConnectorPoint PointX="2.25" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="3.3437475" PointY="22.297841796874998" />
+          <ConnectorPoint PointX="3.3437475" PointY="18.441630859375003" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.diagnosticos_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="12.643992513020834" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="12.643992513020834" />
-          <ConnectorPoint PointX="2.7708333333333335" PointY="12.643992513020834" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="12.643992513020834" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="12.643992513020834" />
-          <ConnectorPoint PointX="3" PointY="12.643992513020834" />
+          <ConnectorPoint PointX="2.25" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="2.8229166666666665" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="3" PointY="14.518992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.diagnostico_FK" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="11.75" />
-          <ConnectorPoint PointX="1.5" PointY="8.65625" />
-          <ConnectorPoint PointX="6" PointY="8.65625" />
+          <ConnectorPoint PointX="1.5" PointY="13.625" />
+          <ConnectorPoint PointX="1.5" PointY="10.40625" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="10.40625" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="10.40625" />
+          <ConnectorPoint PointX="6" PointY="10.40625" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.empleado_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.875" PointY="42.75" />
-          <ConnectorPoint PointX="1.875" PointY="41.816793619791667" />
+          <ConnectorPoint PointX="1.875" PointY="44.5" />
+          <ConnectorPoint PointX="1.875" PointY="43.759095052083339" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.escoralidad_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="3.0572879166666667" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="3.2239545833333336" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="3.4635404166666666" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="3.6302070833333335" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="6.2604141666666671" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="6.4270808333333331" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="6.75" PointY="23.018992513020834" />
-          <ConnectorPoint PointX="6.75" PointY="16.758932291666667" />
+          <ConnectorPoint PointX="2.25" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="3.4635404166666666" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="3.6302070833333335" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="6.2604141666666671" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="6.4270808333333331" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="6.75" PointY="24.768992513020834" />
+          <ConnectorPoint PointX="6.75" PointY="18.701233723958328" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_escolaridad" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="3.0572879166666667" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="3.2239545833333336" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="3.4635404166666666" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="3.6302070833333335" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="4.1562525" PointY="22.540743756510416" />
-          <ConnectorPoint PointX="4.1562525" PointY="16.691630859375003" />
+          <ConnectorPoint PointX="2.25" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="3.0572879166666667" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="3.2239545833333336" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="3.4635404166666666" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="3.6302070833333335" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="4.1562525" PointY="24.290743756510416" />
+          <ConnectorPoint PointX="4.1562525" PointY="18.441630859375003" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_estado_alta" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="25.422841796875" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="25.422841796875" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="25.422841796875" />
-          <ConnectorPoint PointX="3.14062125" PointY="25.422841796875" />
-          <ConnectorPoint PointX="3.14062125" PointY="16.691630859375003" />
+          <ConnectorPoint PointX="2.25" PointY="27.172841796875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="27.172841796875" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="27.172841796875" />
+          <ConnectorPoint PointX="3.14062125" PointY="27.172841796875" />
+          <ConnectorPoint PointX="3.14062125" PointY="18.441630859375003" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.pacientes_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.90625" PointY="7.4033821614583388" />
-          <ConnectorPoint PointX="4.90625" PointY="8.640625" />
-          <ConnectorPoint PointX="6" PointY="8.640625" />
+          <ConnectorPoint PointX="4.90625" PointY="9.1533821614583388" />
+          <ConnectorPoint PointX="4.90625" PointY="18.602682291666667" />
+          <ConnectorPoint PointX="6" PointY="18.602682291666667" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.evaluador_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.2130769230769238" PointY="38.875" />
-          <ConnectorPoint PointX="2.625" PointY="38.463076923076926" />
-          <ConnectorPoint PointX="2.625" PointY="10.665744256510422" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="10.665744256510422" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="10.665744256510422" />
-          <ConnectorPoint PointX="3" PointY="10.665744256510422" />
+          <ConnectorPoint PointX="2.2050000000000005" PointY="40.625" />
+          <ConnectorPoint PointX="2.625" PointY="40.205" />
+          <ConnectorPoint PointX="2.625" PointY="12.478244256510422" />
+          <ConnectorPoint PointX="2.8229166666666665" PointY="12.478244256510422" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="12.478244256510422" />
+          <ConnectorPoint PointX="3" PointY="12.478244256510422" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_ocupaciones" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="27.893992513020834" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="27.893992513020834" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="27.893992513020834" />
-          <ConnectorPoint PointX="3.54687375" PointY="27.893992513020834" />
-          <ConnectorPoint PointX="3.54687375" PointY="16.691630859375003" />
+          <ConnectorPoint PointX="2.25" PointY="29.643992513020834" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="29.643992513020834" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="29.643992513020834" />
+          <ConnectorPoint PointX="3.54687375" PointY="29.643992513020834" />
+          <ConnectorPoint PointX="3.54687375" PointY="18.441630859375003" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_procedencia" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="29.563460538461534" />
-          <ConnectorPoint PointX="2.5660744349011204" PointY="29.247386103560412" />
-          <ConnectorPoint PointX="2.7464255650988791" PointY="29.067034973362656" />
-          <ConnectorPoint PointX="2.8125" PointY="29.000960538461534" />
-          <ConnectorPoint PointX="2.8125" PointY="14.220917154947916" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="14.220917154947916" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="14.220917154947916" />
-          <ConnectorPoint PointX="3" PointY="14.220917154947916" />
+          <ConnectorPoint PointX="2.25" PointY="31.313460538461534" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="30.997386103560412" />
+          <ConnectorPoint PointX="2.7464255650988791" PointY="30.817034973362656" />
+          <ConnectorPoint PointX="2.8125" PointY="30.750960538461534" />
+          <ConnectorPoint PointX="2.8125" PointY="16.088653971354169" />
+          <ConnectorPoint PointX="2.8229166666666665" PointY="16.088653971354169" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="16.088653971354169" />
+          <ConnectorPoint PointX="3" PointY="16.088653971354169" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_productividad" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="32.062306692307693" />
-          <ConnectorPoint PointX="2.5660744349011204" PointY="31.746232257406572" />
-          <ConnectorPoint PointX="2.6839255650988791" PointY="31.628381127208815" />
-          <ConnectorPoint PointX="2.6875" PointY="31.624806692307693" />
-          <ConnectorPoint PointX="2.6875" PointY="11.654868384765628" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="11.654868384765628" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="11.654868384765628" />
-          <ConnectorPoint PointX="3" PointY="11.654868384765628" />
+          <ConnectorPoint PointX="2.25" PointY="33.937306692307693" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="33.621232257406575" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="33.503381127208812" />
+          <ConnectorPoint PointX="2.6875" PointY="33.499806692307693" />
+          <ConnectorPoint PointX="2.6875" PointY="13.498618384765628" />
+          <ConnectorPoint PointX="2.8229166666666665" PointY="13.498618384765628" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="13.498618384765628" />
+          <ConnectorPoint PointX="3" PointY="13.498618384765628" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_tipo_daño" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="34.406152846153851" />
-          <ConnectorPoint PointX="2.5660744349011204" PointY="34.090078411252733" />
-          <ConnectorPoint PointX="2.6839255650988791" PointY="33.97222728105497" />
-          <ConnectorPoint PointX="2.90625" PointY="33.749902846153851" />
-          <ConnectorPoint PointX="2.90625" PointY="9.676620128255216" />
-          <ConnectorPoint PointX="3" PointY="9.676620128255216" />
+          <ConnectorPoint PointX="2.25" PointY="36.156152846153852" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="35.840078411252733" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="35.72222728105497" />
+          <ConnectorPoint PointX="2.90625" PointY="35.499902846153851" />
+          <ConnectorPoint PointX="2.90625" PointY="11.457870128255216" />
+          <ConnectorPoint PointX="3" PointY="11.457870128255216" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.pacientes_fk1" ManuallyRouted="false">
-          <ConnectorPoint PointX="6" PointY="12.720815429687502" />
-          <ConnectorPoint PointX="4.5" PointY="12.720815429687502" />
+          <ConnectorPoint PointX="6" PointY="14.470815429687502" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="14.470815429687502" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="14.470815429687502" />
+          <ConnectorPoint PointX="4.5" PointY="14.470815429687502" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_n_expediente" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="16.066966145833334" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="16.066966145833334" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="16.066966145833334" />
-          <ConnectorPoint PointX="8.25" PointY="16.066966145833334" />
+          <ConnectorPoint PointX="6.75" PointY="10.375" />
+          <ConnectorPoint PointX="6.75" PointY="9.28125" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="9.28125" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="9.28125" />
+          <ConnectorPoint PointX="11.25" PointY="9.28125" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.fk_username" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="41.128223964843741" />
-          <ConnectorPoint PointX="9" PointY="41.128223964843741" />
-          <ConnectorPoint PointX="9" PointY="17.932190755208339" />
+          <ConnectorPoint PointX="2.25" PointY="40.666537461538461" />
+          <ConnectorPoint PointX="2.2915374615384607" PointY="40.625" />
+          <ConnectorPoint PointX="8.9166666666666661" PointY="40.625" />
+          <ConnectorPoint PointX="9.0833333333333339" PointY="40.625" />
+          <ConnectorPoint PointX="10.875" PointY="40.625" />
+          <ConnectorPoint PointX="10.875" PointY="12.182190755208339" />
+          <ConnectorPoint PointX="11.25" PointY="11.807190755208339" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.profesion_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="3.4635404166666666" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="3.6302070833333335" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="6.3437475" PointY="27.415743756510416" />
-          <ConnectorPoint PointX="6.3437475" PointY="16.758932291666667" />
+          <ConnectorPoint PointX="2.25" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="3.4635404166666666" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="3.6302070833333335" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="6.3437475" PointY="29.165743756510416" />
+          <ConnectorPoint PointX="6.3437475" PointY="18.701233723958328" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.procedencia_fk" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="30.4569752822516" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="30.4569752822516" />
-          <ConnectorPoint PointX="2.7708333333333335" PointY="30.4569752822516" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="30.4569752822516" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="30.4569752822516" />
-          <ConnectorPoint PointX="3" PointY="30.4569752822516" />
+          <ConnectorPoint PointX="2.25" PointY="32.206975282251605" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="32.206975282251605" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="32.206975282251605" />
+          <ConnectorPoint PointX="2.8229166666666665" PointY="32.206975282251605" />
+          <ConnectorPoint PointX="2.9895833333333335" PointY="32.206975282251605" />
+          <ConnectorPoint PointX="3" PointY="32.206975282251605" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.permisos_x_roles" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="55.375" />
-          <ConnectorPoint PointX="1.125" PointY="55" />
-          <ConnectorPoint PointX="1.125" PointY="52.29758789062501" />
-          <ConnectorPoint PointX="1.5" PointY="51.92258789062501" />
+          <ConnectorPoint PointX="1.5" PointY="57.125" />
+          <ConnectorPoint PointX="1.125" PointY="56.75" />
+          <ConnectorPoint PointX="1.125" PointY="54.17258789062501" />
+          <ConnectorPoint PointX="1.5" PointY="53.79758789062501" />
         </AssociationConnector>
         <AssociationConnector Association="teletonModel.usuarios_x_rol" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="50.805041445312511" />
-          <ConnectorPoint PointX="1.0937475" PointY="50.805041445312511" />
-          <ConnectorPoint PointX="1.0937475" PointY="41.816793619791667" />
+          <ConnectorPoint PointX="1.5" PointY="52.680041445312511" />
+          <ConnectorPoint PointX="1.0937475" PointY="52.680041445312511" />
+          <ConnectorPoint PointX="1.0937475" PointY="43.759095052083339" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
