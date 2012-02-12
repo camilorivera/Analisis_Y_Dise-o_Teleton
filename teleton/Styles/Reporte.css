@@ -1,7 +1,6 @@
 *
 {
     font-size: 10pt;
-    height: 14px;
 }
 
 
@@ -96,7 +95,7 @@ tbody tr:hover
 {       
     padding: 20px 0 20px 0;
     text-align:left;
-    width: 70%;
+    width: 80%;
     margin: auto;
 }
 

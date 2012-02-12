@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>   
+                        <td>                       
                             <asp:Image ID="Imagen" runat="server" />
                         </td>
                     <td>
