@@ -321,13 +321,13 @@ namespace BL
         /// </summary>
         /// <param name="int_expt">N'umero de expediente</param>
         /// <returns>Nombre de Paciente</returns>
-        public string[] nombrePaciente(int int_expt)
+        public string[] nombrePaciente(int int_expt,int centro)
         {
             try
             {
                 string[] str_Paci = new string[2];
                 var query = from x in entities.pacientes
-                            where x.expediente == int_expt
+                            where x.expediente == int_expt && x.prefijo==centro
                             select new {x.nombres, x.primer_apellido,x.segundo_apellido,x.prefijo };
                 foreach (var row in query)
                 {
@@ -347,7 +347,7 @@ namespace BL
         /// </summary>
         /// <param name="int_exp"></param>
         /// <returns></returns>
-        public DataTable historial(int int_exp)
+        public DataTable historial(int int_exp,int centro)
         {
             DataTable dt_Hist = new DataTable();
             dt_Hist.Columns.Add("fecha");
@@ -357,7 +357,7 @@ namespace BL
             try
             {
                 var query = from p in entities.historials
-                            where p.n_expediente == int_exp
+                            where p.n_expediente == int_exp && p.prefijo==centro
                             select new { p.fecha, p.n_expediente, p.username, p.texto };
                 foreach (var row in query)
                 {

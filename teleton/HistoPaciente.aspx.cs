@@ -11,6 +11,7 @@ using System.Data;
 public partial class HistoPaciente : System.Web.UI.Page
 {
     private BL.Paciente PAT = new BL.Paciente();
+    private BL.Security Sec = new BL.Security();
     private static string _strUsuario = "";
     private static int _intExpe = 0;
     private static short _shtPrefijo = 0;
@@ -22,6 +23,8 @@ public partial class HistoPaciente : System.Web.UI.Page
 
     private void cargar_Historial()
     {
+        int centro = Convert.ToInt32(Sec.getCentroId(Session["Centro_id"].ToString()));
+        
         if (txt_buscar.Text != "")
         {
             try
@@ -30,15 +33,15 @@ public partial class HistoPaciente : System.Web.UI.Page
                 string str_temp = txt_buscar.Text;
                 int int_temp = Convert.ToInt32(txt_buscar.Text);
                 string[] str_Inf = new string[2];
-                str_Inf = PAT.nombrePaciente(Convert.ToInt32(txt_buscar.Text));
-                if (str_Inf != null)
+                str_Inf = PAT.nombrePaciente(Convert.ToInt32(txt_buscar.Text),centro);
+                if (str_Inf != null && (str_Inf[0]!=null && str_Inf[1]!=null))
                 {
                     _strUsuario = str_Inf[0];
                     _shtPrefijo = Convert.ToInt16(str_Inf[1].ToString());
                     if (str_Inf[0] != "")
                     {
                         lb_Paciente.Text = str_Inf[0];
-                        dt_Hist = PAT.historial(Convert.ToInt32(txt_buscar.Text));
+                        dt_Hist = PAT.historial(Convert.ToInt32(txt_buscar.Text), centro);
                         if (dt_Hist != null)
                         {
                             lb_Expe.Text = "Num. Expe: " + txt_buscar.Text;
@@ -59,7 +62,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                 }
                 else
                 {
-                    lb_Paciente.Text = "Error al obtener el paciente ...";
+                    lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registro.";
                     txt_buscar.Text = "";
                     txt_historial.Text = "";
                 }
