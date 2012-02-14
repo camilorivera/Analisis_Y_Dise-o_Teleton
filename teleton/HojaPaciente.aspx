@@ -9,7 +9,7 @@
         }
         .style2
         {
-            font-size: x-large;
+            font-size: large;
         }
     </style>
 </asp:Content>
