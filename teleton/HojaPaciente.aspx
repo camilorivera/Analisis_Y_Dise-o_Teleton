@@ -1,6 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Reportes.master" AutoEventWireup="true" CodeFile="HojaPaciente.aspx.cs" Inherits="HojaPaciente" %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeFile="HojaPaciente.aspx.cs" Inherits="HojaPaciente" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="Styles/Reporte.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         .style1
@@ -12,11 +11,17 @@
             font-size: large;
         }
     </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    
+    <body>
+        <form id="form1" runat="server">
     <div id="content">
-
+        <div>        
+            
+			<a href="~/Default.aspx">
+            <asp:Image ID="Image1" runat="server" Height="60px" 
+                ImageUrl="~/images/teletonLogoSolid3.png" Width="40px" />
+            </a> 
+        </div>        
+    <center>
        <div id="navcenter">
             <table class="table_Paciente">
                 <tbody>
@@ -188,6 +193,8 @@
                     </div>-->
         </div>
   
+   </center>
    </div>
-</asp:Content>
+        </form>
+   </body>
 

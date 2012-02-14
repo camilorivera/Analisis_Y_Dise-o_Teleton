@@ -28,6 +28,7 @@
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+        <center>
         <div id="sitemenu">
             <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" CssClass="pointermenu"
                 StaticSubMenuIndent="2px" IncludeStyleBlock="true" >
@@ -106,6 +107,7 @@
                 </Items>
             </asp:Menu>
         </div>
+        </center>
     </div>
     <div class="main">
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
