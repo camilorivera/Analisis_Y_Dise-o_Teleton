@@ -15,7 +15,7 @@
                 <p id="top"> Proyecto Teleton 2011 </p>
                 <div id="logo"> 
                     <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                            Height="70px" ImageUrl="~/images/teletonLogoSolid3.png" 
+                            Height="60px" ImageUrl="~/images/teletonLogoSolid3.png" 
                             PostBackUrl="~/Default.aspx" Width="40px" 
                         onclick="ImageButton1_Click" /> 
 			        <a href="~/Default.aspx"></a> 

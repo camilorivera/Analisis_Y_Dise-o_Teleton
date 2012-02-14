@@ -17,24 +17,24 @@
     
     <div id="content">
 
-        <div id="navcenter">
+       <div id="navcenter">
             <table class="table_Paciente">
-                <thead>                    
-                </thead>
                 <tbody>
                     <tr>
-                        <td>                       
+                        <td>           
+                            <center>           
                             <asp:Image ID="Imagen" runat="server" />
-                        </td>
-                    <td>
-                    <table>
-                    <thead>
-                    <tr> 
-                        <td colspan="2" class="table_Title">
-                        <h1 class="style1"><strong class="style2">Información General</strong></h1> 
+                            </center>
                         </td>
                     </tr>
-                    </thead>
+                    <tr>
+                        <td colspan="2" class="table_Title">
+                            <h1><strong class="style2">Información General</strong></h1> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                    <table>
                     <tr class="rowodd">
                         <td colspan="2" class="table_Subtitle">                    
                             <h2>Datos Generales</h2>
@@ -182,12 +182,12 @@
                 </tbody>
                 <tfoot>
                 </tfoot>
-            </table>
-                         
-                    <div id="navBotones">
+            </table>                         
+                    <!--<div id="navBotones">
                         <asp:Button runat="server" Visible="true" Text="Cerrar" OnClientClick="window.close()" CssClass="boton" />
-                    </div>   
+                    </div>-->
         </div>
+  
    </div>
 </asp:Content>
 
