@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
     <title></title>
-    <link href="~/Styles/screen.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/screen2.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -15,14 +15,15 @@
                 <p id="top"> Proyecto Teleton 2011 </p>
                 <div id="logo"> 
                     <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="False" 
-                            Height="120px" ImageUrl="~/images/teletonLogoSolid3.png" 
-                            PostBackUrl="~/Default.aspx" Width="90px" onclick="ImageButton1_Click" /> 
+                            Height="70px" ImageUrl="~/images/teletonLogoSolid3.png" 
+                            PostBackUrl="~/Default.aspx" Width="40px" 
+                        onclick="ImageButton1_Click" /> 
 			        <a href="~/Default.aspx"></a> 
-		        </div>
+		        </div>   
             </div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         </div>
-        <div class="clear"></div>
+        <div class="clear"/>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
