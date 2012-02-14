@@ -4821,7 +4821,8 @@ namespace DataAccess
         /// <param name="fecha_nac">Initial value of the fecha_nac property.</param>
         /// <param name="escolaridad">Initial value of the escolaridad property.</param>
         /// <param name="profesion">Initial value of the profesion property.</param>
-        public static paciente Createpaciente(global::System.Int64 expediente, global::System.Int32 prefijo, global::System.Int32 centro_actual, global::System.DateTime fecha_ingreso, global::System.String primer_apellido, global::System.String segundo_apellido, global::System.String nombres, global::System.String cedula, global::System.String estado_civil, global::System.Boolean sexo, global::System.DateTime fecha_nac, global::System.Int64 escolaridad, global::System.Int64 profesion)
+        /// <param name="activo">Initial value of the activo property.</param>
+        public static paciente Createpaciente(global::System.Int64 expediente, global::System.Int32 prefijo, global::System.Int32 centro_actual, global::System.DateTime fecha_ingreso, global::System.String primer_apellido, global::System.String segundo_apellido, global::System.String nombres, global::System.String cedula, global::System.String estado_civil, global::System.Boolean sexo, global::System.DateTime fecha_nac, global::System.Int64 escolaridad, global::System.Int64 profesion, global::System.Boolean activo)
         {
             paciente paciente = new paciente();
             paciente.expediente = expediente;
@@ -4837,6 +4838,7 @@ namespace DataAccess
             paciente.fecha_nac = fecha_nac;
             paciente.escolaridad = escolaridad;
             paciente.profesion = profesion;
+            paciente.activo = activo;
             return paciente;
         }
 
@@ -5520,6 +5522,30 @@ namespace DataAccess
         private global::System.String _nombre_conyugue;
         partial void Onnombre_conyugueChanging(global::System.String value);
         partial void Onnombre_conyugueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean activo
+        {
+            get
+            {
+                return _activo;
+            }
+            set
+            {
+                OnactivoChanging(value);
+                ReportPropertyChanging("activo");
+                _activo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("activo");
+                OnactivoChanged();
+            }
+        }
+        private global::System.Boolean _activo;
+        partial void OnactivoChanging(global::System.Boolean value);
+        partial void OnactivoChanged();
 
         #endregion
     
