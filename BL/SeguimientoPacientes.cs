@@ -325,6 +325,8 @@ namespace BL
         public IQueryable BusquedaporRangoFecha2(DateTime fechainit, DateTime fechafin, int centroid)
         {
 
+            DateTime fechaFinal = new DateTime(fechafin.Year, fechafin.Month, fechafin.Day, 23, 59, 59);
+            
             var query = from p in entities.evoluciones
                         
                         join e in entities.clasificacion_paciente
@@ -355,9 +357,9 @@ namespace BL
                         on p.id_ocupacion equals oc.id
 
                         where ((p.fecha.CompareTo(fechainit) == 0) || (p.fecha.CompareTo(fechainit) > 0)) &&
-                                ((p.fecha.CompareTo(fechafin) == 0) || (p.fecha.CompareTo(fechafin) < 0)) && (p.prefijo == centroid)
+                                ((p.fecha.CompareTo(fechaFinal) == 0) || (p.fecha.CompareTo(fechaFinal) < 0)) && (p.prefijo == centroid)
                         
-                        select new { p.fecha, p.expediente, e.clasificacion, b.nombres, r.condicion1, b.cedula, p.notas, a.diagnostico1, d.tipo,
+                        select new { p.fecha, p.expediente, e.clasificacion, b.nombres, b.primer_apellido, b.segundo_apellido, r.condicion1, b.cedula, p.notas, a.diagnostico1, d.tipo,
                                      t.procedencia1, p.funcion_estructura, es.Grado, ay.ayuda, oc.ocupacion, p.años_tiempo_discapacidad, p.meses_tiempo_discapacidad,
                                      p.dias_tiempo_discapacidad, p.años_TSTDL, p.meses_TSTDL, p.dias_TSTDL, p.eteologia};
 

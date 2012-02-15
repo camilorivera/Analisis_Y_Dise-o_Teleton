@@ -22,7 +22,7 @@
                             <asp:Label runat="server" ID="lblFechaInicio">Fecha Inicio:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaInicio" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaInicio" runat="server" 
-                                TargetControlID="txtFechaInicio" Format="dd/MM/yyyy"
+                                TargetControlID="txtFechaInicio" Format="yyyy/MM/dd"
                                 PopupButtonID="imgFechaInicio">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaInicio" />
@@ -41,7 +41,7 @@
                             <asp:Label runat="server" ID="lblFechaFinal">Fecha Final:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaFinal" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaFinal" runat="server" 
-                                TargetControlID="txtFechaFinal" Format="dd/MM/yyyy"
+                                TargetControlID="txtFechaFinal" Format="yyyy/MM/dd"
                                 PopupButtonID="imgFechaFinal">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaFinal" />
@@ -77,7 +77,7 @@
                 </ul>
                 <asp:Panel runat="server" ID="gridPanel" ScrollBars="Auto" CssClass="panel">
                     <asp:GridView ID="gvSeguimientoPaciente" runat="server" CssClass="Grid" EmptyDataText="----Su busqueda no genero resultados intente con otra fecha.----"
-                        AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" AllowPaging="true">
+                        AutoGenerateColumns="false" ShowHeaderWhenEmpty="true">
                     
                         <PagerSettings Mode="Numeric" Position="Bottom" Visible="true" />
                         <PagerStyle BackColor="ControlLight" />
@@ -88,6 +88,8 @@
                             <asp:BoundField HeaderText="Expediente" DataField="expediente" />
                             <asp:BoundField HeaderText="Clasificación Paciente" DataField="clasificacion" />
                             <asp:BoundField HeaderText="Nombre Paciente" DataField="nombres" />
+                            <asp:BoundField HeaderText="Primer Apellido" DataField="primer_apellido" />
+                            <asp:BoundField HeaderText="Segundo Apellido" DataField="segundo_apellido" />
                             <asp:BoundField HeaderText="Condición" DataField="condicion1" />
                             <asp:BoundField HeaderText="Identidad" DataField="cedula" />
                             <asp:BoundField HeaderText="Observación" DataField="notas" />
