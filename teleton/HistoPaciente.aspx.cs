@@ -18,6 +18,7 @@ public partial class HistoPaciente : System.Web.UI.Page
     private static DataTable dt_Hist;
     protected void Page_Load(object sender, EventArgs e)
     {
+        this.Button1.GetHashCode();
     }
 
 

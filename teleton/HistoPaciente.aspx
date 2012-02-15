@@ -25,6 +25,7 @@
                        &nbsp;&nbsp;
                         <asp:Button ID="btn_Buscar"  CssClass="boton" runat="server" Text="Buscar" 
                             onclick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="Button" />
                     </li>
                 </ul>
             </fieldset>
