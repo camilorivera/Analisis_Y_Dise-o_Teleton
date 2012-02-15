@@ -9,7 +9,7 @@ public partial class HojaPaciente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Lista de permisos que el usuario logueado tiene
+        /*//Lista de permisos que el usuario logueado tiene
         List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
 
         bool encontroPermiso = false;
@@ -97,6 +97,6 @@ public partial class HojaPaciente : System.Web.UI.Page
         {
             Session["Error_Msg"] = ex.Message;
             Response.Redirect("~/Error.aspx", true);
-        }
+        }*/
     }
 }

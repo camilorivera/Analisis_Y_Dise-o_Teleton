@@ -10,23 +10,24 @@
     <style type="text/css">
         .style2
         {
-            font-size: large;
+            font-size: x-large;
         }
         .style3
         {
-            font-size: x-small;
+            /*font-size: x-small;*/
             width: 20%;
+        }
+        .style4
+        {
+            background-repeat: no-repeat;
+            background-image: url('/teleton/images/teletonLogoSolid3.png');
+            background-position: left top;
         }
     </style>
     </head>
     <body>
-        <form id="form1" runat="server">
-    <div id="content">
-        <div>   
-            <asp:Image ID="Image1" runat="server" Height="50px" 
-                ImageUrl="~/images/teletonLogoSolid3.png" Width="40px" />
-            <a href="~/Default.aspx"></a> 
-        </div>        
+        <form id="form1" runat="server" class="style4">
+    <div id="content" >       
         <center>
         <div> <!--id="navcenter">-->
             <table class="table_Paciente">
@@ -171,7 +172,7 @@
                         </td>
                     </tr>
                     <tr class="rowodd">
-                        <td class="style3">¿Recibio rehabilitacion antes?:</td>
+                        <td class="style3">¿Ha recibido rehabilitacion antes?:</td>
                         <td class="tb_crearRol"> 
                             <asp:Label ID="recibidoAntes" runat="server"></asp:Label>   
                         </td>
