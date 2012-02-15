@@ -6,8 +6,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
         <title></title>
-        <link href="Styles/Reporte.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
+        <link href="Styles/Reporte.css" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css" media="all">
         .style2
         {
             font-size: x-large;
