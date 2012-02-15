@@ -36,6 +36,7 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
             }
 
             ceFechaFinal.SelectedDate = DateTime.Now;
+            ceFechaInicio.SelectedDate = DateTime.Now;
         }
         catch (Exception error)
         {

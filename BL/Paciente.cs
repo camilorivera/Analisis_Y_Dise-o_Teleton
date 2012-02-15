@@ -36,16 +36,10 @@ namespace BL
         private string _nombreMadre;
         private string _nombrePadre;
         private string _nombreConyugue;
-        private string _estructuraFamiliar;
-        private string _condicionHogar;
-        private string _expectativa;
-        private double _ingresos;
+        private string _estructuraFamiliar;       
         private bool _recibioRehabilitacion;
-        private bool _candidatoTransporte;
-        private string _comoSeEntero;
-        private string _docAlternos;
         private string _observaciones;
-
+        private bool _pacActivo;
         #endregion
 
         #region Get y Set
@@ -181,52 +175,22 @@ namespace BL
             get { return _estructuraFamiliar; }
         }
 
-        public string condicionHogar
-        {
-            set { _condicionHogar = value; }
-            get { return _condicionHogar; }
-        }
-
-        public string expectativa
-        {
-            set { _expectativa = value; }
-            get { return _expectativa; }
-        }
-
-        public double ingresos
-        {
-            set { _ingresos = value; }
-            get { return _ingresos; }
-        }
-
         public bool rehabilitacion
         {
             set { _recibioRehabilitacion = value; }
             get { return _recibioRehabilitacion; }
         }
 
-        public bool candidatoTransporte
-        {
-            set { _candidatoTransporte = value; }
-            get { return _candidatoTransporte; }
-        }
-
-        public string acercaDe
-        {
-            set { _comoSeEntero = value; }
-            get { return _comoSeEntero; }
-        }
-
-        public string docsAlternos
-        {
-            set { _docAlternos = value; }
-            get { return _docAlternos; }
-        }
-
         public string observaciones
         {
             set { _observaciones = value; }
             get { return _observaciones; }
+        }
+
+        public bool pacienteActivo
+        {
+            set { _pacActivo = value;}
+            get { return _pacActivo; }
         }
         #endregion
 
@@ -250,8 +214,7 @@ namespace BL
         public void asignarDatos(int centroActual, long expediente, string nombres, string primerApellido, string segundoApellido, 
             DateTime fechaNac, bool sexo, DateTime fechaIngreso, string cedula, string direccion, string lugarNac, string estado,
             byte[] foto, /*Modificado por Eliazar ->*/string telefonoCasa, string celular, long idEscolaridad, long idProfesion, string dondeTrabajo, string madre,
-            string padre, string estructuraFam, string condiHogar, string expectativas, double ingreso, bool recibioReha,
-            bool candidatoTrans, string acerca, string docAlter, string observ, string conyugue)
+            string padre, string estructuraFam, bool recibioReha, string observ, string conyugue, bool pacActi)
         {
             CentroActual = centroActual;
             _expediente = expediente;
@@ -277,14 +240,9 @@ namespace BL
             nombrePadre = padre;
             nombreConyugue = conyugue;
             estructuraFamiliar = estructuraFam;
-            condicionHogar = condiHogar;
-            expectativa = expectativas;
-            ingresos = ingreso;
             rehabilitacion = recibioReha;
-            candidatoTransporte = candidatoTrans;
-            acercaDe = acerca;
-            docsAlternos = docAlter;
             observaciones = observ;
+            pacienteActivo = pacActi;
         }
 
         /// <summary>
@@ -436,11 +394,11 @@ namespace BL
                 _lugarTrabajo = pac.lugar_trabajo;
                 _nombreMadre = pac.nombre_madre;
                 _nombrePadre = pac.nombre_padre;
-                _nombreConyugue = "";//pac.nombre_conyugue;
+                _nombreConyugue = pac.nombre_conyugue;
                 _estructuraFamiliar = pac.estructura_familiar;
                 _recibioRehabilitacion = Convert.ToBoolean(pac.expectativa);
                 _observaciones = pac.observaciones;
-                
+                _pacActivo = pac.activo;
                 return true;
             }
             return false;
@@ -498,9 +456,11 @@ namespace BL
                 pac.lugar_trabajo = lugarTrabajo;
                 pac.nombre_madre = nombreMadre;
                 pac.nombre_padre = nombrePadre;
+                pac.nombre_conyugue = nombreConyugue;
                 pac.estructura_familiar = estructuraFamiliar;
                 pac.expectativa = rehabilitacion;
                 pac.observaciones = observaciones;
+                pac.activo = pacienteActivo;
 
                 entities.SaveChanges();
             }
@@ -563,9 +523,11 @@ namespace BL
                     pac.lugar_trabajo = lugarTrabajo;
                     pac.nombre_madre = nombreMadre;
                     pac.nombre_padre = nombrePadre;
+                    pac.nombre_conyugue = nombreConyugue;
                     pac.estructura_familiar = estructuraFamiliar;
                     pac.expectativa = rehabilitacion;
                     pac.observaciones = observaciones;
+                    pac.activo = pacienteActivo;
 
                     entities.pacientes.AddObject(pac); //se guarda en la memoria
                     entities.SaveChanges(); //se guarda en la DB

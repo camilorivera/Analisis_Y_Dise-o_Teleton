@@ -144,16 +144,14 @@ public partial class Crear_Paciente : System.Web.UI.Page
                     }
 
                     bool rehabilitacionAnterior = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
-                    bool candidatoTrans = rblCandidato.SelectedValue.Equals("Sí") ? true : false;
-
+                    
                     BL.Paciente pac = new BL.Paciente();
                     pac.asignarDatos(ca, exped, txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                         fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text,
                         txtLugarNacimiento.Text, ddEstado.SelectedItem.Text,FileUpload_Foto.FileBytes, txtTelefono.Text,
                         txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue),
-                        txtLugarTrabajo.Text, txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text,
-                        txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text), rehabilitacionAnterior, candidatoTrans,
-                        txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
+                        txtLugarTrabajo.Text, txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacionAnterior,
+                        txtObservaciones.Text, txtConyugue.Text, true);
 
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {

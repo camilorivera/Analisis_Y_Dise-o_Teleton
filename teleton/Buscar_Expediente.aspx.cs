@@ -106,15 +106,10 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         txtMadre.Enabled = estado;
         txtPadre.Enabled = estado;
         txtEstructuraFamiliar.Enabled = estado;
-        txtCondicionHogar.Enabled = estado;
-        txtExpectativa.Enabled = estado;
-        txtIngreso.Enabled = estado;
         rblRehabilitacion.Enabled = estado;
-        rblCandidato.Enabled = estado;
-        txtReferencia.Enabled = estado;
-        txtDocumentos.Enabled = estado;
         txtObservaciones.Enabled = estado;
         txtDiagnostico.Enabled = estado;
+        txtConyugue.Enabled = estado;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -182,23 +177,25 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 txtLugarTrabajo.Text = p.lugarTrabajo;
                 txtMadre.Text = p.nombreMadre;
                 txtPadre.Text = p.nombrePadre;
+                txtConyugue.Text = p.nombreConyugue;
                 txtEstructuraFamiliar.Text = p.estructuraFamiliar;
-                txtCondicionHogar.Text = p.condicionHogar;
-                txtExpectativa.Text = p.expectativa;
-                txtIngreso.Text = Convert.ToString(p.ingresos);
 
+                if (p.pacienteActivo)
+                {
+                    rbActivo.Enabled = false;
+                    rbActivo.Items.FindByValue("true").Selected = true;
+                }
+                else
+                {
+                    rbActivo.Enabled = true;
+                    rbActivo.Items.FindByValue("false").Selected = true;
+                }
+                
                 if (p.rehabilitacion)
                     rblRehabilitacion.Items[0].Selected = true;
                 else
                     rblRehabilitacion.Items[1].Selected = true;
 
-                if (p.candidatoTransporte)
-                    rblCandidato.Items[0].Selected = true;
-                else
-                    rblCandidato.Items[1].Selected = true;
-
-                txtReferencia.Text = p.acercaDe;
-                txtDocumentos.Text = p.docsAlternos;
                 txtObservaciones.Text = p.observaciones;
 
                 cambiarEnabled(true);
@@ -262,7 +259,6 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 DateTime fechaIng = new DateTime(yy, mm, dd);
 
                 bool rehabilitacion = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
-                bool transporte = rblCandidato.SelectedValue.Equals("Sí") ? true : false;
 
                 if (FileUpload_Foto.HasFile)
                 {
@@ -276,8 +272,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                         pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                         fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
                         txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
-                        rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
+                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue));
                     }
                 }
                 else
@@ -285,8 +280,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                     pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                     fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                     txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, txtCondicionHogar.Text, txtExpectativa.Text, Convert.ToDouble(txtIngreso.Text),
-                    rehabilitacion, transporte, txtReferencia.Text, txtDocumentos.Text, txtObservaciones.Text, "");
+                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue));
 
                 }
 
