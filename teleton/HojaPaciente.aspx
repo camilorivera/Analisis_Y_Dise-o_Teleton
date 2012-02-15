@@ -20,7 +20,7 @@
         .style4
         {
             background-repeat: no-repeat;
-            background-image: url('/teleton/images/teletonLogoSolid3.png');
+            background-image: url('/teleton/images/fondoHoja.png');
             background-position: left top;
         }
     </style>

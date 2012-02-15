@@ -10,7 +10,7 @@ public partial class HojaPaciente : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Lista de permisos que el usuario logueado tiene
-        List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+        /*List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
 
         bool encontroPermiso = false;
 
@@ -28,7 +28,7 @@ public partial class HojaPaciente : System.Web.UI.Page
         {
             //Si no tiene permiso redireccionamos
             Response.Redirect("Default.aspx");
-        }
+        }*/
         try
         {
             if (!IsPostBack)
