@@ -274,6 +274,55 @@ namespace BL
             }
         }
 
+        public void editarPacienteAlta(bool _bool,int int_exp,int centro)
+        {
+            try
+            {
+                var query1 = from p in entities.pacientes
+                             where p.expediente == int_exp && p.prefijo == centro
+                             select new { p.activo };
+                var query = (from p in entities.pacientes
+                             where p.expediente == int_exp && p.prefijo == centro
+                             select p).First();
+                
+                DataAccess.paciente pac = query;
+                pac.activo = _bool;
+                entities.SaveChanges();
+            }
+            catch(Exception er)
+            {
+                throw new Exception(er.ToString() + "--Paciente.cs / EditarPacienteAlta()");
+            }
+        }
+
+        /// <summary>
+        /// Guardar Historial
+        /// </summary>
+        /// <param name="dt_fecha">Fecha</param>
+        /// <param name="int_Exp">Expediente</param>
+        /// <param name="str_Usuario">Usuario</param>
+        /// <param name="str_Histo">Texto - Historial</param>
+        /// <param name="sht_Pref">Prefijo</param>
+        /// <returns></returns>
+        public bool guardarHistorialAlta(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref)
+        {
+            try
+            {
+                DataAccess.alta da_Hist = new DataAccess.alta();
+                da_Hist.fecha = dt_fecha;
+                da_Hist.n_expediente = int_Exp;
+                da_Hist.username = str_Usuario;
+                da_Hist.texto = str_Histo;
+                da_Hist.prefijo = sht_Pref;
+                entities.altas.AddObject(da_Hist);
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Get nombre de paciente
         /// </summary>
@@ -285,7 +334,7 @@ namespace BL
             {
                 string[] str_Paci = new string[2];
                 var query = from x in entities.pacientes
-                            where x.expediente == int_expt && x.prefijo==centro
+                            where x.expediente == int_expt && x.prefijo == centro && x.activo == false
                             select new {x.nombres, x.primer_apellido,x.segundo_apellido,x.prefijo };
                 foreach (var row in query)
                 {
@@ -300,6 +349,74 @@ namespace BL
             }
         }
 
+        public string[] nombrePacienteAlta(int int_expt, int centro)
+        {
+            try
+            {
+                string[] str_Paci = new string[2];
+                var query = from x in entities.pacientes
+                            where x.expediente == int_expt && x.prefijo == centro
+                            select new { x.nombres, x.primer_apellido, x.segundo_apellido, x.prefijo };
+                foreach (var row in query)
+                {
+                    str_Paci[0] = row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido;
+                    str_Paci[1] = row.prefijo.ToString();
+                }
+                return str_Paci;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool pacienteAlta(int int_exp, int centro)
+        {
+            try
+            {
+                var query = from p in entities.pacientes
+                            where p.expediente == int_exp && p.prefijo == centro
+                            select new { p.activo };
+                foreach (var row in query)
+                {
+                    return row.activo;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Historial del Paciente
+        /// </summary>
+        /// <param name="int_exp"></param>
+        /// <returns></returns>
+        public DataTable historialAlta(int int_exp, int centro)
+        {
+            DataTable dt_Hist = new DataTable();
+            dt_Hist.Columns.Add("fecha");
+            dt_Hist.Columns.Add("n_expediente");
+            dt_Hist.Columns.Add("username");
+            dt_Hist.Columns.Add("historial");
+            try
+            {
+                var query = from p in entities.altas
+                            where p.n_expediente == int_exp && p.prefijo == centro
+                            select new { p.fecha, p.n_expediente, p.username, p.texto };
+                foreach (var row in query)
+                {
+                    dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.username.ToString(), row.texto);
+                }
+                return dt_Hist;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// Historial del Paciente
         /// </summary>

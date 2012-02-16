@@ -16,27 +16,27 @@ public partial class HistoPaciente : System.Web.UI.Page
     private static int _intExpe = 0;
     private static short _shtPrefijo = 0;
     private static DataTable dt_Hist;
+    private static int centro;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!this.IsPostBack)
         {
-            if ((Request.QueryString["sender"] == "alta"))
-            {
-                Response.Redirect("HistoPacienteAlta.aspx", true);
-            }
-            else
-            {
-                BL.Security seg = new BL.Security();
-                ddl_centro.DataSource = seg.getCentros();
-                ddl_centro.DataBind();
-            }
+            BL.Security seg = new BL.Security();
+            ddl_centro.DataSource = seg.getCentros();
+            ddl_centro.DataBind();
+            ddl_centro.SelectedIndex = 0;
+            lb_mensaje.Enabled = false;
+            lb_mensaje.Text = "";
         }
     }
 
 
     private void cargar_Historial()
-    {        
-        int centro = Convert.ToInt32(Sec.getCentroId(ddl_centro.Text));
+    {
+        centro = Convert.ToInt32(Sec.getCentroId(ddl_centro.SelectedValue.ToString()));
+        lb_mensaje.Enabled = false;
+        lb_mensaje.Text = "";
+        txt_historial.Text = "";
         if (txt_buscar.Text != "")
         {
             try
@@ -45,73 +45,70 @@ public partial class HistoPaciente : System.Web.UI.Page
                 string str_temp = txt_buscar.Text;
                 int int_temp = Convert.ToInt32(txt_buscar.Text);
                 string[] str_Inf = new string[2];
-                str_Inf = PAT.nombrePaciente(Convert.ToInt32(txt_buscar.Text),centro);
-                if (str_Inf != null && (str_Inf[0]!=null && str_Inf[1]!=null))
+                str_Inf = PAT.nombrePacienteAlta(Convert.ToInt32(txt_buscar.Text), centro);
+                if (str_Inf != null && (str_Inf[0] != null && str_Inf[1] != null))
                 {
                     _strUsuario = str_Inf[0];
                     _shtPrefijo = Convert.ToInt16(str_Inf[1].ToString());
                     if (str_Inf[0] != "")
                     {
                         lb_Paciente.Text = str_Inf[0];
-                        dt_Hist = PAT.historial(Convert.ToInt32(txt_buscar.Text), centro);
+                        dt_Hist = PAT.historialAlta(Convert.ToInt32(txt_buscar.Text), centro);
                         if (dt_Hist != null)
                         {
                             lb_Expe.Text = "Num. Expe: " + txt_buscar.Text;
                             _intExpe = Convert.ToInt32(txt_buscar.Text);
                             grd_Historial.DataSource = dt_Hist;
-                            grd_Historial.DataBind();
-                            txt_historial.Enabled = true;
-                            btn_guardar.Enabled = true;
+                            grd_Historial.DataBind();  
+                            txt_historial.Enabled = !PAT.pacienteAlta(Convert.ToInt32(txt_buscar.Text), centro);
+                            btn_guardar.Enabled = txt_historial.Enabled;
+                            if (!txt_historial.Enabled)
+                            {
+                                lb_mensaje.Text = "El paciente esta dado de alta";
+                            }
                         }
                         else
                         {
                             lb_Paciente.Text = "Error al obtener el Historial ...";
                             txt_historial.Enabled = false;
-                            lb_Expe.Text = "";
                             btn_guardar.Enabled = false;
                         }
                     }
                     else
                     {
                         lb_Paciente.Text = "Expediente no encontrado ...";
-                        txt_historial.Enabled = false;
                         lb_Expe.Text = "";
+                        txt_historial.Enabled = false;
                         btn_guardar.Enabled = false;
-                        dt_Hist = null;
-                        grd_Historial.DataBind();
                     }
                 }
                 else
                 {
-                    lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registro.";
+                    lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registró.";
                     txt_buscar.Text = "";
                     txt_historial.Text = "";
-                    btn_guardar.Enabled = false;
                     lb_Expe.Text = "";
                     dt_Hist = null;
                     grd_Historial.DataBind();
+                    txt_historial.Enabled = false;
+                    btn_guardar.Enabled = false;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 lb_Paciente.Text = "Error, Tarea no Realizada";
                 txt_historial.Enabled = false;
-                lb_Expe.Text = "";
                 btn_guardar.Enabled = false;
-                dt_Hist = null;
-                grd_Historial.DataBind();
             }
         }
         else
         {
             lb_Paciente.Text = "Introduzca un expediente a buscar ...";
             txt_historial.Enabled = false;
-            lb_Expe.Text = "";
             btn_guardar.Enabled = false;
-            dt_Hist = null;
-            grd_Historial.DataBind();
         }
     }
+
 
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -119,37 +116,35 @@ public partial class HistoPaciente : System.Web.UI.Page
     }
     protected void btn_guardar_Click(object sender, EventArgs e)
     {
-        if (btn_guardar.Text == "Nuevo")
-        {
-            txt_historial.ReadOnly = false;
-            txt_historial.Font.Bold = false;
-            txt_historial.Text = "";
-            btn_guardar.Text = "Guardar";
-        }
-        else
-        {
             try
             {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-                if (!PAT.guardarHistorial(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), _intExpe, Session["nombre_usuario"].ToString(), txt_historial.Text, _shtPrefijo))
+                if (!PAT.guardarHistorialAlta(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), _intExpe, Session["nombre_usuario"].ToString(), txt_historial.Text, _shtPrefijo))
                 {
                     lb_Paciente.Text = "Error al tratar de guardar ...";
                 }
                 else
                 {
+                    PAT.editarPacienteAlta(true, Convert.ToInt32(txt_buscar.Text), centro);
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
                     lb_Expediente.Text = "";
                     lb_Paciente.Text = "";
-                    cargar_Historial();
-                    
+                    cargar_Historial();                    
                 }
             }
             catch
             {
-                lb_Paciente.Text = "Excepción al tratar de guardar ...";
+                lb_Paciente.Text = "Error al tratar de guardar ...";
+                txt_buscar.Text = "";
+                txt_historial.Text = "";
+                lb_Expe.Text = "";
+                dt_Hist = null;
+                grd_Historial.DataBind();
+                txt_historial.Enabled = false;
+                btn_guardar.Enabled = false;
             }
-        }
+        
     }
     protected void txt_buscar_TextChanged(object sender, EventArgs e)
     {
@@ -166,7 +161,6 @@ public partial class HistoPaciente : System.Web.UI.Page
             txt_historial.Text = dt_Hist.Rows[int_Index][3].ToString();
             txt_historial.ReadOnly = true;
             txt_historial.Font.Bold = true;
-            btn_guardar.Text = "Nuevo";
             //Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('" + dt_Hist.Rows[int_Index][3].ToString() + "')",true);
         }
         catch(Exception ex)
@@ -192,5 +186,9 @@ public partial class HistoPaciente : System.Web.UI.Page
     protected void EntityDataSource1_Selecting(object sender, EntityDataSourceSelectingEventArgs e)
     {
 
+    }
+    protected void ddl_centro_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
     }
 }

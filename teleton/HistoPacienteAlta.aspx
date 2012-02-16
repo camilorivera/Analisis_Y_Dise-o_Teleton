@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="HistoPaciente.aspx.cs" Inherits="HistoPaciente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="HistoPacienteAlta.aspx.cs" Inherits="HistoPaciente" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="Styles/Teleton.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Login.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 <script runat="server">
@@ -25,6 +27,7 @@
                             runat="server" TabIndex="1" Width="165px" Height="19px" Font-Size="Medium"></asp:TextBox>
                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="lb_centro" runat="server" Text="Centro :" Font-Size="Medium"></asp:Label>
+                        &nbsp;&nbsp;
                         <asp:DropDownList ID="ddl_centro" runat="server" Height="25px" Width="164px">
                         </asp:DropDownList>
                         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,14 +43,16 @@
                 <ul class="list">
                     <li class="field">
                         <asp:Label ID="lb_Paciente" runat="server" Font-Bold="True" ForeColor="Red"  ></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="lb_Expe" runat="server" Text="" Font-Bold="true" ForeColor="Red"></asp:Label>
                         <br />
                         <asp:TextBox ID="txt_historial" runat="server" Height="83px" 
                             TextMode="MultiLine" Width="100%" BorderStyle="Outset" Enabled="False"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Guardar" 
-                            onclick="btn_guardar_Click" Enabled="False" />
+                        <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Dar de alta" 
+                            onclick="btn_guardar_Click" Enabled="False" EnableTheming="True" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="lb_mensaje" runat="server"  Font-Bold="true" ForeColor="Red" Enabled="False"></asp:Label>
                     </li>
                 </ul>            
             </fieldset> 
