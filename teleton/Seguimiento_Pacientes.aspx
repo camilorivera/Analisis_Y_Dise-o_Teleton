@@ -36,6 +36,25 @@
                        
                             <table>
                                 <tr>
+
+                                <td>
+                                        <table>
+                                            <td height="20"> </td><tr>
+                                            <td height="20">
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+																	ControlToValidate="txtnumexp" ErrorMessage="**Necesario" 
+																	Font-Bold="True" ForeColor="#FF3300"></asp:RequiredFieldValidator>   
+                                            </td>
+                                            <tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20" ></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td>
+                                        </table>
+                                    </td>
+
                                     <!-- PRIMERA COLUMNA -->
                                     <td >
                                        <table>
@@ -46,9 +65,6 @@
                                             <tr>
 
                                             <td height="20">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-																	ControlToValidate="txtnumexp" ErrorMessage="**Debe Ingresar Nº Exp" 
-																	Font-Bold="True" ForeColor="#FF3300"></asp:RequiredFieldValidator>
 										        <asp:Label ID="Label8" CssClass="labelD" runat="server" Text="Nombre Paciente:"></asp:Label>
                                             </td>
 
@@ -134,6 +150,23 @@
                                         </table>
                                     </td>
 
+                                    <td>
+                                        <table>
+                                            <td height="20">
+                                                <asp:ImageButton ID="busqueda" CssClass="botonbusquedarapida" ImageUrl="~/images/Search.png" 
+                                                     runat="server" CausesValidation="False" />
+                                            </td>
+                                            <tr>
+                                            <td height="20"></td>
+                                            <tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20" ></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td><tr>
+                                            <td height="20"></td>
+                                        </table>
+                                    </td>
                                     
                                     <!-- Tercera Columna -->
                                     <td>
@@ -216,10 +249,10 @@
                             </table>
                             
 
-                            <li class = "field">
+                            <li class = "field" style="list-style:none">
                                 <asp:Label ID="LblPat7" CssClass="labelD" runat="server" 
                                     Text="Tiempo de Discapacidad:"></asp:Label>
-                                &nbsp;&nbsp;&nbsp;
+                                
                                 <ul class = "list">
                                     <li class = "field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                         <asp:Label ID="LblPat8" CssClass="labelD" runat="server" Text="Años:"></asp:Label>
@@ -293,7 +326,7 @@
              PopupButtonID="imgdateinit"  ClearTime="true">
                         </asp:CalendarExtender>
                         <img alt="Icon" src="images/calendar_icon.jpg" class="calendar" visible="false" 
-             id="imgdateinit" />
+             id="imgdateinit" style="display: none" />
                         <asp:Label ID="lbldatefini" CssClass="labelD" runat="server" 
              Text="Fecha Final:" Visible="False"></asp:Label>
                         <asp:TextBox ID="txtdatefini" runat="server" 
@@ -303,7 +336,7 @@
              Format="dd/MM/yyyy" PopupButtonID="imgdatefini">
                         </asp:CalendarExtender>
                         <img alt="Icon" src="images/calendar_icon.jpg" visible="false"
-             class="calendar" id="imgdatefini" />
+             class="calendar" id="imgdatefini" style="display: none" />
                         <asp:ImageButton ID="Refrescar" 
              CssClass="botonbusquedarapida" ImageUrl="~/images/Refresh-32.png" 
              runat="server" CausesValidation="False" onclick="Refrescar_Click1" Visible="False"  />
