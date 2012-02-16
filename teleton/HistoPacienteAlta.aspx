@@ -14,8 +14,7 @@
     <div id="navcenter">
         <div id="titulo">
             <h1>
-                Historial Médico
-            </h1>
+                Hoja de Alta</h1>
         </div>
         <div>
             <fieldset>

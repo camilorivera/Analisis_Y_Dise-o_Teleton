@@ -125,7 +125,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                 }
                 else
                 {
-                    PAT.editarPacienteAlta(true, Convert.ToInt32(txt_buscar.Text), centro);
+                    PAT.editarPacienteAlta(false, Convert.ToInt32(txt_buscar.Text), centro);
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
                     lb_Expediente.Text = "";
