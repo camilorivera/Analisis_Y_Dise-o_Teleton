@@ -22,7 +22,7 @@ public class Handler : IHttpHandler {
             }
             else
             {
-                FileStream f = new FileStream(context.Server.MapPath("~/images/teletonLogoSolid.png"), FileMode.Open);
+                FileStream f = new FileStream(context.Server.MapPath("~/images/usuario.png"), FileMode.Open);
                 byte[] b = new byte[f.Length];
                 f.Read(b, 0, (int)f.Length);
                 f.Close();
