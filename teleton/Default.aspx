@@ -15,12 +15,11 @@
             </div>
             <div class = "parrafo">
                 Durante el año 2011 se estuvo desarrollando un sistema para Teleton, como parte del proceso de Vinculación y Aporte a la sociedad por parte de UNITEC. Actualmente dicho proyecto sigue en proceso de desarrollo.
-            </div>
-            <div>
-                    <asp:Image runat="server" Height="240px" ImageUrl="~/images/teletonLogoSolid2.png" 
+            </div>  
+            <div class = "parrafo">
+                    <asp:Image ID="Image1" runat="server" Height="240px" ImageUrl="~/images/teletonLogoSolid2.png" 
                         Width="180px" /> 
-            </div>
-            </div>
+            </div>          
         </div>
     </div>
 </asp:Content>
