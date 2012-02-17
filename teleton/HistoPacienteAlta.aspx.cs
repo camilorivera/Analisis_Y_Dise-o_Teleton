@@ -36,6 +36,8 @@ public partial class HistoPaciente : System.Web.UI.Page
         centro = Convert.ToInt32(Sec.getCentroId(ddl_centro.SelectedValue.ToString()));
         lb_mensaje.Enabled = false;
         lb_mensaje.Text = "";
+        txt_historial.Enabled = true;
+        btn_guardar.Enabled = true;
         txt_historial.Text = "";
         if (txt_buscar.Text != "")
         {
@@ -60,7 +62,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                             _intExpe = Convert.ToInt32(txt_buscar.Text);
                             grd_Historial.DataSource = dt_Hist;
                             grd_Historial.DataBind();  
-                            txt_historial.Enabled = !PAT.pacienteAlta(Convert.ToInt32(txt_buscar.Text), centro);
+                            txt_historial.Enabled = PAT.pacienteAlta(Convert.ToInt32(txt_buscar.Text), centro);
                             btn_guardar.Enabled = txt_historial.Enabled;
                             if (!txt_historial.Enabled)
                             {
@@ -125,10 +127,9 @@ public partial class HistoPaciente : System.Web.UI.Page
                 }
                 else
                 {
-                    PAT.editarPacienteAlta(true, Convert.ToInt32(txt_buscar.Text), centro);
+                    PAT.editarPacienteAlta(false, Convert.ToInt32(txt_buscar.Text), centro);
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
-                    lb_Expediente.Text = "";
                     lb_Paciente.Text = "";
                     cargar_Historial();                    
                 }

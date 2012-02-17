@@ -334,7 +334,7 @@ namespace BL
             {
                 string[] str_Paci = new string[2];
                 var query = from x in entities.pacientes
-                            where x.expediente == int_expt && x.prefijo == centro && x.activo == false
+                            where x.expediente == int_expt && x.prefijo == centro && x.activo == true
                             select new {x.nombres, x.primer_apellido,x.segundo_apellido,x.prefijo };
                 foreach (var row in query)
                 {

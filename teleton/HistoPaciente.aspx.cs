@@ -86,6 +86,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                     lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registro.";
                     txt_buscar.Text = "";
                     txt_historial.Text = "";
+                    txt_historial.Enabled = false;
                     btn_guardar.Enabled = false;
                     lb_Expe.Text = "";
                     dt_Hist = null;
@@ -139,7 +140,6 @@ public partial class HistoPaciente : System.Web.UI.Page
                 {
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
-                    lb_Expediente.Text = "";
                     lb_Paciente.Text = "";
                     cargar_Historial();
                     
