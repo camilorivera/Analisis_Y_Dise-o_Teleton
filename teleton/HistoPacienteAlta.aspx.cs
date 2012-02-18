@@ -19,10 +19,32 @@ public partial class HistoPaciente : System.Web.UI.Page
     private static int centro;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Lista de permisos que el usuario logueado tiene
+        List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+        BL.Security sec = new BL.Security();
+        bool encontroPermiso = false;
+
+        foreach (String strPermiso in listaPermisos)
+        {
+            //Iteramos los permisos del usuario para comprobar que puede utilizar esta pagina
+            if (strPermiso.Equals("pBuscarExp"))
+            {
+                encontroPermiso = true;
+                break;
+            }
+        }
+
+        if (!encontroPermiso)
+        {
+            //Si no tiene permiso redireccionamos
+            //Response.Write("<script>alert('Usted no posee permisos suficientes para accesar a este recurso')</script>");
+            Response.Redirect("NoAccess.aspx");
+        }
+
         if (!this.IsPostBack)
         {
-            BL.Security seg = new BL.Security();
-            ddl_centro.DataSource = seg.getCentros();
+
+            ddl_centro.DataSource = sec.getCentrosPermitidos(Session["nombre_usuario"].ToString());
             ddl_centro.DataBind();
             ddl_centro.SelectedIndex = 0;
             lb_mensaje.Enabled = false;

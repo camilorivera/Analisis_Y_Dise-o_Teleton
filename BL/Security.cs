@@ -279,7 +279,7 @@ namespace BL
         }
 
         public string getCentrolugarNom(string centro) //devuelve nombre del centro recibe string
-        {
+        {                                               //esta funcion se usa en Buscar_Nombres
             var QCId = from c in entidad.centros
                        where c.lugar.Contains(centro)
                        select c.lugar;

@@ -8,14 +8,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <p>
-        &nbsp;</p>
+     </p>
   <div id="content">
     <div id="navcenter">
     <div id="titulo">
         <h1>Búsqueda de Pacientes por Nombre</h1>
     </div>
- <br />
- <br />
+ <br /> 
+ 
     <div>
     <fieldset >
     
@@ -42,20 +42,14 @@
    
     
    <div align="center">
-    <asp:ListBox ID="lista" runat="server" Height="276px" Width="582px" 
+    <asp:ListBox ID="lista" runat="server" Height="265px" Width="582px" 
            onload="lista_Load">
     </asp:ListBox>
     </div>
     <br />
-    <br />
        </fieldset>
        </div>
        <br />
-   
-    <br />
-                <br />
-               
-    <br />
     <br />
     <br />
     </div>

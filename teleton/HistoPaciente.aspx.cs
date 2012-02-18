@@ -18,6 +18,26 @@ public partial class HistoPaciente : System.Web.UI.Page
     private static DataTable dt_Hist;
     protected void Page_Load(object sender, EventArgs e)
     {
+        List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+        bool encontroPermiso = false;
+
+        foreach (String strPermiso in listaPermisos)
+        {
+            //Iteramos los permisos del usuario para comprobar que puede utilizar esta pagina
+            if (strPermiso.Equals("pBuscarExp"))
+            {
+                encontroPermiso = true;
+                break;
+            }
+        }
+
+        if (!encontroPermiso)
+        {
+            //Si no tiene permiso redireccionamos
+            //Response.Write("<script>alert('Usted no posee permisos suficientes para accesar a este recurso')</script>");
+            Response.Redirect("NoAccess.aspx");
+        }
+
         if (!this.IsPostBack)
         {
             if ((Request.QueryString["sender"] == "alta"))
@@ -27,8 +47,10 @@ public partial class HistoPaciente : System.Web.UI.Page
             else
             {
                 BL.Security seg = new BL.Security();
-                ddl_centro.DataSource = seg.getCentros();
+                ddl_centro.DataSource = Sec.getCentrosPermitidos(Session["nombre_usuario"].ToString());
+                //ddl_centro.DataSource = seg.getCentros();
                 ddl_centro.DataBind();
+                
             }
         }
     }
