@@ -31,7 +31,7 @@
         <center>
         <div id="sitemenu">
             <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" CssClass="pointermenu"
-                StaticSubMenuIndent="2px" IncludeStyleBlock="true" >
+                StaticSubMenuIndent="2px" IncludeStyleBlock="true">
                 <Items>
                     <asp:MenuItem Text="Expedientes" Value="Administrar Paciente">
                         <asp:MenuItem Text="Crear Expediente" Value="New Item" NavigateUrl="~/Crear_Paciente.aspx?sender=new">
@@ -50,6 +50,8 @@
                     <asp:MenuItem></asp:MenuItem>
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">
                         <asp:MenuItem Text="Historial Médico" Value="Historial Médico" NavigateUrl="~/HistoPaciente.aspx">
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Dar de alta" Value="Dar de alta" NavigateUrl="~/HistoPacienteAlta.aspx">
                         </asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Administrar" Value="Administrar">
