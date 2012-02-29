@@ -136,7 +136,21 @@ public partial class HistoPaciente : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        cargar_Historial();
+        if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
+        {
+            cargar_Historial();
+        }
+        else
+        {
+            lb_Paciente.Text = "Su rol no esta autorizado para dar de alta";
+            txt_buscar.Text = "";
+            txt_historial.Text = "";
+            lb_Expe.Text = "";
+            dt_Hist = null;
+            grd_Historial.DataBind();
+            txt_historial.Enabled = false;
+            btn_guardar.Enabled = false;
+        }
     }
     protected void btn_guardar_Click(object sender, EventArgs e)
     {
@@ -153,8 +167,9 @@ public partial class HistoPaciente : System.Web.UI.Page
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
                     lb_Paciente.Text = "";
-                    cargar_Historial();                    
+                    cargar_Historial();
                 }
+               
             }
             catch
             {

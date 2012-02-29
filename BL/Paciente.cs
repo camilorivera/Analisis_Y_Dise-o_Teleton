@@ -295,6 +295,27 @@ namespace BL
             }
         }
 
+        public bool isDoctor(string _usuario)
+        {
+            try
+            {
+                var query = from x in entities.empleados
+                            where x.nombres == _usuario && x.puesto == 16
+                            select new { x.nombres };
+                if (query.Count() >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Guardar Historial
         /// </summary>
