@@ -12,6 +12,7 @@ using BL;
 public partial class Seguimiento_Pacientes : System.Web.UI.Page
 {
     private BL.SeguimientoPacientes segPacientes;
+    private BL.Paciente paciente;
     int centroid;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,6 +20,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
 
         segPacientes = new BL.SeguimientoPacientes();
+        paciente = new BL.Paciente();
 
         bool encontroPermiso = false;
         centroid = (int)long.Parse(Session["Centro_idNum"].ToString());
@@ -85,27 +87,42 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         try
         {
-            
+            string empleado = Session["nombre_usuario"].ToString();
+
+            if (paciente.isDoctor(empleado)){
                 if (ctrlName == txtnumexp.UniqueID && args == "OnBlur")
                 {
                     if (txtnumexp.Text == "") return;
                     if (segPacientes.VerificarPacientes(txtnumexp.Text))
                     {
-                        txtnombrepac.Text = segPacientes.NombrePaciente(txtnumexp.Text);
-                        txtnumced.Text = segPacientes.NumIdentidad(txtnumexp.Text);
-                        cambiarEnabled(true);
+                        if (segPacientes.VerificarPacienteAlta(txtnumexp.Text))
+                        {
+                            txtnombrepac.Text = segPacientes.NombrePaciente(txtnumexp.Text);
+                            txtnumced.Text = segPacientes.NumIdentidad(txtnumexp.Text);
+                            cambiarEnabled(true);
+                        }
+                        else
+                        {
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('El Paciente ya está dado de Alta')", true);
+                            txtnumced.Text = txtnombrepac.Text = txtnumexp.Text = "";
+                        }
                     }
                     else
                     {
                         Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Num de Expediente no ha sido Registrado')", true);
                         txtnumced.Text = txtnombrepac.Text = txtnumexp.Text = "";
                     }
-              
+
+                }
+                else
+                {
+                    txtnombrepac.Text = "";
+                    txtnumced.Text = "";
+                }
             }
             else
             {
-                txtnombrepac.Text = "";
-                txtnumced.Text = "";
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Lo sentimos, usted no posee privilegios suficientes.. ')", true);
             }
 
         }

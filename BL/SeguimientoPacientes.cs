@@ -368,33 +368,63 @@ namespace BL
         }
 
         public bool VerificarPacientes(string numexpediente) {
-            try {
+            try
+            {
 
                 bool found;
-                //long numexp = Int64.Parse(numexpediente);
                 long numexp = Convert.ToInt64(numexpediente);
-                int x = 0;
-                var query = (from p in entities.pacientes
-                            where p.expediente == numexp
-                            select p.nombres);
 
-                int x2 = 0;
+                var query = (from p in entities.pacientes
+                             where p.expediente == numexp
+                             select p.nombres);
 
                 if (!query.Any())
                 {
                     found = false;
                 }
-                else {
+                else
+                {
                     found = true;
                 }
-                return found;  
-               
-            }catch(Exception ex){
+                return found;
+
+            }
+            catch (Exception ex)
+            {
                 throw new Exception(ex.ToString());
-            
+
             }
         }
 
+        public bool VerificarPacienteAlta(string numexpediente)//verifica si esta de alta 
+        {
+            try
+            {
+
+                bool found;
+                long numexp = Convert.ToInt64(numexpediente);
+
+                var query = (from p in entities.pacientes
+                             where p.expediente == numexp && p.activo == true
+                             select p.nombres);
+
+                if (!query.Any())
+                {
+                    found = false;
+                }
+                else
+                {
+                    found = true;
+                }
+                return found;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+
+            }
+        }
         public int VerificarExpPorCentro(int numexp) {
 
             long numexpe = Convert.ToInt64(numexp);
