@@ -103,7 +103,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                         }
                         else
                         {
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('El Paciente ya está dado de Alta')", true);
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('El Paciente está dado de Alta')", true);
                             txtnumced.Text = txtnombrepac.Text = txtnumexp.Text = "";
                         }
                     }
