@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministradordeSistema.cs" />
+    <Compile Include="Areas.cs" />
     <Compile Include="Centro.cs" />
     <Compile Include="Citas.cs" />
     <Compile Include="Empleados.cs" />
