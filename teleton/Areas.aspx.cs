@@ -78,8 +78,6 @@ public partial class Areas : System.Web.UI.Page
         {
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
             int_id = Convert.ToInt32(gdv_Row.Cells[1].Text);
-            gdv_Row.ForeColor = System.Drawing.Color.Green;
-            gdv_Row.Font.Bold = true;
             txt_Area.Text = Convert.ToString(gdv_Row.Cells[2].Text);
             txt_orden.Text = Convert.ToString(gdv_Row.Cells[3].Text);
             int_row = gdv_Row.RowIndex;
