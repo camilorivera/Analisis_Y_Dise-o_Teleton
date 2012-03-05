@@ -395,13 +395,13 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                                 laFecha = laFecha.Substring(1,laFecha.Length-1);
                             }
 
-                            if (fecha1 != laFecha || fecha2 != laFecha)
+                            /*if (fecha1 != laFecha || fecha2 != laFecha)
                             {
 
                                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('No Puede Guardar Pacientes en una Fecha Diferente a " + segPacientes.GetFecha() + "')", true);
-                            }
-                            else
-                            {
+                            }*/
+                            //else
+                            //{
                                 if (txtobser.Text == "" || txtFuncionEstructura.Text == "" || txt_TDAnios.Text == "" || txt_TDMeses.Text == "" || txt_TDDias.Text == "" ||
                                     txt_TSAnios.Text == "" || txt_TSMeses.Text == "" || txt_TSDias.Text == "" || txtEteologia.Text=="")
                                 {
@@ -419,7 +419,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                                     txtobser.Text = "";
                                     LoadGrid();
                                 }
-                            }
+                            //}
                         }
                         else
                         {

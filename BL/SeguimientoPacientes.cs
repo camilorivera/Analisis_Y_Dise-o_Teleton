@@ -245,7 +245,7 @@ namespace BL
                         join j in entities.empleados
                         on m.empleado equals j.id
                         where p.fecha == d && p.prefijo==centroid
-                        select new { p.fecha, p.expediente, a.diagnostico1 , j.nombres , p.notas, NOMBRE = e.nombres , e.primer_apellido };
+                        select new { p.fecha, p.expediente, a.diagnostico1 , nombres = j.nombres+" "+j.primer_apellido+" "+j.segundo_apellido , p.notas, NOMBRE = e.nombres , e.primer_apellido };
 
             return query;
         }
