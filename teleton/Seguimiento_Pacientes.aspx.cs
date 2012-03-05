@@ -150,7 +150,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
 
             txtdateinit.Text = _dt.ToString("dd/MM/yyyy");
             txtdatefini.Text = _dt.ToString("dd/MM/yyyy");
-            GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario(centroid);
+            GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario2(centroid, Session["nombre_usuario"].ToString());
             GridViewSegPac.DataBind();
 
             centroid = (int)long.Parse(Session["Centro_idNum"].ToString());
@@ -169,7 +169,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         try
         {
-            GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario(centroid);
+            GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario2(centroid, Session["nombre_usuario"].ToString());
             GridViewSegPac.DataBind();
         }
         catch (Exception er)

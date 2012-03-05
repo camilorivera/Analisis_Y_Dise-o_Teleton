@@ -250,6 +250,26 @@ namespace BL
             return query;
         }
 
+        public IQueryable RetrievePacientesDiario2(int centroid, string doctor) //Retorna un dataset de evoluciones
+        {
+            DateTime d = DateTime.Parse(fecha);
+
+            var query = from p in entities.evoluciones
+                        join e in entities.pacientes
+                        on p.expediente equals e.expediente
+                        join a in entities.diagnosticos
+                        on p.id_diagnostico equals a.id
+                        join m in entities.usuarios
+                        on p.evaluador equals m.username
+                        where m.username == doctor
+                        join j in entities.empleados
+                        on m.empleado equals j.id
+                        where p.fecha == d && p.prefijo == centroid
+                        select new { p.fecha, p.expediente, a.diagnostico1, nombres = j.nombres + " " + j.primer_apellido + " " + j.segundo_apellido, p.notas, NOMBRE = e.nombres, e.primer_apellido };
+
+            return query;
+        }
+
         public IQueryable BusquedaRapida(string nombres, string apellido, string segundoapellido, string cedula, long centroActual)
         {
             try
