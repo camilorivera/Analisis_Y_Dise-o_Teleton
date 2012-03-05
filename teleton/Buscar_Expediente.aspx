@@ -93,7 +93,7 @@
                             <asp:Label ID="Label6" CssClass="label" runat="server" Text="Sexo:"></asp:Label>
                             <asp:radiobuttonlist id="rdSexo" runat="server" RepeatDirection="Horizontal" 
                                 Enabled="False" Height="16px">
-                                <asp:listitem id="rdMasculino" Selected="true" runat="server" value="Masculino" />
+                                <asp:listitem id="rdMasculino" runat="server" value="Masculino" />
                                 <asp:listitem id="rdFemenino" runat="server" value="Femenino" />
                             </asp:radiobuttonlist>
                         </li>
