@@ -254,14 +254,18 @@ namespace BL
         /// <param name="str_Histo">Texto - Historial</param>
         /// <param name="sht_Pref">Prefijo</param>
         /// <returns></returns>
-        public bool guardarHistorial(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref)
+        public bool guardarHistorial(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref, int id_empleado)
         {
             try
             {
+                var query = from p in entities.empleados
+                            where p.id == id_empleado
+                            select new { p.nombres, p.primer_apellido, p.segundo_apellido,p.puesto };
+
                 DataAccess.historial da_Hist = new DataAccess.historial();
                 da_Hist.fecha = dt_fecha;
                 da_Hist.n_expediente = int_Exp;
-                da_Hist.username = str_Usuario;
+                da_Hist.username = query.FirstOrDefault().nombres+" "+ query.FirstOrDefault().primer_apellido + " " +query.FirstOrDefault().segundo_apellido;
                 da_Hist.texto = str_Histo;
                 da_Hist.prefijo = sht_Pref;
                 entities.historials.AddObject(da_Hist);
@@ -325,14 +329,18 @@ namespace BL
         /// <param name="str_Histo">Texto - Historial</param>
         /// <param name="sht_Pref">Prefijo</param>
         /// <returns></returns>
-        public bool guardarHistorialAlta(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref)
+        public bool guardarHistorialAlta(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref, int id_empleado)
         {
             try
             {
+                var query = from p in entities.empleados
+                            where p.id == id_empleado
+                            select new { p.nombres, p.primer_apellido, p.segundo_apellido };
+
                 DataAccess.alta da_Hist = new DataAccess.alta();
                 da_Hist.fecha = dt_fecha;
                 da_Hist.n_expediente = int_Exp;
-                da_Hist.username = str_Usuario;
+                da_Hist.username = query.FirstOrDefault().nombres+" "+query.FirstOrDefault().primer_apellido+" "+query.FirstOrDefault().segundo_apellido;
                 da_Hist.texto = str_Histo;
                 da_Hist.prefijo = sht_Pref;
                 entities.altas.AddObject(da_Hist);
@@ -426,6 +434,7 @@ namespace BL
             {
                 var query = from p in entities.altas
                             where p.n_expediente == int_exp && p.prefijo == centro
+                            orderby p.fecha descending
                             select new { p.fecha, p.n_expediente, p.username, p.texto };
                 foreach (var row in query)
                 {
@@ -438,6 +447,7 @@ namespace BL
                 return null;
             }
         }
+
         /// <summary>
         /// Historial del Paciente
         /// </summary>
@@ -454,6 +464,7 @@ namespace BL
             {
                 var query = from p in entities.historials
                             where p.n_expediente == int_exp && p.prefijo==centro
+                            orderby p.fecha descending
                             select new { p.fecha, p.n_expediente, p.username, p.texto };
                 foreach (var row in query)
                 {

@@ -71,7 +71,7 @@
                         </asp:TemplateField>
                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" ReadOnly="true" SortExpression="Fecha"/>
                         <asp:BoundField HeaderText="Expediente" DataField="n_expediente" ReadOnly="true" SortExpression="Expediente"/>
-                        <asp:BoundField HeaderText="Usuario" DataField="username" ReadOnly="true" SortExpression="Usuario"/>
+                        <asp:BoundField HeaderText="Doctor" DataField="username" ReadOnly="true" SortExpression="Usuario"/>
                         <asp:BoundField HeaderText="Historial" DataField="historial" ReadOnly="true" Visible="false" SortExpression="historial" />
                     </Columns>
                     <RowStyle Height="20px" />

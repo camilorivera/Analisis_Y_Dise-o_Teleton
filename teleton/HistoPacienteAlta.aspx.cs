@@ -157,7 +157,8 @@ public partial class HistoPaciente : System.Web.UI.Page
             try
             {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-                if (!PAT.guardarHistorialAlta(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), _intExpe, Session["nombre_usuario"].ToString(), txt_historial.Text, _shtPrefijo))
+                if (!PAT.guardarHistorialAlta(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss"))
+                    , _intExpe, Session["nombre_usuario"].ToString(), txt_historial.Text, _shtPrefijo,Convert.ToInt32(Session["id_empleado"].ToString()))
                 {
                     lb_Paciente.Text = "Error al tratar de guardar ...";
                 }

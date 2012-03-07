@@ -56,7 +56,7 @@
                                 CommandName="View" ImageUrl="~/images/edit.jpg"  Onclick="Ver_Click" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="Id" DataField="id" ReadOnly="true" SortExpression="Id" Visible="true"/>
+                        <asp:BoundField HeaderText="Id" DataField="id" ReadOnly="true" Visible="false" SortExpression="Id"/>
                         <asp:BoundField HeaderText="Área" DataField="area" ReadOnly="true" SortExpression="Area"/>
                         <asp:BoundField HeaderText="Orden" DataField="orden" ReadOnly="true" SortExpression="Orden"/>
                     </Columns>

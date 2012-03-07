@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Areas : System.Web.UI.Page
 {
@@ -11,6 +12,7 @@ public partial class Areas : System.Web.UI.Page
     static private int int_id;
     private BL.Areas bl_Areas = new BL.Areas();
     static private int int_row;
+    private static DataTable dt_tabla;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -73,13 +75,17 @@ public partial class Areas : System.Web.UI.Page
 
     protected void Ver_Click(object sender, EventArgs e)
     {
-            enableControls(true);
+        enableControls(true);
         try
         {
+            grd_Area.Rows[int_row].Font.Bold = false;
+            grd_Area.Rows[int_row].ForeColor = System.Drawing.Color.Black;
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
-            int_id = Convert.ToInt32(gdv_Row.Cells[1].Text);
+            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][1].ToString());
             txt_Area.Text = Convert.ToString(gdv_Row.Cells[2].Text);
             txt_orden.Text = Convert.ToString(gdv_Row.Cells[3].Text);
+            gdv_Row.Font.Bold = true;
+            gdv_Row.ForeColor = System.Drawing.Color.Red;
             int_row = gdv_Row.RowIndex;
             enableControls(true);
             bl_edicion = true;
@@ -100,7 +106,8 @@ public partial class Areas : System.Web.UI.Page
     {
         try
         {
-            grd_Area.DataSource = bl_Areas.listAreas();
+            dt_tabla = bl_Areas.listAreas();
+            grd_Area.DataSource = dt_tabla;
             grd_Area.DataBind();
         }
         catch (Exception ex)
