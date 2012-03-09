@@ -258,16 +258,17 @@ namespace BL
         {
             try
             {
-                var query = from p in entities.empleados
-                            where p.id == id_empleado
-                            select new { p.nombres, p.primer_apellido, p.segundo_apellido,p.puesto };
+                var query = from p in entities.usuarios
+                            where p.empleado == id_empleado
+                            select new { p.username };
 
                 DataAccess.historial da_Hist = new DataAccess.historial();
                 da_Hist.fecha = dt_fecha;
                 da_Hist.n_expediente = int_Exp;
-                da_Hist.username = query.FirstOrDefault().nombres+" "+ query.FirstOrDefault().primer_apellido + " " +query.FirstOrDefault().segundo_apellido;
+                da_Hist.username = query.FirstOrDefault().username;//+" "+ query.FirstOrDefault().primer_apellido + " " +query.FirstOrDefault().segundo_apellido;
                 da_Hist.texto = str_Histo;
                 da_Hist.prefijo = sht_Pref;
+                da_Hist.area = 1;
                 entities.historials.AddObject(da_Hist);
                 entities.SaveChanges();
                 return true;
