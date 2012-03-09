@@ -358,11 +358,11 @@ namespace BL
                                 on p.id_clasificacion_paciente equals e.id
 
                                 join doc in
-                                    from temp in entities.usuarios
+                                    (from temp in entities.usuarios
                                     join emp in entities.empleados
                                     on temp.empleado equals emp.id
                                     where emp.puesto == 16
-                                    select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido }
+                                    select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido })
                                 on p.evaluador equals doc.username
 
                                 join b in entities.pacientes
