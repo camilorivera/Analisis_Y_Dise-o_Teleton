@@ -266,6 +266,7 @@ namespace BL
             return CId;
 
         }
+
         public string getCentrolugar(int centro) //devuelve nombre del centro
         {
             var QCId = from c in entidad.centros

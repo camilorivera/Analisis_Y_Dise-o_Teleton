@@ -52,14 +52,26 @@
                     </li>
 
                     <li class="field">
-                        <asp:ValidationSummary runat="server" ID="svErrores" 
-                            HeaderText="Campos con conflictos:" ValidationGroup="TodoError" 
-                            CssClass="failureNotification" DisplayMode="SingleParagraph" />
+                        <div class="fieldIzquierdo">
+                            <asp:Label runat="server" ID="lblDoctor" Text="Nombre doctor:"></asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlDoctor" 
+                                Width="50%">
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="fieldDerecho">
+                            <asp:Button runat="server" ID="btEjecutar" Text="Ejecutar" 
+                                ValidationGroup="TodoError" CssClass="boton" onclick="btEjecutar_Click" />
+                        </div>
                     </li>
 
                     <li class="field">
-                        <asp:Button runat="server" ID="btEjecutar" Text="Ejecutar" 
-                            ValidationGroup="TodoError" CssClass="boton" onclick="btEjecutar_Click" />
+                    </li>
+
+                    <li class="field">
+                        <asp:ValidationSummary runat="server" ID="svErrores" 
+                            HeaderText="Campos con conflictos:" ValidationGroup="TodoError" 
+                            CssClass="failureNotification" DisplayMode="SingleParagraph" />
                     </li>
                 </ul>
             </fieldset>
@@ -90,6 +102,9 @@
                             <asp:BoundField HeaderText="Nombre Paciente" DataField="nombres" />
                             <asp:BoundField HeaderText="Primer Apellido" DataField="primer_apellido" />
                             <asp:BoundField HeaderText="Segundo Apellido" DataField="segundo_apellido" />
+                            <asp:BoundField HeaderText="Nombre Doc" DataField="nombreDoc" />
+                            <asp:BoundField HeaderText="Primer Apellido Doc" DataField="apeDoc" />
+                            <asp:BoundField HeaderText="Segundo Apellido Doc" DataField="ape2Doc" />
                             <asp:BoundField HeaderText="Condición" DataField="condicion1" />
                             <asp:BoundField HeaderText="Identidad" DataField="cedula" />
                             <asp:BoundField HeaderText="Observación" DataField="notas" />

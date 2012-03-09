@@ -48,6 +48,7 @@ public partial class Login : System.Web.UI.Page
                     Session["Centro_idNum"] = sec.getCentroId(Session["Centro_id"].ToString()).ToString();
 
                     Session["Permisos_usuario"] = sec.getPermisosUsuario(UserName.Text);
+                    Session["Roles_Usuario"] = sec.getRolesUsuario(UserName.Text);
 
                     Session["loggedin"] = true;
                     Session["nombre_usuario"] = UserName.Text;

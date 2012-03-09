@@ -68,6 +68,24 @@ namespace BL
             
         }
 
+        public string RetrieveUserName2(long idEmpleado)
+        {
+            try
+            {
+
+                var query1 = from u in entities.usuarios
+                             where u.empleado == idEmpleado
+                             select u.username;
+
+                return query1.First().ToString();
+
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.ToString());
+            }
+
+        }
 
         public List<string> RetrieveEmpleadosid() //Retorna IDs de empleado que esta no en tab usuario
         {

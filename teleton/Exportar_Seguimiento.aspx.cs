@@ -7,18 +7,24 @@ using System.Web.UI.WebControls;
 
 //Agregados
 using System.Web.UI.HtmlControls;
+using BL;
+using System.Data;
 using System.Text;
 using System.IO;
 
+
 public partial class Exportar_Seguimiento : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
             List<string> permisos = (List<string>)Session["Permisos_usuario"];
+            List<long> roles = (List<long>)Session["Roles_Usuario"];
             bool permisoEncontrado = false;
-
+            bool rolDocEncontrado = false;
+            
             foreach (string rol in permisos)
             {
                 if (rol.Equals("pSegPac"))
@@ -28,11 +34,28 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
                 }
             }
 
+            for (int i = 0; i < roles.Count; i++ )
+            {
+                if (roles[i] == 59 || roles[i] == 60)
+                {
+                    rolDocEncontrado = true;
+                    break;
+                }
+            }
+
             if (!permisoEncontrado)
             {
                 //Si no tiene permiso redireccionamos
                 //Response.Write("<script>alert('Usted no posee permisos suficientes para accesar a este recurso')</script>");
                 Response.Redirect("NoAccess.aspx");
+            }
+
+            if (!IsPostBack)
+            {
+                if (!rolDocEncontrado)
+                    cargarDoctores();
+                else
+                    cargarDoctor();
             }
 
             ceFechaFinal.SelectedDate = DateTime.Now;
@@ -46,6 +69,65 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
                
     }
 
+    private void cargarDoctores()
+    {
+        try
+        {
+            BL.Empleados doctores = new BL.Empleados();
+            BL.Usuarios usuarios = new BL.Usuarios();
+            
+            List<int> codigos = new List<int>();
+            List<string> users = new List<string>();
+            List<string> nombres = doctores.obtenerNombresDoctores();
+            List<string> apellidos = doctores.obtenerApellidoDoctores();
+            List<string> segundoApellido = doctores.obtenerSegundoApellidoDoctores();
+
+            foreach (string doc in nombres)
+            {
+                codigos.Add(doctores.GetEmpId(doc));
+            }
+
+            foreach (int code in codigos)
+            {
+                users.Add(usuarios.RetrieveUserName2(code));
+            }
+
+            ListItem temporal = new ListItem();
+            temporal.Text = "--- Todos ---";
+            temporal.Value = "todos";
+            temporal.Selected = true;
+            ddlDoctor.Items.Add(temporal);
+
+            for (int i = 0; i < nombres.Count; i++)
+            {
+                ListItem item = new ListItem();
+                item.Text = nombres[i] + " " + apellidos[i] + " " + segundoApellido[i];
+                item.Value = users[i].ToString();
+                ddlDoctor.Items.Add(item);
+            }
+        }
+        catch (Exception error)
+        {
+            Session["Error_Msg"] = error.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
+
+    private void cargarDoctor()
+    {
+        BL.Empleados doctor = new BL.Empleados();
+        int codigo = Convert.ToInt32(Session["id_empleado"].ToString());
+        string nombre = doctor.obtenerNombre(codigo);
+
+        ListItem item = new ListItem();
+        item.Text = nombre;
+        item.Value = Convert.ToString(Session.Contents["nombre_usuario"]);
+        item.Selected = true;
+        ddlDoctor.Items.Add(item);
+        ddlDoctor.Visible = false;
+        lblDoctor.Visible = false;
+    }
+
     protected void btEjecutar_Click(object sender, EventArgs e)
     {
         try
@@ -53,7 +135,7 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
             BL.SeguimientoPacientes segPacientes = new BL.SeguimientoPacientes();
             int centroId = (int)long.Parse(Session["Centro_idNum"].ToString());
 
-            gvSeguimientoPaciente.DataSource = segPacientes.BusquedaporRangoFecha2(DateTime.Parse(txtFechaInicio.Text), DateTime.Parse(txtFechaFinal.Text), centroId);
+            gvSeguimientoPaciente.DataSource = segPacientes.BusquedaporRangoFecha2(DateTime.Parse(txtFechaInicio.Text), DateTime.Parse(txtFechaFinal.Text), centroId, ddlDoctor.SelectedValue);
             gvSeguimientoPaciente.DataBind();
 
             btExportar.Visible = true;
