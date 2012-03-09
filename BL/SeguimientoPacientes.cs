@@ -342,48 +342,162 @@ namespace BL
 
         }
 
-        public IQueryable BusquedaporRangoFecha2(DateTime fechainit, DateTime fechafin, int centroid)
+        public IQueryable BusquedaporRangoFecha2(DateTime fechainit, DateTime fechafin, int centroid, string doctor)
         {
 
             DateTime fechaFinal = new DateTime(fechafin.Year, fechafin.Month, fechafin.Day, 23, 59, 59);
             
-            var query = from p in entities.evoluciones
-                        
-                        join e in entities.clasificacion_paciente
-                        on p.id_clasificacion_paciente equals e.id
-                        
-                        join b in entities.pacientes
-                        on p.expediente equals b.expediente
+            /*Por aqui me quedo ver el filtro del drop down list*/
 
-                        join r in entities.condicions
-                        on p.id_condicion equals r.simbolo
+            switch (doctor)
+            {
+                case "todos":
+                    var query = from p in entities.evoluciones
 
-                        join a in entities.diagnosticos
-                        on p.id_diagnostico equals a.id
+                                join e in entities.clasificacion_paciente
+                                on p.id_clasificacion_paciente equals e.id
 
-                        join d in entities.tipo_daño
-                        on p.id_tipo_daño equals d.id
+                                join doc in
+                                    from temp in entities.usuarios
+                                    join emp in entities.empleados
+                                    on temp.empleado equals emp.id
+                                    where emp.puesto == 16
+                                    select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido }
+                                on p.evaluador equals doc.username
 
-                        join t in entities.procedencias
-                        on p.id_procedencia equals t.simbolo
+                                join b in entities.pacientes
+                                on p.expediente equals b.expediente
 
-                        join es in entities.escolaridads
-                        on p.id_escolaridad equals es.id
+                                join r in entities.condicions
+                                on p.id_condicion equals r.simbolo
 
-                        join ay in entities.ayudas_tecnicas
-                        on p.id_ayudas_tecnicas equals ay.id
+                                join a in entities.diagnosticos
+                                on p.id_diagnostico equals a.id
 
-                        join oc in entities.ocupaciones
-                        on p.id_ocupacion equals oc.id
+                                join d in entities.tipo_daño
+                                on p.id_tipo_daño equals d.id
 
-                        where ((p.fecha.CompareTo(fechainit) == 0) || (p.fecha.CompareTo(fechainit) > 0)) &&
-                                ((p.fecha.CompareTo(fechaFinal) == 0) || (p.fecha.CompareTo(fechaFinal) < 0)) && (p.prefijo == centroid)
-                        
-                        select new { p.fecha, p.expediente, e.clasificacion, b.nombres, b.primer_apellido, b.segundo_apellido, r.condicion1, b.cedula, p.notas, a.diagnostico1, d.tipo,
-                                     t.procedencia1, p.funcion_estructura, es.Grado, ay.ayuda, oc.ocupacion, p.años_tiempo_discapacidad, p.meses_tiempo_discapacidad,
-                                     p.dias_tiempo_discapacidad, p.años_TSTDL, p.meses_TSTDL, p.dias_TSTDL, p.eteologia};
+                                join t in entities.procedencias
+                                on p.id_procedencia equals t.simbolo
 
-            return query;
+                                join es in entities.escolaridads
+                                on p.id_escolaridad equals es.id
+
+                                join ay in entities.ayudas_tecnicas
+                                on p.id_ayudas_tecnicas equals ay.id
+
+                                join oc in entities.ocupaciones
+                                on p.id_ocupacion equals oc.id
+
+                                where ((p.fecha.CompareTo(fechainit) == 0) || (p.fecha.CompareTo(fechainit) > 0)) &&
+                                        ((p.fecha.CompareTo(fechaFinal) == 0) || (p.fecha.CompareTo(fechaFinal) < 0)) && (p.prefijo == centroid)
+
+                                select new
+                                {
+                                    p.fecha,
+                                    p.expediente,
+                                    e.clasificacion,
+                                    b.nombres,
+                                    b.primer_apellido,
+                                    b.segundo_apellido,
+                                    nombreDoc = doc.nombres,
+                                    apeDoc = doc.primer_apellido,
+                                    ape2Doc = doc.segundo_apellido,
+                                    r.condicion1,
+                                    b.cedula,
+                                    p.notas,
+                                    a.diagnostico1,
+                                    d.tipo,
+                                    t.procedencia1,
+                                    p.funcion_estructura,
+                                    es.Grado,
+                                    ay.ayuda,
+                                    oc.ocupacion,
+                                    p.años_tiempo_discapacidad,
+                                    p.meses_tiempo_discapacidad,
+                                    p.dias_tiempo_discapacidad,
+                                    p.años_TSTDL,
+                                    p.meses_TSTDL,
+                                    p.dias_TSTDL,
+                                    p.eteologia
+                                };
+                    return query;
+                    break;
+                
+                default:
+                    var query2 = from p in entities.evoluciones
+
+                                join e in entities.clasificacion_paciente
+                                on p.id_clasificacion_paciente equals e.id
+
+                                join doc in
+                                    (from temp in entities.usuarios
+                                     join emp in entities.empleados
+                                     on temp.empleado equals emp.id
+                                     where emp.puesto == 16
+                                     select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido })
+                                on p.evaluador equals doc.username
+
+                                join b in entities.pacientes
+                                on p.expediente equals b.expediente
+
+                                join r in entities.condicions
+                                on p.id_condicion equals r.simbolo
+
+                                join a in entities.diagnosticos
+                                on p.id_diagnostico equals a.id
+
+                                join d in entities.tipo_daño
+                                on p.id_tipo_daño equals d.id
+
+                                join t in entities.procedencias
+                                on p.id_procedencia equals t.simbolo
+
+                                join es in entities.escolaridads
+                                on p.id_escolaridad equals es.id
+
+                                join ay in entities.ayudas_tecnicas
+                                on p.id_ayudas_tecnicas equals ay.id
+
+                                join oc in entities.ocupaciones
+                                on p.id_ocupacion equals oc.id
+
+                                where ((p.fecha.CompareTo(fechainit) == 0) || (p.fecha.CompareTo(fechainit) > 0)) &&
+                                        ((p.fecha.CompareTo(fechaFinal) == 0) || (p.fecha.CompareTo(fechaFinal) < 0)) && (p.prefijo == centroid)
+                                        && doc.username == doctor
+
+                                select new
+                                {
+                                    p.fecha,
+                                    p.expediente,
+                                    e.clasificacion,
+                                    b.nombres,
+                                    b.primer_apellido,
+                                    b.segundo_apellido,
+                                    nombreDoc = doc.nombres,
+                                    apeDoc = doc.primer_apellido,
+                                    ape2Doc = doc.segundo_apellido,
+                                    r.condicion1,
+                                    b.cedula,
+                                    p.notas,
+                                    a.diagnostico1,
+                                    d.tipo,
+                                    t.procedencia1,
+                                    p.funcion_estructura,
+                                    es.Grado,
+                                    ay.ayuda,
+                                    oc.ocupacion,
+                                    p.años_tiempo_discapacidad,
+                                    p.meses_tiempo_discapacidad,
+                                    p.dias_tiempo_discapacidad,
+                                    p.años_TSTDL,
+                                    p.meses_TSTDL,
+                                    p.dias_TSTDL,
+                                    p.eteologia
+                                };
+                        return query2;
+                    break;
+            }
 
         }
 

@@ -5,6 +5,7 @@
 <head id="Head1" runat="server">
     <title></title>
     <link href="~/Styles/screen2.css" rel="stylesheet" type="text/css" />
+    <link rel="Shortcut Icon" href="Imagenes/favicon.ico" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>

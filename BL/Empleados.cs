@@ -186,6 +186,38 @@ namespace BL
                }
            }
 
+           public List<string> obtenerApellidoDoctores()
+           {
+               try
+               {
+                   long codigoDoctor = 16;
+                   List<string> apellidosDoctores = (from emp in entities.empleados
+                                                     where emp.puesto == codigoDoctor
+                                                     select emp.primer_apellido).ToList<string>();
+                   return apellidosDoctores;
+               }
+               catch (Exception ex)
+               {
+                   throw new Exception(ex.ToString() + "--Empleados.cs / obtenerApellidoDoctores()");
+               }
+           }
+
+           public List<string> obtenerSegundoApellidoDoctores()
+           {
+               try
+               {
+                   long codigoDoctor = 16;
+                   List<string> apellidosDoctores = (from emp in entities.empleados
+                                                     where emp.puesto == codigoDoctor
+                                                     select emp.segundo_apellido).ToList<string>();
+                   return apellidosDoctores;
+               }
+               catch (Exception ex)
+               {
+                   throw new Exception(ex.ToString() + "--Empleados.cs / obtenerApellidoDoctores()");
+               }
+           }
+
            public List<String> obtenerNombresTerapeutas()
            {
                List<String> nombresTerapeutas;
@@ -202,6 +234,30 @@ namespace BL
                {
                    throw new Exception(ex.ToString() + "--Empleados.cs /obtenerNombresTerapeutas");
                }
+           }
+
+           public string obtenerNombre(int idEmp)
+           {
+               try
+               {
+                   List<string> nombres;
+                   nombres = (from emp in entities.empleados
+                             where emp.id == idEmp
+                             select (emp.nombres)).ToList<string>();
+
+                   List<string> apellido;
+                   apellido = (from emp in entities.empleados
+                               where emp.id == idEmp
+                               select (emp.primer_apellido)).ToList<string>();
+
+                   string nombreYapellido = nombres[0] + " " + apellido[0];
+                   return nombreYapellido;
+               }
+               catch (Exception ex)
+               {
+                   throw new Exception(ex.ToString() + "--Empleados.cs / obtenerNombre()");
+               }
+               
            }
          #endregion
 
