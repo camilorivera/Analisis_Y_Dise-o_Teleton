@@ -76,7 +76,7 @@
                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" ReadOnly="true" SortExpression="Fecha"/>
                         <asp:BoundField HeaderText="Expediente" DataField="n_expediente" ReadOnly="true" SortExpression="Expediente"/>
                         <asp:BoundField HeaderText="Doctor" DataField="username" ReadOnly="true" SortExpression="Usuario"/>
-                        <asp:BoundField HeaderText="Historial" DataField="historial" ReadOnly="true" Visible="false" SortExpression="historial" />
+                        <asp:BoundField HeaderText="Historial" DataField="historial" ReadOnly="true" Visible="true" SortExpression="historial" />
                     </Columns>
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Red" />

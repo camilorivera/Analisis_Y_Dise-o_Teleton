@@ -334,14 +334,13 @@ namespace BL
         {
             try
             {
-                var query = from p in entities.empleados
-                            where p.id == id_empleado
-                            select new { p.nombres, p.primer_apellido, p.segundo_apellido };
-
+                var query = from c in entities.usuarios
+                            where c.empleado == id_empleado
+                            select new { c.username };
                 DataAccess.alta da_Hist = new DataAccess.alta();
                 da_Hist.fecha = dt_fecha;
                 da_Hist.n_expediente = int_Exp;
-                da_Hist.username = query.FirstOrDefault().nombres+" "+query.FirstOrDefault().primer_apellido+" "+query.FirstOrDefault().segundo_apellido;
+                da_Hist.username = query.FirstOrDefault().username;
                 da_Hist.texto = str_Histo;
                 da_Hist.prefijo = sht_Pref;
                 entities.altas.AddObject(da_Hist);
@@ -381,22 +380,39 @@ namespace BL
 
         public string[] nombrePacienteAlta(int int_expt, int centro)
         {
+            string[] str_Paci = new string[2];
             try
             {
-                string[] str_Paci = new string[2];
                 var query = from x in entities.pacientes
-                            where x.expediente == int_expt && x.prefijo == centro
+                            where x.expediente == int_expt
                             select new { x.nombres, x.primer_apellido, x.segundo_apellido, x.prefijo };
-                foreach (var row in query)
+                if (query.Count() >= 1)
                 {
-                    str_Paci[0] = row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido;
-                    str_Paci[1] = row.prefijo.ToString();
+                    if (query.FirstOrDefault().prefijo == centro)
+                    {
+                        str_Paci[0] = query.FirstOrDefault().nombres + " " + query.FirstOrDefault().primer_apellido + " " + query.FirstOrDefault().segundo_apellido;
+                        str_Paci[1] = query.FirstOrDefault().prefijo.ToString();
+                        return str_Paci;
+                    }
+                    else
+                    {
+                        str_Paci[0] = "El paciente esta en un centro distinto";
+                        str_Paci[1] = "@#$%error";
+                        return str_Paci;
+                    }
                 }
-                return str_Paci;
+                else
+                {
+                    str_Paci[0] = "El Paciente no esta registrado";
+                    str_Paci[1] = "@#$%error";
+                    return str_Paci;
+                }
             }
             catch
             {
-                return null;
+                str_Paci[0] = "Error al obtener paciente";
+                str_Paci[1] = "@#$%error";
+                return str_Paci;
             }
         }
 
@@ -424,7 +440,7 @@ namespace BL
         /// </summary>
         /// <param name="int_exp"></param>
         /// <returns></returns>
-        public DataTable historialAlta(int int_exp, int centro)
+        public DataTable historialAlta(int int_exp, int centro,int id_empleado)
         {
             DataTable dt_Hist = new DataTable();
             dt_Hist.Columns.Add("fecha");
@@ -436,10 +452,16 @@ namespace BL
                 var query = from p in entities.altas
                             where p.n_expediente == int_exp && p.prefijo == centro
                             orderby p.fecha descending
-                            select new { p.fecha, p.n_expediente, p.username, p.texto };
+                            select new { p.fecha, p.n_expediente, p.username, p.texto  };
+                var queryd = from c in entities.empleados
+                             where c.id == id_empleado
+                             select new { c.nombres, c.primer_apellido, c.segundo_apellido };
+                string t_nombre = queryd.FirstOrDefault().nombres + " " + queryd.FirstOrDefault().primer_apellido + " " + queryd.FirstOrDefault().segundo_apellido;
                 foreach (var row in query)
                 {
-                    dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.username.ToString(), row.texto);
+                    int t_tmp;
+                    t_tmp = row.texto.Length > 30 ? 30 : row.texto.Length;
+                    dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), t_nombre, row.texto.ToString().Substring(0,t_tmp));
                 }
                 return dt_Hist;
             }
@@ -465,7 +487,7 @@ namespace BL
             {
                 var query = from p in entities.historials
                             where p.n_expediente == int_exp && p.prefijo==centro
-                            orderby p.fecha descending
+                            orderby p.fecha ascending
                             select new { p.fecha, p.n_expediente, p.username, p.texto };
                 foreach (var row in query)
                 {

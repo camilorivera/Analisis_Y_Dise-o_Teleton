@@ -17,6 +17,7 @@ public partial class HistoPaciente : System.Web.UI.Page
     private static short _shtPrefijo = 0;
     private static DataTable dt_Hist;
     private static int centro;
+    private static int p_expe;
     protected void Page_Load(object sender, EventArgs e)
     {
         //Lista de permisos que el usuario logueado tiene
@@ -70,14 +71,14 @@ public partial class HistoPaciente : System.Web.UI.Page
                 int int_temp = Convert.ToInt32(txt_buscar.Text);
                 string[] str_Inf = new string[2];
                 str_Inf = PAT.nombrePacienteAlta(Convert.ToInt32(txt_buscar.Text), centro);
-                if (str_Inf != null && (str_Inf[0] != null && str_Inf[1] != null))
+                if (str_Inf != null && (str_Inf[0] != null && str_Inf[1] != null && str_Inf[1]!="@#$%error"))
                 {
                     _strUsuario = str_Inf[0];
                     _shtPrefijo = Convert.ToInt16(str_Inf[1].ToString());
                     if (str_Inf[0] != "")
                     {
                         lb_Paciente.Text = str_Inf[0];
-                        dt_Hist = PAT.historialAlta(Convert.ToInt32(txt_buscar.Text), centro);
+                        dt_Hist = PAT.historialAlta(p_expe, centro,Convert.ToInt32(Session["id_empleado"].ToString()));
                         if (dt_Hist != null)
                         {
                             lb_Expe.Text = "Num. Expe: " + txt_buscar.Text;
@@ -108,7 +109,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                 }
                 else
                 {
-                    lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registró.";
+                    lb_Paciente.Text = str_Inf[0];
                     txt_buscar.Text = "";
                     txt_historial.Text = "";
                     lb_Expe.Text = "";
@@ -118,7 +119,7 @@ public partial class HistoPaciente : System.Web.UI.Page
                     btn_guardar.Enabled = false;
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 lb_Paciente.Text = "Error, Tarea no Realizada";
                 txt_historial.Enabled = false;
@@ -136,20 +137,28 @@ public partial class HistoPaciente : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
+        try
         {
-            cargar_Historial();
+            p_expe = Convert.ToInt32(txt_buscar.Text);
+            if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
+            {
+                cargar_Historial();
+            }
+            else
+            {
+                lb_Paciente.Text = "Su rol no esta autorizado para dar de alta";
+                txt_buscar.Text = "";
+                txt_historial.Text = "";
+                lb_Expe.Text = "";
+                dt_Hist = null;
+                grd_Historial.DataBind();
+                txt_historial.Enabled = false;
+                btn_guardar.Enabled = false;
+            }
         }
-        else
+        catch
         {
-            lb_Paciente.Text = "Su rol no esta autorizado para dar de alta";
-            txt_buscar.Text = "";
-            txt_historial.Text = "";
-            lb_Expe.Text = "";
-            dt_Hist = null;
-            grd_Historial.DataBind();
-            txt_historial.Enabled = false;
-            btn_guardar.Enabled = false;
+
         }
     }
     protected void btn_guardar_Click(object sender, EventArgs e)

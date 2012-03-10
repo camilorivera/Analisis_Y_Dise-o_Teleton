@@ -80,12 +80,18 @@ public partial class Areas : System.Web.UI.Page
         {
             grd_Area.Rows[int_row].Font.Bold = false;
             grd_Area.Rows[int_row].ForeColor = System.Drawing.Color.Black;
+            grd_Area.Rows[int_row].BorderColor = System.Drawing.Color.Black;
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
             int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][1].ToString());
             txt_Area.Text = Convert.ToString(gdv_Row.Cells[2].Text);
             txt_orden.Text = Convert.ToString(gdv_Row.Cells[3].Text);
             gdv_Row.Font.Bold = true;
             gdv_Row.ForeColor = System.Drawing.Color.Red;
+            gdv_Row.BorderColor = System.Drawing.Color.Black;
+            for (int i = 0; i < gdv_Row.Cells.Count; i++)
+            {
+                gdv_Row.Cells[i].BorderColor = System.Drawing.Color.Black;
+            }
             int_row = gdv_Row.RowIndex;
             enableControls(true);
             bl_edicion = true;
@@ -121,6 +127,7 @@ public partial class Areas : System.Web.UI.Page
     {
         grd_Area.Rows[int_row].Font.Bold = false;
         grd_Area.Rows[int_row].ForeColor = System.Drawing.Color.Black;
+        grd_Area.Rows[int_row].BorderColor = System.Drawing.Color.Black;
         verArea();
         txt_Area.Text = "";
         txt_orden.Text = "";
@@ -135,7 +142,7 @@ public partial class Areas : System.Web.UI.Page
             defaultControls();
             bl_edicion = false;
         }
-            verArea();
-            enableControls(false);
+        verArea();
+        enableControls(false);
     }
 }
