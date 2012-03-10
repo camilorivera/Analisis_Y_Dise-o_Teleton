@@ -450,18 +450,22 @@ namespace BL
             try
             {
                 var query = from p in entities.altas
+                            join u in entities.usuarios on p.username equals u.username
+                            join e in entities.empleados on u.empleado equals e.id
                             where p.n_expediente == int_exp && p.prefijo == centro
                             orderby p.fecha descending
-                            select new { p.fecha, p.n_expediente, p.username, p.texto  };
-                var queryd = from c in entities.empleados
-                             where c.id == id_empleado
-                             select new { c.nombres, c.primer_apellido, c.segundo_apellido };
-                string t_nombre = queryd.FirstOrDefault().nombres + " " + queryd.FirstOrDefault().primer_apellido + " " + queryd.FirstOrDefault().segundo_apellido;
+                            select new { p.fecha, p.n_expediente, p.username, p.texto, e.nombres, e.primer_apellido, e.segundo_apellido };
+/*                var queryd = from p in entities.altas
+                             join u in entities.usuarios on p.username equals u.username
+                             join e in entities.empleados on u.empleado equals e.id
+                             where p.n_expediente==int_exp
+                             select new { e.nombres, e.primer_apellido, e.segundo_apellido };*/
+//                string t_nombre = query.FirstOrDefault().nombres + " " + query.FirstOrDefault().primer_apellido + " " + query.FirstOrDefault().segundo_apellido;
                 foreach (var row in query)
                 {
                     int t_tmp;
                     t_tmp = row.texto.Length > 30 ? 30 : row.texto.Length;
-                    dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), t_nombre, row.texto.ToString().Substring(0,t_tmp));
+                    dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.nombres+" "+row.primer_apellido+" "+row.segundo_apellido, row.texto.ToString().Substring(0,t_tmp));
                 }
                 return dt_Hist;
             }
