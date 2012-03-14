@@ -34,51 +34,35 @@
                 </ul>
             </fieldset>
         </div>
-        <div class="cajas"> 
-            <fieldset> 
-                
-                <ul class="list">
-                    <li class="field">
-                        <asp:Label ID="lb_Paciente" runat="server" Font-Bold="True" ForeColor="Red"  ></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="lb_Expe" runat="server" Text="" Font-Bold="true" ForeColor="Red"></asp:Label>
-                        <br />
-                        <asp:TextBox ID="txt_historial" runat="server" Height="83px" 
-                            TextMode="MultiLine" Width="100%" BorderStyle="Outset" Enabled="False"></asp:TextBox>
-                        &nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Guardar" 
-                            onclick="btn_guardar_Click" Enabled="False" />
-                    </li>
-                </ul>            
-            </fieldset> 
-        </div>
+      
         <div>
-            <fieldset>
+        </br>
+               <fieldset>
+               <asp:GridView ID="GridViewAreas" CssClass="Grid" runat="server" 
+                    emptydatatext="----No Hay Pacientes Registrados el Dia de Hoy.----" AutoGenerateColumns="False" AllowPaging="True" 
+                    onpageindexchanging="GridViewAreas_PageIndexChanging" HorizontalAlign="Left" 
+                       Width="115px" PageSize="15" > 
 
+                    <HeaderStyle Height="18px" BackColor="Black" ForeColor="White" />
 
-
-                <asp:GridView ID="grd_Historial" CssClass="Grid" runat="server" Width="100%" 
-                    AutoGenerateColumns="False" DataKeyNames="Fecha" AllowPaging="True" 
-                    onpageindexchanging="grd_Historial_PageIndexChanging" > 
-                    <HeaderStyle Height="18px" />
                     <pagerstyle backcolor="ControlLight"/>
+
                     <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:ImageButton ID="Ver" runat="server" CausesValidation="False" 
-                                CommandName="View" ImageUrl="~/imagenes/view.png"  Onclick="Ver_Click" />
-                            </ItemTemplate>
+                        <asp:TemplateField HeaderText="Area">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="90px" />
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="Fecha" DataField="Fecha" ReadOnly="true" SortExpression="Fecha"/>
-                        <asp:BoundField HeaderText="Expediente" DataField="n_expediente" ReadOnly="true" SortExpression="Expediente"/>
-                        <asp:BoundField HeaderText="Doctor" DataField="username" ReadOnly="true" SortExpression="Usuario"/>
-                        <asp:BoundField HeaderText="Historial" DataField="historial" ReadOnly="true" Visible="false" SortExpression="historial" />
+       
                     </Columns>
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Red" />
-                </asp:GridView>
-                <br />
-            </fieldset>
+                </asp:GridView>&nbsp;&nbsp;&nbsp;
+           
+            <iframe src="HistoPacienteFrame.aspx" width="600" height="570" frameborder="0" name="hitopaciente_frame"></iframe>
+             &nbsp;&nbsp;&nbsp;
+             </fieldset>
         </div>
 
     </div>

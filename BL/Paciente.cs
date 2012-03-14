@@ -254,7 +254,7 @@ namespace BL
         /// <param name="str_Histo">Texto - Historial</param>
         /// <param name="sht_Pref">Prefijo</param>
         /// <returns></returns>
-        public bool guardarHistorial(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref, int id_empleado)
+        public bool guardarHistorial(DateTime dt_fecha, int int_Exp, string str_Usuario, string str_Histo, short sht_Pref, int id_empleado, int area)
         {
             try
             {
@@ -268,7 +268,7 @@ namespace BL
                 da_Hist.username = query.FirstOrDefault().username;//+" "+ query.FirstOrDefault().primer_apellido + " " +query.FirstOrDefault().segundo_apellido;
                 da_Hist.texto = str_Histo;
                 da_Hist.prefijo = sht_Pref;
-                da_Hist.area = 1;
+                da_Hist.area = area;
                 entities.historials.AddObject(da_Hist);
                 entities.SaveChanges();
                 return true;
@@ -454,7 +454,7 @@ namespace BL
         /// </summary>
         /// <param name="int_exp"></param>
         /// <returns></returns>
-        public DataTable historial(int int_exp,int centro)
+        public DataTable historial(int int_exp,int centro,int area)
         {
             DataTable dt_Hist = new DataTable();
             dt_Hist.Columns.Add("fecha");
@@ -464,12 +464,16 @@ namespace BL
             try
             {
                 var query = from p in entities.historials
-                            where p.n_expediente == int_exp && p.prefijo==centro
+                            join u in entities.usuarios
+                            on p.username equals u.username
+                            join e in entities.empleados
+                            on u.empleado equals e.id
+                            where p.n_expediente == int_exp && p.prefijo==centro && p.area==area
                             orderby p.fecha descending
-                            select new { p.fecha, p.n_expediente, p.username, p.texto };
+                            select new { p.fecha, p.n_expediente, p.username,e.nombres,e.primer_apellido,e.segundo_apellido, p.texto };
                 foreach (var row in query)
                 {
-                    dt_Hist.Rows.Add(row.fecha.ToString(),row.n_expediente.ToString(),row.username.ToString(),row.texto);
+                    dt_Hist.Rows.Add(row.fecha.ToString(),row.n_expediente.ToString(),row.nombres.ToString()+" "+row.primer_apellido.ToString()+" "+row.segundo_apellido.ToString(),row.texto);
                 }
                 return dt_Hist;
             }
