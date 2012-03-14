@@ -326,6 +326,32 @@ namespace BL
             {
                 throw new Exception(ex.ToString() + "  --Security.cs / getRolesUsuarios()");
             }
-        } 
+        }
+
+        public DataTable CargarAreas()
+        {
+            DataTable dt_Hist = new DataTable();
+            dt_Hist.Columns.Add("area1");
+            //dt_Hist.Columns.Add("id");
+
+            try
+            {
+                var query = from a in entidad.areas
+                            orderby a.orden
+                            select new { a.area1, a.id };
+
+                foreach (var row in query)
+                {
+                    //dt_Hist.Rows.Add("<a href=\"~/HistoPacienteFrame.aspx?id=" + row.id.ToString() + "\" target=\"hitopaciente_frame\">" + row.area1.ToString() + "</a>");
+                    dt_Hist.Rows.Add(row.id.ToString() + " " + row.area1.ToString());
+                    //dt_Hist.Rows.Add(row.id.ToString());
+                }
+                return dt_Hist;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
