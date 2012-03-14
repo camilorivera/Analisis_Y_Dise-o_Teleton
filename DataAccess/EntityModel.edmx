@@ -27,6 +27,7 @@
           <EntitySet Name="historial" EntityType="teletonModel.Store.historial" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="ocupaciones" EntityType="teletonModel.Store.ocupaciones" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="pacientes" EntityType="teletonModel.Store.pacientes" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="parametros" EntityType="teletonModel.Store.parametros" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="permisos" EntityType="teletonModel.Store.permisos" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="permisos_x_roles" EntityType="teletonModel.Store.permisos_x_roles" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="procedencia" EntityType="teletonModel.Store.procedencia" store:Type="Tables" Schema="mysql_14667_teletonback" />
@@ -406,6 +407,13 @@
           <Property Name="lugar_trabajo" Type="varchar" MaxLength="45" />
           <Property Name="nombre_conyugue" Type="varchar" MaxLength="45" />
           <Property Name="activo" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parametros">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="valor" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="permisos">
           <Key>
@@ -977,6 +985,7 @@
           <EntitySet Name="historials" EntityType="teletonModel.historial" />
           <EntitySet Name="ocupaciones" EntityType="teletonModel.ocupacione" />
           <EntitySet Name="pacientes" EntityType="teletonModel.paciente" />
+          <EntitySet Name="parametros" EntityType="teletonModel.parametro" />
           <EntitySet Name="permisos" EntityType="teletonModel.permiso" />
           <EntitySet Name="procedencias" EntityType="teletonModel.procedencia" />
           <EntitySet Name="procedencia_descripcion" EntityType="teletonModel.procedencia_descripcion" />
@@ -1397,6 +1406,13 @@
           <NavigationProperty Name="evoluciones" Relationship="teletonModel.pacientes_fk1" FromRole="pacientes" ToRole="evoluciones" />
           <NavigationProperty Name="historials" Relationship="teletonModel.fk_n_expediente" FromRole="pacientes" ToRole="historial" />
           <NavigationProperty Name="ocupacione" Relationship="teletonModel.profesion_fk" FromRole="pacientes" ToRole="ocupaciones" />
+        </EntityType>
+        <EntityType Name="parametro">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="valor" Type="String" />
         </EntityType>
         <EntityType Name="permiso">
           <Key>
@@ -2060,6 +2076,10 @@
             <ScalarProperty Name="nombre_conyugue" ColumnName="nombre_conyugue" />
             <ScalarProperty Name="activo" ColumnName="activo" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="parametros"><EntityTypeMapping TypeName="teletonModel.parametro"><MappingFragment StoreEntitySet="parametros">
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="valor" ColumnName="valor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="permisos"><EntityTypeMapping TypeName="teletonModel.permiso"><MappingFragment StoreEntitySet="permisos">
             <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -2153,11 +2173,12 @@
         <EntityTypeShape EntityType="teletonModel.historial" Width="1.5" PointX="11.25" PointY="9.25" Height="2.9417936197916674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.ocupacione" Width="1.5" PointX="0.75" PointY="29" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.paciente" Width="1.5" PointX="6" PointY="10.5" Height="8.5185351562499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.parametro" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583282" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.permiso" Width="1.5" PointX="1.5" PointY="57.375" Height="1.595683593749996" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.procedencia" Width="1.5" PointX="0.75" PointY="31.5" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.procedencia_descripcion" Width="1.5" PointX="3" PointY="31.5" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.productividad" Width="1.5" PointX="0.75" PointY="34" Height="1.595683593749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.referencia" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.referencia" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583246" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.role" Width="1.5" PointX="1.5" PointY="51.875" Height="2.1725878906250102" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.tipo_daño" Width="1.5" PointX="0.75" PointY="36.375" Height="1.595683593749996" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.usuario" Width="1.5" PointX="0.75" PointY="40.75" Height="3.1340950520833388" IsExpanded="true" />

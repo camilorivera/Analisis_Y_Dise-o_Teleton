@@ -442,6 +442,22 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<parametro> parametros
+        {
+            get
+            {
+                if ((_parametros == null))
+                {
+                    _parametros = base.CreateObjectSet<parametro>("parametros");
+                }
+                return _parametros;
+            }
+        }
+        private ObjectSet<parametro> _parametros;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<permiso> permisos
         {
             get
@@ -736,6 +752,14 @@ namespace DataAccess
         public void AddTopacientes(paciente paciente)
         {
             base.AddObject("pacientes", paciente);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the parametros EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToparametros(parametro parametro)
+        {
+            base.AddObject("parametros", parametro);
         }
     
         /// <summary>
@@ -6081,6 +6105,85 @@ namespace DataAccess
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="parametro")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class parametro : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new parametro object.
+        /// </summary>
+        /// <param name="nombre">Initial value of the nombre property.</param>
+        public static parametro Createparametro(global::System.String nombre)
+        {
+            parametro parametro = new parametro();
+            parametro.nombre = nombre;
+            return parametro;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                if (_nombre != value)
+                {
+                    OnnombreChanging(value);
+                    ReportPropertyChanging("nombre");
+                    _nombre = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("nombre");
+                    OnnombreChanged();
+                }
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String valor
+        {
+            get
+            {
+                return _valor;
+            }
+            set
+            {
+                OnvalorChanging(value);
+                ReportPropertyChanging("valor");
+                _valor = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("valor");
+                OnvalorChanged();
+            }
+        }
+        private global::System.String _valor;
+        partial void OnvalorChanging(global::System.String value);
+        partial void OnvalorChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

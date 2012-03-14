@@ -485,19 +485,19 @@ namespace BL
             try
             {
                 var query = from p in entities.historials
-<<<<<<< HEAD
+/*<<<<<<< HEAD
                             where p.n_expediente == int_exp && p.prefijo==centro
                             orderby p.fecha ascending
                             select new { p.fecha, p.n_expediente, p.username, p.texto };
-=======
+=======*/
                             join u in entities.usuarios
                             on p.username equals u.username
                             join e in entities.empleados
                             on u.empleado equals e.id
                             where p.n_expediente == int_exp && p.prefijo==centro && p.area==area
-                            orderby p.fecha descending
+                            orderby p.fecha ascending
                             select new { p.fecha, p.n_expediente, p.username,e.nombres,e.primer_apellido,e.segundo_apellido, p.texto };
->>>>>>> proyecto
+//>>>>>>> proyecto
                 foreach (var row in query)
                 {
                     dt_Hist.Rows.Add(row.fecha.ToString(),row.n_expediente.ToString(),row.nombres.ToString()+" "+row.primer_apellido.ToString()+" "+row.segundo_apellido.ToString(),row.texto);

@@ -93,7 +93,7 @@ public partial class Diagnosticos : System.Web.UI.Page
         }
     }
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
+    {     
         try
         {
             if (e.Row is GridViewRow)
