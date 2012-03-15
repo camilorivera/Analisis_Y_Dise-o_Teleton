@@ -204,7 +204,7 @@ public partial class HistoPaciente : System.Web.UI.Page
         try
         {
             GridViewRow gdv_Hist = (GridViewRow)((ImageButton)sender).Parent.Parent;
-            int int_Index = gdv_Hist.RowIndex + (grd_Historial.PageIndex * 10);
+            int int_Index = gdv_Hist.RowIndex + (grd_Historial.PageIndex * grd_Historial.PageSize);
             string str_TMP = dt_Hist.Rows[int_Index][3].ToString();
             txt_historial.Text = dt_Hist.Rows[int_Index][3].ToString();
             txt_historial.ReadOnly = true;

@@ -304,8 +304,13 @@ namespace BL
         {
             try
             {
+                var query1 = from c in entities.parametros
+                             where c.nombre == "IdPuestoDoctor"
+                             select new { c.valor};
+                int t_int = Convert.ToInt32(query1.FirstOrDefault().valor);
                 var query = from x in entities.empleados
-                            where x.nombres == _usuario && x.puesto == 16
+                            join c in entities.usuarios on x.id equals c.empleado
+                            where c.username == _usuario && x.puesto ==t_int
                             select new { x.nombres };
                 if (query.Count() >= 1)
                 {
@@ -496,11 +501,14 @@ namespace BL
                             on u.empleado equals e.id
                             where p.n_expediente == int_exp && p.prefijo==centro && p.area==area
                             orderby p.fecha ascending
-                            select new { p.fecha, p.n_expediente, p.username,e.nombres,e.primer_apellido,e.segundo_apellido, p.texto };
+                            select new { p.fecha, p.n_expediente, p.username,e.nombres
+                                ,e.primer_apellido,e.segundo_apellido, p.texto };
 //>>>>>>> proyecto
                 foreach (var row in query)
                 {
-                    dt_Hist.Rows.Add(row.fecha.ToString(),row.n_expediente.ToString(),row.nombres.ToString()+" "+row.primer_apellido.ToString()+" "+row.segundo_apellido.ToString(),row.texto);
+                    int t_int = row.texto.Count() > 30 ? 30 : row.texto.Count();
+                    dt_Hist.Rows.Add(row.fecha.ToString(),row.n_expediente.ToString()
+                        ,row.nombres.ToString()+" "+row.primer_apellido.ToString()+" "+row.segundo_apellido.ToString(),row.texto.Substring(0,t_int));
                 }
                 return dt_Hist;
             }
