@@ -16,19 +16,22 @@
     <div class="cajas"> 
       
                 <fieldset>
-                <ul class="list">
-                    <li class="field" >
-                        <asp:Label ID="lb_Paciente" runat="server" Font-Bold="True" ForeColor="Red"  ></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="lb_Expe" runat="server" Text="" Font-Bold="true" ForeColor="Red"></asp:Label>
+                <ul class="list" >
+                   <div>
+                        <asp:Label ID="lb_area" runat="server" Font-Bold="True" ForeColor="Red" 
+                            Text="[lb_Area]" Visible="False"></asp:Label>
                         <br />
+                        <asp:Label ID="lb_Paciente" runat="server" Font-Bold="True" ForeColor="Red"  ></asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_Expe" runat="server" Text="" Font-Bold="true" ForeColor="Red"></asp:Label>
+                        &nbsp;&nbsp;<br />
                         <asp:TextBox ID="txt_historial" runat="server" Height="83px" 
                             TextMode="MultiLine" Width="96%" BorderStyle="Outset" Enabled="False"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Guardar" 
                             onclick="btn_guardar_Click" Enabled="False" BackColor="#CC0000" 
                             BorderColor="Black" ForeColor="White" />
-                    </li>
+                    </div>
                 </ul>            
        </fieldset>
    

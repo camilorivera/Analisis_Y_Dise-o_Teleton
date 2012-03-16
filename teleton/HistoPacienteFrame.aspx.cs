@@ -34,58 +34,96 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
        //txtid.Text = Request.QueryString["id"];
        Session["id"] = Request.QueryString["id"];
        //txtid.Text = Session["id"].ToString();*/
-     
-            Session["id"] = Request.QueryString["id"];
-            cargar_Historial();
+        if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
+        {
+
         
+        Session["id"] = Request.QueryString["id"];
+        if (Session["id"] != null)
+        {
+            lb_area.Visible = true;
+            lb_area.Text = "Area: " + Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
+        }
+
+        cargar_Historial();
+        }
+        else
+        {
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Usted no posee suficientes privilegios')", true);
+        }
     }
 
     private void cargar_Historial()
     {
 
 
-
-        if (Session["expediente"] != null && (string)Session["expediente"] != string.Empty && Session["centro"] != null && (string)Session["centro"] != string.Empty && Session["temp"].ToString()!="")
-        {
-            try
+        if (Session["expediente"] != null && (string)Session["expediente"] != string.Empty && Session["centro"] != null && (string)Session["centro"] != string.Empty)
             {
-                int centro = Convert.ToInt32(Sec.getCentroId(Session["centro"].ToString()));
-                int area = Convert.ToInt32(Session["temp"].ToString());
-                string expediente = Session["expediente"].ToString();
-                _intExpe = Convert.ToInt32(expediente);
-                string str_temp = expediente;
-                int int_temp = Convert.ToInt32(expediente);
-                string[] str_Inf = new string[2];
-                str_Inf = PAT.nombrePaciente(Convert.ToInt32(expediente), centro);
-              
-                if (str_Inf != null && (str_Inf[0] != null && str_Inf[1] != null))
+                if (Session["id"] != null)
                 {
-                    _strUsuario = str_Inf[0];
-                    _shtPrefijo = Convert.ToInt16(str_Inf[1].ToString());
-                    if (str_Inf[0] != "")
+                    try
                     {
-                        lb_Paciente.Text = str_Inf[0];
-                        dt_Hist = PAT.historial(Convert.ToInt32(expediente), centro,area);
-                        if (dt_Hist != null)
+                        int centro = Convert.ToInt32(Sec.getCentroId(Session["centro"].ToString()));
+                        int area = Convert.ToInt32(Session["id"].ToString());
+                        string expediente = Session["expediente"].ToString();
+                        _intExpe = Convert.ToInt32(expediente);
+                        string str_temp = expediente;
+                        int int_temp = Convert.ToInt32(expediente);
+                        string[] str_Inf = new string[2];
+                        str_Inf = PAT.nombrePaciente(Convert.ToInt32(expediente), centro);
+
+                        if (str_Inf != null && (str_Inf[0] != null && str_Inf[1] != null))
                         {
-                            lb_Expe.Text = "Num. Expe: " + expediente;
-                            _intExpe = Convert.ToInt32(expediente);
-                            grd_Historial.DataSource = dt_Hist;
-                            grd_Historial.DataBind();
-                            txt_historial.Enabled = true;
-                            btn_guardar.Enabled = true;
+                            _strUsuario = str_Inf[0];
+                            _shtPrefijo = Convert.ToInt16(str_Inf[1].ToString());
+                            if (str_Inf[0] != "")
+                            {
+                                lb_Paciente.Text = str_Inf[0];
+                                dt_Hist = PAT.historial(Convert.ToInt32(expediente), centro, area);
+                                if (dt_Hist != null)
+                                {
+                                    lb_area.Visible = true;
+                                    lb_Expe.Text = "Num. Expe: " + expediente;
+                                    lb_area.Text = "Area: " + Sec.getNameArea(Convert.ToInt32(Session["id"].ToString()));
+                                    _intExpe = Convert.ToInt32(expediente);
+                                    grd_Historial.DataSource = dt_Hist;
+                                    grd_Historial.DataBind();
+                                    txt_historial.Enabled = true;
+                                    btn_guardar.Enabled = true;
+                                }
+                                else
+                                {
+                                    lb_Paciente.Text = "Error al obtener el Historial ...";
+                                    txt_historial.Enabled = false;
+                                    lb_Expe.Text = "";
+                                    btn_guardar.Enabled = false;
+                                }
+                            }
+                            else
+                            {
+                                lb_Paciente.Text = "Expediente no encontrado ...";
+                                txt_historial.Enabled = false;
+                                lb_Expe.Text = "";
+                                btn_guardar.Enabled = false;
+                                dt_Hist = null;
+                                grd_Historial.DataBind();
+                            }
                         }
                         else
                         {
-                            lb_Paciente.Text = "Error al obtener el Historial ...";
+                            lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registro.";
+                            //txt_buscar = "";
+                            txt_historial.Text = "";
                             txt_historial.Enabled = false;
-                            lb_Expe.Text = "";
                             btn_guardar.Enabled = false;
+                            lb_Expe.Text = "";
+                            dt_Hist = null;
+                            grd_Historial.DataBind();
                         }
                     }
-                    else
+                    catch
                     {
-                        lb_Paciente.Text = "Expediente no encontrado ...";
+                        lb_Paciente.Text = "Error, Tarea no Realizada";
                         txt_historial.Enabled = false;
                         lb_Expe.Text = "";
                         btn_guardar.Enabled = false;
@@ -95,35 +133,24 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
                 }
                 else
                 {
-                    lb_Paciente.Text = "Error al obtener el paciente ...\nAsegúrese que el paciente este en el centro en el que se registro.";
-                    //txt_buscar = "";
-                    txt_historial.Text = "";
+                    lb_Paciente.Text = "Seleccione un Área...";
                     txt_historial.Enabled = false;
-                    btn_guardar.Enabled = false;
                     lb_Expe.Text = "";
+                    btn_guardar.Enabled = false;
                     dt_Hist = null;
                     grd_Historial.DataBind();
                 }
             }
-            catch
+            else
             {
-                lb_Paciente.Text = "Error, Tarea no Realizada";
+                lb_Paciente.Text = "Introduzca un expediente a buscar ...";
                 txt_historial.Enabled = false;
                 lb_Expe.Text = "";
                 btn_guardar.Enabled = false;
                 dt_Hist = null;
                 grd_Historial.DataBind();
             }
-        }
-        else
-        {
-            lb_Paciente.Text = "Introduzca un expediente a buscar ...";
-            txt_historial.Enabled = false;
-            lb_Expe.Text = "";
-            btn_guardar.Enabled = false;
-            dt_Hist = null;
-            grd_Historial.DataBind();
-        }
+
     }
 
     protected void btn_guardar_Click(object sender, EventArgs e)
@@ -139,11 +166,11 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
         {
             try
             {
-                if (Session["temp"].ToString() != "")
+                if (Session["id"] != string.Empty)
                 {
                     Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
                     if (!PAT.guardarHistorial(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), _intExpe, Session["nombre_usuario"].ToString()
-                        , txt_historial.Text, _shtPrefijo, Convert.ToInt32(Session["id_empleado"].ToString()), Convert.ToInt32(Session["temp"].ToString())))
+                        , txt_historial.Text, _shtPrefijo, Convert.ToInt32(Session["id_empleado"].ToString()), Convert.ToInt32(Session["id"].ToString())))
                     {
                         lb_Paciente.Text = "Error al tratar de guardar ...";
                     }

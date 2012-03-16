@@ -60,22 +60,18 @@ public partial class HistoPaciente : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        if (Session["id"] != null && (string)Session["id"] != string.Empty)
+        if (txt_buscar.Text != "")
         {
-            Session["expediente"] = txt_buscar.Text;
-            Session["centro"] = ddl_centro.Text;
-        
-            Session["temp"] = Session["id"].ToString();
+            
+                Session["expediente"] = txt_buscar.Text;
+                Session["centro"] = ddl_centro.Text;
+           
         }
         else
         {
-            Session.Remove("centro");
-            Session.Remove("expediente");
-            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Por favor seleccione un Área')", true);   
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Porfavor ingrese expediente')", true);
         }
-  
-            
-
+           
     }
     protected void GridViewAreas_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

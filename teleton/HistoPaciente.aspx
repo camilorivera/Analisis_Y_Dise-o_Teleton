@@ -36,7 +36,7 @@
         </div>
       
         <div>
-        </br>
+         <br />
                <fieldset>
                <asp:GridView ID="GridViewAreas" CssClass="Grid" runat="server" 
                     emptydatatext="----No Hay Pacientes Registrados el Dia de Hoy.----" AutoGenerateColumns="False" AllowPaging="True" 
@@ -58,8 +58,7 @@
                     </Columns>
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Red" />
-                </asp:GridView>&nbsp;&nbsp;&nbsp;
-           
+                </asp:GridView>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <iframe src="HistoPacienteFrame.aspx" width="600" height="570" frameborder="0" name="hitopaciente_frame"></iframe>
              &nbsp;&nbsp;&nbsp;
              </fieldset>
