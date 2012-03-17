@@ -559,6 +559,7 @@ namespace BL
 
             }
         }
+
         public int VerificarExpPorCentro(int numexp) {
 
             long numexpe = Convert.ToInt64(numexp);

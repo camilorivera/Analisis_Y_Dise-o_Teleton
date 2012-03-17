@@ -21,24 +21,14 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
         try
         {
             List<string> permisos = (List<string>)Session["Permisos_usuario"];
-            List<long> roles = (List<long>)Session["Roles_Usuario"];
             bool permisoEncontrado = false;
-            bool rolDocEncontrado = false;
+            Paciente pac = new Paciente();
             
             foreach (string rol in permisos)
             {
                 if (rol.Equals("pSegPac"))
                 {
                     permisoEncontrado = true;
-                    break;
-                }
-            }
-
-            for (int i = 0; i < roles.Count; i++ )
-            {
-                if (roles[i] == 59 || roles[i] == 60)
-                {
-                    rolDocEncontrado = true;
                     break;
                 }
             }
@@ -52,7 +42,7 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                if (!rolDocEncontrado)
+                if (!pac.isDoctor(Session.Contents["nombre_usuario"].ToString()))
                     cargarDoctores();
                 else
                     cargarDoctor();
@@ -73,8 +63,8 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
     {
         try
         {
-            BL.Empleados doctores = new BL.Empleados();
-            BL.Usuarios usuarios = new BL.Usuarios();
+            BL.Empleados doctores = new Empleados();
+            Usuarios usuarios = new Usuarios();
             
             List<int> codigos = new List<int>();
             List<string> users = new List<string>();
@@ -132,7 +122,7 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
     {
         try
         {
-            BL.SeguimientoPacientes segPacientes = new BL.SeguimientoPacientes();
+            SeguimientoPacientes segPacientes = new SeguimientoPacientes();
             int centroId = (int)long.Parse(Session["Centro_idNum"].ToString());
 
             gvSeguimientoPaciente.DataSource = segPacientes.BusquedaporRangoFecha2(DateTime.Parse(txtFechaInicio.Text), DateTime.Parse(txtFechaFinal.Text), centroId, ddlDoctor.SelectedValue);
