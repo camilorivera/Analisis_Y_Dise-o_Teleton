@@ -353,5 +353,17 @@ namespace BL
                 return null;
             }
         }
+
+        public string getNameArea(int id)//devuelve el area
+        {
+            
+            var query = from p in entidad.areas
+                        where p.id == id
+                        select p.area1;
+
+
+            return query.First().ToString();
+           
+        }
     }
 }
