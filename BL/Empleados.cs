@@ -168,16 +168,17 @@ namespace BL
            }
 
 
-           public List<String> obtenerNombresDoctores()
+           public string obtenerNombresDoctores(long empId)
            {
-               List<String> nombresDoctores;
+               string nombresDoctores;
                //El codigo de doctor en la tabla de cargos
-               long longCodigoDoctores = 16;
                try
                {
-                   nombresDoctores = (from emp in entities.empleados
-                                      where emp.puesto  == longCodigoDoctores 
-                                      select (emp.nombres)).ToList<String>();
+                   var query = from emp in entities.empleados
+                               where emp.id  == empId 
+                               select emp.nombres;
+
+                   nombresDoctores = query.First();
                    return nombresDoctores;
                }
                catch (Exception ex)
@@ -186,15 +187,17 @@ namespace BL
                }
            }
 
-           public List<string> obtenerApellidoDoctores()
+           public string obtenerApellidoDoctores(long empId)
            {
                try
                {
-                   long codigoDoctor = 16;
-                   List<string> apellidosDoctores = (from emp in entities.empleados
-                                                     where emp.puesto == codigoDoctor
-                                                     select emp.primer_apellido).ToList<string>();
-                   return apellidosDoctores;
+                   string apellidoDoc = String.Empty;
+                   var query = from emp in entities.empleados
+                               where emp.id == empId
+                               select emp.primer_apellido;
+
+                   apellidoDoc = query.First();
+                   return apellidoDoc;
                }
                catch (Exception ex)
                {
@@ -202,15 +205,17 @@ namespace BL
                }
            }
 
-           public List<string> obtenerSegundoApellidoDoctores()
+           public string obtenerSegundoApellidoDoctores(long empId)
            {
                try
                {
-                   long codigoDoctor = 16;
-                   List<string> apellidosDoctores = (from emp in entities.empleados
-                                                     where emp.puesto == codigoDoctor
-                                                     select emp.segundo_apellido).ToList<string>();
-                   return apellidosDoctores;
+                   string segundoApellido = String.Empty;
+                   var query = from emp in entities.empleados
+                               where emp.id == empId
+                               select emp.segundo_apellido;
+
+                   segundoApellido = query.First();
+                   return segundoApellido;
                }
                catch (Exception ex)
                {

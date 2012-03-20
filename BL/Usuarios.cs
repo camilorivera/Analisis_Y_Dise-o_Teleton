@@ -232,7 +232,6 @@ namespace BL
             }
         }
 
-
         public List<string> RetrieveUserNames()
         {
             try
@@ -267,6 +266,25 @@ namespace BL
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString() + " --Usuario.cs / EliminarUsuario()");
+            }
+        }
+
+        public long retriveEmpId(string userName)
+        {
+
+            try
+            {
+                var query = from x in entities.usuarios
+                            where x.username == userName
+                            select x.empleado;
+
+                long id = query.First();
+
+                return id;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString() + "--Empleados.cs /obtenerNombresDoctores");
             }
         }
 

@@ -63,23 +63,31 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
     {
         try
         {
-            BL.Empleados doctores = new Empleados();
+            BL.Empleados doctores = new BL.Empleados();
             Usuarios usuarios = new Usuarios();
-            
-            List<int> codigos = new List<int>();
-            List<string> users = new List<string>();
-            List<string> nombres = doctores.obtenerNombresDoctores();
-            List<string> apellidos = doctores.obtenerApellidoDoctores();
-            List<string> segundoApellido = doctores.obtenerSegundoApellidoDoctores();
+            Paciente pac = new Paciente();
 
-            foreach (string doc in nombres)
+            List<string> usuariosTemp = usuarios.RetrieveUserNames();
+            List<string> usersDocs = new List<string>();
+            List<long> ids = new List<long>();
+            List<string> nombres = new List<string>();
+            List<string> apellido = new List<string>();
+            List<string> segundoApellido = new List<string>();
+
+            foreach (string doc in usuariosTemp)
             {
-                codigos.Add(doctores.GetEmpId(doc));
+                if (pac.isDoctor(doc))
+                {
+                    ids.Add(usuarios.retriveEmpId(doc));
+                    usersDocs.Add(doc);
+                }
             }
 
-            foreach (int code in codigos)
+            foreach (long codigo in ids)
             {
-                users.Add(usuarios.RetrieveUserName2(code));
+                nombres.Add(doctores.obtenerNombresDoctores(codigo));
+                apellido.Add(doctores.obtenerApellidoDoctores(codigo));
+                segundoApellido.Add(doctores.obtenerSegundoApellidoDoctores(codigo));
             }
 
             ListItem temporal = new ListItem();
@@ -91,8 +99,8 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
             for (int i = 0; i < nombres.Count; i++)
             {
                 ListItem item = new ListItem();
-                item.Text = nombres[i] + " " + apellidos[i] + " " + segundoApellido[i];
-                item.Value = users[i].ToString();
+                item.Text = nombres[i] + " " + apellido[i] + " " + segundoApellido[i];
+                item.Value = usersDocs[i].ToString();
                 ddlDoctor.Items.Add(item);
             }
         }
