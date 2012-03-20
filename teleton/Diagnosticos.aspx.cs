@@ -65,9 +65,10 @@ public partial class Diagnosticos : System.Web.UI.Page
             {
                 if (this.IsPostBack)
                 {
-                    PAT.GuardarPatologia(0, diagnostico_txt.Text);
+                    PAT.GuardarPatologia(0, diagnostico_txt.Text,cod.Text);
                     GridView1.DataBind();
                     diagnostico_txt.Text = "";
+                    cod.Text = "";
                 }
             }
         }

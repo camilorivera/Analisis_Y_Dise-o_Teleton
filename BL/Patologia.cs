@@ -32,13 +32,14 @@ namespace BL
             return Pat;
         }
 
-        public void GuardarPatologia(int id, string diagnostico)
+        public void GuardarPatologia(int id, string diagnostico,string cod)
         {
             try
             {
                 DataAccess.diagnostico diag = new DataAccess.diagnostico();
                 diag.id = id;
                 diag.diagnostico1 = diagnostico;
+                diag.codigoInter = cod;
 
                 entities.diagnosticos.AddObject(diag); //Se guarda en memoria
                 entities.SaveChanges();//Se guarda en la base de datos
