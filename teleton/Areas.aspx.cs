@@ -105,13 +105,29 @@ public partial class Areas : System.Web.UI.Page
     protected void grd_Area_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+  
 
+    }
 
+    protected void grd_Area_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        try
+        {
+            grd_Area.PageIndex = e.NewPageIndex;
+            grd_Area.DataSource = dt_tabla;
+            grd_Area.DataBind();
+        }
+        catch (Exception err)
+        {
+            Session["Error_Msg"] = err.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
     }
     protected void verArea()
     {
         try
         {
+            dt_tabla = null;
             dt_tabla = bl_Areas.listAreas();
             grd_Area.DataSource = dt_tabla;
             grd_Area.DataBind();

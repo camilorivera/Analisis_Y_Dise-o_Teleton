@@ -44,21 +44,22 @@
                 <fieldset>
                     <ul class="list">
                         <li class="field">
-                            <asp:GridView ID="grd_Area" CssClass="Grid" runat="server" Width="100%" 
-                    AutoGenerateColumns="False" DataKeyNames="id" AllowPaging="True" 
-                                onselectedindexchanged="grd_Area_SelectedIndexChanged"  > 
+                        
+                <asp:GridView ID="grd_Area" CssClass="Grid" runat="server" Width="100%" 
+                    AutoGenerateColumns="False" DataKeyNames="orden" AllowPaging="True" 
+                    onpageindexchanging="grd_Area_PageIndexChanging" > 
                     <HeaderStyle Height="18px" />
                     <pagerstyle backcolor="ControlLight"/>
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:ImageButton ID="Ver" runat="server" CausesValidation="False" 
-                                CommandName="View" ImageUrl="~/images/edit.jpg"  Onclick="Ver_Click" />
+                                CommandName="View" ImageUrl="~/imagenes/view.png"  Onclick="Ver_Click" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="Id" DataField="id" ReadOnly="true" Visible="false" SortExpression="Id"/>
-                        <asp:BoundField HeaderText="Área" DataField="area" ReadOnly="true" SortExpression="Area"/>
-                        <asp:BoundField HeaderText="Orden" DataField="orden" ReadOnly="true" SortExpression="Orden"/>
+                        <asp:BoundField HeaderText="Id" DataField="id" ReadOnly="true" Visible="false" SortExpression="id"/>
+                        <asp:BoundField HeaderText="Area" DataField="area" ReadOnly="true" SortExpression="area"/>
+                        <asp:BoundField HeaderText="Orden" DataField="orden" ReadOnly="true" SortExpression="orden"/>
                     </Columns>
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Red" />
