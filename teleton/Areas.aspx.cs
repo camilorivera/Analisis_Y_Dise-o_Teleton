@@ -78,7 +78,7 @@ public partial class Areas : System.Web.UI.Page
         try
         {
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
-            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][0].ToString());
+            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex + (grd_Area.PageIndex * grd_Area.PageSize)][0].ToString());
             string t_Area = dt_tabla.Rows[gdv_Row.RowIndex][2].ToString();
             if (bl_Areas.deleteAreas(int_id))
             {
