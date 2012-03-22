@@ -50,7 +50,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Area">
                                         <ItemTemplate>
-                                            <asp:Label ForeColor="Black" ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:Label>
+                                            <asp:LinkButton ForeColor="Black" ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:LinkButton>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="90px" />
                         </asp:TemplateField>
