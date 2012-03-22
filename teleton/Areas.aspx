@@ -54,7 +54,13 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:ImageButton ID="Ver" runat="server" CausesValidation="False" 
-                                CommandName="View" ImageUrl="~/imagenes/view.png"  Onclick="Ver_Click" />
+                                CommandName="View" ImageUrl="~/imagenes/view.png"  Onclick="Ver_Click"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="Eliminar" runat="server" CausesValidation="False" 
+                                CommandName="Eliminar" ImageUrl="~/images/delete.png" Onclick="Eliminar_Click"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText="Id" DataField="id" ReadOnly="true" Visible="false" SortExpression="id"/>
@@ -64,6 +70,7 @@
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Red" />
                 </asp:GridView>
+                <br />
                             <asp:Label ID="lb_mensaje" runat="server" Visible="False" ForeColor="Red" Font-Size="Medium" ></asp:Label>
                 <br />
                         </li>

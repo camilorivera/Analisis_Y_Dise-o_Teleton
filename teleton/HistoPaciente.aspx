@@ -38,10 +38,10 @@
         <div>
          <br />
                <fieldset>
-               <asp:GridView ID="GridViewAreas" CssClass="Grid" runat="server" 
+               <asp:GridView ID="GridViewAreas"  runat="server" 
                     emptydatatext="----No Hay Pacientes Registrados el Dia de Hoy.----" AutoGenerateColumns="False" AllowPaging="True" 
                     onpageindexchanging="GridViewAreas_PageIndexChanging" HorizontalAlign="Left" 
-                       Width="115px" PageSize="15" > 
+                       Width="115px" PageSize="15" ForeColor="Black"> 
 
                     <HeaderStyle Height="18px" BackColor="Black" ForeColor="White" />
 
@@ -50,14 +50,14 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Area">
                                         <ItemTemplate>
-                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:Label>
+                                            <asp:Label ForeColor="Black" ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="90px" />
                         </asp:TemplateField>
        
                     </Columns>
                     <RowStyle Height="20px" />
-                    <SelectedRowStyle ForeColor="Red" />
+                    <SelectedRowStyle ForeColor="Black" />
                 </asp:GridView>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <iframe src="HistoPacienteFrame.aspx" width="600" height="570" frameborder="0" name="hitopaciente_frame"></iframe>
              &nbsp;&nbsp;&nbsp;

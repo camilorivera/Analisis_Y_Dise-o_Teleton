@@ -73,6 +73,31 @@ public partial class Areas : System.Web.UI.Page
         }
     }
 
+    protected void Eliminar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
+            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][0].ToString());
+            string t_Area = dt_tabla.Rows[gdv_Row.RowIndex][2].ToString();
+            if (bl_Areas.deleteAreas(int_id))
+            {
+                lb_mensaje.Text = " Área '"+t_Area+"' Eliminada";
+                lb_mensaje.Visible = true;
+                verArea();
+            }
+            else
+            {
+                lb_mensaje.Text = "No se puede eliminar, Area asociada a un historial";
+                lb_mensaje.Visible = true;
+            }
+        }
+        catch(Exception ex)
+        {
+            Session["Error_Msg"] = ex.Message;
+            Response.Redirect("~/Error.aspx", true);
+        }
+    }
     protected void Ver_Click(object sender, EventArgs e)
     {
         enableControls(true);
@@ -81,10 +106,11 @@ public partial class Areas : System.Web.UI.Page
             grd_Area.Rows[int_row].Font.Bold = false;
             grd_Area.Rows[int_row].ForeColor = System.Drawing.Color.Black;
             grd_Area.Rows[int_row].BorderColor = System.Drawing.Color.Black;
+
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
-            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][1].ToString());
-            txt_Area.Text = Convert.ToString(gdv_Row.Cells[2].Text);
-            txt_orden.Text = Convert.ToString(gdv_Row.Cells[3].Text);
+            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][0].ToString());
+            txt_Area.Text = Convert.ToString(gdv_Row.Cells[3].Text);
+            txt_orden.Text = Convert.ToString(gdv_Row.Cells[4].Text);
             gdv_Row.Font.Bold = true;
             gdv_Row.ForeColor = System.Drawing.Color.Red;
             gdv_Row.BorderColor = System.Drawing.Color.Black;

@@ -44,6 +44,34 @@ namespace BL
             }
         }
 
+        public bool deleteAreas(int _area)
+        {
+            try
+            {
+                var query = from c in entities.historials
+                            where c.area == _area
+                            select new { c.area };
+                if (query.Count() <= 0)
+                {
+                    var query1 = from c in entities.areas
+                                where c.id == _area
+                                select c;
+                    if (query1.Count() > 0)
+                    {
+                        DataAccess.area l_area = query1.First();
+                        entities.DeleteObject(l_area);
+                        entities.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public bool insertAreas(string _area, string _orden)
         {
             try
