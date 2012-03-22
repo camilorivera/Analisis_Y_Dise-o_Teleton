@@ -108,7 +108,7 @@ public partial class Areas : System.Web.UI.Page
             grd_Area.Rows[int_row].BorderColor = System.Drawing.Color.Black;
 
             GridViewRow gdv_Row = (GridViewRow)((ImageButton)sender).Parent.Parent;
-            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex][0].ToString());
+            int_id = Convert.ToInt32(dt_tabla.Rows[gdv_Row.RowIndex (grd_Area.PageIndex * grd_Area.PageSize)][0].ToString());
             txt_Area.Text = Convert.ToString(gdv_Row.Cells[3].Text);
             txt_orden.Text = Convert.ToString(gdv_Row.Cells[4].Text);
             gdv_Row.Font.Bold = true;
