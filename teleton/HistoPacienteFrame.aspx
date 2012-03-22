@@ -18,6 +18,8 @@
                 <fieldset>
                 <ul class="list" >
                    <div>
+                        <asp:Label ID="lb_area0" runat="server" Font-Bold="True" ForeColor="Black" 
+                            Text="Area :" Visible="False" style="font-size: large"></asp:Label>
                         <asp:Label ID="lb_area" runat="server" Font-Bold="True" ForeColor="Red" 
                             Text="[lb_Area]" Visible="False" style="font-size: large"></asp:Label>
                         <br />

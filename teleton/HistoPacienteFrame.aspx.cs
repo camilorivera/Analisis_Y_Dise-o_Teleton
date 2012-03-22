@@ -42,7 +42,9 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
         if (Session["id"] != null)
         {
             lb_area.Visible = true;
-            lb_area.Text = "Area Actual: " + Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
+            lb_area0.Visible = true;
+            lb_area.Text = Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
+            lb_area0.Text = "Area: ";
         }
 
         cargar_Historial();
@@ -83,8 +85,10 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
                                 if (dt_Hist != null)
                                 {
                                     lb_area.Visible = true;
+                                    lb_area0.Visible = true;
                                     lb_Expe.Text = "Num. Expe: " + expediente;
-                                    lb_area.Text = "Area Actual: " + Sec.getNameArea(Convert.ToInt32(Session["id"].ToString()));
+                                    lb_area.Text = Sec.getNameArea(Convert.ToInt32(Session["id"].ToString()));
+                                    lb_area0.Text = "Area: ";
                                     _intExpe = Convert.ToInt32(expediente);
                                     grd_Historial.DataSource = dt_Hist;
                                     grd_Historial.DataBind();

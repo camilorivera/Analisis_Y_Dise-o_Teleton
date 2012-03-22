@@ -8,11 +8,6 @@
 <script runat="server">
     
 </script>
-<style type="text/css">
-a:link {color:black;}    /* unvisited link */
-a:visited {color:black;} /* visited link */
-a:active {color:red;}
-</style>
 <div id = "content">
     <div id="navcenter">
         <div id="titulo">
@@ -55,7 +50,7 @@ a:active {color:red;}
                     <Columns>
                         <asp:TemplateField HeaderText="Area">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:LinkButton>
+                                            <asp:LinkButton ID="Label1" runat="server" Text='<%# Eval("area1")!=null ? "<a style=\"color:black;\" href=\"HistoPacienteFrame.aspx?id=" + ((string)Eval("area1")).Substring(0, ((string)Eval("area1")).IndexOf(" ")) + "\" target=\"hitopaciente_frame\">" + ((string)Eval("area1")).Substring(((string)Eval("area1")).IndexOf(" ")+1, ((string)Eval("area1")).Length - ((string)Eval("area1")).IndexOf(" ")-1) + "</a>" : "" %>'></asp:LinkButton>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="90px" />
                         </asp:TemplateField>
