@@ -51,6 +51,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("teletonModel", "pacientes_fk1", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "evoluciones", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.evolucione), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "fk_n_expediente", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "historial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historial), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "fk_username", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "historial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historial), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_n_expediente_3", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "historia_clinica_adultos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historia_clinica_adultos), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_username_3", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "historia_clinica_adultos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historia_clinica_adultos), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_n_expediente_4", "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.paciente), "historia_clinica_pediatrica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historia_clinica_pediatrica), true)]
+[assembly: EdmRelationshipAttribute("teletonModel", "fk_username_4", "usuarios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.usuario), "historia_clinica_pediatrica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.historia_clinica_pediatrica), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "profesion_fk", "ocupaciones", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.ocupacione), "pacientes", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.paciente), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "procedencia_fk", "procedencia", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataAccess.procedencia), "procedencia_descripcion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.procedencia_descripcion), true)]
 [assembly: EdmRelationshipAttribute("teletonModel", "permisos_x_roles", "permisos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.permiso), "roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataAccess.role))]
@@ -429,6 +433,38 @@ namespace DataAccess
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<historia_clinica_adultos> historia_clinica_adultos
+        {
+            get
+            {
+                if ((_historia_clinica_adultos == null))
+                {
+                    _historia_clinica_adultos = base.CreateObjectSet<historia_clinica_adultos>("historia_clinica_adultos");
+                }
+                return _historia_clinica_adultos;
+            }
+        }
+        private ObjectSet<historia_clinica_adultos> _historia_clinica_adultos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<historia_clinica_pediatrica> historia_clinica_pediatrica
+        {
+            get
+            {
+                if ((_historia_clinica_pediatrica == null))
+                {
+                    _historia_clinica_pediatrica = base.CreateObjectSet<historia_clinica_pediatrica>("historia_clinica_pediatrica");
+                }
+                return _historia_clinica_pediatrica;
+            }
+        }
+        private ObjectSet<historia_clinica_pediatrica> _historia_clinica_pediatrica;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<ocupacione> ocupaciones
         {
             get
@@ -763,6 +799,22 @@ namespace DataAccess
         public void AddTohistorials(historial historial)
         {
             base.AddObject("historials", historial);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the historia_clinica_adultos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTohistoria_clinica_adultos(historia_clinica_adultos historia_clinica_adultos)
+        {
+            base.AddObject("historia_clinica_adultos", historia_clinica_adultos);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the historia_clinica_pediatrica EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTohistoria_clinica_pediatrica(historia_clinica_pediatrica historia_clinica_pediatrica)
+        {
+            base.AddObject("historia_clinica_pediatrica", historia_clinica_pediatrica);
         }
     
         /// <summary>
@@ -5014,6 +5066,704 @@ namespace DataAccess
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="historia_clinica_adultos")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class historia_clinica_adultos : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new historia_clinica_adultos object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="n_expediente">Initial value of the n_expediente property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
+        /// <param name="edad">Initial value of the edad property.</param>
+        /// <param name="lateralidad">Initial value of the lateralidad property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
+        /// <param name="username">Initial value of the username property.</param>
+        public static historia_clinica_adultos Createhistoria_clinica_adultos(global::System.Int64 id, global::System.Int64 n_expediente, global::System.Int32 prefijo, global::System.Int32 edad, global::System.String lateralidad, global::System.DateTime fecha, global::System.String username)
+        {
+            historia_clinica_adultos historia_clinica_adultos = new historia_clinica_adultos();
+            historia_clinica_adultos.id = id;
+            historia_clinica_adultos.n_expediente = n_expediente;
+            historia_clinica_adultos.prefijo = prefijo;
+            historia_clinica_adultos.edad = edad;
+            historia_clinica_adultos.lateralidad = lateralidad;
+            historia_clinica_adultos.fecha = fecha;
+            historia_clinica_adultos.username = username;
+            return historia_clinica_adultos;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 n_expediente
+        {
+            get
+            {
+                return _n_expediente;
+            }
+            set
+            {
+                Onn_expedienteChanging(value);
+                ReportPropertyChanging("n_expediente");
+                _n_expediente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("n_expediente");
+                Onn_expedienteChanged();
+            }
+        }
+        private global::System.Int64 _n_expediente;
+        partial void Onn_expedienteChanging(global::System.Int64 value);
+        partial void Onn_expedienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 edad
+        {
+            get
+            {
+                return _edad;
+            }
+            set
+            {
+                OnedadChanging(value);
+                ReportPropertyChanging("edad");
+                _edad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("edad");
+                OnedadChanged();
+            }
+        }
+        private global::System.Int32 _edad;
+        partial void OnedadChanging(global::System.Int32 value);
+        partial void OnedadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String lateralidad
+        {
+            get
+            {
+                return _lateralidad;
+            }
+            set
+            {
+                OnlateralidadChanging(value);
+                ReportPropertyChanging("lateralidad");
+                _lateralidad = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("lateralidad");
+                OnlateralidadChanged();
+            }
+        }
+        private global::System.String _lateralidad;
+        partial void OnlateralidadChanging(global::System.String value);
+        partial void OnlateralidadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String informante
+        {
+            get
+            {
+                return _informante;
+            }
+            set
+            {
+                OninformanteChanging(value);
+                ReportPropertyChanging("informante");
+                _informante = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("informante");
+                OninformanteChanged();
+            }
+        }
+        private global::System.String _informante;
+        partial void OninformanteChanging(global::System.String value);
+        partial void OninformanteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String remitente
+        {
+            get
+            {
+                return _remitente;
+            }
+            set
+            {
+                OnremitenteChanging(value);
+                ReportPropertyChanging("remitente");
+                _remitente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("remitente");
+                OnremitenteChanged();
+            }
+        }
+        private global::System.String _remitente;
+        partial void OnremitenteChanging(global::System.String value);
+        partial void OnremitenteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String texto
+        {
+            get
+            {
+                return _texto;
+            }
+            set
+            {
+                OntextoChanging(value);
+                ReportPropertyChanging("texto");
+                _texto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("texto");
+                OntextoChanged();
+            }
+        }
+        private global::System.String _texto;
+        partial void OntextoChanging(global::System.String value);
+        partial void OntextoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_3", "pacientes")]
+        public paciente paciente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_3", "pacientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_3", "pacientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<paciente> pacienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_3", "pacientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<paciente>("teletonModel.fk_n_expediente_3", "pacientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_3", "usuarios")]
+        public usuario usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_3", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_3", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuario> usuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_3", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("teletonModel.fk_username_3", "usuarios", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="historia_clinica_pediatrica")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class historia_clinica_pediatrica : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new historia_clinica_pediatrica object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="n_expediente">Initial value of the n_expediente property.</param>
+        /// <param name="prefijo">Initial value of the prefijo property.</param>
+        /// <param name="edad">Initial value of the edad property.</param>
+        /// <param name="fecha">Initial value of the fecha property.</param>
+        /// <param name="username">Initial value of the username property.</param>
+        public static historia_clinica_pediatrica Createhistoria_clinica_pediatrica(global::System.Int64 id, global::System.Int64 n_expediente, global::System.Int32 prefijo, global::System.Int32 edad, global::System.DateTime fecha, global::System.String username)
+        {
+            historia_clinica_pediatrica historia_clinica_pediatrica = new historia_clinica_pediatrica();
+            historia_clinica_pediatrica.id = id;
+            historia_clinica_pediatrica.n_expediente = n_expediente;
+            historia_clinica_pediatrica.prefijo = prefijo;
+            historia_clinica_pediatrica.edad = edad;
+            historia_clinica_pediatrica.fecha = fecha;
+            historia_clinica_pediatrica.username = username;
+            return historia_clinica_pediatrica;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int64 _id;
+        partial void OnidChanging(global::System.Int64 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 n_expediente
+        {
+            get
+            {
+                return _n_expediente;
+            }
+            set
+            {
+                Onn_expedienteChanging(value);
+                ReportPropertyChanging("n_expediente");
+                _n_expediente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("n_expediente");
+                Onn_expedienteChanged();
+            }
+        }
+        private global::System.Int64 _n_expediente;
+        partial void Onn_expedienteChanging(global::System.Int64 value);
+        partial void Onn_expedienteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 prefijo
+        {
+            get
+            {
+                return _prefijo;
+            }
+            set
+            {
+                OnprefijoChanging(value);
+                ReportPropertyChanging("prefijo");
+                _prefijo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("prefijo");
+                OnprefijoChanged();
+            }
+        }
+        private global::System.Int32 _prefijo;
+        partial void OnprefijoChanging(global::System.Int32 value);
+        partial void OnprefijoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 edad
+        {
+            get
+            {
+                return _edad;
+            }
+            set
+            {
+                OnedadChanging(value);
+                ReportPropertyChanging("edad");
+                _edad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("edad");
+                OnedadChanged();
+            }
+        }
+        private global::System.Int32 _edad;
+        partial void OnedadChanging(global::System.Int32 value);
+        partial void OnedadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String informante
+        {
+            get
+            {
+                return _informante;
+            }
+            set
+            {
+                OninformanteChanging(value);
+                ReportPropertyChanging("informante");
+                _informante = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("informante");
+                OninformanteChanged();
+            }
+        }
+        private global::System.String _informante;
+        partial void OninformanteChanging(global::System.String value);
+        partial void OninformanteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String remitente
+        {
+            get
+            {
+                return _remitente;
+            }
+            set
+            {
+                OnremitenteChanging(value);
+                ReportPropertyChanging("remitente");
+                _remitente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("remitente");
+                OnremitenteChanged();
+            }
+        }
+        private global::System.String _remitente;
+        partial void OnremitenteChanging(global::System.String value);
+        partial void OnremitenteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String texto
+        {
+            get
+            {
+                return _texto;
+            }
+            set
+            {
+                OntextoChanging(value);
+                ReportPropertyChanging("texto");
+                _texto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("texto");
+                OntextoChanged();
+            }
+        }
+        private global::System.String _texto;
+        partial void OntextoChanging(global::System.String value);
+        partial void OntextoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_4", "pacientes")]
+        public paciente paciente
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_4", "pacientes").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_4", "pacientes").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<paciente> pacienteReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<paciente>("teletonModel.fk_n_expediente_4", "pacientes");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<paciente>("teletonModel.fk_n_expediente_4", "pacientes", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_4", "usuarios")]
+        public usuario usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_4", "usuarios").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_4", "usuarios").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<usuario> usuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<usuario>("teletonModel.fk_username_4", "usuarios");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<usuario>("teletonModel.fk_username_4", "usuarios", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="teletonModel", Name="historial")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -6519,6 +7269,50 @@ namespace DataAccess
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_3", "historia_clinica_adultos")]
+        public EntityCollection<historia_clinica_adultos> historia_clinica_adultos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historia_clinica_adultos>("teletonModel.fk_n_expediente_3", "historia_clinica_adultos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historia_clinica_adultos>("teletonModel.fk_n_expediente_3", "historia_clinica_adultos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_n_expediente_4", "historia_clinica_pediatrica")]
+        public EntityCollection<historia_clinica_pediatrica> historia_clinica_pediatrica
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historia_clinica_pediatrica>("teletonModel.fk_n_expediente_4", "historia_clinica_pediatrica");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historia_clinica_pediatrica>("teletonModel.fk_n_expediente_4", "historia_clinica_pediatrica", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("teletonModel", "profesion_fk", "ocupaciones")]
         public ocupacione ocupacione
         {
@@ -7791,6 +8585,50 @@ namespace DataAccess
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historial>("teletonModel.fk_username", "historial", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_3", "historia_clinica_adultos")]
+        public EntityCollection<historia_clinica_adultos> historia_clinica_adultos
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historia_clinica_adultos>("teletonModel.fk_username_3", "historia_clinica_adultos");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historia_clinica_adultos>("teletonModel.fk_username_3", "historia_clinica_adultos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("teletonModel", "fk_username_4", "historia_clinica_pediatrica")]
+        public EntityCollection<historia_clinica_pediatrica> historia_clinica_pediatrica
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<historia_clinica_pediatrica>("teletonModel.fk_username_4", "historia_clinica_pediatrica");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<historia_clinica_pediatrica>("teletonModel.fk_username_4", "historia_clinica_pediatrica", value);
                 }
             }
         }
