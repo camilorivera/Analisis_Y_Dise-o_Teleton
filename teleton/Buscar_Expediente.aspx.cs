@@ -40,12 +40,14 @@ public partial class Buscar_Expediente : System.Web.UI.Page
             //Response.Write("<script>alert('Usted no posee permisos suficientes para accesar a este recurso')</script>");
             Response.Redirect("NoAccess.aspx");
         }
+
+        this.Form.DefaultButton = this.btnBuscar.UniqueID;
+
         if (!this.IsPostBack)
-        {
-           
+        {           
             cboCentro.DataSource = sec.getCentrosPermitidos(Session["nombre_usuario"].ToString());
             cboCentro.DataBind();
-            cleanPage();
+            cleanPage();            
         }
 
         if (Session["ppaciente"] != null && (string)Session["ppaciente"] != string.Empty && Session["centro"] != null && (string)Session["centro"] != string.Empty)
@@ -60,23 +62,62 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         }
     }
 
+    private string transformarCadena(string str) //Pone mayusculas y despues minusculas
+    {
+        String[] list = str.Split(' ');
+        string newStr = "";
+
+        for (int i = 0; i < list.Length; i++)
+        {
+            for (int j = 0; j < list[i].Length; j++)
+            {
+                if (j == 0)
+                    newStr += list[i][0].ToString().ToUpper();
+                else
+                    newStr += list[i][j].ToString().ToLower();
+            }
+
+            if (list[i].Length > 0)
+            {
+                if (i != list.Length - 1)
+                    newStr += " ";
+            }
+        }
+
+        return newStr;
+    }
+
     private void cleanPage()
     {
         string fecha = DateTime.Now.Year.ToString();
         fecha = fecha + "-" + (DateTime.Now.Month < 10 ? "0" : "") + DateTime.Now.Month.ToString();
         fecha = fecha + "-" + (DateTime.Now.Day < 10 ? "0" : "") + DateTime.Now.Day.ToString();
-        txtFechaIngreso.Text = fecha;
-        txtCedula.Text = "";
-        txtDireccion.Text = "";
-        txtFechaNacimiento.Text = "";
-        txtLugarNacimiento.Text = "";
-        txtNombres.Text = "";
-        txtPrimerApellido.Text = "";
-        txtSegundoApellido.Text = "";
-        rdFemenino.Selected = false;
-        rdMasculino.Selected = true;
-        ddEstado.SelectedIndex = 0;
+        
         txtExpediente.Text = "";
+        txtFechaIngreso.Text = fecha;//
+        txtCedula.Text = "";//
+        txtDireccion.Text = "";//
+        txtFechaNacimiento.Text = "";//
+        txtLugarNacimiento.Text = "";//
+        txtNombres.Text = "";//
+        txtPrimerApellido.Text = "";//
+        txtSegundoApellido.Text = "";//
+        txtCelular.Text = "";//
+        txtTelefono.Text = "";//
+        txtLugarTrabajo.Text = "";//
+        //FileUpload_Foto.
+        rdFemenino.Selected = false;//
+        rdMasculino.Selected = true;//
+        ddEstado.SelectedIndex = 0;//
+        ddlEscolaridad.SelectedIndex = 0;//
+        ddlProfesion.SelectedIndex = 0;//
+        txtPadre.Text = "";
+        txtMadre.Text = "";
+        txtConyugue.Text = "";
+        txtFamiliar.Text = "";
+        txtEstructuraFamiliar.Text = "";
+        txtObservaciones.Text = "";
+        rblRehabilitacion.SelectedIndex = 0;
     }
 
     private void cambiarEnabled(bool estado)
@@ -105,11 +146,12 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         txtLugarTrabajo.Enabled = estado;
         txtMadre.Enabled = estado;
         txtPadre.Enabled = estado;
+        txtConyugue.Enabled = estado;
+        txtFamiliar.Enabled = estado;
         txtEstructuraFamiliar.Enabled = estado;
         rblRehabilitacion.Enabled = estado;
         txtObservaciones.Enabled = estado;
         txtDiagnostico.Enabled = estado;
-        txtConyugue.Enabled = estado;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -154,13 +196,13 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 dia = p.FechaNac.Day.ToString();
                 mes = p.FechaNac.Month.ToString();
                 anio = p.FechaNac.Year.ToString();
-                fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
+                fecha = (dia.Length == 1 ? "0" : "") + dia + (mes.Length == 1 ? "-0" : "-") + mes + "-" + anio;
                 txtFechaNacimiento.Text = fecha;
 
                 dia = p.FechaIngreso.Day.ToString();
                 mes = p.FechaIngreso.Month.ToString();
                 anio = p.FechaIngreso.Year.ToString();
-                fecha = anio + (mes.Length == 1 ? "-0" : "-") + mes + (dia.Length == 1 ? "-0" : "-") + dia;
+                fecha = (dia.Length == 1 ? "0" : "") + dia + (mes.Length == 1 ? "-0" : "-") + mes + "-" + anio;
                 txtFechaIngreso.Text = fecha;
 
                 Imagen.ImageUrl = "Handler.ashx?Expediente=" + exp + "&CentroActual=" + CId;
@@ -178,6 +220,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 txtMadre.Text = p.nombreMadre;
                 txtPadre.Text = p.nombrePadre;
                 txtConyugue.Text = p.nombreConyugue;
+                txtFamiliar.Text = p.nombreFamiliar;
                 txtEstructuraFamiliar.Text = p.estructuraFamiliar;
 
                 if (p.pacienteActivo)
@@ -233,73 +276,77 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
     protected void btnEditar_Click(object sender, EventArgs e)
     {
-        try
+        Validate();
+
+        if (this.IsValid)
         {
-            BL.Security sec = new BL.Security();
-            int CId = (int)sec.getCentroId(cboCentro.SelectedValue);  
-            long exp = long.Parse(txtExpediente.Text);
-
-            BL.Paciente pac = new BL.Paciente();
-            if (pac.leerPaciente(CId, exp))
+            try
             {
-                int yy = int.Parse(txtFechaNacimiento.Text.Substring(0, 4));
-                int mm = int.Parse(txtFechaNacimiento.Text.Substring(5, 2));
-                int dd = int.Parse(txtFechaNacimiento.Text.Substring(8, 2));
-                DateTime fechaNac = new DateTime(yy, mm, dd);
+                BL.Security sec = new BL.Security();
+                int CId = (int)sec.getCentroId(cboCentro.SelectedValue);
+                long exp = long.Parse(txtExpediente.Text);
 
-                if (fechaNac >= DateTime.Today)
+                BL.Paciente pac = new BL.Paciente();
+                if (pac.leerPaciente(CId, exp))
                 {
-                    Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
-                    return;
-                }
-                
-                yy = int.Parse(txtFechaIngreso.Text.Substring(0, 4));
-                mm = int.Parse(txtFechaIngreso.Text.Substring(5, 2));
-                dd = int.Parse(txtFechaIngreso.Text.Substring(8, 2));
-                DateTime fechaIng = new DateTime(yy, mm, dd);
+                    int yy = int.Parse(txtFechaNacimiento.Text.Substring(6, 4));
+                    int mm = int.Parse(txtFechaNacimiento.Text.Substring(3, 2));
+                    int dd = int.Parse(txtFechaNacimiento.Text.Substring(0, 2));
+                    DateTime fechaNac = new DateTime(yy, mm, dd);
 
-                bool rehabilitacion = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
-
-                if (FileUpload_Foto.HasFile)
-                {
-                    if (!FileUpload_Foto.FileName.ToString().ToLower().EndsWith(".jpg"))
+                    if (fechaNac >= DateTime.Today)
                     {
-                        Response.Write("<script>alert('Imagen no esta en formato jpg')</script>");
+                        Response.Write("<script>alert('Fecha de nacimiento mayor o igual a la actual')</script>");
                         return;
+                    }
+
+                    yy = int.Parse(txtFechaIngreso.Text.Substring(6, 4));
+                    mm = int.Parse(txtFechaIngreso.Text.Substring(3, 2));
+                    dd = int.Parse(txtFechaIngreso.Text.Substring(0, 2));
+                    DateTime fechaIng = new DateTime(yy, mm, dd);
+
+                    bool rehabilitacion = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
+
+                    if (FileUpload_Foto.HasFile)
+                    {
+                        if (!FileUpload_Foto.FileName.ToString().ToLower().EndsWith(".jpg"))
+                        {
+                            Response.Write("<script>alert('Imagen no esta en formato jpg')</script>");
+                            return;
+                        }
+                        else
+                        {
+                            pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), transformarCadena(txtNombres.Text), transformarCadena(txtPrimerApellido.Text), transformarCadena(txtSegundoApellido.Text),
+                            fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
+                            txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
+                            txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text);
+                        }
                     }
                     else
                     {
-                        pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
-                        fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
+                        pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), transformarCadena(txtNombres.Text), transformarCadena(txtPrimerApellido.Text), transformarCadena(txtSegundoApellido.Text),
+                        fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                         txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), "");
+                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text);
+
+                    }
+
+                    if (pac.editarPaciente())
+                    {
+                        Response.Write("<script>alert('El paciente se ha editado exitosamente')</script>");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('No se ha podido editar el registro del paciente')</script>");
                     }
                 }
-                else
-                {
-                    pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
-                    fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
-                    txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), "");
-
-                }
-
-                if (pac.editarPaciente())
-                {
-                    Response.Write("<script>alert('El paciente se ha editado exitosamente')</script>");
-                }
-                else
-                {
-                    Response.Write("<script>alert('No se ha podido editar el registro del paciente')</script>");
-                }
+            }
+            catch (Exception err)
+            {
+                Session["Error_Msg"] = err.Message;
+                Response.Redirect("~/Error.aspx", true);
             }
         }
-        catch (Exception err)
-        {
-            Session["Error_Msg"] = err.Message;
-            Response.Redirect("~/Error.aspx", true);
-        }
-
     }
 
     protected void btnEliminar_Click(object sender, EventArgs e)

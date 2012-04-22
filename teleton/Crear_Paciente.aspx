@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Crear_Paciente.aspx.cs" Inherits="Crear_Paciente" %>
+﻿<%@ Page Title="" ValidateRequest="true" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Crear_Paciente.aspx.cs" Inherits="Crear_Paciente" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -321,7 +321,7 @@
         
         <div id="navBotones">
             <asp:Button ID="btIngresar" CssClass="boton" runat="server" Text="Ingresar Paciente" 
-                        OnClientClick="return validateForm()"  onclick="btIngresar_Click" />
+                 OnClientClick="return validateForm()" onclick="btIngresar_Click" />
                         
             <asp:Button ID="btnClean" CssClass="boton" runat="server" Text="Limpiar" 
                 CausesValidation="False" onclick="btnClean_Click"/>

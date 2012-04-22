@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Buscar_Expediente.aspx.cs" Inherits="Buscar_Expediente" %>
+﻿<%@ Page Language="C#" ValidateRequest="true" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Buscar_Expediente.aspx.cs" Inherits="Buscar_Expediente" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -7,6 +7,34 @@
 </asp:Content>
 
 <asp:Content ID="content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        function validateForm() {
+            //var x = document.getElementById("MainContent_txtCedula");
+            //var pattx = new RegExp("[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]");
+            //var boolx = pattx.test(x.value);
+
+            var y = document.getElementById("MainContent_txtFechaNacimiento");
+            var patty = new RegExp("(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]");
+            var booly = patty.test(y.value);
+
+            var z = document.getElementById("MainContent_txtFechaIngreso");
+            var boolz = patty.test(z.value);
+
+            /*if (!boolx) {
+            alert("Numero de cedula invalido");
+            }*/
+
+            if (!booly) {
+                alert("Fecha de nacimiento invalida");
+            }
+
+            if (!boolz) {
+                alert("Fecha de ingreso invalida");
+            }
+
+            return booly && boolz;
+        }
+    </script>
     <div id="content">
         <div id="titulo">
             <h1>Búsqueda de pacientes</h1>
@@ -30,14 +58,14 @@
                 <asp:Button ID="btnBuscar" runat="server" CssClass="boton" Text="Buscar" 
                     onclick="btnBuscar_Click" CausesValidation="False" />
                 <asp:Button ID="btnEditar" runat="server" CssClass="boton" Text="Editar" 
-                    onclick="btnEditar_Click" Enabled="False"/>
+                    OnClientClick="return validateForm()" onclick="btnEditar_Click" Enabled="False"/>
                 <asp:Button ID="btnEliminar" runat="server" CssClass="boton" Text="Eliminar" 
                     onclick="btnEliminar_Click" Enabled="False"/>
                 <asp:ConfirmButtonExtender ID="cfmExtEliminar" runat="server" TargetControlID="btnEliminar"
                     ConfirmText="Desea Eliminar al paciente"></asp:ConfirmButtonExtender>
                 <asp:Button ID="btnImprimir" runat="server" CssClass="boton" Text="Imprimir" 
                     onclick="btnImprimir_Click" Enabled="False" />
-                <asp:Button ID="btnCleanPage" runat="server" CssClass="boton" Text="limpiar" 
+                <asp:Button ID="btnCleanPage" runat="server" CssClass="boton" Text="Limpiar" 
                     onclick="btnCleanPage_Click" CausesValidation="False" Enabled="False" 
                     Visible="False" />
         </div>
@@ -151,12 +179,7 @@
                             <asp:Label runat="server" ID="Label13" CssClass="label">Teléfono:</asp:Label>
                             <asp:TextBox ID="txtTelefono" runat="server" MaxLength="8" 
                                 ToolTip="Telefono sin guion" Enabled="False"></asp:TextBox>
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" 
-                                ErrorMessage="*Vacio no permitido" ForeColor="Red"
-                                ControlToValidate="txtTelefono">
-                            </asp:RequiredFieldValidator>
-
+                                
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*Formato no valido"
                                 ForeColor="Red" ControlToValidate="txtTelefono" Type="Integer" Operator="DataTypeCheck">
                             </asp:CompareValidator>
@@ -166,12 +189,7 @@
                             <asp:Label runat="server" ID="Label14" CssClass="label">Celular:</asp:Label>
                             <asp:TextBox runat="server" ID="txtCelular" MaxLength="8" 
                                 ToolTip="Celular sin guion" Enabled="False"></asp:TextBox>
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
-                                ErrorMessage="*Vacio no permitido" ForeColor="Red"
-                                ControlToValidate="txtCelular">
-                            </asp:RequiredFieldValidator>
-
+                                
                             <asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="*Formato no valido"
                                 ForeColor="Red" ControlToValidate="txtCelular" Type="Integer" Operator="DataTypeCheck">
                             </asp:CompareValidator>
@@ -195,10 +213,6 @@
                             <asp:Label runat="server" ID="Label16" CssClass="label">Lugar De Trabajo:</asp:Label>
                             <asp:TextBox runat="server" ID="txtLugarTrabajo" CssClass="tb_Permiso" 
                                 Enabled="False"></asp:TextBox>
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" 
-                                    ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtLugarTrabajo"></asp:RequiredFieldValidator>
 
                         </li>
 
@@ -224,20 +238,12 @@
                             <asp:Label runat="server" ID="Label17" CssClass="label">Nombre Madre:</asp:Label>
                             <asp:TextBox runat="server" ID="txtMadre" CssClass="tb_Permiso" MaxLength="45" 
                                 EnableTheming="True" Enabled="False"></asp:TextBox>
-                        
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                                    ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtMadre"></asp:RequiredFieldValidator>
                         </li>
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label18" CssClass="label">Nombre Padre:</asp:Label>
                             <asp:TextBox runat="server" ID="txtPadre" CssClass="tb_Permiso" MaxLength="45" 
                                 EnableTheming="True" Enabled="False"></asp:TextBox>
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
-                                    ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtPadre"></asp:RequiredFieldValidator>
                         </li>
 
                         <li class="field">
@@ -245,15 +251,17 @@
                             <asp:TextBox ID="txtConyugue" runat="server" CssClass="tb_Permiso" EnableTheming="true"
                                 Enabled="false" MaxLength="45"></asp:TextBox>
                         </li>
+                        
+                        <li class="field">
+                            <asp:Label ID="Label21" runat="server" CssClass="label">Nombre Familiar:</asp:Label>
+                            <asp:TextBox ID="txtFamiliar" runat="server" CssClass="tb_Permiso" EnableTheming="true"
+                                MaxLength="45"></asp:TextBox>
+                        </li>
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label19" CssClass="label">Estructura Familiar:</asp:Label>
                             <asp:TextBox runat="server" ID="txtEstructuraFamiliar" CssClass="tb_Permiso" 
                                 MaxLength="45" EnableTheming="True" Enabled="False"></asp:TextBox>
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
-                                    ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtEstructuraFamiliar"></asp:RequiredFieldValidator>
                         </li>
                     </ul>
                 </div>

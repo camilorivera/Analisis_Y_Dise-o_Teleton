@@ -528,7 +528,7 @@ namespace BL
 
         private bool isTheInfoComplete()
         {
-            return FechaIngreso != null && PrimerApellido.Length > 0 && SegundoApellido.Length > 0 && Nombres.Length > 0 && Cedula.Length > 0 && FechaNac != null;
+            return FechaIngreso != null && PrimerApellido.Length > 0 && Direccion.Length > 0 && LugarNac.Length > 0 && Nombres.Length > 0 && Cedula.Length > 0 && FechaNac != null;
         }
 
         public string getEscolaridad(long escolaridad)

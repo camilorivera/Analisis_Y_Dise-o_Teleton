@@ -35,8 +35,13 @@ public partial class Crear_Paciente : System.Web.UI.Page
             //Response.Write("<script>alert('Usted no posee permisos suficientes para accesar a este recurso')</script>");
             Response.Redirect("NoAccess.aspx");
         }
+
+        this.Form.DefaultButton = this.btIngresar.UniqueID;
+
         if (!this.IsPostBack)
+        {
             cleanPage();
+        }
 
         if (Request.QueryString["sender"] == "new")
         {
@@ -143,6 +148,7 @@ public partial class Crear_Paciente : System.Web.UI.Page
     {
         if (this.IsPostBack)
         {
+            Validate();
             //Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('"+txtFechaIngreso.Text+"')", true);
             if (this.IsValid)
             {
@@ -193,29 +199,34 @@ public partial class Crear_Paciente : System.Web.UI.Page
 
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {
-                        pac.guardarPaciente();
-                        //Session["expediente"] = pac.Expediente;
-                        //TODO: revisar esto de los mensajes
-                        //Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('La data del paciente ha sido guardada exitosamente con expediente:"+ _paciente.Expediente+ " ')", true);
-                        long temp = Int64.Parse(Session["Centro_idNum"].ToString());
-                        string strExp;
-                        if (Request.QueryString["sender"] == "new")
+                        if (pac.guardarPaciente())
                         {
-                            long nextP = center.getNext(temp);
-                            strExp = (nextP -1).ToString();
+                            //Session["expediente"] = pac.Expediente;
+                            //TODO: revisar esto de los mensajes
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('La data del paciente ha sido guardada exitosamente con expediente:"+ _paciente.Expediente+ " ')", true);
+                            long temp = Int64.Parse(Session["Centro_idNum"].ToString());
+                            string strExp;
+                            if (Request.QueryString["sender"] == "new")
+                            {
+                                long nextP = center.getNext(temp);
+                                strExp = (nextP - 1).ToString();
+                            }
+                            else
+                                strExp = txtExp.Text;
 
+                            Response.Write("<script>alert('La data del paciente ha sido guardada exitosamente con expediente: " + strExp + "')</script>");
+                            btnPrint.Enabled = true;
+                            Session["expediente"] = strExp;
+                            txtExp.Text = strExp;
                         }
                         else
-                            strExp = txtExp.Text;
-                        Response.Write("<script>alert('La data del paciente ha sido guardada exitosamente con expediente: " + strExp + "')</script>");
-                        btnPrint.Enabled = true;
-                        long tmp = Int64.Parse(Session["Centro_idNum"].ToString());
-                        Session["expediente"] = strExp;
-                        txtExp.Text = strExp;
+                        {
+                            Response.Write("<script>alert('No se puedo guardar el expediente')</script>");
+                        }
                     }
                     else
                     {
-                        Response.Write("<script>alert('no se ha guardado por que ya existe un registro')</script>");
+                        Response.Write("<script>alert('No se ha guardado por que ya existe un registro con ese expediente')</script>");
                     }
                 }
                 catch (Exception err)
