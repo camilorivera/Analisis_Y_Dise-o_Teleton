@@ -82,23 +82,61 @@ public partial class Crear_Paciente : System.Web.UI.Page
         string fecha = DateTime.Now.Year.ToString();
         fecha = fecha + "-" + (DateTime.Now.Month < 10 ? "0" : "") + DateTime.Now.Month.ToString();
         fecha = fecha + "-" + (DateTime.Now.Day < 10 ? "0" : "") + DateTime.Now.Day.ToString();
-        txtFechaIngreso.Text = fecha;
-        txtCedula.Text = "";
-        txtDireccion.Text = "";
-        txtFechaNacimiento.Text = "";
-        txtLugarNacimiento.Text = "";
-        txtNombres.Text = "";
-        txtPrimerApellido.Text = "";
-        txtSegundoApellido.Text = "";
-        rdFemenino.Selected = false;
-        rdMasculino.Selected = true;
-        ddEstado.SelectedIndex = 0;
+        txtFechaIngreso.Text = fecha;//
+        txtCedula.Text = "";//
+        txtDireccion.Text = "";//
+        txtFechaNacimiento.Text = "";//
+        txtLugarNacimiento.Text = "";//
+        txtNombres.Text = "";//
+        txtPrimerApellido.Text = "";//
+        txtSegundoApellido.Text = "";//
+        txtCelular.Text = "";//
+        txtTelefono.Text = "";//
+        txtLugarTrabajo.Text = "";//
+        //FileUpload_Foto.
+        rdFemenino.Selected = false;//
+        rdMasculino.Selected = true;//
+        ddEstado.SelectedIndex = 0;//
+        ddlEscolaridad.SelectedIndex = 0;//
+        ddlProfesion.SelectedIndex = 0;//
         btnPrint.Enabled = false;
-        txtExp.Text = "";
+        txtExp.Text = "";//
+        txtPadre.Text = "";
+        txtMadre.Text = "";
+        txtConyugue.Text = "";
+        txtFamiliar.Text = "";
+        txtEstructuraFamiliar.Text = "";
+        txtObservaciones.Text = "";
+        rblRehabilitacion.SelectedIndex = 0;
         if (Request.QueryString["sender"] == "new")
         {
             txtExp.Text = "0";
         }
+    }
+
+    private string transformarCadena(string str) //Pone mayusculas y despues minusculas
+    {
+        String[] list = str.Split(' ');
+        string newStr = "";
+
+        for (int i = 0; i < list.Length; i++)
+        {            
+            for (int j = 0; j < list[i].Length; j++)
+            {
+                if (j == 0)
+                    newStr += list[i][0].ToString().ToUpper();
+                else
+                    newStr += list[i][j].ToString().ToLower();
+            }
+
+            if (list[i].Length > 0)
+            {
+                if (i != list.Length - 1)
+                    newStr += " ";
+            }
+        }
+
+        return newStr;
     }
 
     protected void btIngresar_Click(object sender, EventArgs e)
@@ -112,9 +150,9 @@ public partial class Crear_Paciente : System.Web.UI.Page
                 {
                     int ca = (int)long.Parse(Session["Centro_idNum"].ToString());
 
-                    int yy = int.Parse(txtFechaNacimiento.Text.Substring(0, 4));
-                    int mm = int.Parse(txtFechaNacimiento.Text.Substring(5, 2));
-                    int dd = int.Parse(txtFechaNacimiento.Text.Substring(8, 2));
+                    int dd = int.Parse(txtFechaNacimiento.Text.Substring(0, 2));
+                    int mm = int.Parse(txtFechaNacimiento.Text.Substring(3, 2));
+                    int yy = int.Parse(txtFechaNacimiento.Text.Substring(6, 4));
                     DateTime fechaNac = new DateTime(yy, mm, dd);
 
                     if (fechaNac >= DateTime.Today)
@@ -131,9 +169,9 @@ public partial class Crear_Paciente : System.Web.UI.Page
                         }
                     }
 
-                    yy = int.Parse(txtFechaIngreso.Text.Substring(0, 4));
-                    mm = int.Parse(txtFechaIngreso.Text.Substring(5, 2));
-                    dd = int.Parse(txtFechaIngreso.Text.Substring(8, 2));
+                    dd = int.Parse(txtFechaIngreso.Text.Substring(0, 2));
+                    mm = int.Parse(txtFechaIngreso.Text.Substring(3, 2));
+                    yy = int.Parse(txtFechaIngreso.Text.Substring(6, 4));
                     
                     DateTime fechaIng = new DateTime(yy, mm, dd);
                     long exped = 0;
@@ -146,12 +184,12 @@ public partial class Crear_Paciente : System.Web.UI.Page
                     bool rehabilitacionAnterior = rblRehabilitacion.SelectedValue.Equals("Sí") ? true : false;
                     
                     BL.Paciente pac = new BL.Paciente();
-                    pac.asignarDatos(ca, exped, txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
+                    pac.asignarDatos(ca, exped, transformarCadena(txtNombres.Text), transformarCadena(txtPrimerApellido.Text), transformarCadena(txtSegundoApellido.Text),
                         fechaNac, rdMasculino.Selected, fechaIng, txtCedula.Text, txtDireccion.Text,
                         txtLugarNacimiento.Text, ddEstado.SelectedItem.Text,FileUpload_Foto.FileBytes, txtTelefono.Text,
                         txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue),
                         txtLugarTrabajo.Text, txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacionAnterior,
-                        txtObservaciones.Text, txtConyugue.Text, true);
+                        txtObservaciones.Text, txtConyugue.Text, true, txtFamiliar.Text);
 
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {

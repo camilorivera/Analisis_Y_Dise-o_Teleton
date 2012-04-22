@@ -2541,7 +2541,7 @@
         <EntityTypeShape EntityType="teletonModel.clasificacion_paciente" Width="1.5" PointX="0.75" PointY="8" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.condicion" Width="1.5" PointX="0.75" PointY="10.375" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.diagnostico" Width="1.5" PointX="0.75" PointY="20.25" Height="1.9802864583333388" IsExpanded="true" />
-        <EntityTypeShape EntityType="teletonModel.dx" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="teletonModel.dx" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4233821614583335" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.empleado" Width="1.5" PointX="1.5" PointY="37.375" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.escolaridad" Width="1.5" PointX="0.75" PointY="12.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.estado_alta" Width="1.5" PointX="0.75" PointY="15.25" Height="1.5956835937500031" IsExpanded="true" />

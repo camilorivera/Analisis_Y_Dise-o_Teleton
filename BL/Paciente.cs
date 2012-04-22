@@ -36,6 +36,7 @@ namespace BL
         private string _nombreMadre;
         private string _nombrePadre;
         private string _nombreConyugue;
+        private string _nombreFamiliar;
         private string _estructuraFamiliar;       
         private bool _recibioRehabilitacion;
         private string _observaciones;
@@ -169,6 +170,12 @@ namespace BL
             get { return _nombreConyugue; }
         }
 
+        public string nombreFamiliar
+        {
+            set { _nombreFamiliar = value; }
+            get { return _nombreFamiliar; }
+        }
+
         public string estructuraFamiliar
         {
             set { _estructuraFamiliar = value; }
@@ -214,7 +221,7 @@ namespace BL
         public void asignarDatos(int centroActual, long expediente, string nombres, string primerApellido, string segundoApellido, 
             DateTime fechaNac, bool sexo, DateTime fechaIngreso, string cedula, string direccion, string lugarNac, string estado,
             byte[] foto, /*Modificado por Eliazar ->*/string telefonoCasa, string celular, long idEscolaridad, long idProfesion, string dondeTrabajo, string madre,
-            string padre, string estructuraFam, bool recibioReha, string observ, string conyugue, bool pacActi)
+            string padre, string estructuraFam, bool recibioReha, string observ, string conyugue, bool pacActi, string familiar)
         {
             CentroActual = centroActual;
             _expediente = expediente;
@@ -239,6 +246,7 @@ namespace BL
             nombreMadre = madre;
             nombrePadre = padre;
             nombreConyugue = conyugue;
+            nombreFamiliar = familiar;
             estructuraFamiliar = estructuraFam;
             rehabilitacion = recibioReha;
             observaciones = observ;
@@ -584,6 +592,7 @@ namespace BL
                 _nombreMadre = pac.nombre_madre;
                 _nombrePadre = pac.nombre_padre;
                 _nombreConyugue = pac.nombre_conyugue;
+                _nombreFamiliar = pac.nombre_familiar;
                 _estructuraFamiliar = pac.estructura_familiar;
                 _recibioRehabilitacion = Convert.ToBoolean(pac.expectativa);
                 _observaciones = pac.observaciones;
@@ -646,6 +655,7 @@ namespace BL
                 pac.nombre_madre = nombreMadre;
                 pac.nombre_padre = nombrePadre;
                 pac.nombre_conyugue = nombreConyugue;
+                pac.nombre_familiar = nombreFamiliar;
                 pac.estructura_familiar = estructuraFamiliar;
                 pac.expectativa = rehabilitacion;
                 pac.observaciones = observaciones;
@@ -713,6 +723,7 @@ namespace BL
                     pac.nombre_madre = nombreMadre;
                     pac.nombre_padre = nombrePadre;
                     pac.nombre_conyugue = nombreConyugue;
+                    pac.nombre_familiar = nombreFamiliar;
                     pac.estructura_familiar = estructuraFamiliar;
                     pac.expectativa = rehabilitacion;
                     pac.observaciones = observaciones;

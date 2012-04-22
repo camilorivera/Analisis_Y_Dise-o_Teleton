@@ -272,7 +272,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                         pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                         fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
                         txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue));
+                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), "");
                     }
                 }
                 else
@@ -280,7 +280,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                     pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), txtNombres.Text, txtPrimerApellido.Text, txtSegundoApellido.Text,
                     fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                     txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue));
+                    txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), "");
 
                 }
 
