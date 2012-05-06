@@ -365,6 +365,31 @@ namespace BL
                 return false;
             }
         }
+
+        public bool guardarHistoPacienteAltaAreas(int int_Exp, short sht_Pref, DateTime dt_fecha, int id_empleado, string str_texto, int area, Boolean alta)
+        {
+            try
+            {
+                var query = from c in entities.usuarios
+                            where c.empleado == id_empleado
+                            select new { c.username };
+                DataAccess.altas_areas da_Hist = new DataAccess.altas_areas();
+                da_Hist.n_expediente = int_Exp;
+                da_Hist.prefijo = sht_Pref;
+                da_Hist.fecha = dt_fecha;
+                da_Hist.username = query.FirstOrDefault().username;
+                da_Hist.texto = str_texto;
+                da_Hist.area = area;
+                da_Hist.alta = alta;
+                entities.altas_areas.AddObject(da_Hist);
+                entities.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Get nombre de paciente
         /// </summary>
@@ -449,6 +474,34 @@ namespace BL
         }
 
         /// <summary>
+        /// Verifica si esta dado de alta por area
+        /// </summary>
+        /// <param name="expe">Expediente</param>
+        /// <param name="prefijo">Prefijo</param>
+        /// <param name="area">Area</param>
+        /// <returns></returns>
+        public bool AltaArea(int expe,int prefijo,int area)
+        {
+            try
+            {
+                var query = from p in entities.altas_areas
+                            where p.area==area && p.n_expediente==expe && p.prefijo==prefijo
+                            select new { p.alta };
+                foreach (var row in query)
+                {
+                    if (row.alta)
+                        return row.alta;
+                   
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Historial del Paciente
         /// </summary>
         /// <param name="int_exp"></param>
@@ -474,6 +527,49 @@ namespace BL
                     int t_tmp;
                     t_tmp = row.texto.Length > 30 ? 30 : row.texto.Length;
                     dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.nombres+" "+row.primer_apellido+" "+row.segundo_apellido, row.texto.ToString().Substring(0,t_tmp));
+                }
+                return dt_Hist;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable HistoPacienteAltaAreas(int int_exp, int centro, int id_empleado,int _area)
+        {
+            DataTable dt_Hist = new DataTable();
+            dt_Hist.Columns.Add("fecha");
+            dt_Hist.Columns.Add("n_expediente");
+            dt_Hist.Columns.Add("username");
+            dt_Hist.Columns.Add("historial");
+            dt_Hist.Columns.Add("alta");
+            try
+            {
+                var query = from p in entities.altas_areas
+                            join u in entities.usuarios on p.username equals u.username
+                            join e in entities.empleados on u.empleado equals e.id
+                            join a in entities.areas on p.area equals a.id
+                            where p.n_expediente == int_exp && p.prefijo == centro && p.area == _area
+                            orderby p.fecha descending
+                            select new { p.fecha, p.n_expediente, p.username, p.texto, e.nombres, e.primer_apellido, e.segundo_apellido,p.area,p.alta };
+
+                foreach (var row in query)
+                {
+                    int t_tmp;
+                    string alt;
+                    if (row.alta)
+                    {
+                        alt = "Si";
+                        t_tmp = row.texto.Length > 30 ? 30 : row.texto.Length;
+                        dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido, row.texto.ToString().Substring(0, t_tmp), alt);
+                    }
+                    else
+                    {
+                        alt = "No";
+                        t_tmp = row.texto.Length > 30 ? 30 : row.texto.Length;
+                        dt_Hist.Rows.Add(row.fecha.ToString(), row.n_expediente.ToString(), row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido, row.texto.ToString().Substring(0, t_tmp), alt);
+                    }
                 }
                 return dt_Hist;
             }

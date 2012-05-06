@@ -52,7 +52,9 @@
                     <asp:MenuItem Text="Hist. Médico" Value="Hist. Médico">
                         <asp:MenuItem Text="Historial Médico" Value="Historial Médico" NavigateUrl="~/HistoPaciente.aspx">
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Dar de alta" Value="Dar de alta" NavigateUrl="~/HistoPacienteAlta.aspx">
+                        <asp:MenuItem Text="Dar de Alta" Value="Dar de alta" NavigateUrl="~/HistoPacienteAlta.aspx">
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Dar de Alta por Área" Value="Dar de alta área" NavigateUrl="~/HistoPacienteAltaAreas.aspx">
                         </asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem Text="Administrar" Value="Administrar">
