@@ -58,7 +58,7 @@
                 <asp:Button ID="btnBuscar" runat="server" CssClass="boton" Text="Buscar" 
                     onclick="btnBuscar_Click" CausesValidation="False" />
                 <asp:Button ID="btnEditar" runat="server" CssClass="boton" Text="Editar" 
-                    OnClientClick="return validateForm()" onclick="btnEditar_Click" Enabled="False"/>
+                    OnClientClick="return validateForm()" ValidationGroup="TodoError" onclick="btnEditar_Click" Enabled="False"/>
                 <asp:Button ID="btnEliminar" runat="server" CssClass="boton" Text="Eliminar" 
                     onclick="btnEliminar_Click" Enabled="False"/>
                 <asp:ConfirmButtonExtender ID="cfmExtEliminar" runat="server" TargetControlID="btnEliminar"
@@ -86,7 +86,7 @@
                                 Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                     ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtCedula" ></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtCedula" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label3" CssClass="label" runat="server" Text="Nombres:"></asp:Label>
@@ -94,7 +94,7 @@
                                 Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                                     ErrorMessage="*Nombre Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtNombres"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtNombres" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label4" CssClass="label" runat="server" Text="Primer Apellido:"></asp:Label>
@@ -102,7 +102,7 @@
                                 Enabled="False"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                     ErrorMessage="*Apellido Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtPrimerApellido"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtPrimerApellido" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label1" CssClass="label" runat="server" Text="Segundo Apellido:"></asp:Label>
@@ -115,7 +115,7 @@
                                 Enabled="False" TextMode="MultiLine"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                                     ErrorMessage="*Dirección Requerida" ForeColor="Red" 
-                                    ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtDireccion" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label6" CssClass="label" runat="server" Text="Sexo:"></asp:Label>
@@ -142,32 +142,45 @@
                                 Enabled="False"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                                     ErrorMessage="*Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtLugarNacimiento"></asp:RequiredFieldValidator>
+                                    ControlToValidate="txtLugarNacimiento" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label9" CssClass="label" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
                             <asp:TextBox ID="txtFechaNacimiento" runat="server" Enabled="False" ></asp:TextBox>
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento" width="24px"/>
-                            <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="yyyy-MM-dd" PopupButtonID="img_fecha_nacimiento">
+                            <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="dd-MM-yyyy" PopupButtonID="img_fecha_nacimiento">
                             </asp:CalendarExtender>
-
+                            
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                                 ErrorMessage="*Fecha de Nacimiento Requerida" ForeColor="Red" 
-                                ControlToValidate="txtFechaNacimiento"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtFechaNacimiento" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ValidationGroup="TodoError"
+                                runat="server" ControlToValidate="txtFechaNacimiento" ForeColor="Red" ErrorMessage="*Formato valido es dd-MM-yyyy"
+                                ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
+                                />
                         </li>
                         <li class="field">
                             <asp:Label ID="Label10" CssClass="label" runat="server" Text="Fecha de Ingreso:"></asp:Label>
                             <asp:TextBox ID="txtFechaIngreso" runat="server" Enabled="False" ></asp:TextBox>
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img1" width="24px" />
 
-
                             <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
-                                TargetControlID="txtFechaIngreso" Format="yyyy-MM-dd" PopupButtonID="img1">
-                            </asp:CalendarExtender>
+                                TargetControlID="txtFechaIngreso" Format="dd-MM-yyyy" PopupButtonID="img1">
+                            </asp:CalendarExtender>                            
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
                                 ErrorMessage="*Fecha de Ingreso Requerida" ForeColor="Red" 
-                                ControlToValidate="txtFechaIngreso"></asp:RequiredFieldValidator>
+                                ControlToValidate="txtFechaIngreso" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="TodoError"
+                                runat="server" ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Formato valido es dd-MM-yyyy"
+                                ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
+                                />
+
+                            <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtFechaNacimiento" 
+                                ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Fecha de Ingreso es menor o igual que la de nacimiento"
+                                Operator="LessThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label12" CssClass="label" runat="server" 
@@ -181,7 +194,7 @@
                                 ToolTip="Telefono sin guion" Enabled="False"></asp:TextBox>
                                 
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*Formato no valido"
-                                ForeColor="Red" ControlToValidate="txtTelefono" Type="Integer" Operator="DataTypeCheck">
+                                ForeColor="Red" ControlToValidate="txtTelefono" Type="Integer" ValidationGroup="TodoError" Operator="DataTypeCheck">
                             </asp:CompareValidator>
                         </li>
 
@@ -191,7 +204,7 @@
                                 ToolTip="Celular sin guion" Enabled="False"></asp:TextBox>
                                 
                             <asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="*Formato no valido"
-                                ForeColor="Red" ControlToValidate="txtCelular" Type="Integer" Operator="DataTypeCheck">
+                                ForeColor="Red" ControlToValidate="txtCelular" Type="Integer" ValidationGroup="TodoError" Operator="DataTypeCheck">
                             </asp:CompareValidator>
                         </li>
 

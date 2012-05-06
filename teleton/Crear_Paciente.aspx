@@ -173,12 +173,17 @@
                                 Text="Fecha de Nacimiento:"></asp:Label>
                             <asp:TextBox ID="txtFechaNacimiento" runat="server" ></asp:TextBox>
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento" width="24px"/>
-                            <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="yyyy-MM-dd" PopupButtonID="img_fecha_nacimiento">
+                            <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="dd-MM-yyyy" PopupButtonID="img_fecha_nacimiento">
                             </asp:CalendarExtender>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
-                                ErrorMessage="Fecha de Nacimiento Requerida" ForeColor="Red" 
-                                ControlToValidate="txtFechaNacimiento" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                ErrorMessage="*Fecha de Nacimiento Requerida" ForeColor="Red" 
+                                ControlToValidate="txtFechaNacimiento" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ValidationGroup="TodoError"
+                                runat="server" ControlToValidate="txtFechaNacimiento" ForeColor="Red" ErrorMessage="*Formato valido es dd-MM-yyyy"
+                                ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
+                                />
                         </li>
                         <li class="field">
                             <asp:Label ID="Label10" CssClass="label" runat="server" 
@@ -187,12 +192,21 @@
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img1" width="24px" />
 
                             <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
-                                TargetControlID="txtFechaIngreso" Format="yyyy-MM-dd" PopupButtonID="img1">
-                            </asp:CalendarExtender>
+                                TargetControlID="txtFechaIngreso" Format="dd-MM-yyyy" PopupButtonID="img1">
+                            </asp:CalendarExtender>                                                       
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
-                                ErrorMessage="Fecha de Ingreso Requerida" ForeColor="Red" 
-                                ControlToValidate="txtFechaIngreso" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                ErrorMessage="*Fecha de Ingreso Requerida" ForeColor="Red" 
+                                ControlToValidate="txtFechaIngreso" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
+
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="TodoError"
+                                runat="server" ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Formato valido es dd-MM-yyyy"
+                                ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
+                                />
+
+                            <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtFechaNacimiento" 
+                                ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Fecha de Ingreso es menor o igual que la de nacimiento"
+                                Operator="LessThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
 
                         <li class="field">
@@ -320,7 +334,7 @@
         </div>
         
         <div id="navBotones">
-            <asp:Button ID="btIngresar" CssClass="boton" runat="server" Text="Ingresar Paciente" 
+            <asp:Button ID="btIngresar" ValidationGroup="TodoError" CssClass="boton" runat="server" Text="Ingresar Paciente" 
                  OnClientClick="return validateForm()" onclick="btIngresar_Click" />
                         
             <asp:Button ID="btnClean" CssClass="boton" runat="server" Text="Limpiar" 
