@@ -93,36 +93,37 @@
                         <li class="field">
                             <asp:Label ID="Label11" CssClass="label" runat="server" 
                                 Text="Nº de Expediente:"></asp:Label>
-                            <asp:TextBox ID="txtExp" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                            <asp:TextBox ID="txtExp" runat="server" CssClass="tb_Requerido"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
-                                ControlToValidate="txtExp" ErrorMessage="Campo Requerido" ForeColor="Red" 
-                                ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                ControlToValidate="txtExp" ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                     
                         <li class="field">
                             <asp:Label ID="Label2" CssClass="label" runat="server" 
                                 Text="Nº de Cédula:"></asp:Label>
-                            <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Permiso" MaxLength="15"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Requerido"
-                            ForeColor="Red" ControlToValidate="txtCedula" ValidationGroup="TodoError" >*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtCedula" runat="server" CssClass="tb_Requerido" 
+                                MaxLength="15"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*Campo Requerido"
+                            ForeColor="Red" ControlToValidate="txtCedula" ValidationGroup="TodoError" ></asp:RequiredFieldValidator>
                         </li>
                     
                         <li class="field">
                             <asp:Label ID="Label3" CssClass="label" runat="server" 
                                 Text="Nombres:"></asp:Label>
-                            <asp:TextBox ID="txtNombres" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                            <asp:TextBox ID="txtNombres" runat="server" CssClass="tb_Requerido"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-                                ErrorMessage="Nombre Requerido" ForeColor="Red" 
-                                ControlToValidate="txtNombres" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                ErrorMessage="*Nombre Requerido" ForeColor="Red" 
+                                ControlToValidate="txtNombres" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                     
                         <li class="field">
                             <asp:Label ID="Label4" CssClass="label" runat="server" 
                                 Text="Primer Apellido:"></asp:Label>
-                            <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                            <asp:TextBox ID="txtPrimerApellido" runat="server" CssClass="tb_Requerido"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                                    ErrorMessage="Apellido Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtPrimerApellido" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                    ErrorMessage="*Apellido Requerido" ForeColor="Red" 
+                                    ControlToValidate="txtPrimerApellido" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                     
                         <li class="field">
@@ -134,11 +135,11 @@
                         <li class="field">
                             <asp:Label ID="Label5" CssClass="label" runat="server" 
                                 Text="Dirección:"></asp:Label>
-                            <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Permiso" 
+                            <asp:TextBox ID="txtDireccion" runat="server" CssClass="tb_Requerido" 
                                 TextMode="MultiLine"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
-                                    ErrorMessage="Dirección Requerida" ForeColor="Red" 
-                                    ControlToValidate="txtDireccion" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                    ErrorMessage="*Dirección Requerida" ForeColor="Red" 
+                                    ControlToValidate="txtDireccion" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
 
                         <li class="field">
@@ -163,15 +164,15 @@
                         <li class="field">
                             <asp:Label ID="Label8" CssClass="label" runat="server" 
                                 Text="Lugar de Nacimiento:"></asp:Label>
-                            <asp:TextBox ID="txtLugarNacimiento" runat="server" CssClass="tb_Permiso"></asp:TextBox>
+                            <asp:TextBox ID="txtLugarNacimiento" runat="server" CssClass="tb_Requerido"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                                    ErrorMessage="Campo Requerido" ForeColor="Red" 
-                                    ControlToValidate="txtLugarNacimiento" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                    ErrorMessage="*Campo Requerido" ForeColor="Red" 
+                                    ControlToValidate="txtLugarNacimiento" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label9" CssClass="label" runat="server" 
                                 Text="Fecha de Nacimiento:"></asp:Label>
-                            <asp:TextBox ID="txtFechaNacimiento" runat="server" ></asp:TextBox>
+                            <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="requerido" ></asp:TextBox>
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img_fecha_nacimiento" width="24px"/>
                             <asp:CalendarExtender ID="FechaNacimientoExtender" runat="server" TargetControlID="txtFechaNacimiento" Format="dd-MM-yyyy" PopupButtonID="img_fecha_nacimiento">
                             </asp:CalendarExtender>
@@ -188,7 +189,7 @@
                         <li class="field">
                             <asp:Label ID="Label10" CssClass="label" runat="server" 
                                 Text="Fecha de Ingreso:"></asp:Label>
-                            <asp:TextBox ID="txtFechaIngreso" runat="server" ></asp:TextBox>
+                            <asp:TextBox ID="txtFechaIngreso" runat="server" CssClass="requerido" ></asp:TextBox>
                             <img alt="Icon" src="images/calendar_icon.jpg" id="img1" width="24px" />
 
                             <asp:CalendarExtender ID="FechaIngresoExtender" runat="server" 
@@ -218,21 +219,21 @@
                         <li class="field">
                             <asp:Label runat="server" ID="Label13" CssClass="label">Teléfono:</asp:Label>
                             <asp:TextBox ID="txtTelefono" runat="server" MaxLength="8" 
-                                ToolTip="Telefono sin guion"></asp:TextBox>
+                                ToolTip="Telefono sin guion" CssClass="requerido"></asp:TextBox>
 
-                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Formato no valido"
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*Formato no valido"
                                 ForeColor="Red" ControlToValidate="txtTelefono" Type="Integer" 
-                                Operator="DataTypeCheck" ValidationGroup="TodoError">*</asp:CompareValidator>
+                                Operator="DataTypeCheck" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label14" CssClass="label">Celular:</asp:Label>
                             <asp:TextBox runat="server" ID="txtCelular" MaxLength="8" 
-                                ToolTip="Celular sin guion"></asp:TextBox>
+                                ToolTip="Celular sin guion" CssClass="requerido"></asp:TextBox>
 
-                            <asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="Formato no valido"
+                            <asp:CompareValidator ID="CompareValidator2" runat="server" ErrorMessage="*Formato no valido"
                                 ForeColor="Red" ControlToValidate="txtCelular" Type="Integer" 
-                                Operator="DataTypeCheck" ValidationGroup="TodoError">*</asp:CompareValidator>
+                                Operator="DataTypeCheck" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
 
                         <li class="field">

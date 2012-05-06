@@ -127,6 +127,14 @@ fieldset
     width: 50%;
 }
 
+.field .tb_Requerido
+{
+    border-left-color: Red;
+    border-left-style: solid;
+    border-left-width: 3px;
+    width: 50%;
+}
+
 .field .tb_Permiso2
 {
     width: 40%;
