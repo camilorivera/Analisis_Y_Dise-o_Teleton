@@ -359,10 +359,10 @@ namespace BL
 
                                 join doc in
                                     (from temp in entities.usuarios
-                                    join emp in entities.empleados
-                                    on temp.empleado equals emp.id
-                                    where emp.puesto == 16
-                                    select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido })
+                                     join emp in entities.empleados
+                                     on temp.empleado equals emp.id
+                                     where emp.puesto == 16
+                                     select new { temp.username, emp.nombres, emp.primer_apellido, emp.segundo_apellido })
                                 on p.evaluador equals doc.username
 
                                 join b in entities.pacientes
@@ -406,7 +406,8 @@ namespace BL
                                     r.condicion1,
                                     b.cedula,
                                     p.notas,
-                                    a.diagnostico1,
+                                    codigoInternacional = a.codigoInter,
+                                    diagnotisco = a.diagnostico1,
                                     d.tipo,
                                     t.procedencia1,
                                     p.funcion_estructura,
@@ -480,6 +481,7 @@ namespace BL
                                     r.condicion1,
                                     b.cedula,
                                     p.notas,
+                                    codigoInternacional = a.codigoInter,
                                     a.diagnostico1,
                                     d.tipo,
                                     t.procedencia1,
