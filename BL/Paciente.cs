@@ -910,6 +910,214 @@ namespace BL
             }
                 return 0;
         }
-        
+
+
+        /// <summary>
+        /// Historial de rehabilitaci'on pediatrica
+        /// </summary>
+        /// <param name="p_expediente"></param>
+        /// <returns></returns>
+        public DataTable rehabilitacionPediatrica(int p_expediente, int p_prefijo)
+        {
+            try
+            {
+                DataTable t_dt = new DataTable("Pediatrica");
+                t_dt.Columns.Add("Nombre");
+                t_dt.Columns.Add("Edad");
+                t_dt.Columns.Add("Informante");
+                t_dt.Columns.Add("Fecha");
+                t_dt.Columns.Add("Texto");
+                t_dt.Columns.Add("FNacimiento");
+                t_dt.Columns.Add("Sexo");
+                t_dt.Columns.Add("Remitente");
+                var t_query = from c in entities.historia_clinica_pediatrica
+                              join t in entities.pacientes on c.n_expediente equals t.expediente
+                              where c.n_expediente == p_expediente && c.prefijo == p_prefijo
+                              orderby c.fecha descending
+                              select new
+                              {
+                                  t.nombres,
+                                  t.primer_apellido,
+                                  t.segundo_apellido,
+                                  c.edad,
+                                  c.informante
+                                  ,
+                                  c.fecha,
+                                  c.texto,
+                                  t.fecha_nac,
+                                  t.sexo,
+                                  c.remitente
+                              };
+                foreach (var row in t_query)
+                {
+                    t_dt.Rows.Add(row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido, row.edad, row.informante
+                        , row.fecha, row.texto, row.fecha_nac, row.sexo, row.remitente);
+                }
+                return t_dt;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Historial de rehabilitaci'on Adultos
+        /// </summary>
+        /// <param name="p_expediente"></param>
+        /// <returns></returns>
+        public DataTable rehabilitacionAdulto(int p_expediente, int p_prefijo)
+        {
+            try
+            {
+                DataTable t_dt = new DataTable("Adulto");
+                t_dt.Columns.Add("Nombre");
+                t_dt.Columns.Add("Edad");
+                t_dt.Columns.Add("Informante");
+                t_dt.Columns.Add("Fecha");
+                t_dt.Columns.Add("Texto");
+                t_dt.Columns.Add("FNacimiento");
+                t_dt.Columns.Add("Sexo");
+                t_dt.Columns.Add("Remitente");
+                t_dt.Columns.Add("Lateralidad");
+                var t_query = from c in entities.historia_clinica_adultos
+                              join t in entities.pacientes on c.n_expediente equals t.expediente
+                              orderby c.fecha descending
+                              where c.n_expediente == p_expediente && c.prefijo == p_prefijo
+                              select new
+                              {
+                                  t.nombres,
+                                  t.primer_apellido,
+                                  t.segundo_apellido,
+                                  c.edad,
+                                  c.informante,
+                                  c.fecha,
+                                  c.texto,
+                                  t.fecha_nac,
+                                  t.sexo,
+                                  c.remitente,
+                                  c.lateralidad
+                              };
+                foreach (var row in t_query)
+                {
+                    t_dt.Rows.Add(row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido, row.edad
+                        , row.informante, row.fecha, row.texto, row.fecha_nac, row.sexo, row.remitente, row.lateralidad);
+                }
+                return t_dt;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Guardar rehabilitaci'on pedi'atrica
+        /// </summary>
+        /// <param name="p_expediente">Num. Expediente</param>
+        /// <param name="p_prefijo">Prefijo</param>
+        /// <param name="p_edad">Edad paciente</param>
+        /// <param name="p_informante">Informante</param>
+        /// <param name="p_fecha">Fecha Ingreso de registro Hist.</param>
+        /// <param name="p_usuario">Usuerio</param>
+        /// <param name="p_remitente">Remitente</param>
+        /// <param name="p_texto">Comentario, etc. del M'edico</param>
+        /// <returns></returns>
+        public bool guardarHPediatrica(int p_expediente, int p_prefijo, int p_edad, string p_informante
+            , DateTime p_fecha, string p_usuario, string p_remitente, string p_texto)
+        {
+            try
+            {
+                historia_clinica_pediatrica t_pedi = new historia_clinica_pediatrica();
+                t_pedi.n_expediente = p_expediente;
+                t_pedi.prefijo = p_prefijo;
+                t_pedi.edad = p_edad;
+                t_pedi.informante = p_informante;
+                t_pedi.fecha = p_fecha;
+                t_pedi.username = p_usuario;
+                t_pedi.remitente = p_remitente;
+                t_pedi.texto = p_texto;
+                entities.historia_clinica_pediatrica.AddObject(t_pedi);
+                entities.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Guardar rehabilitaci'on Adultos
+        /// </summary>
+        /// <param name="p_expediente">Num. Expediente</param>
+        /// <param name="p_prefijo">Prefijo</param>
+        /// <param name="p_edad">Edad</param>
+        /// <param name="p_lateralidad">Lateralidad</param>
+        /// <param name="p_informante"></param>
+        /// <param name="p_fecha">Fecha Ingreso de registro Hist.</param>
+        /// <param name="p_usuario">Usuario </param>
+        /// <param name="p_remitente">Remitente</param>
+        /// <param name="p_texto">Comentario, etc. del M'edico</param>
+        /// <returns></returns>
+        public bool guardarHAdultos(int p_expediente, int p_prefijo, int p_edad, string p_lateralidad
+            , string p_informante, DateTime p_fecha, string p_usuario, string p_remitente, string p_texto)
+        {
+            try
+            {
+                historia_clinica_adultos t_adul = new historia_clinica_adultos();
+                t_adul.n_expediente = p_expediente;
+                t_adul.prefijo = p_prefijo;
+                t_adul.edad = p_edad;
+                t_adul.lateralidad = p_lateralidad;
+                t_adul.informante = p_informante;
+                t_adul.fecha = p_fecha;
+                t_adul.username = p_usuario;
+                t_adul.remitente = p_remitente;
+                t_adul.texto = p_texto;
+                entities.historia_clinica_adultos.AddObject(t_adul);
+                entities.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public DataTable infoHistoPediAdul(int p_expediente)
+        {
+            try
+            {
+                DataTable t_dt = new DataTable("HistoPediAdul");
+                t_dt.Columns.Add("Nombre");
+                t_dt.Columns.Add("Sexo");
+                t_dt.Columns.Add("Fecha");
+                var t_query = from c in entities.pacientes
+                              where c.expediente == p_expediente
+                              select new
+                              {
+                                  c.nombres
+                                  ,
+                                  c.primer_apellido
+                                  ,
+                                  c.segundo_apellido
+                                  ,
+                                  c.sexo,
+                                  c.fecha_nac
+                              };
+                foreach (var row in t_query)
+                {
+                    t_dt.Rows.Add(row.nombres + " " + row.primer_apellido + " " + row.segundo_apellido
+                        , row.sexo, row.fecha_nac);
+                }
+                return t_dt;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

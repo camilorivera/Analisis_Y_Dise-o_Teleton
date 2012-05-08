@@ -168,6 +168,21 @@ namespace BL
            }
 
 
+           public string getNombre(int p_IdEmpleado)
+           {
+               try
+               {
+                   var t_query = from c in entities.empleados
+                                 where c.id == p_IdEmpleado
+                                 select new { c.nombres, c.primer_apellido, c.segundo_apellido };
+                   return (t_query.FirstOrDefault().nombres + " " + t_query.FirstOrDefault().primer_apellido
+                       + " " + t_query.FirstOrDefault().segundo_apellido);
+               }
+               catch
+               {
+                   return null;
+               }
+           }
            public string obtenerNombresDoctores(long empId)
            {
                string nombresDoctores;
