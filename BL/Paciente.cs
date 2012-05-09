@@ -698,22 +698,152 @@ namespace BL
             return false;
         }
 
-        public List<string> Busqueda_pacientes(string nombre) //Retorna nombres de los pacientes
+        public List<string> Busqueda_pacientes(string dato, bool identidad) //Retorna nombres de los pacientes
         {
             try
             {
                 List<string> usrs = new List<string>();
 
-                
+                if (!identidad)
+                {
+                    var users = from p in entities.pacientes
+                                where p.nombres.Contains(dato)
+                                select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                    Centro c = new Centro();
+
+                    foreach (var u in users)
+                        usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+                }
+                else
+                {
+                    var users = from p in entities.pacientes
+                                where p.cedula.Contains(dato)
+                                select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                    Centro c = new Centro();
+
+                    foreach (var u in users)
+                        usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+                }
+
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public List<string> Busqueda_pacientes(DateTime fecha) //Retorna nombres de los pacientes
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+                DateTime fechaIngresoFin = new DateTime(fecha.Year, fecha.Month, fecha.Day, 23, 59, 59);
+
                 var users = from p in entities.pacientes
-                            where p.nombres.Contains(nombre)
-                            select new {p.expediente,p.centro_actual,p.nombres,p.primer_apellido,p.segundo_apellido};
+                            where (p.fecha_ingreso.CompareTo(fecha) == 0 || p.fecha_ingreso.CompareTo(fecha) > 0) && (p.fecha_ingreso.CompareTo(fechaIngresoFin) == 0 || p.fecha_ingreso.CompareTo(fechaIngresoFin) < 0)
+                            select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
 
                 Centro c = new Centro();
 
                 foreach (var u in users)
-                    usrs.Add(u.expediente+ " / " + c.getLugar(u.centro_actual) + " - " +u.nombres+" "+u.primer_apellido+" "+u.segundo_apellido);
-  
+                    usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public List<string> Busqueda_pacientes(string nombre, string identificacion) //Retorna nombres de los pacientes
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+
+                var users = from p in entities.pacientes
+                            where p.nombres.Contains(nombre) && p.cedula.Contains(identificacion)
+                            select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                Centro c = new Centro();
+
+                foreach (var u in users)
+                    usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Funcion para buscar el paciente segun campos seleccionados
+        /// </summary>
+        /// <param name="nombre">Nombre del paciente o id del mismo</param>
+        /// <param name="fecha">Fecha de ingreso del paciente</param>
+        /// <param name="identidad">Este parametro identifica si es Nombre o Identidad lo que se envia 0 para nombre 1, para identidad</param>
+        /// <returns>Retorna la lista del paciente encontrado dentro de los parametros enviados.</returns>
+        public List<string> Busqueda_pacientes(string nombre, DateTime fecha, bool identidad)
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+                DateTime fechaIngresoFin = new DateTime(fecha.Year, fecha.Month, fecha.Day, 23, 59, 59);
+
+                if (!identidad)
+                {
+
+                    var users = from p in entities.pacientes
+                                where p.nombres.Contains(nombre) && ((p.fecha_ingreso.CompareTo(fecha) == 0 || p.fecha_ingreso.CompareTo(fecha) > 0) && (p.fecha_ingreso.CompareTo(fechaIngresoFin) == 0 || p.fecha_ingreso.CompareTo(fechaIngresoFin) < 0))
+                                select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                    Centro c = new Centro();
+
+                    foreach (var u in users)
+                        usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+                }
+                else
+                {
+                    var users = from p in entities.pacientes
+                                where p.cedula.Contains(nombre) && ((p.fecha_ingreso.CompareTo(fecha) == 0 || p.fecha_ingreso.CompareTo(fecha) > 0) && (p.fecha_ingreso.CompareTo(fechaIngresoFin) == 0 || p.fecha_ingreso.CompareTo(fechaIngresoFin) < 0))
+                                select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                    Centro c = new Centro();
+
+                    foreach (var u in users)
+                        usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+                }
+
+                return usrs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public List<string> Busqueda_pacientes(string nombre, string identificacion, DateTime fecha) //Retorna nombres de los pacientes
+        {
+            try
+            {
+                List<string> usrs = new List<string>();
+                DateTime fechaIngresoFin = new DateTime(fecha.Year, fecha.Month, fecha.Day, 23, 59, 59);
+
+                var users = from p in entities.pacientes
+                            where p.nombres.Contains(nombre) && ((p.fecha_ingreso.CompareTo(fecha) == 0 || p.fecha_ingreso.CompareTo(fecha) > 0) && (p.fecha_ingreso.CompareTo(fechaIngresoFin) == 0 || p.fecha_ingreso.CompareTo(fechaIngresoFin) < 0)) && p.cedula.Contains(identificacion)
+                            select new { p.expediente, p.centro_actual, p.nombres, p.primer_apellido, p.segundo_apellido };
+
+                Centro c = new Centro();
+
+                foreach (var u in users)
+                    usrs.Add(u.expediente + " / " + c.getLugar(u.centro_actual) + " - " + u.nombres + " " + u.primer_apellido + " " + u.segundo_apellido);
+
                 return usrs;
             }
             catch (Exception ex)

@@ -386,9 +386,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                     {
                         if (segPacientes.VerificarExpPorCentro(exped) == centroid)
                         {
-                            string fecha1 = txtdateinit.Text;
-                            string fecha2 = txtdatefini.Text;
-                            string laFecha = segPacientes.GetFecha();
+                            /*string laFecha = segPacientes.GetFecha();
                             // Arreglar
                             if(laFecha.StartsWith("0"))
                             {
@@ -399,13 +397,15 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                             {
 
                                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('No Puede Guardar Pacientes en una Fecha Diferente a " + segPacientes.GetFecha() + "')", true);
-                            }*/
-                            //else
-                            //{
-                                if (txtobser.Text == "" || txtFuncionEstructura.Text == "" || txt_TDAnios.Text == "" || txt_TDMeses.Text == "" || txt_TDDias.Text == "" ||
-                                    txt_TSAnios.Text == "" || txt_TSMeses.Text == "" || txt_TSDias.Text == "" || txtEteologia.Text=="")
+                            }
+                            else
+                            {*/
+
+
+                                if (txt_TDAnios.Text == "" || txt_TDMeses.Text == "" || txt_TDDias.Text == "" ||
+                                    txt_TSAnios.Text == "" || txt_TSMeses.Text == "" || txt_TSDias.Text == "")
                                 {
-                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Algunos Datos no fueron completados, favor revisar')", true);
+                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Datos de Tiempo de Incapacidad fueron ingresados Incorrectamente, favor revisar')", true);
                                 }
                                 else
                                 {
@@ -414,11 +414,13 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                                                                              cmb_TipoDaño.Text, cmb_AyudaTecnicaIndicada.Text, txtFuncionEstructura.Text, txtEteologia.Text, cmb_Procedencia.Text,
                                                                              Convert.ToInt32(txt_TDAnios.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TSAnios.Text),
                                                                              Convert.ToInt32(txt_TSMeses.Text), Convert.ToInt32(txt_TSDias.Text));
+                                   
                                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Paciente Guardado Exitosamente')", true);
+                                    
                                     txtnumexp.Text = "";
                                     txtobser.Text = "";
-                                    LoadGrid();
-                                }
+                                    LoadGrid(); //carga grid cargada en session de usuario.
+                                 }
                             //}
                         }
                         else
@@ -429,7 +431,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                     }
                     else {
                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Num de Expediente no ha sido Registrado')", true);
-                        txtnumexp.Text = "";                    
+                       txtnumexp.Text = "";                    
                     }
                 }
             }
