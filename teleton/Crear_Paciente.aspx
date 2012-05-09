@@ -207,7 +207,7 @@
 
                             <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtFechaNacimiento" 
                                 ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Fecha de Ingreso es menor o igual que la de nacimiento"
-                                Operator="LessThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
+                                Operator="GreaterThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
 
                         <li class="field">
