@@ -44,34 +44,45 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
     }
     protected void btn_guardar_Click(object sender, EventArgs e)
     {
-        try
+        if (btn_guardar.Text == "Nuevo")
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-            if(!PAT.guardarHistoPacienteAltaAreas(_intExpe,_shtPrefijo,Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), Convert.ToInt32(Session["id_empleado"].ToString()),txt_historial.Text,Convert.ToInt32( Session["id"].ToString()),CheckBox1.Checked))
-            {
-                lb_Paciente.Text = "Error al tratar de guardar ...";
-            }
-            else
-            {
-                //PAT.editarPacienteAlta(false, Convert.ToInt32(txt_buscar), centro);
-                lb_Expe.Text = "";
-                lb_Paciente.Text = "";
-                txt_historial.Text = "";
-                CheckBox1.Checked = false;
-                cargar_Historial();
-            }
-
-        }
-        catch
-        {
-            lb_Paciente.Text = "Excepción al tratar de guardar ...";
-            txt_buscar = "";
+            txt_historial.Enabled = true;
+            CheckBox1.Enabled = true;
             txt_historial.Text = "";
-            lb_Expe.Text = "";
-            dt_Hist = null;
-            grd_Historial.DataBind();
-            txt_historial.Enabled = false;
-            btn_guardar.Enabled = false;
+            CheckBox1.Checked = false;
+            btn_guardar.Text = "Guardar";
+        }
+        else
+        {
+            try
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
+                if (!PAT.guardarHistoPacienteAltaAreas(_intExpe, _shtPrefijo, Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), Convert.ToInt32(Session["id_empleado"].ToString()), txt_historial.Text, Convert.ToInt32(Session["id"].ToString()), CheckBox1.Checked))
+                {
+                    lb_Paciente.Text = "Error al tratar de guardar ...";
+                }
+                else
+                {
+                    //PAT.editarPacienteAlta(false, Convert.ToInt32(txt_buscar), centro);
+                    lb_Expe.Text = "";
+                    lb_Paciente.Text = "";
+                    txt_historial.Text = "";
+                    CheckBox1.Checked = false;
+                    cargar_Historial();
+                }
+
+            }
+            catch
+            {
+                lb_Paciente.Text = "Excepción al tratar de guardar ...";
+                txt_buscar = "";
+                txt_historial.Text = "";
+                lb_Expe.Text = "";
+                dt_Hist = null;
+                grd_Historial.DataBind();
+                txt_historial.Enabled = false;
+                btn_guardar.Enabled = false;
+            }
         }
     }
 
@@ -112,7 +123,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                                 _intExpe = Convert.ToInt32(txt_buscar);
                                 grd_Historial.DataSource = dt_Hist;
                                 grd_Historial.DataBind();
-                                if (PAT.AltaArea(_intExpe,centro,areaid))
+                               /* if (PAT.AltaArea(_intExpe,centro,areaid))
                                 {
                                     CheckBox1.Enabled = false;
                                     txt_historial.Enabled = false;
@@ -125,7 +136,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                                     txt_historial.Enabled = true;
                                     btn_guardar.Enabled = true;
                                     lb_mensaje.Text = "";
-                                }
+                                }*/
 
                             }
                             else
@@ -200,7 +211,8 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
 
             txt_historial.Enabled = false;
             CheckBox1.Enabled = false;
-            btn_guardar.Enabled = false;
+            //btn_guardar.Enabled = false;
+            btn_guardar.Text = "Nuevo";
             
         }
         catch (Exception ex)
