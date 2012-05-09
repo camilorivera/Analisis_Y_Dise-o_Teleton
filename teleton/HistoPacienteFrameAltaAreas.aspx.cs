@@ -123,21 +123,13 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                                 _intExpe = Convert.ToInt32(txt_buscar);
                                 grd_Historial.DataSource = dt_Hist;
                                 grd_Historial.DataBind();
-                               /* if (PAT.AltaArea(_intExpe,centro,areaid))
+                                txt_historial.Enabled = PAT.pacienteAlta(_intExpe, centro);
+                                btn_guardar.Enabled = txt_historial.Enabled;
+                                CheckBox1.Enabled = txt_historial.Enabled;
+                                if (!txt_historial.Enabled)
                                 {
-                                    CheckBox1.Enabled = false;
-                                    txt_historial.Enabled = false;
-                                    btn_guardar.Enabled = false;
-                                    lb_mensaje.Text = "El paciente esta dado de alta para la área seleccionada";
+                                    lb_mensaje.Text = "El paciente está dado de alta";
                                 }
-                                else
-                                {
-                                    CheckBox1.Enabled = true;
-                                    txt_historial.Enabled = true;
-                                    btn_guardar.Enabled = true;
-                                    lb_mensaje.Text = "";
-                                }*/
-
                             }
                             else
                             {

@@ -473,33 +473,6 @@ namespace BL
             }
         }
 
-        /// <summary>
-        /// Verifica si esta dado de alta por area
-        /// </summary>
-        /// <param name="expe">Expediente</param>
-        /// <param name="prefijo">Prefijo</param>
-        /// <param name="area">Area</param>
-        /// <returns></returns>
-        public bool AltaArea(int expe,int prefijo,int area)
-        {
-            try
-            {
-                var query = from p in entities.altas_areas
-                            where p.area==area && p.n_expediente==expe && p.prefijo==prefijo
-                            select new { p.alta };
-                foreach (var row in query)
-                {
-                    if (row.alta)
-                        return row.alta;
-                   
-                }
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         /// <summary>
         /// Historial del Paciente
@@ -519,7 +492,7 @@ namespace BL
                             join u in entities.usuarios on p.username equals u.username
                             join e in entities.empleados on u.empleado equals e.id
                             where p.n_expediente == int_exp && p.prefijo == centro
-                            orderby p.fecha descending
+                            orderby p.fecha descending 
                             select new { p.fecha, p.n_expediente, p.username, p.texto, e.nombres, e.primer_apellido, e.segundo_apellido };
 
                 foreach (var row in query)
