@@ -51,7 +51,7 @@ namespace BL
 
         public List<String> RetrievePatologias() //Retorna Una Lista de Patologias
         {
-            var query = from p in entities.diagnosticos select p;
+            var query = from p in entities.diagnosticos orderby p.diagnostico1 select p;
             List<string> Diag = new List<string>();
             foreach (diagnostico nombre in query)
                 Diag.Add(nombre.diagnostico1);
