@@ -60,7 +60,7 @@
                     <RowStyle Height="20px" />
                     <SelectedRowStyle ForeColor="Black" />
                 </asp:GridView>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <iframe src="HistoPacienteFrameAltaAreas.aspx" width="600" height="650" frameborder="0" name="hitopaciente_frame_alta_areas"></iframe>
+            <iframe src="HistoPacienteFrameAltaAreas.aspx" width="600" height="850" frameborder="0" name="hitopaciente_frame_alta_areas"></iframe>
              &nbsp;&nbsp;&nbsp;
              </fieldset>
         </div>

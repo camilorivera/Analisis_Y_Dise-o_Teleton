@@ -125,7 +125,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                                 grd_Historial.DataBind();
                                 txt_historial.Enabled = PAT.pacienteAlta(_intExpe, centro);
                                 btn_guardar.Enabled = txt_historial.Enabled;
-                                CheckBox1.Enabled = txt_historial.Enabled;
+                                CheckBox1.Enabled = txt_historial.Enabled;                     
                                 if (!txt_historial.Enabled)
                                 {
                                     lb_mensaje.Text = "El paciente está dado de alta";
