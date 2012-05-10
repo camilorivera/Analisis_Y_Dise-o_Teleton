@@ -4,8 +4,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="Styles/Teleton.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" >
+        function Reload_click() {
+            window.opener.holamundo();
+        }
+    </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">    
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">  
 <asp:Panel ID="Panel1" runat="server" DefaultButton="searchBtn" >    
 <div id = "content">
     <div id="titulo">Búsqueda Rápida: Seguimiento Pacientes</div>
@@ -49,7 +54,9 @@
         <div class="resetFloats"></div>        
     </div>
     <div id = "navcontroles">
-        <asp:GridView ID="GridView1" CssClass="Grid" runat="server"></asp:GridView>
+        <asp:GridView ID="GridView1" CssClass="Grid" runat="server" autogenerateselectbutton="True"
+            selectedindex="1" allowpaging="True" onselectedindexchanging="GridView1_SelectedIndexChanging">
+        </asp:GridView>
     </div>
     <div id="navBotones">
         <asp:Button ID="searchBtn" CssClass="boton" runat="server" Text="Buscar" 
@@ -57,7 +64,8 @@
         <asp:Button ID="cleanBtn" CssClass="boton" runat="server" Text="Limpiar" 
             onclick="cleanBtn_Click" />
         <asp:Button ID="closeBtn" CssClass="boton" runat="server" Text="Cerrar" 
-            OnClientClick="window.close()" CausesValidation="False" />
+            OnClientClick="window.closen()" CausesValidation="False" 
+            onclick="closeBtn_Click" />
     </div>
 </div>
 </asp:Panel>

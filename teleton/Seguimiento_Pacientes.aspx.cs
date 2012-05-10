@@ -148,8 +148,8 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             CargarTipoDaño();
             CargarAyudasTecnicas();
 
-            txtdateinit.Text = _dt.ToString("dd/MM/yyyy");
-            txtdatefini.Text = _dt.ToString("dd/MM/yyyy");
+            //txtdateinit.Text = _dt.ToString("dd/MM/yyyy");
+            //txtdatefini.Text = _dt.ToString("dd/MM/yyyy");
             GridViewSegPac.DataSource = segPacientes.RetrievePacientesDiario2(centroid, Session["nombre_usuario"].ToString());
             GridViewSegPac.DataBind();
 
@@ -183,11 +183,11 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
         try
         {
-            DateTime inicial = Convert.ToDateTime(txtdateinit.Text);
-            DateTime final = Convert.ToDateTime(txtdatefini.Text);
+            //DateTime inicial = Convert.ToDateTime(txtdateinit.Text);
+            //DateTime final = Convert.ToDateTime(txtdatefini.Text);
 
-            GridViewSegPac.DataSource = segPacientes.BusquedaporRangoFecha(inicial, final, centroid);
-            GridViewSegPac.DataBind();
+            //GridViewSegPac.DataSource = segPacientes.BusquedaporRangoFecha(inicial, final, centroid);
+            //GridViewSegPac.DataBind();
         }
         catch (Exception er)
         {
@@ -342,10 +342,11 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         txtEteologia.Enabled = b;
         cmb_Procedencia.Enabled = b;
         txtFuncionEstructura.Enabled = b;
+        txtActividadesParticipacion.Enabled = b;
     }
 
     protected void Refrescar_Click1(object sender, ImageClickEventArgs e)
-    {
+    {   /*
         try
         {
             DateTime fechainit = DateTime.Parse(txtdateinit.Text);
@@ -367,7 +368,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         {
             Session["Error_Msg"] = er.Message;
             Response.Redirect("~/Error.aspx", true);
-        }
+        }*/
 
     }
 
