@@ -47,6 +47,7 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
             lb_area0.Text = "Area: ";
         }
 
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         cargar_Historial();
         }
         else
@@ -172,8 +173,8 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
             {
                 if (Session["id"] != string.Empty)
                 {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-                    if (!PAT.guardarHistorial(Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), _intExpe, Session["nombre_usuario"].ToString()
+                   
+                    if (!PAT.guardarHistorial(DateTime.Now, _intExpe, Session["nombre_usuario"].ToString()
                         , txt_historial.Text, _shtPrefijo, Convert.ToInt32(Session["id_empleado"].ToString()), Convert.ToInt32(Session["id"].ToString())))
                     {
                         lb_Paciente.Text = "Error al tratar de guardar ...";
