@@ -520,11 +520,10 @@ namespace BL
             try
             {
                 var query = from p in entities.altas_areas
-                            join u in entities.usuarios on p.username equals u.username
-                            join e in entities.empleados on u.empleado equals e.id
+                            join e in entities.empleados on id_empleado equals e.id
                             join a in entities.areas on p.area equals a.id
                             where p.n_expediente == int_exp && p.prefijo == centro && p.area == _area
-                            orderby  p.fecha descending
+                            orderby p.fecha descending
                             select new { p.fecha, p.n_expediente, p.username, p.texto, e.nombres, e.primer_apellido, e.segundo_apellido,p.area,p.alta };
 
                 foreach (var row in query)

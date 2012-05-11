@@ -34,7 +34,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                 lb_area.Text = Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
                 lb_area0.Text = "Area: ";
             }
-
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             cargar_Historial();
         }
         else
@@ -56,8 +56,8 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
         {
             try
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-                if (!PAT.guardarHistoPacienteAltaAreas(_intExpe, _shtPrefijo, Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:MM:ss")), Convert.ToInt32(Session["id_empleado"].ToString()), txt_historial.Text, Convert.ToInt32(Session["id"].ToString()), CheckBox1.Checked))
+               
+                if (!PAT.guardarHistoPacienteAltaAreas(_intExpe, _shtPrefijo, DateTime.Now, Convert.ToInt32(Session["id_empleado"].ToString()), txt_historial.Text, Convert.ToInt32(Session["id"].ToString()), CheckBox1.Checked))
                 {
                     lb_Paciente.Text = "Error al tratar de guardar ...";
                 }
