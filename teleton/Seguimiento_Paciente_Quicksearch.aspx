@@ -55,7 +55,7 @@
     </div>
     <div id = "navcontroles">
         <asp:GridView ID="GridView1" CssClass="Grid" runat="server" autogenerateselectbutton="True"
-            selectedindex="1" allowpaging="True" onselectedindexchanging="GridView1_SelectedIndexChanging">
+            selectedindex="1" allowpaging="True" onselectedindexchanged="GridView1_SelectedIndexChanged">
         </asp:GridView>
     </div>
     <div id="navBotones">

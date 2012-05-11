@@ -50,21 +50,6 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             {
                 InicializarSeguimientoPacientes();
                 cambiarEnabled(false);
-                // EN PRUEBA!!
-                /*for(int i=1; i<=10;i++){
-                    cmb_TSAnios.Items.Add( new ListItem(i.ToString()));
-                    cmb_TDAnios.Items.Add(new ListItem(i.ToString()));
-                }
-                for (int i = 1; i < 12; i++) 
-                {
-                    cmb_TDMeses.Items.Add(new ListItem(i.ToString()));
-                    cmb_TSMeses.Items.Add(new ListItem(i.ToString()));
-                }
-                for (int i = 1; i <= 30; i++)
-                {
-                    cmb_TDDias.Items.Add(new ListItem(i.ToString()));
-                    cmb_TSDias.Items.Add(new ListItem(i.ToString()));
-                }*/
             }
             else
             {
@@ -73,7 +58,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
 
                 HandleCustomPostbackEvent(ctrlName, args);
 
-            }
+            }    
         }
 
         catch (Exception er)
@@ -89,17 +74,22 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         {
             string empleado = Session["nombre_usuario"].ToString();
 
-            if (paciente.isDoctor(empleado)){
-                if (ctrlName == txtnumexp.UniqueID && args == "OnBlur")
+            if (txtnumexp.Text == "") return;
+            if (paciente.isDoctor(empleado))
+            {
+                /*if (ctrlName == txtnumexp.UniqueID)
                 {
-                    if (txtnumexp.Text == "") return;
+                  */
                     if (segPacientes.VerificarPacientes(txtnumexp.Text))
                     {
                         if (segPacientes.VerificarPacienteAlta(txtnumexp.Text))
                         {
+                            cambiarEnabled(true);
+                            int expid = (int)long.Parse(this.txtnumexp.Text);
                             txtnombrepac.Text = segPacientes.NombrePaciente(txtnumexp.Text);
                             txtnumced.Text = segPacientes.NumIdentidad(txtnumexp.Text);
-                            cambiarEnabled(true);
+                            //txtFuncionEstructura.Text = segPacientes.ActividadesPaciente(expid);
+                            //txtFuncionEstructura.Text = segPacientes.EstructuraPaciente(expid);       
                         }
                         else
                         {
@@ -114,12 +104,11 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                     }
 
                 }
-                else
+                /*else
                 {
                     txtnombrepac.Text = "";
                     txtnumced.Text = "";
-                }
-            }
+                }*/
             else
             {
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Lo sentimos, usted no posee privilegios suficientes.. ')", true);
@@ -131,7 +120,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
             Session["Error_Msg"] = er.Message;
             Response.Redirect("~/Error.aspx", true);
         }
-}
+    }
 
     public void InicializarSeguimientoPacientes()
     {
@@ -160,9 +149,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         catch (Exception er) {
             Session["Error_Msg"] = er.Message;
             Response.Redirect("~/Error.aspx", true);
-        }
-
-        
+        }     
     }
 
     public void LoadGrid()
@@ -402,7 +389,6 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                             else
                             {*/
 
-
                                 if (txt_TDAnios.Text == "" || txt_TDMeses.Text == "" || txt_TDDias.Text == "" ||
                                     txt_TSAnios.Text == "" || txt_TSMeses.Text == "" || txt_TSDias.Text == "")
                                 {
@@ -414,13 +400,19 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                                                                              cmb_GradoDeInstruccion.Text, cmb_OcupacionActual.Text, cmb_Condicion.Text, cmb_Referencia.Text,
                                                                              cmb_TipoDaño.Text, cmb_AyudaTecnicaIndicada.Text, txtFuncionEstructura.Text, txtEteologia.Text, cmb_Procedencia.Text,
                                                                              Convert.ToInt32(txt_TDAnios.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TDMeses.Text), Convert.ToInt32(txt_TSAnios.Text),
-                                                                             Convert.ToInt32(txt_TSMeses.Text), Convert.ToInt32(txt_TSDias.Text));
+                                                                             Convert.ToInt32(txt_TSMeses.Text), Convert.ToInt32(txt_TSDias.Text), txtActividadesParticipacion.Text);
                                    
                                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('Paciente Guardado Exitosamente')", true);
-                                    
+
+                                    txtnombrepac.Text = "";
+                                    txtnumced.Text = "";
                                     txtnumexp.Text = "";
                                     txtobser.Text = "";
-                                    LoadGrid(); //carga grid cargada en session de usuario.
+                                    txtEteologia.Text = 
+                                    txtActividadesParticipacion.Text = "";
+                                    txtFuncionEstructura.Text = "";
+                                    cambiarEnabled(false);
+                                    //LoadGrid(); //carga grid cargada en session de usuario.*/
                                  }
                             //}
                         }
@@ -458,7 +450,6 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         }
     }
 
-
     protected void TextBox8_Init(object sender, EventArgs e)
     {
         try
@@ -485,4 +476,6 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     {
 
     }
+
+
 }

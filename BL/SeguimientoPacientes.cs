@@ -13,6 +13,22 @@ namespace BL
 {
     public class SeguimientoPacientes
     {
+
+        private string _actividadesParticipacion;
+        private string _estructura;
+
+        public string ActividadesParticipacion
+        {
+            get { return _actividadesParticipacion; }
+            set { _actividadesParticipacion = value; }
+        }
+
+        public string Estructura
+        {
+            get { return _estructura; }
+            set { _estructura = value; }
+        }
+
         #region Variables
         DataAccess.teletonEntities entities;
         string fecha;
@@ -581,10 +597,35 @@ namespace BL
                          where p.expediente == numexpe
                          select p.nombres).First();
 
+            DataAccess.evolucione evo = new DataAccess.evolucione();
+
             return query.ToString();
         
         }
 
+         public string EstructuraPaciente(long numexp) {
+
+            long numexpe = Convert.ToInt64(numexp);
+
+            var query = (from p in entities.evoluciones
+                        where numexp == p.expediente
+                        select p.funcion_estructura).FirstOrDefault();   
+
+            return query.ToString();
+        }
+
+         public string ActividadesPaciente(long numexp) {
+
+            long numexpe = Convert.ToInt64(numexp);
+
+            var query = (from p in entities.evoluciones
+                        where numexp == p.expediente
+                        select p.funcion_estructura).FirstOrDefault();
+
+            return query.ToString();  
+        }
+
+      
         public string NumIdentidad(string numexp)
         {
 
@@ -600,7 +641,7 @@ namespace BL
         public void GuardarSeguimientoPacientes(int id, int prefix, int numexp, string doctor, string patologia, string observacion,
                                                 string clasifi,string grado,string ocupacion,string condicion,string referencia,
                                                 string tipoDanio, string ayTec,string funEstructura,string Eteolo,string procedencia,
-                                                int TDAnios,int TDMeses,int TDDias, int TSAnios,int TSMeses,int TSDias)
+                                                int TDAnios,int TDMeses,int TDDias, int TSAnios,int TSMeses,int TSDias, string actParticipacion)
         {
 
             try
@@ -630,6 +671,7 @@ namespace BL
                 evo.id_tipo_daño = idTipoDanio;
                 evo.id_ayudas_tecnicas = idAyudaTecnica;
                 evo.funcion_estructura = funEstructura;
+                evo.actividades_participacion = actParticipacion;
                 evo.eteologia = Eteolo;
 
                 // QUE ONDAS CON ESTO

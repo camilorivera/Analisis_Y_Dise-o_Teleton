@@ -331,39 +331,7 @@ height: 121px;*/
 {
     margin: 2%;
 }
-.Grid, th
-{
-  margin: auto;
-  background-color:white;
-  color:black;
-  border:1px solid gray;
-  text-align:center;
-}
-th
-{
-background-color:black;
-border-collapse:collapse;
-color:white;
-border: 2px solid black;
-text-align:center;
-
-}
-    
-        
-.txtbx_Diagnostico
-{
-}
-.txtbx_labelD
-{
-}
-.labelD
-{
-    color: Black;
-    padding: 1px;
-    width: 20%;
-    float: none;
-    text-align: right;
-}
+   
 
 /*-------------SEGUIMIENTO DE PACIENTES*/
 

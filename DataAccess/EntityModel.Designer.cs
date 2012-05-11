@@ -4599,6 +4599,30 @@ namespace DataAccess
         private global::System.Int64 _id_productividad;
         partial void Onid_productividadChanging(global::System.Int64 value);
         partial void Onid_productividadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String actividades_participacion
+        {
+            get
+            {
+                return _actividades_participacion;
+            }
+            set
+            {
+                Onactividades_participacionChanging(value);
+                ReportPropertyChanging("actividades_participacion");
+                _actividades_participacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("actividades_participacion");
+                Onactividades_participacionChanged();
+            }
+        }
+        private global::System.String _actividades_participacion;
+        partial void Onactividades_participacionChanging(global::System.String value);
+        partial void Onactividades_participacionChanged();
 
         #endregion
     

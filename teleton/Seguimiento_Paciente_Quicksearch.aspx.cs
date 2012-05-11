@@ -71,13 +71,13 @@ public partial class Seguimiento_Paciente_Quicksearch : System.Web.UI.Page
             args.IsValid = true;
     }
 
-    protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-    {
-        //Session["SelectedRow"] = this.GridView1.SelectedRow; //(Expediente, Nombre, Cedula) 
-        Response.Write("<script language='javascript'> { window.onload = function() { window.opener.fillFields('" + GridView1.SelectedRow.Cells[1].Text + "' ); window.close(); }</script>");
-    }
     protected void closeBtn_Click(object sender, EventArgs e)
     {
-        Response.Write("<script language='javascript'> { window.close();}</script>");
+        Response.Write("<script language='javascript'> { window.close(); }</script>");
+    }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Response.Write("<script language='javascript'> { window.opener.document.getElementById('MainContent_txtnumexp').value = '" + GridView1.SelectedRow.Cells[1].Text + "'; window.close(); }</script>");    
     }
 }

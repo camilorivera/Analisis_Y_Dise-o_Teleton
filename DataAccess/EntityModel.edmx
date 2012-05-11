@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="teletonModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="teletonModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="teletonModelStoreContainer">
           <EntitySet Name="actividades_enfermeria" EntityType="teletonModel.Store.actividades_enfermeria" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="altas" EntityType="teletonModel.Store.altas" store:Type="Tables" Schema="mysql_14667_teletonback" />
@@ -25,9 +25,9 @@
           <EntitySet Name="estado_alta" EntityType="teletonModel.Store.estado_alta" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="estado_civil" EntityType="teletonModel.Store.estado_civil" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="evoluciones" EntityType="teletonModel.Store.evoluciones" store:Type="Tables" Schema="mysql_14667_teletonback" />
-          <EntitySet Name="historial" EntityType="teletonModel.Store.historial" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="historia_clinica_adultos" EntityType="teletonModel.Store.historia_clinica_adultos" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="historia_clinica_pediatrica" EntityType="teletonModel.Store.historia_clinica_pediatrica" store:Type="Tables" Schema="mysql_14667_teletonback" />
+          <EntitySet Name="historial" EntityType="teletonModel.Store.historial" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="ocupaciones" EntityType="teletonModel.Store.ocupaciones" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="pacientes" EntityType="teletonModel.Store.pacientes" store:Type="Tables" Schema="mysql_14667_teletonback" />
           <EntitySet Name="parametros" EntityType="teletonModel.Store.parametros" store:Type="Tables" Schema="mysql_14667_teletonback" />
@@ -65,13 +65,13 @@
             <End Role="pacientes" EntitySet="pacientes" />
             <End Role="citas_terapia" EntitySet="citas_terapia" />
           </AssociationSet>
-          <AssociationSet Name="diagnosticos_fk" Association="teletonModel.Store.diagnosticos_fk">
-            <End Role="diagnosticos" EntitySet="diagnosticos" />
-            <End Role="evoluciones" EntitySet="evoluciones" />
-          </AssociationSet>
           <AssociationSet Name="diagnostico_FK" Association="teletonModel.Store.diagnostico_FK">
             <End Role="diagnosticos" EntitySet="diagnosticos" />
             <End Role="pacientes" EntitySet="pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="diagnosticos_fk" Association="teletonModel.Store.diagnosticos_fk">
+            <End Role="diagnosticos" EntitySet="diagnosticos" />
+            <End Role="evoluciones" EntitySet="evoluciones" />
           </AssociationSet>
           <AssociationSet Name="empleado_fk" Association="teletonModel.Store.empleado_fk">
             <End Role="empleados" EntitySet="empleados" />
@@ -169,6 +169,10 @@
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="altas" EntitySet="altas" />
           </AssociationSet>
+          <AssociationSet Name="paciente_fk" Association="teletonModel.Store.paciente_fk">
+            <End Role="pacientes" EntitySet="pacientes" />
+            <End Role="citas_doctor" EntitySet="citas_doctor" />
+          </AssociationSet>
           <AssociationSet Name="pacientes_fk" Association="teletonModel.Store.pacientes_fk">
             <End Role="estado_civil" EntitySet="estado_civil" />
             <End Role="pacientes" EntitySet="pacientes" />
@@ -176,10 +180,6 @@
           <AssociationSet Name="pacientes_fk1" Association="teletonModel.Store.pacientes_fk1">
             <End Role="pacientes" EntitySet="pacientes" />
             <End Role="evoluciones" EntitySet="evoluciones" />
-          </AssociationSet>
-          <AssociationSet Name="paciente_fk" Association="teletonModel.Store.paciente_fk">
-            <End Role="pacientes" EntitySet="pacientes" />
-            <End Role="citas_doctor" EntitySet="citas_doctor" />
           </AssociationSet>
           <AssociationSet Name="permisos_fk" Association="teletonModel.Store.permisos_fk">
             <End Role="permisos" EntitySet="permisos" />
@@ -193,6 +193,10 @@
             <End Role="ocupaciones" EntitySet="ocupaciones" />
             <End Role="pacientes" EntitySet="pacientes" />
           </AssociationSet>
+          <AssociationSet Name="rol_fk" Association="teletonModel.Store.rol_fk">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="usuarios_x_rol" EntitySet="usuarios_x_rol" />
+          </AssociationSet>
           <AssociationSet Name="roles_fk" Association="teletonModel.Store.roles_fk">
             <End Role="roles" EntitySet="roles" />
             <End Role="permisos_x_roles" EntitySet="permisos_x_roles" />
@@ -201,17 +205,13 @@
             <End Role="centros" EntitySet="centros" />
             <End Role="roles" EntitySet="roles" />
           </AssociationSet>
-          <AssociationSet Name="rol_fk" Association="teletonModel.Store.rol_fk">
-            <End Role="roles" EntitySet="roles" />
-            <End Role="usuarios_x_rol" EntitySet="usuarios_x_rol" />
+          <AssociationSet Name="usuario_fk" Association="teletonModel.Store.usuario_fk">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="citas_terapia" EntitySet="citas_terapia" />
           </AssociationSet>
           <AssociationSet Name="usuarios_fk" Association="teletonModel.Store.usuarios_fk">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="usuarios_x_rol" EntitySet="usuarios_x_rol" />
-          </AssociationSet>
-          <AssociationSet Name="usuario_fk" Association="teletonModel.Store.usuario_fk">
-            <End Role="usuarios" EntitySet="usuarios" />
-            <End Role="citas_terapia" EntitySet="citas_terapia" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="actividades_enfermeria">
@@ -397,24 +397,13 @@
           <Property Name="id_ayudas_tecnicas" Type="uint" Nullable="false" />
           <Property Name="id_estado_alta" Type="uint" Nullable="false" />
           <Property Name="id_productividad" Type="uint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="historial">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="n_expediente" Type="uint" Nullable="false" />
-          <Property Name="prefijo" Type="usmallint" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
-          <Property Name="texto" Type="longtext" />
-          <Property Name="area" Type="uint" Nullable="false" />
+          <Property Name="actividades_participacion" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="historia_clinica_adultos">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="n_expediente" Type="uint" Nullable="false" />
           <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="edad" Type="usmallint" Nullable="false" />
@@ -429,7 +418,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="uint" Nullable="false" />
+          <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="n_expediente" Type="uint" Nullable="false" />
           <Property Name="prefijo" Type="usmallint" Nullable="false" />
           <Property Name="edad" Type="usmallint" Nullable="false" />
@@ -438,6 +427,18 @@
           <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="remitente" Type="varchar" MaxLength="45" />
           <Property Name="texto" Type="longtext" />
+        </EntityType>
+        <EntityType Name="historial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="n_expediente" Type="uint" Nullable="false" />
+          <Property Name="prefijo" Type="usmallint" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="texto" Type="longtext" />
+          <Property Name="area" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="ocupaciones">
           <Key>
@@ -640,18 +641,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="diagnosticos_fk">
-          <End Role="diagnosticos" Type="teletonModel.Store.diagnosticos" Multiplicity="0..1" />
-          <End Role="evoluciones" Type="teletonModel.Store.evoluciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="diagnosticos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="evoluciones">
-              <PropertyRef Name="id_diagnostico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="diagnostico_FK">
           <End Role="diagnosticos" Type="teletonModel.Store.diagnosticos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -663,6 +652,18 @@
             </Principal>
             <Dependent Role="pacientes">
               <PropertyRef Name="diagnostico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="diagnosticos_fk">
+          <End Role="diagnosticos" Type="teletonModel.Store.diagnosticos" Multiplicity="0..1" />
+          <End Role="evoluciones" Type="teletonModel.Store.evoluciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diagnosticos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evoluciones">
+              <PropertyRef Name="id_diagnostico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -974,6 +975,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="paciente_fk">
+          <End Role="pacientes" Type="teletonModel.Store.pacientes" Multiplicity="1" />
+          <End Role="citas_doctor" Type="teletonModel.Store.citas_doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacientes">
+              <PropertyRef Name="expediente" />
+              <PropertyRef Name="prefijo" />
+            </Principal>
+            <Dependent Role="citas_doctor">
+              <PropertyRef Name="expediente" />
+              <PropertyRef Name="prefijo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pacientes_fk">
           <End Role="estado_civil" Type="teletonModel.Store.estado_civil" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -997,20 +1012,6 @@
               <PropertyRef Name="prefijo" />
             </Principal>
             <Dependent Role="evoluciones">
-              <PropertyRef Name="expediente" />
-              <PropertyRef Name="prefijo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="paciente_fk">
-          <End Role="pacientes" Type="teletonModel.Store.pacientes" Multiplicity="1" />
-          <End Role="citas_doctor" Type="teletonModel.Store.citas_doctor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pacientes">
-              <PropertyRef Name="expediente" />
-              <PropertyRef Name="prefijo" />
-            </Principal>
-            <Dependent Role="citas_doctor">
               <PropertyRef Name="expediente" />
               <PropertyRef Name="prefijo" />
             </Dependent>
@@ -1056,6 +1057,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="rol_fk">
+          <End Role="roles" Type="teletonModel.Store.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usuarios_x_rol" Type="teletonModel.Store.usuarios_x_rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuarios_x_rol">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="roles_fk">
           <End Role="roles" Type="teletonModel.Store.roles" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1082,17 +1097,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="rol_fk">
-          <End Role="roles" Type="teletonModel.Store.roles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="usuarios_x_rol" Type="teletonModel.Store.usuarios_x_rol" Multiplicity="*" />
+        <Association Name="usuario_fk">
+          <End Role="usuarios" Type="teletonModel.Store.usuarios" Multiplicity="1" />
+          <End Role="citas_terapia" Type="teletonModel.Store.citas_terapia" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="roles">
-              <PropertyRef Name="id" />
+            <Principal Role="usuarios">
+              <PropertyRef Name="username" />
             </Principal>
-            <Dependent Role="usuarios_x_rol">
-              <PropertyRef Name="id_rol" />
+            <Dependent Role="citas_terapia">
+              <PropertyRef Name="user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1110,20 +1123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="usuario_fk">
-          <End Role="usuarios" Type="teletonModel.Store.usuarios" Multiplicity="1" />
-          <End Role="citas_terapia" Type="teletonModel.Store.citas_terapia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="usuarios">
-              <PropertyRef Name="username" />
-            </Principal>
-            <Dependent Role="citas_terapia">
-              <PropertyRef Name="user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="teletonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -1549,6 +1549,7 @@
           <NavigationProperty Name="productividad" Relationship="teletonModel.fk_productividad" FromRole="evoluciones" ToRole="productividad" />
           <NavigationProperty Name="tipo_daño" Relationship="teletonModel.fk_tipo_daño" FromRole="evoluciones" ToRole="tipo_daño" />
           <NavigationProperty Name="paciente" Relationship="teletonModel.pacientes_fk1" FromRole="evoluciones" ToRole="pacientes" />
+          <Property Type="String" Name="actividades_participacion" />
         </EntityType>
         <EntityType Name="historial">
           <Key>
@@ -2359,7 +2360,8 @@
             <ScalarProperty Name="estado" ColumnName="estado" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="evoluciones"><EntityTypeMapping TypeName="teletonModel.evolucione"><MappingFragment StoreEntitySet="evoluciones">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="actividades_participacion" ColumnName="actividades_participacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="fecha" ColumnName="fecha" />
             <ScalarProperty Name="prefijo" ColumnName="prefijo" />
             <ScalarProperty Name="expediente" ColumnName="expediente" />
