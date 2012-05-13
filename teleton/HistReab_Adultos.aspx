@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="HistReab_Adultos.aspx.cs" 
 Inherits="HistReab_Adultos" ValidateRequest="false"%>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -54,11 +54,12 @@ Inherits="HistReab_Adultos" ValidateRequest="false"%>
                             <asp:TextBox ID="txt_Expediente" runat="server" Font-Size="Medium"  
                                 Width="136px"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="lb_Edad" runat="server" Text="Edad:" Font-Size="Medium"></asp:Label>
+                        <asp:Label ID="lb_Edad" runat="server" Text="Edad:" Visible="false" Font-Size="Medium"></asp:Label>
                             &nbsp;&nbsp;
                             <asp:TextBox ID="txt_Edad" runat="server" Font-Size="Medium" height="22px" 
-                                width="235px" BorderStyle="None" Enabled="False"></asp:TextBox>
+                                width="235px" BorderStyle="None" Visible="false" Enabled="False"></asp:TextBox>
                             <br />
+                            <asp:Panel  ID="asp_Panel" runat="server" Visible="false">
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
                             <asp:Label  ID="lb_Nombre" runat="server" Text="Nombre:" Font-Size="Medium"></asp:Label>
@@ -96,9 +97,10 @@ Inherits="HistReab_Adultos" ValidateRequest="false"%>
                             &nbsp;&nbsp;&nbsp;<asp:DropDownList ID="dls_Lateralidad" runat="server" 
                                 Height="22px" Width="235px" Enabled="false">
                             </asp:DropDownList>
+                            </asp:Panel>
                         </li>
                         <li class="list">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="btn_Aceptar" runat="server" CssClass="boton" Text="Buscar" 
                                 onclick="btn_Aceptar_Click" />
                             <asp:Button ID="btn_Nuevo" runat="server" CssClass="boton" Text="Nuevo" Enabled="false" Visible="false"
@@ -115,7 +117,13 @@ Inherits="HistReab_Adultos" ValidateRequest="false"%>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Label ID="lb_Mensaje" runat="server" Font-Size="Medium" ForeColor="Red" ></asp:Label>
                             <br />
-                            <br />
+                            <textarea id="elm1" name="elm1" rows="15" cols="80" style="width: 100%" 
+                                runat="server" enableviewstate="True" visible="False"></textarea>
+                        </li>
+                 </ul>
+                 <ul>
+                    <li class="list">
+                        <br />
                             <asp:GridView ID="grd_Historial" CssClass="Grid" runat="server" Width="100%" AutoGenerateColumns="False" DataKeyNames="Fecha" AllowPaging="True" 
                             onpageindexchanging="grd_Historial_PageIndexChanging" > 
                             <HeaderStyle Height="18px" />
@@ -136,20 +144,13 @@ Inherits="HistReab_Adultos" ValidateRequest="false"%>
                             <RowStyle Height="20px" />
                             <SelectedRowStyle ForeColor="Red" />
                         </asp:GridView>
-                            
-                        </li>
-                 </ul>
-                 <ul>
-                    <li class="list">
-                        <br />
-                        <br />
-                        <textarea id="elm1" name="elm1" rows="15" cols="80" style="width: 100%" 
-                                runat="server" enableviewstate="True" visible="False"></textarea>
                     </li>
                  </ul>
             </div>
         </div>
     </div>
+
+                    
 
 </asp:Content>
 

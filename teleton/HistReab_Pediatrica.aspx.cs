@@ -46,11 +46,19 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
             txt_Historiador.Text = g_Historial.Rows[t_grdRow.RowIndex + (grd_Historial.PageIndex * grd_Historial.PageSize)][0].ToString();
             controles(false);
             elm1.Visible = true;
+            datosPanel(true);
         }
         catch 
         {
             lb_Mensaje.Text = "No se puede mostrar el detalle";
         }
+    }
+
+    private void datosPanel(bool p_vs)
+    {
+        asp_Panel.Visible = p_vs;
+        lb_Edad.Visible = p_vs;
+        txt_Edad.Visible = p_vs;
     }
 
     private void buscarCargar()
@@ -118,6 +126,7 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                     if (Convert.ToInt32(txt_Edad.Text) > 18)
                     {
                         mayorEdad(false);
+                        lb_Mensaje.Text = "Utilice la pagina de historial Adultos";
                     }
                     else
                     {
@@ -199,6 +208,7 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
 
     protected void btn_Nuevo_Click(object sender, EventArgs e)
     {
+        datosPanel(true);
         btn_Guardar.Enabled = true;
         btn_Guardar.Visible = true;
         btn_Nuevo.Enabled = false;
@@ -243,6 +253,7 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                             btn_Guardar.Visible = false;
                             btn_Nuevo.Enabled = true;
                             btn_Nuevo.Visible = true;
+                            datosPanel(false);
                         }
                         else
                         {
