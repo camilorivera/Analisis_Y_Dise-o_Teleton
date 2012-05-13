@@ -66,6 +66,7 @@ public partial class HistReab_Adultos : System.Web.UI.Page
             controles(false);
             elm1.Visible = true;
             dls_Lateralidad.Enabled = false;
+            datosPanel(true);
         }
         catch
         {
@@ -210,10 +211,18 @@ public partial class HistReab_Adultos : System.Web.UI.Page
         }
     }
 
+    private void datosPanel(bool p_vs)
+    {
+        asp_Panel.Visible = p_vs;
+        lb_Edad.Visible = p_vs;
+        txt_Edad.Visible = p_vs;
+    }
+
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
         try
         {
+            datosPanel(false);
             if(int.TryParse(txt_Expediente.Text, out g_Expediente))
             {
                 controles(false);
@@ -246,6 +255,9 @@ public partial class HistReab_Adultos : System.Web.UI.Page
 
     protected void btn_Nuevo_Click(object sender, EventArgs e)
     {
+        asp_Panel.Visible = true;
+        lb_Edad.Visible = true;
+        txt_Edad.Visible = true;
         btn_Guardar.Enabled = true;
         btn_Guardar.Visible = true;
         btn_Nuevo.Enabled = false;
@@ -295,6 +307,7 @@ public partial class HistReab_Adultos : System.Web.UI.Page
                             btn_Guardar.Visible = false;
                             btn_Nuevo.Enabled = true;
                             btn_Nuevo.Visible = true;
+                            datosPanel(false);
                         }
                         else
                         {

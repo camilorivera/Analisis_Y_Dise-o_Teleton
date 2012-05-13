@@ -54,12 +54,13 @@ Inherits="HistReab_Pediatrica" ValidateRequest="false"%>
                             <asp:TextBox ID="txt_Expediente" runat="server" Font-Size="Medium"  
                                 Width="136px"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="lb_Edad" runat="server" Text="Edad:" Font-Size="Medium"></asp:Label>
+                        <asp:Label ID="lb_Edad" runat="server" Text="Edad:" Visible="false" Font-Size="Medium"></asp:Label>
                             &nbsp;&nbsp;
                             <asp:TextBox ID="txt_Edad" runat="server" Font-Size="Medium" height="22px" 
-                                width="235px" BorderStyle="None" Enabled="False"></asp:TextBox>
+                                width="235px" BorderStyle="None" Visible="false" Enabled="False"></asp:TextBox>
                             <br />
-                            <br />
+                            <asp:Panel ID="asp_Panel" runat="server" Visible="false">
+                                <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                             <asp:Label  ID="lb_Nombre" runat="server" Text="Nombre:" Font-Size="Medium"></asp:Label>
                             &nbsp;&nbsp;
@@ -91,7 +92,10 @@ Inherits="HistReab_Pediatrica" ValidateRequest="false"%>
                             &nbsp;&nbsp;
                             <asp:TextBox ID="txt_Historiador" runat="server" Font-Size="Medium" 
                                 height="22px" width="229px" Enabled="False" style="font-size: small"></asp:TextBox>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </asp:Panel>
+                        </li>
+                        <li class="list">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                             <asp:Button ID="btn_Aceptar" runat="server" CssClass="boton" Text="Buscar" 
                                 onclick="btn_Aceptar_Click" />
                             <asp:Button ID="btn_Nuevo" runat="server" CssClass="boton" Text="Nuevo"
@@ -107,8 +111,13 @@ Inherits="HistReab_Pediatrica" ValidateRequest="false"%>
                         <li class="list">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Label ID="lb_Mensaje" runat="server" Font-Size="Medium" ForeColor="Red" ></asp:Label>
-                            <br />
-                            <br />
+                            <textarea id="elm1" name="elm1" rows="15" cols="80" style="width: 100%" 
+                                runat="server" enableviewstate="True" visible="False"></textarea>
+                        </li>
+                 </ul>
+                 <ul>
+                    <li class="list">
+                        <br />
                             <asp:GridView ID="grd_Historial" CssClass="Grid" runat="server" Width="100%" AutoGenerateColumns="False" DataKeyNames="Fecha" AllowPaging="True" 
                             onpageindexchanging="grd_Historial_PageIndexChanging" > 
                             <HeaderStyle Height="18px" />
@@ -129,15 +138,6 @@ Inherits="HistReab_Pediatrica" ValidateRequest="false"%>
                             <RowStyle Height="20px" />
                             <SelectedRowStyle ForeColor="Red" />
                         </asp:GridView>
-                            
-                        </li>
-                 </ul>
-                 <ul>
-                    <li class="list">
-                        <br />
-                        <br />
-                        <textarea id="elm1" name="elm1" rows="15" cols="80" style="width: 100%" 
-                                runat="server" enableviewstate="True" visible="False"></textarea>
                     </li>
                  </ul>
             </div>
