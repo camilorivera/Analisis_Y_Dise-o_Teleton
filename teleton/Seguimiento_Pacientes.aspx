@@ -11,6 +11,13 @@
     <!--[if IE 6]><link rel="stylesheet" type="text/css" href="Styles/960/ie6.css" media="screen" /><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="Styles/960/ie.css" media="screen" /><![endif]--> 
     <script type="text/javascript">
+        document.onkeypress = KeyPress;
+        var isEnter = false;
+        function KeyPress(e) {
+            var code = (window.event) ? event.keyCode : e.which;
+            if (code == 13) { isEnter = true; }
+        }
+
         function openPopUp() {
             var popUrl = 'Seguimiento_Paciente_Quicksearch.aspx';
             var name = 'popUp';
@@ -22,12 +29,12 @@
         }
 
         function OnKeyUp(obj) {
-            var objval = obj.value;
-            if (obj.id == "MainContent_txtnumexp" && window.event.keyCode == 13) {
-                //window.location = "Seguimiento_Pacientes.aspx";     
-                __doPostBack('', '');      
+            if (obj.id == "MainContent_txtnumexp" && (this.isEnter || window.event.keyCode == 13)) {
+                this.isEnter = false;
+                __doPostBack('', '');
             }
         }
+
     </script>
 </asp:Content>
 
@@ -51,7 +58,8 @@
 				                <div class="block">
 					                <p>
                                         <asp:Label ID="LblNumExp" CssClass="labelD" runat="server" Text="Nº de Expediente: " Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txtnumexp" TabIndex="1" runat="server" CssClass="txtbx_labelD" onKeyUp = "OnKeyUp(this);" Width="45%"></asp:TextBox>
+                                        <asp:TextBox ID="txtnumexp" TabIndex="1" runat="server" CssClass="txtbx_labelD" onKeyUp = "OnKeyUp(this,13);"  Width="45%"></asp:TextBox>
+                                        <!--<asp:Button ID="btnSearchButton" runat="server" Width="5%"></asp:Button>-->
                                         <asp:ImageButton ID="busqueda" CssClass="botonbusquedarapida" ImageUrl="~/images/Search.png" runat="server" CausesValidation="False"  Width="5%" />
                                     </p>
 					                <p>

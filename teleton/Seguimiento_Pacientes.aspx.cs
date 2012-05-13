@@ -16,6 +16,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
     int centroid;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Page.Form.DefaultButton = busqueda.UniqueID;
         //Lista de permisos que el usuario logueado tiene
         List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
 
