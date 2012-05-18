@@ -413,7 +413,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
                                     txtActividadesParticipacion.Text = "";
                                     txtFuncionEstructura.Text = "";
                                     cambiarEnabled(false);
-                                    //LoadGrid(); //carga grid cargada en session de usuario.*/
+                                    LoadGrid(); //carga grid cargada en session de usuario.*/
                                  }
                             //}
                         }
