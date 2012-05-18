@@ -143,6 +143,18 @@
                         </li>
 
                         <li class="field">
+                            <asp:Label runat="server" ID="Label22" CssClass="label">Departamento:</asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="tb_Permiso">
+                            </asp:DropDownList>
+                        </li>
+
+                        <li class="field">
+                            <asp:Label runat="server" ID="Label23" CssClass="label">Municipio:</asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlMunicipio" CssClass="tb_Permiso">
+                            </asp:DropDownList>
+                        </li>
+
+                        <li class="field">
                             <asp:Label ID="Label6" CssClass="label" runat="server" 
                                 Text="Sexo:"></asp:Label>
                             <asp:radiobuttonlist id="rdSexo" runat="server" RepeatDirection="Horizontal">

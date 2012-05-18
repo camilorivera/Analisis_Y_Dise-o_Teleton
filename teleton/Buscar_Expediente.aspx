@@ -60,7 +60,7 @@
                 <asp:Button ID="btnEditar" runat="server" CssClass="boton" Text="Editar" 
                     OnClientClick="return validateForm()" ValidationGroup="TodoError" onclick="btnEditar_Click" Enabled="False"/>
                 <asp:Button ID="btnEliminar" runat="server" CssClass="boton" Text="Eliminar" 
-                    onclick="btnEliminar_Click" Enabled="False"/>
+                    onclick="btnEliminar_Click" Enabled="False" Visible="False"/>
                 <asp:ConfirmButtonExtender ID="cfmExtEliminar" runat="server" TargetControlID="btnEliminar"
                     ConfirmText="Desea Eliminar al paciente"></asp:ConfirmButtonExtender>
                 <asp:Button ID="btnImprimir" runat="server" CssClass="boton" Text="Imprimir" 
@@ -117,6 +117,19 @@
                                     ErrorMessage="*Dirección Requerida" ForeColor="Red" 
                                     ControlToValidate="txtDireccion" ValidationGroup="TodoError"></asp:RequiredFieldValidator>
                         </li>
+
+                        <li class="field">
+                            <asp:Label runat="server" ID="Label22" CssClass="label">Departamento:</asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="tb_Permiso">
+                            </asp:DropDownList>
+                        </li>
+
+                        <li class="field">
+                            <asp:Label runat="server" ID="Label23" CssClass="label">Municipio:</asp:Label>
+                            <asp:DropDownList runat="server" ID="ddlMunicipio" CssClass="tb_Permiso">
+                            </asp:DropDownList>
+                        </li>
+
                         <li class="field">
                             <asp:Label ID="Label6" CssClass="label" runat="server" Text="Sexo:"></asp:Label>
                             <asp:radiobuttonlist id="rdSexo" runat="server" RepeatDirection="Horizontal" 
