@@ -41,6 +41,8 @@ namespace BL
         private bool _recibioRehabilitacion;
         private string _observaciones;
         private bool _pacActivo;
+        private int _idDepartamento;
+        private int _idMunicipio;
         #endregion
 
         #region Get y Set
@@ -199,6 +201,18 @@ namespace BL
             set { _pacActivo = value;}
             get { return _pacActivo; }
         }
+
+        public int departamento
+        {
+            set { _idDepartamento = value; }
+            get { return _idDepartamento; }
+        }
+
+        public int municipio
+        {
+            set { _idMunicipio = value; }
+            get { return _idMunicipio; }
+        }
         #endregion
 
         #region Constructores
@@ -221,7 +235,7 @@ namespace BL
         public void asignarDatos(int centroActual, long expediente, string nombres, string primerApellido, string segundoApellido, 
             DateTime fechaNac, bool sexo, DateTime fechaIngreso, string cedula, string direccion, string lugarNac, string estado,
             byte[] foto, /*Modificado por Eliazar ->*/string telefonoCasa, string celular, long idEscolaridad, long idProfesion, string dondeTrabajo, string madre,
-            string padre, string estructuraFam, bool recibioReha, string observ, string conyugue, bool pacActi, string familiar)
+            string padre, string estructuraFam, bool recibioReha, string observ, string conyugue, bool pacActi, string familiar, int depto, int muni)
         {
             CentroActual = centroActual;
             _expediente = expediente;
@@ -251,6 +265,8 @@ namespace BL
             rehabilitacion = recibioReha;
             observaciones = observ;
             pacienteActivo = pacActi;
+            departamento = depto;
+            municipio = muni;
         }
 
         /// <summary>
@@ -665,6 +681,8 @@ namespace BL
                 _recibioRehabilitacion = Convert.ToBoolean(pac.expectativa);
                 _observaciones = pac.observaciones;
                 _pacActivo = pac.activo;
+                _idDepartamento = (int)pac.departamento;
+                _idMunicipio = (int)pac.municipio;
                 return true;
             }
             return false;
@@ -926,6 +944,8 @@ namespace BL
                     pac.expectativa = rehabilitacion;
                     pac.observaciones = observaciones;
                     pac.activo = pacienteActivo;
+                    pac.departamento = departamento;
+                    pac.municipio = municipio;
 
                     entities.pacientes.AddObject(pac); //se guarda en la memoria
                     entities.SaveChanges(); //se guarda en la DB
@@ -988,6 +1008,59 @@ namespace BL
             {
                 array[0] = Convert.ToString(filaResultado.id);
                 array[1] = Convert.ToString(filaResultado.ocupacion);
+
+                resultset.LoadDataRow(array, false);
+            }
+
+            return resultset;
+        }
+
+        public DataTable cargarDepartamentos()
+        {
+            teletonEntities teleton = new teletonEntities();
+            ObjectQuery<departamento> deptos = teleton.departamentoes;
+
+            DataTable resultset = new DataTable();
+
+            resultset.Columns.Add("ID", typeof(long));
+            resultset.Columns.Add("NOMBRE", typeof(string));
+
+            IQueryable<departamento> depto = from fila in deptos
+                                             select fila;
+
+            string[] array = new string[2];
+
+            foreach (var filaResultado in depto)
+            {
+                array[0] = Convert.ToString(filaResultado.id);
+                array[1] = Convert.ToString(filaResultado.nombre);
+
+                resultset.LoadDataRow(array, false);
+            }
+
+            return resultset;
+        }
+
+        public DataTable cargarMunicipios(int idDepto)
+        {
+            teletonEntities teleton = new teletonEntities();
+            ObjectQuery<municipio> munis = teleton.municipios;
+
+            DataTable resultset = new DataTable();
+
+            resultset.Columns.Add("ID", typeof(long));
+            resultset.Columns.Add("NOMBRE", typeof(string));
+
+            IQueryable<municipio> muni = from fila in munis
+                                         where fila.idDepto == idDepto
+                                         select fila;
+
+            string[] array = new string[2];
+
+            foreach (var filaResultado in muni)
+            {
+                array[0] = Convert.ToString(filaResultado.id);
+                array[1] = Convert.ToString(filaResultado.nombre);
 
                 resultset.LoadDataRow(array, false);
             }

@@ -80,6 +80,28 @@ public partial class Crear_Paciente : System.Web.UI.Page
 
             ddlProfesion.Items.Add(item);
         }
+
+        datos = objeto.cargarDepartamentos();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            ddlDepartamento.Items.Add(item);
+        }
+
+        datos = objeto.cargarMunicipios(1);
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            ddlMunicipio.Items.Add(item);
+        }
     }
     
     private void cleanPage()
@@ -113,6 +135,8 @@ public partial class Crear_Paciente : System.Web.UI.Page
         txtEstructuraFamiliar.Text = "";
         txtObservaciones.Text = "";
         rblRehabilitacion.SelectedIndex = 0;
+        ddlDepartamento.SelectedIndex = 0;
+        ddlMunicipio.SelectedIndex = 0;
         if (Request.QueryString["sender"] == "new")
         {
             txtExp.Text = "0";
@@ -195,7 +219,7 @@ public partial class Crear_Paciente : System.Web.UI.Page
                         txtLugarNacimiento.Text, ddEstado.SelectedItem.Text,FileUpload_Foto.FileBytes, txtTelefono.Text,
                         txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue),
                         txtLugarTrabajo.Text, txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacionAnterior,
-                        txtObservaciones.Text, txtConyugue.Text, true, txtFamiliar.Text);
+                        txtObservaciones.Text, txtConyugue.Text, true, txtFamiliar.Text,int.Parse(ddlDepartamento.SelectedValue),int.Parse(ddlMunicipio.SelectedValue));
 
                     if (!pac.exist(Int32.Parse(Session["Centro_idNum"].ToString()), exped))
                     {
@@ -250,5 +274,22 @@ public partial class Crear_Paciente : System.Web.UI.Page
         String pageArgs = String.Format("HojaPaciente.aspx?Expediente={0}&CentroActual={1}", exp, ca);
         LiteralControl lctl = new LiteralControl("<script type=\"text/javascript\"> function init(){" + String.Format("window.open('{0}', 'Información del Paciente', 'width=1000, height=600, scrollbars=yes');", pageArgs) + "} window.onload = init(); </script>");
         Page.Header.Controls.Add(lctl);
+    }
+    protected void ddlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarMunicipios(int.Parse(ddlDepartamento.SelectedValue));
+
+        ddlMunicipio.Items.Clear();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            ddlMunicipio.Items.Add(item);
+        }
     }
 }

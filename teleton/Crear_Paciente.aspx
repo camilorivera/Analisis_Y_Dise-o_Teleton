@@ -144,7 +144,9 @@
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label22" CssClass="label">Departamento:</asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="tb_Permiso">
+                            <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="tb_Permiso" 
+                                AutoPostBack="True" 
+                                onselectedindexchanged="ddlDepartamento_SelectedIndexChanged">
                             </asp:DropDownList>
                         </li>
 

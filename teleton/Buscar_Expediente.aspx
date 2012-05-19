@@ -120,13 +120,15 @@
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label22" CssClass="label">Departamento:</asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlDepartamento" CssClass="tb_Permiso">
+                            <asp:DropDownList runat="server" ID="ddlDepartamento" Enabled="false" CssClass="tb_Permiso" 
+                                AutoPostBack="True" 
+                                onselectedindexchanged="ddlDepartamento_SelectedIndexChanged">
                             </asp:DropDownList>
                         </li>
 
                         <li class="field">
                             <asp:Label runat="server" ID="Label23" CssClass="label">Municipio:</asp:Label>
-                            <asp:DropDownList runat="server" ID="ddlMunicipio" CssClass="tb_Permiso">
+                            <asp:DropDownList runat="server" ID="ddlMunicipio" Enabled="false" CssClass="tb_Permiso">
                             </asp:DropDownList>
                         </li>
 
@@ -282,7 +284,7 @@
                         
                         <li class="field">
                             <asp:Label ID="Label21" runat="server" CssClass="label">Nombre Familiar:</asp:Label>
-                            <asp:TextBox ID="txtFamiliar" runat="server" CssClass="tb_Permiso" EnableTheming="true"
+                            <asp:TextBox ID="txtFamiliar" Enabled="false" runat="server" CssClass="tb_Permiso" EnableTheming="true"
                                 MaxLength="45"></asp:TextBox>
                         </li>
 

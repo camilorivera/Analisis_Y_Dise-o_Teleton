@@ -118,6 +118,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         txtEstructuraFamiliar.Text = "";
         txtObservaciones.Text = "";
         rblRehabilitacion.SelectedIndex = 0;
+        ddlDepartamento.SelectedIndex = 0;
+        ddlMunicipio.SelectedIndex = 0;
     }
 
     private void cambiarEnabled(bool estado)
@@ -152,6 +154,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
         rblRehabilitacion.Enabled = estado;
         txtObservaciones.Enabled = estado;
         txtDiagnostico.Enabled = estado;
+        ddlDepartamento.Enabled = estado;
+        ddlMunicipio.Enabled = estado;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -215,6 +219,8 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
                 cargarDropDownEscolaridad(p.escolaridad);
                 cargarDropDownOcupaciones(p.profesion);
+                cargarDropDownDepartamento(p.departamento);
+                cargarDropDownMunicipio(p.municipio);
 
                 txtLugarTrabajo.Text = p.lugarTrabajo;
                 txtMadre.Text = p.nombreMadre;
@@ -319,7 +325,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                             pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), transformarCadena(txtNombres.Text), transformarCadena(txtPrimerApellido.Text), transformarCadena(txtSegundoApellido.Text),
                             fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, FileUpload_Foto.FileBytes,
                             txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                            txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text);
+                            txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text, int.Parse(ddlDepartamento.SelectedValue), int.Parse(ddlMunicipio.SelectedValue));
                         }
                     }
                     else
@@ -327,7 +333,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                         pac.asignarDatos(pac.CentroActual, Int64.Parse(txtExpediente.Text), transformarCadena(txtNombres.Text), transformarCadena(txtPrimerApellido.Text), transformarCadena(txtSegundoApellido.Text),
                         fechaNac, pac.Sexo, fechaIng, txtCedula.Text, txtDireccion.Text, txtLugarNacimiento.Text, ddEstado.SelectedItem.Text, pac.Foto,
                         txtTelefono.Text, txtCelular.Text, Convert.ToInt64(ddlEscolaridad.SelectedValue), Convert.ToInt64(ddlProfesion.SelectedValue), txtLugarTrabajo.Text,
-                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text);
+                        txtMadre.Text, txtPadre.Text, txtEstructuraFamiliar.Text, rehabilitacion, txtObservaciones.Text, txtConyugue.Text, Convert.ToBoolean(rbActivo.SelectedValue), txtFamiliar.Text, int.Parse(ddlDepartamento.SelectedValue), int.Parse(ddlMunicipio.SelectedValue));
 
                     }
 
@@ -444,6 +450,66 @@ public partial class Buscar_Expediente : System.Web.UI.Page
                 item.Selected = true;
 
             ddlProfesion.Items.Add(item);
+        }
+    }
+
+    private void cargarDropDownDepartamento(long id)
+    {
+        ddlDepartamento.Items.Clear();
+
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarDepartamentos();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            if (Convert.ToInt64(fila["ID"].ToString()) == id)
+                item.Selected = true;
+
+            ddlDepartamento.Items.Add(item);
+        }
+    }
+
+    private void cargarDropDownMunicipio(long id)
+    {
+        ddlMunicipio.Items.Clear();
+
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarMunicipios(int.Parse(ddlDepartamento.SelectedValue));
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            if (Convert.ToInt64(fila["ID"].ToString()) == id)
+                item.Selected = true;
+
+            ddlMunicipio.Items.Add(item);
+        }
+    }
+
+    protected void ddlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Paciente objeto = new Paciente();
+
+        DataTable datos = objeto.cargarMunicipios(int.Parse(ddlDepartamento.SelectedValue));
+
+        ddlMunicipio.Items.Clear();
+        foreach (DataRow fila in datos.Rows)
+        {
+            ListItem item = new ListItem();
+
+            item.Text = fila["NOMBRE"].ToString();
+            item.Value = fila["ID"].ToString();
+
+            ddlMunicipio.Items.Add(item);
         }
     }
 }
