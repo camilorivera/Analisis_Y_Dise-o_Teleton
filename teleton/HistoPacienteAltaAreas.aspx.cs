@@ -57,11 +57,20 @@ public partial class HistoPacienteAltaAreas : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+        int centro = Convert.ToInt32(Sec.getCentroId(ddl_centro.Text)); 
         if (txt_buscar.Text != "")
         {
-
-            Session["expediente"] = txt_buscar.Text;
-            Session["centro"] = ddl_centro.Text;
+            if (PAT.existePaciente(centro, Convert.ToInt32(txt_buscar.Text)))
+            {
+                Session["expediente"] = txt_buscar.Text;
+                Session["centro"] = ddl_centro.Text;
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "alert", "alert('El expediente no existe, verifique que el expediente y centro son correctos')", true);
+                txt_buscar.Text = "";
+                ddl_centro.SelectedIndex = 0;
+            }
 
         }
         else

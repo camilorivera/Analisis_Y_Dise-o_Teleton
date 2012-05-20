@@ -303,6 +303,22 @@ namespace BL
             }
         }
 
+        public string LeerHistorial(int exp, int pref, string user, int area,string histo)
+        {
+            var query = from h in entities.historials
+                        where h.n_expediente == exp && h.prefijo == pref && h.username == user && h.area == area && h.texto.Contains(histo)
+                        select h.texto;
+            return query.First().ToString();
+        }
+
+        public string LeerHistoAltaAreas(int exp, int pref,string user, string texto, int area)
+        {
+            var query = from p in entities.altas_areas
+                        where p.n_expediente == exp && p.prefijo == pref && p.username == user && p.texto.Contains(texto) && p.area == area
+                        select p.texto;
+            return query.First().ToString();
+        }
+
         public void editarPacienteAlta(bool _bool,int int_exp,int centro)
         {
             try
@@ -489,7 +505,16 @@ namespace BL
             }
         }
 
-
+        public bool existePaciente(int centro, int expe)
+        {
+            var query = from p in entities.pacientes
+                        where p.centro_actual == centro && p.expediente == expe
+                        select p;
+            if (query.Any())
+                return true;
+            else
+                return false;
+        }
         /// <summary>
         /// Historial del Paciente
         /// </summary>

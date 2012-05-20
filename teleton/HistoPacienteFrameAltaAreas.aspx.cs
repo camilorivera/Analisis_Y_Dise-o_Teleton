@@ -18,6 +18,8 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
     private static DataTable dt_Hist;
     public static string txt_buscar;
     public static int centro;
+    public static int areaid;
+    private static string usuario_logeado;
   
 
     protected void Page_Load(object sender, EventArgs e)
@@ -99,7 +101,8 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
                     txt_buscar = Session["expediente"].ToString();
                     int p_expe =Convert.ToInt32( Session["expediente"].ToString());
                     centro = Convert.ToInt32(Sec.getCentroId(Session["centro"].ToString()));
-                    int areaid = Convert.ToInt32(Session["id"].ToString());
+                    areaid = Convert.ToInt32(Session["id"].ToString());
+                    usuario_logeado = Session["nombre_usuario"].ToString();
                     lb_mensaje.Enabled = false;
                     lb_mensaje.Text = "";
                     CheckBox1.Enabled = true;
@@ -194,7 +197,8 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
             GridViewRow gdv_Hist = (GridViewRow)((ImageButton)sender).Parent.Parent;
             int int_Index = gdv_Hist.RowIndex + (grd_Historial.PageIndex * grd_Historial.PageSize);
             string str_TMP = dt_Hist.Rows[int_Index][3].ToString();
-            txt_historial.Text = dt_Hist.Rows[int_Index][3].ToString();
+            string histopart = dt_Hist.Rows[int_Index][3].ToString();
+            txt_historial.Text = PAT.LeerHistoAltaAreas(_intExpe, _shtPrefijo, usuario_logeado, histopart, areaid);
 
             if (dt_Hist.Rows[int_Index][4].ToString() == "Si")
                 CheckBox1.Checked = true;
@@ -203,7 +207,6 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
 
             txt_historial.Enabled = false;
             CheckBox1.Enabled = false;
-            //btn_guardar.Enabled = false;
             btn_guardar.Text = "Nuevo";
             
         }

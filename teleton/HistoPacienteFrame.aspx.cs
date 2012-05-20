@@ -18,6 +18,9 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
     private static int _intExpe = 0;
     private static short _shtPrefijo = 0;
     private static DataTable dt_Hist;
+    private static int centro;
+    private static int area;
+    private static string usuario_logeado;
     
 
     protected void Page_Load(object sender, EventArgs e)
@@ -66,8 +69,9 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
                 {
                     try
                     {
-                        int centro = Convert.ToInt32(Sec.getCentroId(Session["centro"].ToString()));
-                        int area = Convert.ToInt32(Session["id"].ToString());
+                        centro = Convert.ToInt32(Sec.getCentroId(Session["centro"].ToString()));
+                        area = Convert.ToInt32(Session["id"].ToString());
+                        usuario_logeado = Session["nombre_usuario"].ToString();
                         string expediente = Session["expediente"].ToString();
                         _intExpe = Convert.ToInt32(expediente);
                         string str_temp = expediente;
@@ -221,7 +225,8 @@ public partial class HistoPacienteFrame : System.Web.UI.Page
             GridViewRow gdv_Hist = (GridViewRow)((ImageButton)sender).Parent.Parent;
             int int_Index = gdv_Hist.RowIndex + (grd_Historial.PageIndex * grd_Historial.PageSize);
             string str_TMP = dt_Hist.Rows[int_Index][3].ToString();
-            txt_historial.Text = dt_Hist.Rows[int_Index][3].ToString();
+            string histopart = dt_Hist.Rows[int_Index][3].ToString();
+            txt_historial.Text = PAT.LeerHistorial(_intExpe,_shtPrefijo,usuario_logeado,area,histopart);
             txt_historial.ReadOnly = true;
             txt_historial.Font.Bold = true;
             btn_guardar.Text = "Nuevo";
