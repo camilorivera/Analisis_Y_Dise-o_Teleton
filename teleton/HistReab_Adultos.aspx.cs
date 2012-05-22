@@ -143,6 +143,8 @@ public partial class HistReab_Adultos : System.Web.UI.Page
                 dls_Lateralidad.Items.Add(g_Historial.Rows[0][8].ToString());
                 g_BLEmpleado = new BL.Empleados();
                 txt_Historiador.Text = g_BLEmpleado.getNombre(Convert.ToInt32(Session["id_empleado"].ToString()));
+                btn_Nuevo.Enabled = false;
+                btn_Nuevo.Visible = false;
             }
             else
             {
@@ -164,17 +166,19 @@ public partial class HistReab_Adultos : System.Web.UI.Page
                     {
                         mayorEdad(false);
                         lb_Mensaje.Text = "Utilice la pagina de historial pediátrica";
+                        btn_Nuevo.Enabled = false;
+                        btn_Nuevo.Visible = false;
                     }
                     else
                     {
                         mayorEdad(true);
                         btn_Guardar.Visible = false;
                         btn_Guardar.Enabled = false;
+                        btn_Nuevo.Enabled = true;
+                        btn_Nuevo.Visible = true;
                     }
                     txt_Nombre.Text = g_InfoPaciente.Rows[0][0].ToString();
                     txt_Sexo.Text = Convert.ToBoolean(g_InfoPaciente.Rows[0][1]) == true ? "Masculino" : "Femenino";
-                    btn_Nuevo.Enabled = true;
-                    btn_Nuevo.Visible = true;
                     g_BLEmpleado = new BL.Empleados();
                     txt_Historiador.Text = g_BLEmpleado.getNombre(Convert.ToInt32(Session["id_empleado"].ToString()));
                     defLateralidad();

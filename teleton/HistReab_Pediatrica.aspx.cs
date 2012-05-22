@@ -98,12 +98,17 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                 {
                     mayorEdad(false);
                     lb_Mensaje.Text = "Utilice la pagina de historial de adultos";
+                    btn_Nuevo.Visible = false;
+                    btn_Nuevo.Enabled = false;
                 }
                 else
                 {
                     mayorEdad(true);
+                    btn_Nuevo.Visible = true;
+                    btn_Nuevo.Enabled = true;
                     btn_Guardar.Visible = false;
                     btn_Guardar.Enabled = false;
+
                 }
             }
             else
@@ -127,15 +132,23 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                     {
                         mayorEdad(false);
                         lb_Mensaje.Text = "Utilice la pagina de historial Adultos";
+                        btn_Nuevo.Enabled = false;
+                        btn_Nuevo.Visible = false;
                     }
                     else
                     {
                         mayorEdad(true);
+                        btn_Nuevo.Enabled = true;
+                        btn_Nuevo.Visible = true;
+                        btn_Guardar.Visible = false;
+                        btn_Guardar.Enabled = false;
                     }
                 }
                 else
                 {
                     lb_Mensaje.Text = "El paciente no existe o esta en otro centro";
+                    btn_Nuevo.Enabled = false;
+                    btn_Nuevo.Visible = false;
                 }
                 
             }
