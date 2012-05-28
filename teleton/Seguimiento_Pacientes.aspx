@@ -3,11 +3,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="Styles/Teleton_fix.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
     <link href="Styles/960/reset.css" rel="stylesheet" type="text/css" />
-    <link href="Styles/960/text.css" rel="stylesheet" type="text/css" />
     <link href="Styles/960/grid.css" rel="stylesheet" type="text/css" />
     <link href="Styles/960/layout.css" rel="stylesheet" type="text/css" />
-    <!--<link href="Styles/960/nav.css" rel="stylesheet" type="text/css" />-->
+    <link href="Styles/ui.spinner.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.4.4.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.8.13.js" type="text/javascript"></script>
+    <script src="Scripts/ui.spinner.js" type="text/javascript"></script>
     <!--[if IE 6]><link rel="stylesheet" type="text/css" href="Styles/960/ie6.css" media="screen" /><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="Styles/960/ie.css" media="screen" /><![endif]--> 
     <script type="text/javascript">
@@ -34,6 +37,19 @@
                 __doPostBack('', '');
             }
         }
+       jQuery().ready(function ($) {
+            $('#txt_TDAnios').spinner({ min: 0, max: 100 });
+            $('#txt_TDMeses').spinner({ min: 0, max: 12 }); 
+            $('#txt_TDDias').spinner({ min: 0, max: 365 }); 
+            $('#txt_TSAnios').spinner({ min: 0, max: 100 }); 
+            $('#txt_TSMeses').spinner({ min: 0, max: 12 });
+            $('#txt_TSDias').spinner({ min: 0, max: 365 });
+
+            $('#enable').click(function () { $('#updowndisable').spinner('enable'); });
+            $('#disable').click(function () { $('#updowndisable').spinner('disable'); });
+            $('#GetValue').click(function () { alert($('#updown').spinner('value')); });
+            $('#destroy').click(function () { $('#updown').spinner('destroy'); });
+        });
 
     </script>
 </asp:Content>
@@ -44,7 +60,7 @@
             <div id="content3">
                 <div id="navcenter">
                     <div id="head">
-                        <h4 id="branding">Seguimiento de Pacientes</h4>
+                        <h2>Seguimiento de Pacientes</h2>
                         <h5>Fecha de hoy:<asp:Label ID="LBLDATE" CssClass="h3" runat="server"></asp:Label></h5>
                     </div>                    
                     <div class="clear"></div>
@@ -57,7 +73,7 @@
 			                <div class="grid_8">
 				                <div class="block">
 					                <p>
-                                        <asp:Label ID="LblNumExp" CssClass="labelD" runat="server" Text="Nº de Expediente: " Width="40%"></asp:Label>
+                                        <asp:Label ID="LblNumExp" runat="server" Text="Nº de Expediente: " Width="40%"></asp:Label>
                                         <asp:TextBox ID="txtnumexp" TabIndex="1" runat="server" CssClass="txtbx_labelD" onKeyUp = "OnKeyUp(this,13);"  Width="45%"></asp:TextBox>
                                         <!--<asp:Button ID="btnSearchButton" runat="server" Width="5%"></asp:Button>-->
                                         <asp:ImageButton ID="busqueda" CssClass="botonbusquedarapida" ImageUrl="~/images/Search.png" runat="server" CausesValidation="False"  Width="5%" />
@@ -144,7 +160,8 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="Label20" CssClass="labelD" runat="server" Text="Años:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TDAnios" runat="server" TabIndex="17" CssClass="txtbx_labelD" ValidationGroup="check" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TDAnios" runat="server" TabIndex="17" 
+                                            ClientIDMode='Static' ValidationGroup="check" Text='0' Width="50%" ></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -152,7 +169,7 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="LblPat9" CssClass="labelD" runat="server" Text="Meses:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TDMeses" runat="server" TabIndex="18" CssClass="txtbx_labelD" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TDMeses" runat="server" ClientIDMode='Static' Text='0' TabIndex="18" Width="50%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -160,7 +177,7 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="LblPat10" CssClass="labelD" runat="server" Text="Dias:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TDDias" runat="server" TabIndex="19" CssClass="txtbx_labelD" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TDDias" runat="server" ClientIDMode='Static' Text='0' TabIndex="19" Width="50%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -174,7 +191,7 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="LblPat12" CssClass="labelD" runat="server" Text="Años:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TSAnios" runat="server" TabIndex="20" CssClass="txtbx_labelD" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TSAnios" runat="server" ClientIDMode='Static' Text='0' TabIndex="20" Width="50%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -182,7 +199,7 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="Label10" CssClass="labelD" runat="server" Text="Meses:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TSMeses" runat="server" TabIndex="21" CssClass="txtbx_labelD" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TSMeses" runat="server" ClientIDMode='Static' Text='0' TabIndex="21" Width="50%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -190,7 +207,7 @@
                                 <div class="block">
                                     <p>
                                         <asp:Label ID="LblPat14" CssClass="labelD" runat="server" Text="Dias:" Width="40%"></asp:Label>
-                                        <asp:TextBox ID="txt_TSDias" runat="server" TabIndex="22" CssClass="txtbx_labelD" Width="50%">0</asp:TextBox>
+                                        <asp:TextBox ID="txt_TSDias" runat="server" ClientIDMode='Static' Text='0' TabIndex="22" Width="50%"></asp:TextBox>
                                     </p>
                                 </div>
                             </div>
@@ -215,15 +232,11 @@
                         </div>
                      </div>
                      <div class="clear"></div>  
-                     <div class="container_12">
-                        <div class="grid_12">
-                            <div class="box">     
-                                <h2>
-                                    <a href="#" id="toggle-pacientes">Listado Pacientes</a>
-                                </h2>
-                                <div class="block" id="listPacientes">
-                                   <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto">
-                                   <asp:GridView ID="GridViewSegPac" 
+                     <fieldset id="Fieldset1">
+	                    <legend>Listado Pascientes</asp:Label></legend>
+	                    <div class="container_12">
+		                    <div class="grid_12">
+		                        <asp:GridView ID="GridViewSegPac" 
                                         emptydatatext="----No Hay Pacientes Registrados el Dia de Hoy.----" runat="server" 
                                         AutoGenerateColumns="False" ShowHeaderWhenEmpty="True" AllowPaging ="True" 
                                         PageSize="25" onpageindexchanging="GridViewSegPac_PageIndexChanging1">      
@@ -304,11 +317,9 @@
                                             </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
-                                    </asp:Panel>
                                 </div>
-                            </div>
-                        </div> 
-                     </div>
+                            </div>  
+                    </fieldset>
                 </div>
             </div>
         </ContentTemplate>
