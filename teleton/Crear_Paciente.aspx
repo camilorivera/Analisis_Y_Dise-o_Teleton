@@ -199,6 +199,10 @@
                                 runat="server" ControlToValidate="txtFechaNacimiento" ForeColor="Red" ErrorMessage="*Formato valido es dd-MM-yyyy"
                                 ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
                                 />
+
+                                <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtFechaNacimiento" 
+                                ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Fecha de Ingreso es menor o igual que la de nacimiento"
+                                Operator="LessThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
                         </li>
                         <li class="field">
                             <asp:Label ID="Label10" CssClass="label" runat="server" 
@@ -219,9 +223,7 @@
                                 ValidationExpression="(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[012])-[1-9][0-9][0-9][0-9]"
                                 />
 
-                            <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtFechaNacimiento" 
-                                ControlToValidate="txtFechaIngreso" ForeColor="Red" ErrorMessage="*Fecha de Ingreso es menor o igual que la de nacimiento"
-                                Operator="LessThanEqual" Type="Date" ValidationGroup="TodoError"></asp:CompareValidator>
+                            
                         </li>
 
                         <li class="field">
