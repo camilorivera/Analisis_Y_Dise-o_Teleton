@@ -423,7 +423,7 @@ namespace BL
                                     b.cedula,
                                     p.notas,
                                     codigoInternacional = a.codigoInter,
-                                    diagnotisco = a.diagnostico1,
+                                    diagnostico1 = a.diagnostico1,
                                     d.tipo,
                                     t.procedencia1,
                                     p.funcion_estructura,
