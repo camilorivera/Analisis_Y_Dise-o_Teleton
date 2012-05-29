@@ -47,7 +47,7 @@
                                 <asp:CompareValidator ID="CompareValidator1" runat="server" 
                                 ErrorMessage="Fecha inicial mayor que la final" 
                                 ControlToCompare="txtFechaFinal" ControlToValidate="txtFechaInicio" 
-                                ForeColor="Red" Operator="LessThanEqual" Type="Date" 
+                                ForeColor="Red" Operator="GreaterThanEqual" Type="Date" 
                                 ValidationGroup="TodoError">*</asp:CompareValidator>
                         </div>
                     </li>
