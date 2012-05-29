@@ -51,7 +51,7 @@
                                         <td>
                                             <asp:TextBox runat="server" ID="txtFechaIngreso" Visible="false" Width="149px"></asp:TextBox>
                                             <asp:Image ImageUrl="images/calendar_icon.jpg" id="imgCalendarIcon" width="24px" runat="server" Visible="false"/>
-                                            <asp:CalendarExtender ID="ceFechaIngreso" runat="server" TargetControlID="txtFechaIngreso" Format="dd/MM/yyyy"
+                                            <asp:CalendarExtender ID="ceFechaIngreso" runat="server" TargetControlID="txtFechaIngreso" Format="dd-MM-yyyy"
                                                 PopupButtonID="imgCalendarIcon">
                                             </asp:CalendarExtender>
                                         </td>
