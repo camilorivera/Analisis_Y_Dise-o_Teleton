@@ -44,11 +44,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="txtFechaFinal" ErrorMessage="Fecha final requerida" 
                                 ForeColor="Red" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                            <!--<asp:CompareValidator ID="CompareValidator1" runat="server" 
                                 ErrorMessage="Fecha inicial mayor que la final" 
                                 ControlToCompare="txtFechaFinal" ControlToValidate="txtFechaInicio" 
-                                ForeColor="Red" Operator="GreaterThanEqual" ValueToCompare="<% txtFechaFinal.Text.ToShortString() %>" Type="Date" Form
-                                ValidationGroup="TodoError">*</asp:CompareValidator>
+                                ForeColor="Red" Operator="GreaterThanEqual" ValueToCompare="txtFechaFinal.Text.ToShortString()" Type="Date" Form
+                                ValidationGroup="TodoError">*</asp:CompareValidator>-->
                         </div>
                     </li>
 
