@@ -89,9 +89,7 @@ public partial class Buscar_Expediente : System.Web.UI.Page
 
     private void cleanPage()
     {
-        string fecha = (DateTime.Now.Day < 10 ? "0" : "") + DateTime.Now.Day.ToString();
-        fecha = fecha + "-" + (DateTime.Now.Month < 10 ? "0" : "") + DateTime.Now.Month.ToString();
-        fecha = fecha + "-" + DateTime.Now.Year.ToString();
+        string fecha = DateTime.Now.ToString("dd-MM-yyyy");
         
         txtExpediente.Text = "";
         txtFechaIngreso.Text = fecha;//
