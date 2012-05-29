@@ -22,7 +22,7 @@
                             <asp:Label runat="server" ID="lblFechaInicio">Fecha Inicio:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaInicio" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaInicio" runat="server" 
-                                TargetControlID="txtFechaInicio" Format="dd/MM/yyyy"
+                                TargetControlID="txtFechaInicio" Format="dd-MM-yyyy"
                                 PopupButtonID="imgFechaInicio">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaInicio" />
@@ -41,7 +41,7 @@
                             <asp:Label runat="server" ID="lblFechaFinal">Fecha Final:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaFinal" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaFinal" runat="server" 
-                                TargetControlID="txtFechaFinal" Format="dd/MM/yyyy"
+                                TargetControlID="txtFechaFinal" Format="dd-MM-yyyy"
                                 PopupButtonID="imgFechaFinal">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaFinal" />
