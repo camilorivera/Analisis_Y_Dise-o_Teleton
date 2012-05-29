@@ -90,8 +90,6 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                 txt_Sexo.Text = Convert.ToBoolean(g_Historial.Rows[0][6]) == true ? "Masculino" : "Femenino";
                 txt_Remitente.Text = g_Historial.Rows[0][7].ToString();
                 txt_Informante.Text = g_Historial.Rows[0][2].ToString();
-                btn_Nuevo.Enabled = true;
-                btn_Nuevo.Visible = true;
                 g_BLEmpleado = new BL.Empleados();
                 txt_Historiador.Text = g_BLEmpleado.getNombre(Convert.ToInt32(Session["id_empleado"].ToString()));
                 if (Convert.ToInt32(txt_Edad.Text) > 18)
@@ -100,12 +98,13 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                     lb_Mensaje.Text = "Utilice la pagina de historial de adultos";
                     btn_Nuevo.Visible = false;
                     btn_Nuevo.Enabled = false;
+
                 }
                 else
                 {
                     mayorEdad(true);
-                    btn_Nuevo.Visible = true;
-                    btn_Nuevo.Enabled = true;
+                    btn_Nuevo.Visible = false;
+                    btn_Nuevo.Enabled = false;
                     btn_Guardar.Visible = false;
                     btn_Guardar.Enabled = false;
 
@@ -113,7 +112,8 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
             }
             else
             {
-                g_InfoPaciente = g_Paciente.infoHistoPediAdul(Convert.ToInt32(txt_Expediente.Text));
+                g_InfoPaciente = g_Paciente.infoHistoPediAdul(Convert.ToInt32(txt_Expediente.Text),
+                    Convert.ToInt32(Session["Centro_idNum"].ToString()));
                 if (g_InfoPaciente.Rows.Count > 0)
                 {
                     int t_Anos = DateTime.Now.Year - Convert.ToDateTime(g_InfoPaciente.Rows[0][2]).Year;
@@ -155,6 +155,7 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
             controles(false);
             elm1.Value = "";
             elm1.Visible = false;
+            datosPanel(false);
         }
         catch
         {
@@ -264,8 +265,8 @@ public partial class HistReab_Pediatrica : System.Web.UI.Page
                             lb_Mensaje.Text = "Se guardo correctamente";
                             btn_Guardar.Enabled = false;
                             btn_Guardar.Visible = false;
-                            btn_Nuevo.Enabled = true;
-                            btn_Nuevo.Visible = true;
+                            btn_Nuevo.Enabled = false;
+                            btn_Nuevo.Visible = false;
                             datosPanel(false);
                         }
                         else

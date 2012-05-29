@@ -148,8 +148,9 @@ public partial class HistReab_Adultos : System.Web.UI.Page
             }
             else
             {
-                
-                g_InfoPaciente = g_Paciente.infoHistoPediAdul(Convert.ToInt32(txt_Expediente.Text));
+
+                g_InfoPaciente = g_Paciente.infoHistoPediAdul(Convert.ToInt32(txt_Expediente.Text)
+                    , Convert.ToInt32(Session["Centro_idNum"].ToString()));
                 if (g_InfoPaciente.Rows.Count > 0)
                 {
                     int t_Anos = DateTime.Now.Year - Convert.ToDateTime(g_InfoPaciente.Rows[0][2]).Year;
@@ -309,8 +310,8 @@ public partial class HistReab_Adultos : System.Web.UI.Page
                             defLateralidad();
                             btn_Guardar.Enabled = false;
                             btn_Guardar.Visible = false;
-                            btn_Nuevo.Enabled = true;
-                            btn_Nuevo.Visible = true;
+                            btn_Nuevo.Enabled = false;
+                            btn_Nuevo.Visible = false;
                             datosPanel(false);
                         }
                         else

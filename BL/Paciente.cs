@@ -1286,7 +1286,7 @@ namespace BL
             }
         }
 
-        public DataTable infoHistoPediAdul(int p_expediente)
+        public DataTable infoHistoPediAdul(int p_expediente, int p_prefijo)
         {
             try
             {
@@ -1295,7 +1295,7 @@ namespace BL
                 t_dt.Columns.Add("Sexo");
                 t_dt.Columns.Add("Fecha");
                 var t_query = from c in entities.pacientes
-                              where c.expediente == p_expediente
+                              where c.expediente == p_expediente && c.prefijo==p_prefijo
                               select new
                               {
                                   c.nombres
