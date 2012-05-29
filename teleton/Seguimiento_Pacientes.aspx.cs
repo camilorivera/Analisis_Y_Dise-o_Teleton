@@ -128,7 +128,7 @@ public partial class Seguimiento_Pacientes : System.Web.UI.Page
         try
         {
             DateTime _dt = Convert.ToDateTime(segPacientes.GetFecha());
-            LBLDATE.Text = _dt.ToString("dd/MM/yyyy");
+            LBLDATE.Text = _dt.ToString("dd-MM-yyyy");
             CargarPatologias();
             CargarClasificacionPaciente();
             CargarOcupaciones();
