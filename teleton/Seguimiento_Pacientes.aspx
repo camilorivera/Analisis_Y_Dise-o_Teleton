@@ -61,7 +61,7 @@
                 <div id="navcenter">
                     <div id="head">
                         <h2>Seguimiento de Pacientes</h2>
-                        <h5>Fecha de hoy:<asp:Label ID="LBLDATE" CssClass="h3" runat="server"></asp:Label></h5>
+                        <h5>Fecha de hoy: <asp:Label ID="LBLDATE" CssClass="h3" runat="server"></asp:Label></h5>
                     </div>                    
                     <div class="clear"></div>
                     <fieldset id="IngresoPascientes">
