@@ -26,11 +26,7 @@
                                 PopupButtonID="imgFechaInicio">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaInicio" />
-                             <asp:CompareValidator ID="CompareValidator1" runat="server" 
-                                ErrorMessage="Fecha inicial mayor que la final" 
-                                ControlToCompare="txtFechaFinal" ControlToValidate="txtFechaInicio" 
-                                ForeColor="Red" Operator="LessThanEqual" Type="Date" 
-                                ValidationGroup="TodoError">*</asp:CompareValidator>
+                             
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Fecha inicial requerida."
                                 ValidationGroup="TodoError" ControlToValidate="txtFechaInicio" 
                                 ForeColor="Red">*
@@ -48,6 +44,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                 ControlToValidate="txtFechaFinal" ErrorMessage="Fecha final requerida" 
                                 ForeColor="Red" ValidationGroup="TodoError">*</asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                                ErrorMessage="Fecha inicial mayor que la final" 
+                                ControlToCompare="txtFechaFinal" ControlToValidate="txtFechaInicio" 
+                                ForeColor="Red" Operator="LessThanEqual" Type="Date" 
+                                ValidationGroup="TodoError">*</asp:CompareValidator>
                         </div>
                     </li>
 
