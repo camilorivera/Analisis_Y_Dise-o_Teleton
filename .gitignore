@@ -39,7 +39,6 @@ Thumbs.db
 *.ncb
 *.suo
 *.tlb
-*.dll
 *.tlh
 *.bak
 *.cache
