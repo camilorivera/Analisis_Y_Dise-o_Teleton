@@ -362,8 +362,6 @@ namespace BL
         {
 
             DateTime fechaFinal = new DateTime(fechafin.Year, fechafin.Month, fechafin.Day, 23, 59, 59);
-            
-            /*Por aqui me quedo ver el filtro del drop down list*/
 
             switch (doctor)
             {
@@ -416,6 +414,7 @@ namespace BL
                                     b.nombres,
                                     b.primer_apellido,
                                     b.segundo_apellido,
+                                    genero = (b.sexo ? "Masculino" : "Femenino"),
                                     nombreDoc = doc.nombres,
                                     apeDoc = doc.primer_apellido,
                                     ape2Doc = doc.segundo_apellido,
@@ -491,6 +490,7 @@ namespace BL
                                     b.nombres,
                                     b.primer_apellido,
                                     b.segundo_apellido,
+                                    genero = (b.sexo ? "Masculino" : "Femenino"),
                                     nombreDoc = doc.nombres,
                                     apeDoc = doc.primer_apellido,
                                     ape2Doc = doc.segundo_apellido,
@@ -498,7 +498,7 @@ namespace BL
                                     b.cedula,
                                     p.notas,
                                     codigoInternacional = a.codigoInter,
-                                    a.diagnostico1,
+                                    diagnostico1 = a.diagnostico1,
                                     d.tipo,
                                     t.procedencia1,
                                     p.funcion_estructura,

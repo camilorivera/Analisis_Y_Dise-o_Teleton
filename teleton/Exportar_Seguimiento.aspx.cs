@@ -11,10 +11,17 @@ using BL;
 using System.Data;
 using System.Text;
 using System.IO;
+using NPOI.HSSF.UserModel;
+using NPOI.HSSF.Util;
+using NPOI.HPSF;
+using NPOI.POIFS.FileSystem;
+using NPOI.SS.UserModel;
 
 
 public partial class Exportar_Seguimiento : System.Web.UI.Page
 {
+
+    private HSSFWorkbook Libro;
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -148,7 +155,17 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
     
     protected void btExportar_Click(object sender, EventArgs e)
     {
-        exportToExcel("Export.xls", gvSeguimientoPaciente);
+        string filename = "Export.xls";
+        Response.ContentType = "application/vnd.ms-excel";
+        Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", filename));
+        Response.Clear();
+
+        inicializarLibro();
+        generarDatos();
+        
+        Response.BinaryWrite(escribirStream().GetBuffer());
+        Response.End();
+        //exportToExcel("Export.xls", gvSeguimientoPaciente);
     }
 
     private void exportToExcel(string nameReport, GridView fuente)
@@ -169,5 +186,89 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
         pageToRender.RenderControl(htw);
         response.Write(sw.ToString());
         response.End();
+    }
+
+    private void inicializarLibro()
+    {
+        Libro = new HSSFWorkbook();
+
+        //Crea una entrada a DocumentSummaryInformation
+        DocumentSummaryInformation dsi = PropertySetFactory.CreateDocumentSummaryInformation();
+        dsi.Company = "Unitec";
+        Libro.DocumentSummaryInformation = dsi;
+
+        //Crea una entrada para SummaryInformation
+        SummaryInformation si = PropertySetFactory.CreateSummaryInformation();
+        si.Subject = "Desarrollado por alumnos de Ing. Software II periodo 2012";
+        Libro.SummaryInformation = si;
+    }
+
+    private void generarDatos()
+    {
+        ISheet hoja1 = Libro.CreateSheet("Hoja1");
+        hoja1.DisplayGridlines = false;
+
+        int alto = gvSeguimientoPaciente.Rows.Count;
+        int ancho = gvSeguimientoPaciente.Columns.Count;
+
+        IRow fila = hoja1.CreateRow(0);
+        for (int j = 0; j < ancho; j++)
+        {
+            IFont fuente = Libro.CreateFont();
+            fuente.Color = HSSFColor.WHITE.index;
+
+            ICellStyle estilo = Libro.CreateCellStyle();
+            estilo.FillForegroundColor = HSSFColor.BLACK.index;
+            estilo.FillPattern = FillPatternType.SOLID_FOREGROUND;
+            
+            estilo.BorderBottom = NPOI.SS.UserModel.BorderStyle.MEDIUM;
+            estilo.BottomBorderColor = HSSFColor.BLACK.index;
+            
+            estilo.BorderLeft = NPOI.SS.UserModel.BorderStyle.MEDIUM;
+            estilo.LeftBorderColor = HSSFColor.BLACK.index;
+
+            estilo.BorderRight = NPOI.SS.UserModel.BorderStyle.MEDIUM;
+            estilo.RightBorderColor = HSSFColor.BLACK.index;
+
+            estilo.BorderTop = NPOI.SS.UserModel.BorderStyle.MEDIUM;
+            estilo.TopBorderColor = HSSFColor.BLACK.index;
+            
+            estilo.SetFont(fuente);
+            
+            ICell celda = fila.CreateCell(j);
+            celda.CellStyle = estilo;
+            celda.SetCellValue(gvSeguimientoPaciente.HeaderRow.Cells[j].Text.ToString());
+        }
+        
+        for (int i = 1; i <= alto; i++)
+        {
+            IRow row = hoja1.CreateRow(i);
+            for (int j = 0; j < ancho; j++)
+            {
+                ICellStyle estilo = Libro.CreateCellStyle();
+                estilo.BorderBottom = NPOI.SS.UserModel.BorderStyle.THIN;
+                estilo.BottomBorderColor = HSSFColor.BLACK.index;
+
+                estilo.BorderLeft = NPOI.SS.UserModel.BorderStyle.THIN;
+                estilo.LeftBorderColor = HSSFColor.BLACK.index;
+
+                estilo.BorderTop = NPOI.SS.UserModel.BorderStyle.THIN;
+                estilo.TopBorderColor = HSSFColor.BLACK.index;
+
+                estilo.BorderRight = NPOI.SS.UserModel.BorderStyle.THIN;
+                estilo.RightBorderColor = HSSFColor.BLACK.index;
+                
+                ICell celda = row.CreateCell(j);
+                celda.CellStyle = estilo;
+                celda.SetCellValue(gvSeguimientoPaciente.Rows[i - 1].Cells[j].Text);
+            }
+        }
+    }
+
+    private MemoryStream escribirStream()
+    {
+        MemoryStream file = new MemoryStream();
+        Libro.Write(file);
+        return file;
     }
 }

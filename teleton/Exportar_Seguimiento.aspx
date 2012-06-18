@@ -22,7 +22,7 @@
                             <asp:Label runat="server" ID="lblFechaInicio">Fecha Inicio:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaInicio" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaInicio" runat="server" 
-                                TargetControlID="txtFechaInicio" Format="dd-MM-yyyy"
+                                TargetControlID="txtFechaInicio" Format="dd/MM/yyyy"
                                 PopupButtonID="imgFechaInicio">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaInicio" />
@@ -37,7 +37,7 @@
                             <asp:Label runat="server" ID="lblFechaFinal">Fecha Final:</asp:Label>
                             <asp:TextBox runat="server" ID="txtFechaFinal" CssClass="requerido"></asp:TextBox>
                             <asp:CalendarExtender ID="ceFechaFinal" runat="server" 
-                                TargetControlID="txtFechaFinal" Format="dd-MM-yyyy"
+                                TargetControlID="txtFechaFinal" Format="dd/MM/yyyy"
                                 PopupButtonID="imgFechaFinal">
                             </asp:CalendarExtender>
                             <img alt="icon" src="images/calendar_icon.jpg" class="calendar" id="imgFechaFinal" />
@@ -98,6 +98,7 @@
                             <asp:BoundField HeaderText="Nombre Paciente" DataField="nombres" />
                             <asp:BoundField HeaderText="Primer Apellido" DataField="primer_apellido" />
                             <asp:BoundField HeaderText="Segundo Apellido" DataField="segundo_apellido" />
+                            <asp:BoundField HeaderText="Sexo" DataField="genero" />
                             <asp:BoundField HeaderText="Nombre Doc" DataField="nombreDoc" />
                             <asp:BoundField HeaderText="Primer Apellido Doc" DataField="apeDoc" />
                             <asp:BoundField HeaderText="Segundo Apellido Doc" DataField="ape2Doc" />
