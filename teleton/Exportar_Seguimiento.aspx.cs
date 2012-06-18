@@ -165,7 +165,6 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
         
         Response.BinaryWrite(escribirStream().GetBuffer());
         Response.End();
-        //exportToExcel("Export.xls", gvSeguimientoPaciente);
     }
 
     private void exportToExcel(string nameReport, GridView fuente)
