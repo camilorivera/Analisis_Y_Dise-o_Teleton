@@ -155,7 +155,7 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
     
     protected void btExportar_Click(object sender, EventArgs e)
     {
-        string filename = "Export.xls";
+        /*string filename = "Export.xls";
         Response.ContentType = "application/vnd.ms-excel";
         Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", filename));
         Response.Clear();
@@ -164,7 +164,8 @@ public partial class Exportar_Seguimiento : System.Web.UI.Page
         generarDatos();
         
         Response.BinaryWrite(escribirStream().GetBuffer());
-        Response.End();
+        Response.End();*/
+        exportToExcel("Export.xls", gvSeguimientoPaciente);
     }
 
     private void exportToExcel(string nameReport, GridView fuente)
