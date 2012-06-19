@@ -44,7 +44,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Guardar" 
                             onclick="btn_guardar_Click" BackColor="#CC0000" 
-                            BorderColor="Black" ForeColor="White" />
+                            BorderColor="Black" ForeColor="White" Visible="False" />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_mensaje" runat="server"  Font-Bold="true" ForeColor="Red" Enabled="False"></asp:Label>
                     </div>
                 </ul>            

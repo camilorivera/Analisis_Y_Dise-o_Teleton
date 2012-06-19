@@ -33,7 +33,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btn_guardar"  CssClass="boton" runat="server" Text="Guardar" 
                             onclick="btn_guardar_Click" Enabled="False" BackColor="#CC0000" 
-                            BorderColor="Black" ForeColor="White" />
+                            BorderColor="Black" ForeColor="White" Visible="False" />
                     </div>
                 </ul>            
        </fieldset>

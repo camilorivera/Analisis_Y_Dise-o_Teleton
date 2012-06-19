@@ -24,6 +24,9 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+        bool encontroPermiso = false;
+        
         if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
         {
 
@@ -31,9 +34,29 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
             Session["id"] = Request.QueryString["id"];
             if (Session["id"] != null)
             {
+                 string tmp = Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
+            foreach (String strPermiso in listaPermisos)
+            {
+                //Iteramos los permisos del usuario para comprobar que puede utilizar esta pagina
+                if (strPermiso.Contains(tmp.ToLower()))
+                {
+                    encontroPermiso = true;
+                    break;
+                }
+            }
+
+            if (!encontroPermiso)
+            {
+                btn_guardar.Visible = false;
+            }
+            else
+            {
+                btn_guardar.Visible = true;
+            }
+
                 lb_area.Visible = true;
                 lb_area0.Visible = true;
-                lb_area.Text = Sec.getNameArea(Convert.ToInt32(Request.QueryString["id"]));
+                lb_area.Text = tmp;
                 lb_area0.Text = "Area: ";
             }
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
