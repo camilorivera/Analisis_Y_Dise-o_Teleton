@@ -2647,7 +2647,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EntityModel">
+      <Diagram Name="EntityModel" ZoomLevel="97">
         <EntityTypeShape EntityType="teletonModel.actividades_enfermeria" Width="1.5" PointX="6" PointY="13.5" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.alta" Width="1.5" PointX="8.25" PointY="20" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.altas_areas" Width="1.5" PointX="11.25" PointY="19.75" Height="3.1340950520833317" IsExpanded="true" />
