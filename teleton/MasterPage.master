@@ -124,8 +124,7 @@
     </div>
     <div id="footer">
         <div id="footerContent">
-            <p id="bottom">
-                &copy; Copyright 2011 SWAT Development&minus; Derechos Reservados <a href="http://www.unitec.edu/"
+            <p id="bottom"><a href="http://www.unitec.edu/"
                     title="Unitec">Unitec</a></p>
         </div>
     </div>
