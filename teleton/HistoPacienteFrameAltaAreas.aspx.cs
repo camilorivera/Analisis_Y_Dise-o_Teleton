@@ -12,6 +12,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
 {
     private BL.Paciente PAT = new BL.Paciente();
     private BL.Security Sec = new BL.Security();
+    private BL.Permiso Per = new BL.Permiso();
     private static string _strUsuario = "";
     private static int _intExpe = 0;
     private static short _shtPrefijo = 0;
@@ -24,7 +25,7 @@ public partial class HistoPacienteFrameAltaAreas : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        List<String> listaPermisos = (List<String>)Session["Permisos_usuario"];
+        List<String> listaPermisos = Per.getPermisosID();
         bool encontroPermiso = false;
         
         if (PAT.isDoctor(Session["nombre_usuario"].ToString()))
