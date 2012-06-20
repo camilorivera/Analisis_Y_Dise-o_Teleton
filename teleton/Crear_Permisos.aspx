@@ -23,7 +23,7 @@
 
                        <li="field">
                      <asp:CustomValidator ID="CustomValidator1" runat="server" 
-                            ErrorMessage="Tamaño debe ser menor a 10 letras" 
+                            ErrorMessage="Tamaño debe ser menor a 45 letras" 
                             onservervalidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                     </li>  
                                      

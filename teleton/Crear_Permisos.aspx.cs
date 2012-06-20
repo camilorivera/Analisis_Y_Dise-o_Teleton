@@ -60,7 +60,7 @@ public partial class Crear_Permisos : System.Web.UI.Page
     protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
     {
         bool flag = true;
-        if (nombrePermiso_TB.Text.Length > 10)
+        if (nombrePermiso_TB.Text.Length > 45)
         {
             flag=false;
             

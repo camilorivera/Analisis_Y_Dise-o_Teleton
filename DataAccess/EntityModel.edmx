@@ -521,7 +521,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="id" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="95" />
         </EntityType>
         <EntityType Name="permisos_x_roles">
@@ -529,7 +529,7 @@
             <PropertyRef Name="permiso_id" />
             <PropertyRef Name="rol_id" />
           </Key>
-          <Property Name="permiso_id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="permiso_id" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="rol_id" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="procedencia">
@@ -2647,7 +2647,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="EntityModel" ZoomLevel="97">
+      <Diagram Name="EntityModel">
         <EntityTypeShape EntityType="teletonModel.actividades_enfermeria" Width="1.5" PointX="6" PointY="13.5" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.alta" Width="1.5" PointX="8.25" PointY="20" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="teletonModel.altas_areas" Width="1.5" PointX="11.25" PointY="19.75" Height="3.1340950520833317" IsExpanded="true" />
